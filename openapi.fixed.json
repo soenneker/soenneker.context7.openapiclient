@@ -1,0 +1,3095 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Context7 Public API",
+    "description": "The Context7 Public API provides programmatic access to library documentation and search functionality. Get up-to-date documentation and code examples for any library.",
+    "contact": {
+      "name": "Context7 Support",
+      "url": "https://context7.com",
+      "email": "support@context7.com"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://context7.com/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/v2/libs/search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search for libraries",
+        "description": "Search for libraries by name with intelligent LLM-powered ranking based on your query context.",
+        "operationId": "SearchLibraries",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LibraryNameParam"
+          },
+          {
+            "$ref": "#/components/parameters/QueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/FastParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results ranked by relevance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "id": "/facebook/react",
+                      "title": "React",
+                      "description": "A JavaScript library for building user interfaces",
+                      "branch": "main",
+                      "lastUpdateDate": "2025-01-15T10:30:00.000Z",
+                      "state": "finalized",
+                      "totalTokens": 500000,
+                      "totalSnippets": 2500,
+                      "stars": 220000,
+                      "trustScore": 10,
+                      "benchmarkScore": 95.5,
+                      "versions": [
+                        "v18.2.0",
+                        "v17.0.2"
+                      ]
+                    }
+                  ],
+                  "searchFilterApplied": false
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/SpendingLimitError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailableError"
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/libs/metrics": {
+      "get": {
+        "tags": [
+          "Metrics"
+        ],
+        "summary": "Get library usage metrics",
+        "description": "\u0022Retrieve full usage metrics for a library: cumulative and daily request counters broken down by surface (web page, text docs, MCP, CLI), MCP client daily unique-user breakdown, and lifetime topic and country distributions. The API key must belong to a member of the teamspace that owns the library \u2014 claim ownership from the library\u0027s admin page on context7.com.\u0022",
+        "operationId": "GetLibraryMetrics",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LibraryIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/DaysParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Library usage metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LibraryMetricsResponse"
+                },
+                "example": {
+                  "total": {
+                    "page": 12450,
+                    "txt": 3820,
+                    "mcp": 95210,
+                    "cli": 1240
+                  },
+                  "daily": [
+                    {
+                      "date": "2025-01-14",
+                      "page": 8,
+                      "txt": 3,
+                      "mcp": 42,
+                      "cli": 1,
+                      "total": 54
+                    },
+                    {
+                      "date": "2025-01-15",
+                      "page": 11,
+                      "txt": 5,
+                      "mcp": 67,
+                      "cli": 0,
+                      "total": 83
+                    }
+                  ],
+                  "mcpClients": {
+                    "dailyData": [
+                      {
+                        "date": "2025-01-14",
+                        "uniqueUsersByClient": {
+                          "cursor": 12,
+                          "claude-code": 7
+                        },
+                        "totalUniqueUsers": 18
+                      },
+                      {
+                        "date": "2025-01-15",
+                        "uniqueUsersByClient": {
+                          "cursor": 15,
+                          "claude-code": 9,
+                          "codex": 2
+                        },
+                        "totalUniqueUsers": 25
+                      }
+                    ]
+                  },
+                  "topics": [
+                    {
+                      "topic": "routing",
+                      "count": 420
+                    },
+                    {
+                      "topic": "middleware",
+                      "count": 312
+                    },
+                    {
+                      "topic": "app-router",
+                      "count": 187
+                    }
+                  ],
+                  "countries": [
+                    {
+                      "country": "US",
+                      "count": 3120
+                    },
+                    {
+                      "country": "DE",
+                      "count": 842
+                    },
+                    {
+                      "country": "IN",
+                      "count": 610
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/context": {
+      "get": {
+        "tags": [
+          "Context"
+        ],
+        "summary": "Get documentation context",
+        "description": "Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question.",
+        "operationId": "GetContext",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LibraryIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/QueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/TypeParam"
+          },
+          {
+            "$ref": "#/components/parameters/FastParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation context",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextResponse"
+                },
+                "example": {
+                  "codeSnippets": [
+                    {
+                      "codeTitle": "Middleware Authentication Example",
+                      "codeDescription": "Shows how to implement authentication checks in Next.js middleware",
+                      "codeLanguage": "typescript",
+                      "codeTokens": 150,
+                      "codeId": "https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx#_snippet_0",
+                      "pageTitle": "Middleware",
+                      "codeList": [
+                        {
+                          "language": "typescript",
+                          "code": "import { NextResponse } from \u0027next/server\u0027\nimport type { NextRequest } from \u0027next/server\u0027\n\nexport function middleware(request: NextRequest) {\n  const token = request.cookies.get(\u0027token\u0027)\n  if (!token) {\n    return NextResponse.redirect(new URL(\u0027/login\u0027, request.url))\n  }\n  return NextResponse.next()\n}"
+                        }
+                      ]
+                    }
+                  ],
+                  "infoSnippets": [
+                    {
+                      "pageId": "https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx",
+                      "breadcrumb": "Routing \u003E Middleware",
+                      "content": "Middleware allows you to run code before a request is completed...",
+                      "contentTokens": 200
+                    }
+                  ]
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetContext200PlainResponseSchema"
+                },
+                "example": "### Middleware Authentication Example\n\nSource: https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx\n\nShows how to implement authentication checks in Next.js middleware\n\n\u0060\u0060\u0060typescript\nimport { NextResponse } from \u0027next/server\u0027\n...\n\u0060\u0060\u0060"
+              }
+            }
+          },
+          "202": {
+            "$ref": "#/components/responses/AcceptedError"
+          },
+          "301": {
+            "$ref": "#/components/responses/RedirectError"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "402": {
+            "$ref": "#/components/responses/SpendingLimitError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntityError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/refresh": {
+      "post": {
+        "tags": [
+          "Refresh"
+        ],
+        "summary": "Refresh a library",
+        "description": "Trigger a refresh of an existing library to fetch the latest documentation. Library owners have dedicated refresh limits.",
+        "operationId": "RefreshLibrary",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshLibraryRequest"
+              },
+              "examples": {
+                "github": {
+                  "summary": "GitHub repository",
+                  "value": {
+                    "libraryName": "/vercel/next.js"
+                  }
+                },
+                "website": {
+                  "summary": "Website source",
+                  "value": {
+                    "libraryName": "/websites/uploadcare_com"
+                  }
+                },
+                "llmstxt": {
+                  "summary": "llms.txt source",
+                  "value": {
+                    "libraryName": "/llmstxt/example"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Refresh started successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshLibrary200Response"
+                },
+                "example": {
+                  "message": "Refresh started successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/policies": {
+      "get": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "Get teamspace policies",
+        "description": "Retrieve the current policy configuration for the teamspace associated with the API key. Includes source type access settings and public repository filters.",
+        "operationId": "GetPolicies",
+        "responses": {
+          "200": {
+            "description": "Current policy configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyResponse"
+                },
+                "example": {
+                  "sourceTypes": {
+                    "public_repos": {
+                      "enabled": true
+                    },
+                    "private_sources": {
+                      "enabled": true
+                    },
+                    "confluence": {
+                      "enabled": false
+                    },
+                    "uploaded_files": {
+                      "enabled": true
+                    },
+                    "websites": {
+                      "enabled": true
+                    },
+                    "llmstxt": {
+                      "enabled": true
+                    }
+                  },
+                  "libraryFilters": {
+                    "mode": "quality",
+                    "quality": {
+                      "requireVerified": false,
+                      "minTrustScore": null,
+                      "maxAgeDays": 365,
+                      "blockedLibraries": [
+                        "/org/repo",
+                        "example.com"
+                      ],
+                      "exceptedLibraries": [
+                        "/vercel/next.js"
+                      ],
+                      "repoFilters": {
+                        "minStars": 100,
+                        "allowedLicenses": [
+                          "MIT",
+                          "Apache-2.0"
+                        ]
+                      }
+                    },
+                    "select": {
+                      "allowedLibraries": []
+                    }
+                  },
+                  "accessibleLibraryCount": 4521
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "Update teamspace policies",
+        "description": "\u0022Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified \u2014 omitted fields remain unchanged. For source types, use \u0060enable\u0060/\u0060disable\u0060 arrays (both allowed if no overlap). For library lists, use \u0060add\u0060/\u0060remove\u0060 objects or \u0060clear: true\u0060 to remove all. Requires owner or admin role. All field names use camelCase.\u0022",
+        "operationId": "UpdatePolicies",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchPoliciesRequest"
+              },
+              "examples": {
+                "disableSourceType": {
+                  "summary": "Disable a source type",
+                  "value": {
+                    "sourceTypes": {
+                      "disable": [
+                        "websites"
+                      ]
+                    }
+                  }
+                },
+                "setQualityFilters": {
+                  "summary": "Set quality filter thresholds",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "requireVerified": true,
+                        "minTrustScore": 4,
+                        "repoFilters": {
+                          "minStars": 1000
+                        }
+                      }
+                    }
+                  }
+                },
+                "setWebsiteFilters": {
+                  "summary": "Set website quality filters",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "websiteFilters": {
+                          "minBacklinks": 100,
+                          "minReferringDomains": 10,
+                          "minOrganicTraffic": 1000
+                        }
+                      }
+                    }
+                  }
+                },
+                "blockLibrary": {
+                  "summary": "Add a library to the blocked list",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "blockedLibraries": {
+                          "add": [
+                            "/org/repo"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "blockDomain": {
+                  "summary": "Block all libraries from a domain",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "blockedLibraries": {
+                          "add": [
+                            "example.com"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "exceptLibrary": {
+                  "summary": "Add a library exception (bypasses all filters)",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "exceptedLibraries": {
+                          "add": [
+                            "/vercel/next.js"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "allowPermissiveLicenses": {
+                  "summary": "Restrict public repos to permissive SPDX licenses",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "repoFilters": {
+                          "allowedLicenses": {
+                            "add": [
+                              "MIT",
+                              "Apache-2.0",
+                              "BSD-3-Clause",
+                              "ISC"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "clearLicenseRestriction": {
+                  "summary": "Remove all license restrictions",
+                  "value": {
+                    "libraryFilters": {
+                      "quality": {
+                        "repoFilters": {
+                          "allowedLicenses": {
+                            "clear": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "allowDomain": {
+                  "summary": "Allow libraries from a specific domain (select mode)",
+                  "value": {
+                    "libraryFilters": {
+                      "select": {
+                        "allowedLibraries": {
+                          "add": [
+                            "stripe.com",
+                            "/vercel/next.js"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "clearAllowedLibraries": {
+                  "summary": "Clear all allowed libraries",
+                  "value": {
+                    "libraryFilters": {
+                      "select": {
+                        "allowedLibraries": {
+                          "clear": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "combined": {
+                  "summary": "Multiple changes in one request",
+                  "value": {
+                    "sourceTypes": {
+                      "enable": [
+                        "websites"
+                      ],
+                      "disable": [
+                        "confluence"
+                      ]
+                    },
+                    "libraryFilters": {
+                      "mode": "quality",
+                      "quality": {
+                        "minTrustScore": 4,
+                        "maxAgeDays": 365,
+                        "blockedLibraries": {
+                          "add": [
+                            "/org/repo"
+                          ],
+                          "remove": [
+                            "/org/old-repo"
+                          ]
+                        },
+                        "repoFilters": {
+                          "minStars": 100
+                        },
+                        "websiteFilters": {
+                          "minBacklinks": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated policy configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/repo/github": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add a GitHub repository",
+        "description": "Submit a GitHub repository for documentation processing. Supports private repos via a gitToken or by connecting your GitHub account at https://context7.com/add-library.",
+        "operationId": "AddGitHubRepo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRepoRequest"
+              },
+              "example": {
+                "docsRepoUrl": "https://github.com/vercel/next.js"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/repo/gitlab": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add a GitLab repository",
+        "description": "Submit a GitLab repository for documentation processing. Supports private repos via a gitToken or by connecting your GitLab account at https://context7.com/add-library.",
+        "operationId": "AddGitLabRepo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRepoRequest"
+              },
+              "example": {
+                "docsRepoUrl": "https://gitlab.com/owner/repo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/repo/bitbucket": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add a Bitbucket repository",
+        "description": "Submit a Bitbucket repository for documentation processing. Supports private repos via a gitToken or by connecting your Bitbucket account at https://context7.com/add-library.",
+        "operationId": "AddBitbucketRepo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRepoRequest"
+              },
+              "example": {
+                "docsRepoUrl": "https://bitbucket.org/owner/repo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/repo/git": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add from other Git providers",
+        "description": "Submit a repository from any Git provider not covered by the dedicated GitHub, GitLab, or Bitbucket endpoints. Supports Gitea, Forgejo, Codeberg, self-hosted GitLab, and other Git servers. For private repos, provide a personal access token via the gitToken field.",
+        "operationId": "AddGitRepo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddGitRepoRequest"
+              },
+              "example": {
+                "docsRepoUrl": "https://codeberg.org/owner/repo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/openapi": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add an OpenAPI specification by URL",
+        "description": "Submit an OpenAPI specification URL for documentation processing.",
+        "operationId": "AddOpenApi",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddOpenApiRequest"
+              },
+              "example": {
+                "openApiUrl": "https://api.example.com/openapi.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/openapi-upload": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Upload an OpenAPI specification file",
+        "description": "Upload an OpenAPI specification file (JSON or YAML) for documentation processing. Requires a team project. File size limit is 10MB.",
+        "operationId": "AddOpenApiUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AddOpenApiUploadFormDataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/llmstxt": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add an llms.txt file",
+        "description": "Submit an llms.txt file URL for documentation processing.",
+        "operationId": "AddLlmsTxt",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddLlmsTxtRequest"
+              },
+              "example": {
+                "llmstxtUrl": "https://docs.example.com/llms.txt"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/website": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add a website",
+        "description": "Submit a website URL for documentation processing.",
+        "operationId": "AddWebsite",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddWebsiteRequest"
+              },
+              "example": {
+                "websiteUrl": "https://docs.example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntityError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/confluence": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add a Confluence space",
+        "description": "Submit a Confluence space for documentation processing. Requires a connected Confluence account and a team project. You can optionally specify specific page IDs to index only a subset of the space.",
+        "operationId": "AddConfluence",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddConfluenceRequest"
+              },
+              "example": {
+                "cloudId": "a]1b2c3d4-5e6f-7g8h-9i0j",
+                "siteUrl": "https://your-site.atlassian.net",
+                "spaceKey": "DOCS",
+                "spaceName": "Documentation",
+                "title": "My Docs",
+                "description": "Internal documentation",
+                "projectId": "project-uuid"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/notion": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Add Notion pages",
+        "description": "Submit selected Notion pages for documentation processing. Requires a connected Notion account and a team project.",
+        "operationId": "AddNotion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNotionRequest"
+              },
+              "example": {
+                "workspaceId": "workspace-uuid",
+                "workspaceName": "Acme Workspace",
+                "pageIds": [
+                  "page-1",
+                  "page-2"
+                ],
+                "title": "Product Docs",
+                "description": "Internal Notion knowledge base",
+                "projectId": "project-uuid"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Library": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Library ID \u2014 the URL path of the library on context7.com. \u0060/owner/repo\u0060 for GitHub repositories, or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (e.g., \u0060/vercel/next.js\u0060, \u0060/websites/uploadcare_com\u0060). See [Library ID format](/api-guide#library-id-format).",
+            "example": "/vercel/next.js"
+          },
+          "title": {
+            "type": "string",
+            "description": "Display name of the library",
+            "example": "Next.js"
+          },
+          "description": {
+            "type": "string",
+            "description": "Short description",
+            "example": "The React Framework"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Git branch being tracked",
+            "example": "canary"
+          },
+          "lastUpdateDate": {
+            "type": "string",
+            "description": "ISO 8601 timestamp of last update",
+            "format": "date-time",
+            "example": "2025-01-15T10:30:00.000Z"
+          },
+          "state": {
+            "$ref": "#/components/schemas/LibraryState"
+          },
+          "totalTokens": {
+            "type": "integer",
+            "description": "Total tokens in documentation",
+            "example": 607822
+          },
+          "totalSnippets": {
+            "type": "integer",
+            "description": "Number of code snippets",
+            "example": 3629
+          },
+          "stars": {
+            "type": "integer",
+            "description": "GitHub stars count",
+            "example": 131745
+          },
+          "trustScore": {
+            "maximum": 10,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Source reputation score (0-10)",
+            "example": 10
+          },
+          "benchmarkScore": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "description": "Quality indicator score (0-100)",
+            "example": 95.5
+          },
+          "versions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Available version tags"
+          }
+        },
+        "description": "Library metadata"
+      },
+      "SearchResponse": {
+        "required": [
+          "results",
+          "searchFilterApplied"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Library"
+            },
+            "description": "Array of matching libraries ranked by relevance"
+          },
+          "searchFilterApplied": {
+            "type": "boolean",
+            "description": "Indicates whether the search results were filtered by the teamspace\u0027s public library access settings. When true, some libraries may be excluded from results based on the teamspace\u0027s configuration (e.g., only verified libraries, selected libraries, or private repos only)."
+          }
+        },
+        "description": "Search results response"
+      },
+      "CodeSnippet": {
+        "required": [
+          "codeTitle",
+          "codeDescription",
+          "codeLanguage",
+          "codeTokens",
+          "codeId",
+          "pageTitle",
+          "codeList"
+        ],
+        "type": "object",
+        "properties": {
+          "codeTitle": {
+            "type": "string",
+            "description": "Title of the code snippet"
+          },
+          "codeDescription": {
+            "type": "string",
+            "description": "Description of what the code does"
+          },
+          "codeLanguage": {
+            "type": "string",
+            "description": "Primary programming language"
+          },
+          "codeTokens": {
+            "type": "integer",
+            "description": "Token count for the snippet"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "URL to source location"
+          },
+          "pageTitle": {
+            "type": "string",
+            "description": "Title of the documentation page"
+          },
+          "codeList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CodeExample"
+            },
+            "description": "Code examples in different languages"
+          },
+          "isDynamic": {
+            "type": "boolean",
+            "description": "Whether this snippet was recovered from the dynamic source-code index instead of the primary docs index"
+          },
+          "sourceFile": {
+            "type": "string",
+            "description": "Repo-relative source file path for dynamic snippets"
+          }
+        },
+        "description": "A code snippet from library documentation"
+      },
+      "CodeExample": {
+        "required": [
+          "language",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Programming language"
+          },
+          "code": {
+            "type": "string",
+            "description": "The actual code content"
+          }
+        },
+        "description": "A single code example"
+      },
+      "InfoSnippet": {
+        "required": [
+          "content",
+          "contentTokens"
+        ],
+        "type": "object",
+        "properties": {
+          "pageId": {
+            "type": "string",
+            "description": "URL to source page"
+          },
+          "breadcrumb": {
+            "type": "string",
+            "description": "Navigation breadcrumb path"
+          },
+          "content": {
+            "type": "string",
+            "description": "The documentation content"
+          },
+          "contentTokens": {
+            "type": "integer",
+            "description": "Token count for the content"
+          }
+        },
+        "description": "A documentation snippet"
+      },
+      "ContextResponse": {
+        "required": [
+          "codeSnippets",
+          "infoSnippets"
+        ],
+        "type": "object",
+        "properties": {
+          "codeSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CodeSnippet"
+            },
+            "description": "Relevant code snippets"
+          },
+          "infoSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InfoSnippet"
+            },
+            "description": "Relevant documentation snippets"
+          },
+          "rules": {
+            "$ref": "#/components/schemas/ContextResponseRules"
+          }
+        },
+        "description": "Documentation context response"
+      },
+      "Error": {
+        "required": [
+          "error",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code identifier"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message"
+          }
+        },
+        "description": "Standard error response"
+      },
+      "ProjectStats": {
+        "required": [
+          "page",
+          "txt",
+          "mcp",
+          "cli"
+        ],
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "Requests served to the context7.com web UI"
+          },
+          "txt": {
+            "type": "integer",
+            "description": "Plain-text documentation requests"
+          },
+          "mcp": {
+            "type": "integer",
+            "description": "Requests served via the Context7 MCP server"
+          },
+          "cli": {
+            "type": "integer",
+            "description": "Requests served to the Context7 CLI"
+          }
+        },
+        "description": "Cumulative request counts for a library, broken down by request surface"
+      },
+      "DailyStatsPoint": {
+        "required": [
+          "date",
+          "page",
+          "txt",
+          "mcp",
+          "cli",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "UTC date in \u0060YYYY-MM-DD\u0060 format",
+            "format": "date",
+            "example": "2025-01-15"
+          },
+          "page": {
+            "type": "integer",
+            "description": "Requests served to the context7.com web UI on this date"
+          },
+          "txt": {
+            "type": "integer",
+            "description": "Plain-text documentation requests on this date"
+          },
+          "mcp": {
+            "type": "integer",
+            "description": "Requests served via the Context7 MCP server on this date"
+          },
+          "cli": {
+            "type": "integer",
+            "description": "Requests served to the Context7 CLI on this date"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Sum of all request surfaces on this date (\u0060page \u002B txt \u002B mcp \u002B cli\u0060)"
+          }
+        },
+        "description": "Per-day request counts for a library (counts *on* this date, not cumulative)"
+      },
+      "LibraryMetricsResponse": {
+        "required": [
+          "total",
+          "daily",
+          "mcpClients",
+          "topics",
+          "countries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "$ref": "#/components/schemas/ProjectStats"
+          },
+          "daily": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyStatsPoint"
+            },
+            "description": "Per-day request counts (deltas, not cumulative), ordered from oldest to newest. Days with zero activity are omitted. Up to \u0060days\u0060 points \u2014 fewer if the library has less history or had idle days in the window."
+          },
+          "mcpClients": {
+            "$ref": "#/components/schemas/McpClientMetrics"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopicCount"
+            },
+            "description": "Lifetime topic distribution, ordered by count descending"
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCount"
+            },
+            "description": "Lifetime country distribution (ISO-2 codes), ordered by count descending"
+          }
+        },
+        "description": "Library usage metrics response"
+      },
+      "McpClientMetrics": {
+        "required": [
+          "dailyData"
+        ],
+        "type": "object",
+        "properties": {
+          "dailyData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McpDailyClientData"
+            },
+            "description": "Per-day MCP client unique-user breakdown, ordered from oldest to newest"
+          }
+        },
+        "description": "MCP client usage breakdown by day"
+      },
+      "McpDailyClientData": {
+        "required": [
+          "date",
+          "uniqueUsersByClient",
+          "totalUniqueUsers"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "UTC date in \u0060YYYY-MM-DD\u0060 format",
+            "format": "date",
+            "example": "2025-01-15"
+          },
+          "uniqueUsersByClient": {
+            "$ref": "#/components/schemas/McpDailyClientDataUniqueUsersByClientProperty"
+          },
+          "totalUniqueUsers": {
+            "type": "integer",
+            "description": "Total unique users across all clients for this library on this date"
+          }
+        },
+        "description": "Per-day MCP client unique users for a library"
+      },
+      "TopicCount": {
+        "required": [
+          "topic",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Normalized, lowercased topic string",
+            "example": "routing"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of requests that referenced this topic"
+          }
+        },
+        "description": "Topic with its lifetime request count"
+      },
+      "CountryCount": {
+        "required": [
+          "country",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code",
+            "example": "US"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of requests originating from this country"
+          }
+        },
+        "description": "Country with its lifetime request count"
+      },
+      "AddRepoRequest": {
+        "required": [
+          "docsRepoUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "docsRepoUrl": {
+            "type": "string",
+            "description": "The repository URL",
+            "format": "uri"
+          },
+          "gitToken": {
+            "type": "string",
+            "description": "Personal access token for private repositories. If not provided, the token from your OAuth connection at https://context7.com/add-library is used."
+          },
+          "private": {
+            "type": "boolean",
+            "description": "Whether the repository is private"
+          },
+          "skipVersionFiltering": {
+            "type": "boolean",
+            "description": "Skip filtering out version-specific documentation pages"
+          },
+          "generateDocs": {
+            "type": "boolean",
+            "description": "Generate documentation from the repository source code. Applies to private repository submissions."
+          }
+        },
+        "description": "Request body for adding a Git repository"
+      },
+      "AddLibraryResponse": {
+        "required": [
+          "libraryName",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryName": {
+            "type": "string",
+            "description": "The library identifier assigned \u2014 the URL path of the library on context7.com. \u0060/owner/repo\u0060 for GitHub repositories, or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (e.g., \u0060/vercel/next.js\u0060, \u0060/websites/uploadcare_com\u0060). See [Library ID format](/api-guide#library-id-format)."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable success message"
+          }
+        },
+        "description": "Response after successfully submitting a library"
+      },
+      "SourceTypeStatus": {
+        "required": [
+          "enabled"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether this source type is enabled"
+          }
+        },
+        "description": "Whether a source type is enabled or disabled"
+      },
+      "PolicyResponse": {
+        "required": [
+          "sourceTypes",
+          "libraryFilters",
+          "accessibleLibraryCount"
+        ],
+        "type": "object",
+        "properties": {
+          "sourceTypes": {
+            "$ref": "#/components/schemas/PolicyResponseSourceTypes"
+          },
+          "libraryFilters": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFilters"
+          },
+          "accessibleLibraryCount": {
+            "type": "integer",
+            "description": "Number of public libraries currently accessible under these filters"
+          }
+        },
+        "description": "Complete teamspace policy configuration"
+      },
+      "ListOperation": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Identifiers to add \u2014 library paths (e.g. \u0027/org/repo\u0027, \u0027/org\u0027) or domains (e.g. \u0027stripe.com\u0027)"
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Identifiers to remove \u2014 library paths (e.g. \u0027/org/repo\u0027, \u0027/org\u0027) or domains (e.g. \u0027stripe.com\u0027)"
+          },
+          "clear": {
+            "type": "boolean",
+            "description": "Set to true to remove all entries. Cannot be used together with \u0027add\u0027 or \u0027remove\u0027."
+          }
+        },
+        "description": "Incremental add/remove operation on a list of library identifiers or domains. Use \u0027clear\u0027 to remove all entries at once."
+      },
+      "LicenseListOperation": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9.\u002B\\-_]\u002B$",
+              "type": "string"
+            },
+            "description": "SPDX license identifiers to add (e.g. \u0027MIT\u0027, \u0027Apache-2.0\u0027, \u0027BSD-3-Clause\u0027)"
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9.\u002B\\-_]\u002B$",
+              "type": "string"
+            },
+            "description": "SPDX license identifiers to remove"
+          },
+          "clear": {
+            "type": "boolean",
+            "description": "Set to true to remove all entries. Cannot be used together with \u0027add\u0027 or \u0027remove\u0027."
+          }
+        },
+        "description": "Incremental add/remove operation on a list of SPDX license identifiers. Use \u0027clear\u0027 to remove all entries at once."
+      },
+      "PatchPoliciesRequest": {
+        "minProperties": 1,
+        "type": "object",
+        "properties": {
+          "sourceTypes": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestSourceTypes"
+          },
+          "libraryFilters": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFilters"
+          }
+        },
+        "description": "Incremental policy update. All fields are optional \u2014 only provided fields are modified. At least one of \u0027sourceTypes\u0027 or \u0027libraryFilters\u0027 must be provided."
+      },
+      "RedirectErrorResponse": {
+        "required": [
+          "error",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code identifier"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message"
+          },
+          "redirectUrl": {
+            "type": "string",
+            "description": "New location of the library"
+          }
+        }
+      },
+      "RedirectErrorResponseAllOf2": {
+        "type": "object",
+        "properties": {
+          "redirectUrl": {
+            "type": "string",
+            "description": "New location of the library"
+          }
+        }
+      },
+      "ContextResponseRules": {
+        "type": "object",
+        "properties": {
+          "global": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Global team rules"
+          },
+          "libraryOwn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rules defined by the library owner"
+          },
+          "libraryTeam": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Library-specific rules from the team"
+          }
+        },
+        "description": "Optional library-specific rules and guidelines"
+      },
+      "McpDailyClientDataUniqueUsersByClient": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "description": "Unique user count per MCP client identifier (e.g., \u0060cursor\u0060, \u0060claude-code\u0060, \u0060codex\u0060)"
+      },
+      "PolicyResponseSourceTypes": {
+        "required": [
+          "public_repos",
+          "private_sources",
+          "confluence",
+          "uploaded_files",
+          "websites",
+          "llmstxt"
+        ],
+        "type": "object",
+        "properties": {
+          "public_repos": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          },
+          "private_sources": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          },
+          "confluence": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          },
+          "uploaded_files": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          },
+          "websites": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          },
+          "llmstxt": {
+            "$ref": "#/components/schemas/SourceTypeStatus"
+          }
+        },
+        "description": "Access settings for each documentation source type"
+      },
+      "PolicyResponseLibraryFilters": {
+        "required": [
+          "mode",
+          "quality",
+          "select"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFiltersMode"
+          },
+          "quality": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFiltersQuality"
+          },
+          "select": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFiltersSelect"
+          }
+        },
+        "description": "Library access filters. Mode determines which sub-object is active."
+      },
+      "PatchPoliciesRequestSourceTypes": {
+        "type": "object",
+        "properties": {
+          "enable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatchPoliciesRequestSourceTypesEnableItem"
+            },
+            "description": "Source types to enable"
+          },
+          "disable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatchPoliciesRequestSourceTypesDisableItem"
+            },
+            "description": "Source types to disable"
+          }
+        },
+        "description": "Enable or disable specific source types. Both can be provided in one request, but the same type cannot appear in both arrays."
+      },
+      "PatchPoliciesRequestLibraryFilters": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFiltersMode"
+          },
+          "quality": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFiltersQuality"
+          },
+          "select": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFiltersSelect"
+          }
+        },
+        "description": "Update library access filters."
+      },
+      "PolicyResponseLibraryFiltersQuality": {
+        "required": [
+          "requireVerified",
+          "minTrustScore",
+          "maxAgeDays",
+          "blockedLibraries",
+          "exceptedLibraries",
+          "repoFilters",
+          "websiteFilters"
+        ],
+        "type": "object",
+        "properties": {
+          "requireVerified": {
+            "type": "boolean",
+            "description": "Restrict to verified libraries only"
+          },
+          "minTrustScore": {
+            "type": "integer",
+            "description": "Minimum trust score, 0-10",
+            "nullable": true
+          },
+          "maxAgeDays": {
+            "type": "integer",
+            "description": "Maximum days since last update",
+            "nullable": true
+          },
+          "blockedLibraries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Libraries excluded from results"
+          },
+          "exceptedLibraries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Libraries that bypass all quality filters, blocked list, and source type restrictions"
+          },
+          "repoFilters": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFiltersQualityRepoFilters"
+          },
+          "websiteFilters": {
+            "$ref": "#/components/schemas/PolicyResponseLibraryFiltersQualityWebsiteFilters"
+          }
+        },
+        "description": "Quality-mode settings (active when mode is \u0027quality\u0027)"
+      },
+      "PolicyResponseLibraryFiltersSelect": {
+        "required": [
+          "allowedLibraries"
+        ],
+        "type": "object",
+        "properties": {
+          "allowedLibraries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Libraries explicitly allowed"
+          }
+        },
+        "description": "Select-mode settings (active when mode is \u0027select\u0027)"
+      },
+      "PatchPoliciesRequestLibraryFiltersQuality": {
+        "type": "object",
+        "properties": {
+          "requireVerified": {
+            "type": "boolean",
+            "description": "Restrict to verified libraries only"
+          },
+          "minTrustScore": {
+            "maximum": 10,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Minimum trust score, 0-10 (null to clear)",
+            "nullable": true
+          },
+          "maxAgeDays": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Maximum age in days (null to clear)",
+            "nullable": true
+          },
+          "blockedLibraries": {
+            "$ref": "#/components/schemas/ListOperation"
+          },
+          "exceptedLibraries": {
+            "$ref": "#/components/schemas/ListOperation"
+          },
+          "repoFilters": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFiltersQualityRepoFilters"
+          },
+          "websiteFilters": {
+            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFiltersQualityWebsiteFilters"
+          }
+        },
+        "description": "Update quality-mode settings."
+      },
+      "PatchPoliciesRequestLibraryFiltersSelect": {
+        "type": "object",
+        "properties": {
+          "allowedLibraries": {
+            "$ref": "#/components/schemas/ListOperation"
+          }
+        },
+        "description": "Update select-mode settings."
+      },
+      "PolicyResponseLibraryFiltersQualityRepoFilters": {
+        "required": [
+          "minStars",
+          "allowedLicenses"
+        ],
+        "type": "object",
+        "properties": {
+          "minStars": {
+            "type": "integer",
+            "description": "Minimum GitHub stars required",
+            "nullable": true
+          },
+          "allowedLicenses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "SPDX license identifiers (e.g. \u0027MIT\u0027, \u0027Apache-2.0\u0027) that are allowed. Empty array means no license restriction. Applies to public repos only; non-repo source types pass through."
+          }
+        },
+        "description": "Repo-specific quality filters"
+      },
+      "PolicyResponseLibraryFiltersQualityWebsiteFilters": {
+        "required": [
+          "minBacklinks",
+          "minReferringDomains",
+          "minOrganicTraffic"
+        ],
+        "type": "object",
+        "properties": {
+          "minBacklinks": {
+            "type": "integer",
+            "description": "Minimum number of backlinks required",
+            "nullable": true
+          },
+          "minReferringDomains": {
+            "type": "integer",
+            "description": "Minimum number of referring domains required",
+            "nullable": true
+          },
+          "minOrganicTraffic": {
+            "type": "integer",
+            "description": "Minimum monthly organic traffic required",
+            "nullable": true
+          }
+        },
+        "description": "Website-specific quality filters"
+      },
+      "PatchPoliciesRequestLibraryFiltersQualityRepoFilters": {
+        "type": "object",
+        "properties": {
+          "minStars": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Minimum stars threshold (null to clear)",
+            "nullable": true
+          },
+          "allowedLicenses": {
+            "$ref": "#/components/schemas/LicenseListOperation"
+          }
+        },
+        "description": "Update repo-specific quality filters."
+      },
+      "PatchPoliciesRequestLibraryFiltersQualityWebsiteFilters": {
+        "type": "object",
+        "properties": {
+          "minBacklinks": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Minimum backlinks threshold (null to clear)",
+            "nullable": true
+          },
+          "minReferringDomains": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Minimum referring domains threshold (null to clear)",
+            "nullable": true
+          },
+          "minOrganicTraffic": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Minimum organic traffic threshold (null to clear)",
+            "nullable": true
+          }
+        },
+        "description": "Update website-specific quality filters."
+      },
+      "GetContext200PlainResponse": {
+        "type": "string"
+      },
+      "RefreshLibraryRequest": {
+        "required": [
+          "libraryName"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryName": {
+            "type": "string",
+            "description": "Library identifier \u2014 the URL path of the library on context7.com. Use \u0060/owner/repo\u0060 for GitHub repositories (e.g., \u0060/vercel/next.js\u0060), or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (e.g., \u0060/websites/uploadcare_com\u0060, \u0060/llmstxt/\u003Csource\u003E\u0060). See [Library ID format](/api-guide#library-id-format)."
+          },
+          "branch": {
+            "type": "string",
+            "description": "Optional branch name to refresh"
+          },
+          "gitToken": {
+            "type": "string",
+            "description": "Optional Git access token for refreshing private repositories. If not provided, the stored OAuth token will be used."
+          }
+        }
+      },
+      "RefreshLibrary200Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "AddGitRepoRequest": {
+        "required": [
+          "docsRepoUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "docsRepoUrl": {
+            "type": "string",
+            "description": "The Git repository URL",
+            "format": "uri"
+          },
+          "gitToken": {
+            "type": "string",
+            "description": "Personal access token for private repositories"
+          },
+          "private": {
+            "type": "boolean",
+            "description": "Whether the repository is private"
+          },
+          "skipVersionFiltering": {
+            "type": "boolean",
+            "description": "Skip filtering out version-specific documentation pages"
+          },
+          "generateDocs": {
+            "type": "boolean",
+            "description": "Generate documentation from the repository source code. Applies to private repository submissions."
+          }
+        }
+      },
+      "AddOpenApiRequest": {
+        "required": [
+          "openApiUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "openApiUrl": {
+            "type": "string",
+            "description": "URL pointing to an OpenAPI specification (JSON or YAML)",
+            "format": "uri"
+          }
+        }
+      },
+      "AddOpenApiUploadFormDataRequest": {
+        "required": [
+          "openapiFile"
+        ],
+        "type": "object",
+        "properties": {
+          "openapiFile": {
+            "type": "string",
+            "description": "The OpenAPI specification file (.json, .yaml, or .yml)",
+            "format": "binary"
+          },
+          "libraryTitle": {
+            "type": "string",
+            "description": "Custom title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "force": {
+            "$ref": "#/components/schemas/AddOpenApiUploadFormDataRequestForce"
+          }
+        }
+      },
+      "AddLlmsTxtRequest": {
+        "required": [
+          "llmstxtUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "llmstxtUrl": {
+            "type": "string",
+            "description": "URL pointing to an llms.txt, llms-full.txt, or llms-small.txt file",
+            "format": "uri"
+          }
+        }
+      },
+      "AddWebsiteRequest": {
+        "required": [
+          "websiteUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "websiteUrl": {
+            "type": "string",
+            "description": "The website URL to process",
+            "format": "uri"
+          },
+          "websiteBaseUrl": {
+            "type": "string",
+            "description": "Base URL to limit crawling scope. Only pages starting with this URL will be indexed.",
+            "format": "uri"
+          }
+        }
+      },
+      "AddConfluenceRequest": {
+        "required": [
+          "cloudId",
+          "siteUrl",
+          "spaceKey",
+          "spaceName",
+          "title",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "cloudId": {
+            "type": "string",
+            "description": "The Confluence cloud instance ID"
+          },
+          "siteUrl": {
+            "type": "string",
+            "description": "The Confluence site URL"
+          },
+          "spaceKey": {
+            "type": "string",
+            "description": "The Confluence space key"
+          },
+          "spaceName": {
+            "type": "string",
+            "description": "The Confluence space name"
+          },
+          "pageIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional list of specific page IDs to index. If omitted, the entire space is indexed."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "The team project ID to associate this Confluence space with"
+          }
+        }
+      },
+      "AddNotionRequest": {
+        "required": [
+          "workspaceId",
+          "workspaceName",
+          "pageIds",
+          "title",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "description": "The Notion workspace ID"
+          },
+          "workspaceName": {
+            "type": "string",
+            "description": "The Notion workspace name"
+          },
+          "pageIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of Notion page IDs to index."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "The team project ID to associate these Notion pages with"
+          }
+        }
+      },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
+      },
+      "GetContext200PlainResponseSchema": {
+        "type": "string"
+      },
+      "McpDailyClientDataUniqueUsersByClientProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "description": "Unique user count per MCP client identifier (e.g., \u0060cursor\u0060, \u0060claude-code\u0060, \u0060codex\u0060)"
+      },
+      "LibraryState": {
+        "enum": [
+          "finalized",
+          "initial",
+          "processing",
+          "error",
+          "delete"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Processing state of the library",
+        "example": "finalized",
+        "x-ms-enum": {
+          "name": "LibraryState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "finalized",
+              "name": "Finalized"
+            },
+            {
+              "value": "initial",
+              "name": "Initial"
+            },
+            {
+              "value": "processing",
+              "name": "Processing"
+            },
+            {
+              "value": "error",
+              "name": "Error"
+            },
+            {
+              "value": "delete",
+              "name": "Delete"
+            }
+          ]
+        }
+      },
+      "PolicyResponseLibraryFiltersMode": {
+        "enum": [
+          "quality",
+          "select",
+          null
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "\u0022Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection\u0022",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "PolicyResponseLibraryFiltersMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "quality",
+              "name": "Quality"
+            },
+            {
+              "value": "select",
+              "name": "Select"
+            }
+          ]
+        }
+      },
+      "PatchPoliciesRequestSourceTypesEnableItem": {
+        "enum": [
+          "public_repos",
+          "private_sources",
+          "confluence",
+          "uploaded_files",
+          "websites",
+          "llmstxt"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PatchPoliciesRequestSourceTypesEnableItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "public_repos",
+              "name": "PublicRepos"
+            },
+            {
+              "value": "private_sources",
+              "name": "PrivateSources"
+            },
+            {
+              "value": "confluence",
+              "name": "Confluence"
+            },
+            {
+              "value": "uploaded_files",
+              "name": "UploadedFiles"
+            },
+            {
+              "value": "websites",
+              "name": "Websites"
+            },
+            {
+              "value": "llmstxt",
+              "name": "Llmstxt"
+            }
+          ]
+        }
+      },
+      "PatchPoliciesRequestSourceTypesDisableItem": {
+        "enum": [
+          "public_repos",
+          "private_sources",
+          "confluence",
+          "uploaded_files",
+          "websites",
+          "llmstxt"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PatchPoliciesRequestSourceTypesDisableItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "public_repos",
+              "name": "PublicRepos"
+            },
+            {
+              "value": "private_sources",
+              "name": "PrivateSources"
+            },
+            {
+              "value": "confluence",
+              "name": "Confluence"
+            },
+            {
+              "value": "uploaded_files",
+              "name": "UploadedFiles"
+            },
+            {
+              "value": "websites",
+              "name": "Websites"
+            },
+            {
+              "value": "llmstxt",
+              "name": "Llmstxt"
+            }
+          ]
+        }
+      },
+      "PatchPoliciesRequestLibraryFiltersMode": {
+        "enum": [
+          "quality",
+          "select",
+          null
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Filter mode (null to clear)",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "PatchPoliciesRequestLibraryFiltersMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "quality",
+              "name": "Quality"
+            },
+            {
+              "value": "select",
+              "name": "Select"
+            }
+          ]
+        }
+      },
+      "AddOpenApiUploadFormDataRequestForce": {
+        "enum": [
+          "true"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Set to \u0027true\u0027 to force reprocessing",
+        "x-ms-enum": {
+          "name": "AddOpenApiUploadFormDataRequestForce",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "true",
+              "name": "TrueValue"
+            }
+          ]
+        }
+      },
+      "TypeParam": {
+        "enum": [
+          "json",
+          "txt"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "TypeParam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "json",
+              "name": "Json"
+            },
+            {
+              "value": "txt",
+              "name": "Txt"
+            }
+          ]
+        }
+      },
+      "FastParam": {
+        "enum": [
+          "true",
+          "false"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "FastParam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "true",
+              "name": "TrueValue"
+            },
+            {
+              "value": "false",
+              "name": "FalseValue"
+            }
+          ]
+        }
+      }
+    },
+    "responses": {
+      "BadRequestError": {
+        "description": "Bad Request - Invalid input parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "validationError": {
+                "summary": "Validation error",
+                "value": {
+                  "error": "validation_error",
+                  "message": "Library name is required"
+                }
+              },
+              "invalidLibraryId": {
+                "summary": "Invalid library ID format",
+                "value": {
+                  "error": "invalid_library_id",
+                  "message": "Invalid library ID format. Expected: \u0060/owner/repo\u0060 for GitHub repositories, or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (the URL path of the library on context7.com)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ForbiddenError": {
+        "description": "Forbidden - Insufficient permissions or plan restrictions",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "accessDenied": {
+                "summary": "Library not in allowed list",
+                "value": {
+                  "error": "access_denied",
+                  "message": "Access denied: Library /owner/repo is not included in your allowed libraries"
+                }
+              },
+              "insufficientRole": {
+                "summary": "Insufficient team role",
+                "value": {
+                  "error": "forbidden",
+                  "message": "Only team owners and admins can add private repositories"
+                }
+              },
+              "planRequired": {
+                "summary": "Plan upgrade required",
+                "value": {
+                  "error": "forbidden",
+                  "message": "Private repositories require a pro plan or team. Upgrade at https://context7.com/plans"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "Not Found - Resource doesn\u0027t exist",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "libraryNotFound": {
+                "summary": "Library not found",
+                "value": {
+                  "error": "library_not_found",
+                  "message": "Library \u0022/owner/repo\u0022 not found. Please check the library ID or your access permissions."
+                }
+              },
+              "versionNotFound": {
+                "summary": "Version not found",
+                "value": {
+                  "error": "version_not_found",
+                  "message": "Version \u0022v1.0.0\u0022 not found for library \u0022/owner/repo\u0022. Available versions: v2.0.0, v1.5.0"
+                }
+              },
+              "noSnippetsFound": {
+                "summary": "No snippets found",
+                "value": {
+                  "error": "no_snippets_found",
+                  "message": "Could not fetch documentation snippets from the library."
+                }
+              },
+              "noRelevantSnippets": {
+                "summary": "No snippets matched the query",
+                "value": {
+                  "error": "no_relevant_snippets",
+                  "message": "No documentation in \u0022/owner/repo\u0022 matched this query. Try a more specific query with different terms, or search for another library that covers this topic."
+                }
+              },
+              "teamNotFound": {
+                "summary": "Team not found",
+                "value": {
+                  "error": "team_not_found",
+                  "message": "Team not found or access denied"
+                }
+              },
+              "userNotFound": {
+                "summary": "User not found",
+                "value": {
+                  "error": "user_not_found",
+                  "message": "User not found"
+                }
+              },
+              "noLibrariesFound": {
+                "summary": "No libraries matched search query",
+                "value": {
+                  "error": "no_libraries_found",
+                  "message": "No libraries found for \u0022nonexistent-lib\u0022. Try a different search term."
+                }
+              }
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "internal_error",
+              "message": "An error occurred while processing your request"
+            }
+          }
+        }
+      },
+      "ServiceUnavailableError": {
+        "description": "Service Unavailable - Search service is temporarily unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "search_failed",
+              "message": "Search failed: Service temporarily unavailable"
+            }
+          }
+        }
+      },
+      "AcceptedError": {
+        "description": "Accepted - Library not yet finalized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "library_not_finalized",
+              "message": "Library /owner/repo not finalized yet."
+            }
+          }
+        }
+      },
+      "RedirectError": {
+        "description": "Moved Permanently - Library has been redirected",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RedirectErrorResponse"
+            },
+            "example": {
+              "error": "library_redirected",
+              "message": "Library /owner/repo has been redirected to this library: /new-owner/new-repo.",
+              "redirectUrl": "/new-owner/new-repo"
+            }
+          }
+        }
+      },
+      "UnprocessableEntityError": {
+        "description": "Unprocessable Entity - Library is too large or has no code",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "tooLarge": {
+                "summary": "Library too large",
+                "value": {
+                  "error": "library_too_large",
+                  "message": "Library /owner/repo is too large to process."
+                }
+              },
+              "noCode": {
+                "summary": "No code found",
+                "value": {
+                  "error": "no_code_found",
+                  "message": "Library /owner/repo has no or too few snippets found in documentation files."
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnauthorizedError": {
+        "description": "Unauthorized - Invalid or missing API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "invalid_api_key",
+              "message": "Invalid API key. Please check your API key. API keys should start with \u0027ctx7sk\u0027 prefix."
+            }
+          }
+        }
+      },
+      "AddLibrarySuccess": {
+        "description": "Library submitted successfully for processing",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddLibraryResponse"
+            },
+            "example": {
+              "libraryName": "/owner/repo",
+              "message": "Repository submitted successfully"
+            }
+          }
+        }
+      },
+      "DuplicateError": {
+        "description": "Conflict - Resource already exists",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "duplicate_repo",
+              "message": "This private repository is already in your team"
+            }
+          }
+        }
+      },
+      "SpendingLimitError": {
+        "description": "Payment Required - the teamspace\u0027s configured monthly spending limit has been reached. A teamspace owner or admin can raise the limit in billing settings, or the cap will reset at the start of the next billing month.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "spending_limit_exceeded",
+              "message": "Monthly spending limit of $5.00 reached for this teamspace. An owner or admin can raise the limit at https://context7.com/dashboard/billing, or the cap will reset at the start of next month."
+            }
+          }
+        }
+      },
+      "RateLimitError": {
+        "description": "Too Many Requests - Rate limit exceeded",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds until rate limit resets",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "RateLimit-Limit": {
+            "description": "Request limit",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "RateLimit-Remaining": {
+            "description": "Remaining requests",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "RateLimit-Reset": {
+            "description": "Unix timestamp when limit resets",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "rate_limit_exceeded",
+              "message": "Rate limit exceeded. Please try again later."
+            }
+          }
+        }
+      },
+      "GatewayTimeoutError": {
+        "description": "Gateway Timeout - Processing timed out waiting for logs",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "timeout",
+              "message": "Request timed out. Please try again."
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "LibraryNameParam": {
+        "name": "libraryName",
+        "in": "query",
+        "description": "Library name to search for (e.g., \u0027react\u0027, \u0027nextjs\u0027, \u0027express\u0027)",
+        "required": true,
+        "schema": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "example": "react"
+      },
+      "QueryParam": {
+        "name": "query",
+        "in": "query",
+        "description": "User\u0027s original question or task - used for intelligent relevance ranking",
+        "required": true,
+        "schema": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "example": "How to manage state with hooks"
+      },
+      "LibraryIdParam": {
+        "name": "libraryId",
+        "in": "query",
+        "description": "Context7-compatible library ID \u2014 the URL path of the library on context7.com. Use \u0060/owner/repo\u0060 for GitHub repositories, or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (websites, llms.txt, GitLab/Bitbucket, etc.). Optionally suffix with \u0060/\u003Cversion\u003E\u0060 or \u0060@\u003Cversion\u003E\u0060 to pin a specific version. See [Library ID format](/api-guide#library-id-format).",
+        "required": true,
+        "schema": {
+          "maxLength": 500,
+          "minLength": 1,
+          "pattern": "^/[^/]\u002B/[^/]\u002B([/@][^/]\u002B)?$",
+          "type": "string"
+        },
+        "examples": {
+          "github": {
+            "summary": "GitHub repository",
+            "value": "/vercel/next.js"
+          },
+          "website": {
+            "summary": "Website source",
+            "value": "/websites/uploadcare_com"
+          },
+          "llmstxt": {
+            "summary": "llms.txt source",
+            "value": "/llmstxt/example"
+          },
+          "withVersion": {
+            "summary": "With specific version (slash)",
+            "value": "/vercel/next.js/v14.3.0"
+          },
+          "withVersionAt": {
+            "summary": "With specific version (@ syntax)",
+            "value": "/vercel/next.js@v14.3.0"
+          }
+        }
+      },
+      "TypeParam": {
+        "name": "type",
+        "in": "query",
+        "description": "Response format type",
+        "schema": {
+          "$ref": "#/components/schemas/TypeParam"
+        },
+        "example": "json"
+      },
+      "FastParam": {
+        "name": "fast",
+        "in": "query",
+        "description": "When \u0060true\u0060, skip LLM reranking and return top vector-search results directly. Trades relevance quality for lower latency.",
+        "schema": {
+          "$ref": "#/components/schemas/FastParam"
+        },
+        "example": "true"
+      },
+      "DaysParam": {
+        "name": "days",
+        "in": "query",
+        "description": "Number of days of daily history to return (1-365). Defaults to 30.",
+        "schema": {
+          "maximum": 365,
+          "minimum": 1,
+          "type": "integer",
+          "default": 30
+        },
+        "example": 30
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely.",
+        "scheme": "bearer"
+      },
+      "assets_jwt": {
+        "type": "http",
+        "description": "JWT used for assets upload",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Search",
+      "description": "Search for libraries in the Context7 database"
+    },
+    {
+      "name": "Context",
+      "description": "Retrieve documentation context for queries"
+    },
+    {
+      "name": "Refresh",
+      "description": "Refresh existing libraries to fetch latest documentation"
+    },
+    {
+      "name": "Policies",
+      "description": "Manage teamspace access policies and filters"
+    },
+    {
+      "name": "Add Library",
+      "description": "Submit new libraries for documentation processing"
+    },
+    {
+      "name": "Metrics",
+      "description": "Retrieve usage metrics for libraries"
+    }
+  ]
+}
