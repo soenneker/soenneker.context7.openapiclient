@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Context7.OpenApiClient.Models
 {
-    /// <summary>&quot;Filter mode: &apos;quality&apos; for threshold-based filtering, &apos;select&apos; for manual library selection&quot;</summary>
+    /// <summary>Filter mode: &apos;quality&apos; for threshold-based filtering, &apos;select&apos; for manual library selection</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PolicyResponseLibraryFiltersMode
     {

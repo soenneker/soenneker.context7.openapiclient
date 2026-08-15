@@ -105,7 +105,7 @@
           "Metrics"
         ],
         "summary": "Get library usage metrics",
-        "description": "\u0022Retrieve full usage metrics for a library: cumulative and daily request counters broken down by surface (web page, text docs, MCP, CLI), MCP client daily unique-user breakdown, and lifetime topic and country distributions. The API key must belong to a member of the teamspace that owns the library \u2014 claim ownership from the library\u0027s admin page on context7.com.\u0022",
+        "description": "Retrieve full usage metrics for a library: cumulative and daily request counters broken down by surface (web page, text docs, MCP, CLI), MCP client daily unique-user breakdown, and lifetime topic and country distributions. The API key must belong to a member of the teamspace that owns the library \u2014 claim ownership from the library\u0027s admin page on context7.com.",
         "operationId": "GetLibraryMetrics",
         "parameters": [
           {
@@ -363,7 +363,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -499,7 +500,7 @@
           "Policies"
         ],
         "summary": "Update teamspace policies",
-        "description": "\u0022Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified \u2014 omitted fields remain unchanged. For source types, use \u0060enable\u0060/\u0060disable\u0060 arrays (both allowed if no overlap). For library lists, use \u0060add\u0060/\u0060remove\u0060 objects or \u0060clear: true\u0060 to remove all. Requires owner or admin role. All field names use camelCase.\u0022",
+        "description": "Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified \u2014 omitted fields remain unchanged. For source types, use \u0060enable\u0060/\u0060disable\u0060 arrays (both allowed if no overlap). For library lists, use \u0060add\u0060/\u0060remove\u0060 objects or \u0060clear: true\u0060 to remove all. Requires owner or admin role. All field names use camelCase.",
         "operationId": "UpdatePolicies",
         "requestBody": {
           "content": {
@@ -684,7 +685,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -738,7 +740,8 @@
                 "docsRepoUrl": "https://github.com/vercel/next.js"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -794,7 +797,8 @@
                 "docsRepoUrl": "https://gitlab.com/owner/repo"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -850,7 +854,8 @@
                 "docsRepoUrl": "https://bitbucket.org/owner/repo"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -906,7 +911,8 @@
                 "docsRepoUrl": "https://codeberg.org/owner/repo"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -962,7 +968,8 @@
                 "openApiUrl": "https://api.example.com/openapi.json"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1006,7 +1013,8 @@
                 "$ref": "#/components/schemas/AddOpenApiUploadFormDataRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1062,7 +1070,8 @@
                 "llmstxtUrl": "https://docs.example.com/llms.txt"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1109,7 +1118,8 @@
                 "websiteUrl": "https://docs.example.com"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1165,7 +1175,8 @@
                 "projectId": "project-uuid"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1226,7 +1237,8 @@
                 "projectId": "project-uuid"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2275,7 +2287,7 @@
             "description": "Description of the library"
           },
           "force": {
-            "$ref": "#/components/schemas/AddOpenApiUploadFormDataRequestForce"
+            "$ref": "#/components/schemas/TrueValueForce"
           }
         }
       },
@@ -2458,7 +2470,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "\u0022Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection\u0022",
+        "description": "Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection",
         "nullable": true,
         "x-ms-enum": {
           "name": "PolicyResponseLibraryFiltersMode",
@@ -2584,7 +2596,7 @@
           ]
         }
       },
-      "AddOpenApiUploadFormDataRequestForce": {
+      "TrueValueForce": {
         "enum": [
           "true"
         ],
@@ -2592,7 +2604,7 @@
         "additionalProperties": false,
         "description": "Set to \u0027true\u0027 to force reprocessing",
         "x-ms-enum": {
-          "name": "AddOpenApiUploadFormDataRequestForce",
+          "name": "TrueValueForce",
           "modelAsString": false,
           "values": [
             {
@@ -3057,12 +3069,6 @@
         "type": "http",
         "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely.",
         "scheme": "bearer"
-      },
-      "assets_jwt": {
-        "type": "http",
-        "description": "JWT used for assets upload",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   },

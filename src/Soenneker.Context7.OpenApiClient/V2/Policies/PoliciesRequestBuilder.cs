@@ -65,7 +65,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.&quot;
+        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse"/></returns>
         /// <param name="body">Incremental policy update. All fields are optional — only provided fields are modified. At least one of &apos;sourceTypes&apos; or &apos;libraryFilters&apos; must be provided.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.&quot;
+        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Incremental policy update. All fields are optional — only provided fields are modified. At least one of &apos;sourceTypes&apos; or &apos;libraryFilters&apos; must be provided.</param>

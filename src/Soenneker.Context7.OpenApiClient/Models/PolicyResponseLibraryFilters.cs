@@ -15,7 +15,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Filter mode: &apos;quality&apos; for threshold-based filtering, &apos;select&apos; for manual library selection&quot;</summary>
+        /// <summary>Filter mode: &apos;quality&apos; for threshold-based filtering, &apos;select&apos; for manual library selection</summary>
         public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode? Mode { get; set; }
         /// <summary>Quality-mode settings (active when mode is &apos;quality&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

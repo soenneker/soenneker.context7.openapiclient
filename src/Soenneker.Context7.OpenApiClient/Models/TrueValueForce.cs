@@ -5,7 +5,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
 {
     /// <summary>Set to &apos;true&apos; to force reprocessing</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum AddOpenApiUploadFormDataRequestForce
+    public enum TrueValueForce
     {
         [EnumMember(Value = "true")]
         #pragma warning disable CS1591
