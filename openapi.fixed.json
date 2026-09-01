@@ -2817,7 +2817,7 @@
             },
             "example": {
               "error": "library_not_finalized",
-              "message": "Library /owner/repo not finalized yet."
+              "message": "Library /owner/repo is still being processed. Please try again shortly."
             }
           }
         }
