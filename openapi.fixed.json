@@ -1052,6 +1052,150 @@
         ]
       }
     },
+    "/v2/add/pdf-upload": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Upload a PDF document",
+        "description": "Upload a PDF file for documentation processing. Requires a teamspace. File size limit is 50MB.",
+        "operationId": "AddPdfUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPdfUploadFormDataRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/file-upload": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Upload documentation files",
+        "description": "Upload one or more PDF or DOCX files as one library. Supports up to 50 files, 50MB per file, and 200MB total.",
+        "operationId": "AddFileUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFileUploadFormDataRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/add/docx-upload": {
+      "post": {
+        "tags": [
+          "Add Library"
+        ],
+        "summary": "Upload a Microsoft Word document",
+        "description": "Upload a DOCX file for documentation processing. Requires a teamspace. File size limit is 50MB.",
+        "operationId": "AddDocxUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AddDocxUploadFormDataRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/v2/add/llmstxt": {
       "post": {
         "tags": [
@@ -2279,6 +2423,89 @@
             "format": "binary"
           },
           "libraryTitle": {
+            "type": "string",
+            "description": "Custom title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "force": {
+            "$ref": "#/components/schemas/TrueValueForce"
+          }
+        }
+      },
+      "AddPdfUploadFormDataRequest": {
+        "required": [
+          "pdfFile"
+        ],
+        "type": "object",
+        "properties": {
+          "pdfFile": {
+            "type": "string",
+            "description": "A PDF document",
+            "format": "binary"
+          },
+          "projectTitle": {
+            "type": "string",
+            "description": "Custom title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "force": {
+            "$ref": "#/components/schemas/TrueValueForce"
+          }
+        }
+      },
+      "AddFileUploadFormDataRequest": {
+        "required": [
+          "documentFiles"
+        ],
+        "type": "object",
+        "properties": {
+          "documentFiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "binary"
+            },
+            "description": "PDF and DOCX documents"
+          },
+          "collectionName": {
+            "type": "string",
+            "description": "Name for the file collection"
+          },
+          "relativePaths": {
+            "type": "string",
+            "description": "JSON array of paths corresponding to documentFiles"
+          },
+          "projectTitle": {
+            "type": "string",
+            "description": "Custom title for the library"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the library"
+          },
+          "force": {
+            "$ref": "#/components/schemas/TrueValueForce"
+          }
+        }
+      },
+      "AddDocxUploadFormDataRequest": {
+        "required": [
+          "docxFile"
+        ],
+        "type": "object",
+        "properties": {
+          "docxFile": {
+            "type": "string",
+            "description": "A Microsoft Word .docx file",
+            "format": "binary"
+          },
+          "projectTitle": {
             "type": "string",
             "description": "Custom title for the library"
           },

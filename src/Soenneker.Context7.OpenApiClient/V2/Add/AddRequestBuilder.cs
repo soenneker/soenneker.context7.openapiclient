@@ -3,10 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.V2.Add.Confluence;
+using Soenneker.Context7.OpenApiClient.V2.Add.DocxUpload;
+using Soenneker.Context7.OpenApiClient.V2.Add.FileUpload;
 using Soenneker.Context7.OpenApiClient.V2.Add.Llmstxt;
 using Soenneker.Context7.OpenApiClient.V2.Add.Notion;
 using Soenneker.Context7.OpenApiClient.V2.Add.Openapi;
 using Soenneker.Context7.OpenApiClient.V2.Add.OpenapiUpload;
+using Soenneker.Context7.OpenApiClient.V2.Add.PdfUpload;
 using Soenneker.Context7.OpenApiClient.V2.Add.Repo;
 using Soenneker.Context7.OpenApiClient.V2.Add.Website;
 using System.Collections.Generic;
@@ -25,6 +28,16 @@ namespace Soenneker.Context7.OpenApiClient.V2.Add
         public global::Soenneker.Context7.OpenApiClient.V2.Add.Confluence.ConfluenceRequestBuilder Confluence
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Add.Confluence.ConfluenceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The docxUpload property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Add.DocxUpload.DocxUploadRequestBuilder DocxUpload
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Add.DocxUpload.DocxUploadRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fileUpload property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Add.FileUpload.FileUploadRequestBuilder FileUpload
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Add.FileUpload.FileUploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The llmstxt property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Add.Llmstxt.LlmstxtRequestBuilder Llmstxt
@@ -45,6 +58,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Add
         public global::Soenneker.Context7.OpenApiClient.V2.Add.OpenapiUpload.OpenapiUploadRequestBuilder OpenapiUpload
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Add.OpenapiUpload.OpenapiUploadRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pdfUpload property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Add.PdfUpload.PdfUploadRequestBuilder PdfUpload
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Add.PdfUpload.PdfUploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repo property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Add.Repo.RepoRequestBuilder Repo
