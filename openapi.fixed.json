@@ -99,6 +99,126 @@
         ]
       }
     },
+    "/v3/search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search documentation in one request",
+        "description": "Select up to four relevant Context7 libraries, retrieve their documentation in parallel, deduplicate and globally rerank the evidence, and return one bounded response. Optional library, version, and language values improve routing and ranking.",
+        "operationId": "SearchDocumentation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/TypeParam"
+          },
+          {
+            "name": "library",
+            "in": "query",
+            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as \u0060next.js\u0060 or an exact Context7 ID such as \u0060/vercel/next.js\u0060.",
+            "schema": {
+              "maxItems": 4,
+              "type": "array",
+              "items": {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "example": [
+              "next.js",
+              "react"
+            ]
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Optional version constraint. Requires at least one library value. It is strict when one library is provided and contextual when multiple libraries are provided.",
+            "schema": {
+              "pattern": "^v?[0-9]\u002B([._][0-9]\u002B){0,2}([-\u002B][a-zA-Z0-9.-]\u002B)?$",
+              "type": "string"
+            },
+            "example": "15.2"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Optional programming-language preference used for library selection, retrieval, and reranking. This is a soft preference and does not exclude language-neutral documentation.",
+            "schema": {
+              "maxLength": 40,
+              "minLength": 1,
+              "type": "string"
+            },
+            "example": "TypeScript"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bounded documentation evidence from the selected libraries",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchDocumentation200PlainResponseSchema"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchContextResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/SpendingLimitError"
+          },
+          "404": {
+            "description": "No documentation matched the question or library hints",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "no_documentation_found",
+                  "message": "No documentation library matched the request. Check the library hint or name."
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "503": {
+            "description": "Documentation search could not be completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "search_failed",
+                  "message": "The documentation search could not be completed."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/v2/libs/metrics": {
       "get": {
         "tags": [
@@ -1610,6 +1730,120 @@
         },
         "description": "A documentation snippet"
       },
+      "SearchCodeSnippet": {
+        "required": [
+          "codeTitle",
+          "codeDescription",
+          "codeLanguage",
+          "codeTokens",
+          "codeId",
+          "pageTitle",
+          "codeList",
+          "libraryId"
+        ],
+        "type": "object",
+        "properties": {
+          "codeTitle": {
+            "type": "string",
+            "description": "Title of the code snippet"
+          },
+          "codeDescription": {
+            "type": "string",
+            "description": "Description of what the code does"
+          },
+          "codeLanguage": {
+            "type": "string",
+            "description": "Primary programming language"
+          },
+          "codeTokens": {
+            "type": "integer",
+            "description": "Token count for the snippet"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "URL to source location"
+          },
+          "pageTitle": {
+            "type": "string",
+            "description": "Title of the documentation page"
+          },
+          "codeList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CodeExample"
+            },
+            "description": "Code examples in different languages"
+          },
+          "isDynamic": {
+            "type": "boolean",
+            "description": "Whether this snippet was recovered from the dynamic source-code index instead of the primary docs index"
+          },
+          "sourceFile": {
+            "type": "string",
+            "description": "Repo-relative source file path for dynamic snippets"
+          },
+          "libraryId": {
+            "type": "string",
+            "description": "Context7 library ID that produced this snippet"
+          }
+        }
+      },
+      "SearchInfoSnippet": {
+        "required": [
+          "content",
+          "contentTokens",
+          "libraryId"
+        ],
+        "type": "object",
+        "properties": {
+          "pageId": {
+            "type": "string",
+            "description": "URL to source page"
+          },
+          "breadcrumb": {
+            "type": "string",
+            "description": "Navigation breadcrumb path"
+          },
+          "content": {
+            "type": "string",
+            "description": "The documentation content"
+          },
+          "contentTokens": {
+            "type": "integer",
+            "description": "Token count for the content"
+          },
+          "libraryId": {
+            "type": "string",
+            "description": "Context7 library ID that produced this snippet"
+          }
+        }
+      },
+      "SearchContextResponse": {
+        "required": [
+          "codeSnippets",
+          "infoSnippets"
+        ],
+        "type": "object",
+        "properties": {
+          "codeSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CodeSnippet"
+            },
+            "description": "Relevant code snippets"
+          },
+          "infoSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InfoSnippet"
+            },
+            "description": "Relevant documentation snippets"
+          },
+          "rules": {
+            "$ref": "#/components/schemas/ContextResponseRules"
+          }
+        }
+      },
       "ContextResponse": {
         "required": [
           "codeSnippets",
@@ -2009,6 +2243,52 @@
           }
         }
       },
+      "SearchCodeSnippetAllOf2": {
+        "required": [
+          "libraryId"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryId": {
+            "type": "string",
+            "description": "Context7 library ID that produced this snippet"
+          }
+        }
+      },
+      "SearchInfoSnippetAllOf2": {
+        "required": [
+          "libraryId"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryId": {
+            "type": "string",
+            "description": "Context7 library ID that produced this snippet"
+          }
+        }
+      },
+      "SearchContextResponseAllOf2": {
+        "type": "object",
+        "properties": {
+          "codeSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchCodeSnippet"
+            },
+            "description": "Relevant code snippets with their selected library"
+          },
+          "infoSnippets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchInfoSnippet"
+            },
+            "description": "Relevant documentation snippets with their selected library"
+          },
+          "rules": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2Rules"
+          }
+        }
+      },
       "RedirectErrorResponseAllOf2": {
         "type": "object",
         "properties": {
@@ -2139,6 +2419,26 @@
         },
         "description": "Update library access filters."
       },
+      "SearchContextResponseAllOf2Rules": {
+        "type": "object",
+        "properties": {
+          "global": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Global team rules that apply to every returned library"
+          },
+          "libraries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchContextResponseAllOf2RulesLibrariesItem"
+            },
+            "description": "Rules scoped to a specific returned library"
+          }
+        },
+        "description": "Optional global rules and library-scoped guidelines"
+      },
       "PolicyResponseLibraryFiltersQuality": {
         "required": [
           "requireVerified",
@@ -2248,6 +2548,31 @@
         },
         "description": "Update select-mode settings."
       },
+      "SearchContextResponseAllOf2RulesLibrariesItem": {
+        "required": [
+          "libraryId",
+          "libraryOwn",
+          "libraryTeam"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryId": {
+            "type": "string"
+          },
+          "libraryOwn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "libraryTeam": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "PolicyResponseLibraryFiltersQualityRepoFilters": {
         "required": [
           "minStars",
@@ -2334,6 +2659,9 @@
           }
         },
         "description": "Update website-specific quality filters."
+      },
+      "SearchDocumentation200PlainResponse": {
+        "type": "string"
       },
       "GetContext200PlainResponse": {
         "type": "string"
@@ -2639,6 +2967,9 @@
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
+      },
+      "SearchDocumentation200PlainResponseSchema": {
+        "type": "string"
       },
       "GetContext200PlainResponseSchema": {
         "type": "string"

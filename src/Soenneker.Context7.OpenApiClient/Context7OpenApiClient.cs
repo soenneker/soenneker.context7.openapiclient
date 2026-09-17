@@ -8,6 +8,7 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Context7.OpenApiClient.V1;
 using Soenneker.Context7.OpenApiClient.V2;
+using Soenneker.Context7.OpenApiClient.V3;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace Soenneker.Context7.OpenApiClient
         public global::Soenneker.Context7.OpenApiClient.V2.V2RequestBuilder V2
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.V2RequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The v3 property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V3.V3RequestBuilder V3
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V3.V3RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Context7OpenApiClient"/> and sets the default values.
