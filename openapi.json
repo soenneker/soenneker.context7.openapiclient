@@ -17,6 +17,82 @@
     }
   ],
   "paths": {
+    "/docs7/analytics": {
+      "post": {
+        "operationId": "recordDocs7PageView",
+        "summary": "Record a Docs7 browser page view",
+        "description": "Used by the Docs7 analytics script on an external docs site. Requires a configured site ID and a matching Origin and page URL. Does not use session cookies, API keys, or Context7 API quota. This endpoint accepts browser reports, not authenticated crawler records.",
+        "security": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["siteId", "url", "referrer"],
+                "properties": {
+                  "siteId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 2048
+                  },
+                  "referrer": {
+                    "type": "string",
+                    "maxLength": 2048
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Page view recorded or known bot ignored"
+          },
+          "400": {
+            "description": "Invalid event"
+          },
+          "403": {
+            "description": "Site unavailable, hosting enabled, or origin/path does not match"
+          },
+          "413": {
+            "description": "Event body exceeds 8192 bytes"
+          },
+          "429": {
+            "description": "Collector rate limit exceeded"
+          },
+          "503": {
+            "description": "Collector storage or rate limiter unavailable"
+          }
+        }
+      },
+      "options": {
+        "operationId": "docs7AnalyticsPreflight",
+        "summary": "Allow browser analytics preflight",
+        "security": [],
+        "responses": {
+          "204": {
+            "description": "Credential-free POST allowed"
+          }
+        }
+      }
+    },
     "/v2/libs/search": {
       "get": {
         "summary": "Search for libraries",
@@ -138,7 +214,7 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version constraint. Requires at least one library value. It is strict when one library is provided and contextual when multiple libraries are provided.",
+            "description": "Optional version constraint. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, other available documentation is returned. With multiple libraries, the version is a preference.",
             "required": false,
             "schema": {
               "type": "string",
@@ -171,6 +247,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SearchContextResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Context7-Search-Status": {
+                "description": "Present with value partial when successful results are returned after an operational search failure or reranker fallback. This is not a relevance score.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "partial"
+                  ]
+                }
+              },
+              "X-Context7-Search-Reason": {
+                "description": "Reason for operationally partial results. Present with X-Context7-Search-Status.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "partialSearchFailure"
+                  ]
                 }
               }
             }

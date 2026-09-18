@@ -6,6 +6,7 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
+using Soenneker.Context7.OpenApiClient.Docs7;
 using Soenneker.Context7.OpenApiClient.V1;
 using Soenneker.Context7.OpenApiClient.V2;
 using Soenneker.Context7.OpenApiClient.V3;
@@ -21,6 +22,11 @@ namespace Soenneker.Context7.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Context7OpenApiClient : BaseRequestBuilder
     {
+        /// <summary>The docs7 property</summary>
+        public global::Soenneker.Context7.OpenApiClient.Docs7.Docs7RequestBuilder Docs7
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.Docs7.Docs7RequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The v1 property</summary>
         public global::Soenneker.Context7.OpenApiClient.V1.V1RequestBuilder V1
         {

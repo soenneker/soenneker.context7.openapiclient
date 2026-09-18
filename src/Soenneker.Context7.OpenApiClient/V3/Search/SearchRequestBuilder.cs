@@ -133,7 +133,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
             /// <summary>Response format type</summary>
             [QueryParameter("type")]
             public global::Soenneker.Context7.OpenApiClient.Models.TypeParam? Type { get; set; }
-            /// <summary>Optional version constraint. Requires at least one library value. It is strict when one library is provided and contextual when multiple libraries are provided.</summary>
+            /// <summary>Optional version constraint. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, other available documentation is returned. With multiple libraries, the version is a preference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("version")]
