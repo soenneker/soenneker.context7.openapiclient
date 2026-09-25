@@ -110,7 +110,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
             [QueryParameter("language")]
             public string Language { get; set; }
 #endif
-            /// <summary>Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`.</summary>
+            /// <summary>Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("library")]
@@ -133,7 +133,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
             /// <summary>Response format type</summary>
             [QueryParameter("type")]
             public global::Soenneker.Context7.OpenApiClient.Models.TypeParam? Type { get; set; }
-            /// <summary>Optional version constraint. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, other available documentation is returned. With multiple libraries, the version is a preference.</summary>
+            /// <summary>Optional version preference. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, current documentation is returned and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). When only a prerelease tag matches a stable request, the reason is versionPrerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("version")]

@@ -176,7 +176,7 @@
           {
             "name": "library",
             "in": "query",
-            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as \u0060next.js\u0060 or an exact Context7 ID such as \u0060/vercel/next.js\u0060.",
+            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as \u0060next.js\u0060 or an exact Context7 ID such as \u0060/vercel/next.js\u0060. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.",
             "schema": {
               "maxItems": 4,
               "type": "array",
@@ -194,7 +194,7 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version constraint. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, other available documentation is returned. With multiple libraries, the version is a preference.",
+            "description": "Optional version preference. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, current documentation is returned and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). When only a prerelease tag matches a stable request, the reason is versionPrerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
             "schema": {
               "pattern": "^v?[0-9]\u002B([._][0-9]\u002B){0,2}([-\u002B][a-zA-Z0-9.-]\u002B)?$",
               "type": "string"
@@ -218,7 +218,7 @@
             "description": "Bounded documentation evidence from the selected libraries",
             "headers": {
               "X-Context7-Search-Status": {
-                "description": "Present with value partial when successful results are returned after an operational search failure or reranker fallback. This is not a relevance score.",
+                "description": "Present with value partial when successful results are returned after an operational search failure or reranker fallback, or when a requested version could not be served as asked. This is not a relevance score.",
                 "schema": {
                   "enum": [
                     "partial"
@@ -238,10 +238,12 @@
                 }
               },
               "X-Context7-Search-Reason": {
-                "description": "Reason for operationally partial results. Present with X-Context7-Search-Status.",
+                "description": "Reason for partial results. Present with X-Context7-Search-Status. partialSearchFailure: an operational failure or reranker fallback. versionUnverified: at least one returned library has no documentation indexed for the requested version, so current documentation is served. versionPrerelease: at least one returned library serves a prerelease tag for a stable version request.",
                 "schema": {
                   "enum": [
-                    "partialSearchFailure"
+                    "partialSearchFailure",
+                    "versionUnverified",
+                    "versionPrerelease"
                   ],
                   "type": "string",
                   "additionalProperties": false,
@@ -252,6 +254,44 @@
                       {
                         "value": "partialSearchFailure",
                         "name": "PartialSearchFailure"
+                      },
+                      {
+                        "value": "versionUnverified",
+                        "name": "VersionUnverified"
+                      },
+                      {
+                        "value": "versionPrerelease",
+                        "name": "VersionPrerelease"
+                      }
+                    ]
+                  }
+                }
+              },
+              "X-Context7-Search-Version": {
+                "description": "Present when a version was requested. The worst outcome across returned libraries: verified, prerelease, or unverified. The JSON version field carries the per-library detail.",
+                "schema": {
+                  "enum": [
+                    "verified",
+                    "prerelease",
+                    "unverified"
+                  ],
+                  "type": "string",
+                  "additionalProperties": false,
+                  "x-ms-enum": {
+                    "name": "XContext7SearchVersion",
+                    "modelAsString": false,
+                    "values": [
+                      {
+                        "value": "verified",
+                        "name": "Verified"
+                      },
+                      {
+                        "value": "prerelease",
+                        "name": "Prerelease"
+                      },
+                      {
+                        "value": "unverified",
+                        "name": "Unverified"
                       }
                     ]
                   }
@@ -1942,6 +1982,9 @@
           },
           "rules": {
             "$ref": "#/components/schemas/ContextResponseRules"
+          },
+          "version": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2Version"
           }
         }
       },
@@ -2387,6 +2430,9 @@
           },
           "rules": {
             "$ref": "#/components/schemas/SearchContextResponseAllOf2Rules"
+          },
+          "version": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2Version"
           }
         }
       },
@@ -2540,6 +2586,30 @@
         },
         "description": "Optional global rules and library-scoped guidelines"
       },
+      "SearchContextResponseAllOf2Version": {
+        "required": [
+          "status",
+          "libraries"
+        ],
+        "type": "object",
+        "properties": {
+          "requested": {
+            "type": "string",
+            "description": "The version parameter, when given.",
+            "example": "15"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionStatus"
+          },
+          "libraries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionLibrariesItem"
+            }
+          }
+        },
+        "description": "Present when a version was requested by the version parameter or a version-like library tag. Says what each returned library served."
+      },
       "PolicyResponseLibraryFiltersQuality": {
         "required": [
           "requireVerified",
@@ -2671,6 +2741,36 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "SearchContextResponseAllOf2VersionLibrariesItem": {
+        "required": [
+          "libraryId",
+          "requested",
+          "served",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryId": {
+            "type": "string",
+            "description": "The library id as it appears on the returned snippets, including the served tag when one was matched.",
+            "example": "/vercel/next.js/v15.1.11"
+          },
+          "requested": {
+            "type": "string",
+            "description": "The version requested for this library.",
+            "example": "15"
+          },
+          "served": {
+            "type": "string",
+            "description": "The indexed tag served, or the requested version when the source id pins it. Null when current documentation was served instead.",
+            "nullable": true,
+            "example": "v15.1.11"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionLibrariesItemStatus"
           }
         }
       },
@@ -3275,6 +3375,61 @@
             {
               "value": "select",
               "name": "Select"
+            }
+          ]
+        }
+      },
+      "SearchContextResponseAllOf2VersionStatus": {
+        "enum": [
+          "verified",
+          "prerelease",
+          "unverified"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Worst outcome across the returned libraries.",
+        "x-ms-enum": {
+          "name": "SearchContextResponseAllOf2VersionStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "verified",
+              "name": "Verified"
+            },
+            {
+              "value": "prerelease",
+              "name": "Prerelease"
+            },
+            {
+              "value": "unverified",
+              "name": "Unverified"
+            }
+          ]
+        }
+      },
+      "SearchContextResponseAllOf2VersionLibrariesItemStatus": {
+        "enum": [
+          "verified",
+          "prerelease",
+          "unverified"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SearchContextResponseAllOf2VersionLibrariesItemStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "verified",
+              "name": "Verified"
+            },
+            {
+              "value": "prerelease",
+              "name": "Prerelease"
+            },
+            {
+              "value": "unverified",
+              "name": "Unverified"
             }
           ]
         }
