@@ -185,7 +185,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/QueryParam"
+            "$ref": "#/components/parameters/SearchQueryParam"
           },
           {
             "$ref": "#/components/parameters/TypeParam"
@@ -193,7 +193,7 @@
           {
             "name": "library",
             "in": "query",
-            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.",
+            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. An exact ID that is not indexed, or has no documentation to serve, is searched by its product name instead. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -214,11 +214,11 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version preference. Requires at least one library value. With one library, verified matching documentation is preferred; if unavailable, current documentation is returned and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). When only a prerelease tag matches a stable request, the reason is versionPrerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
+            "description": "Optional version preference. `latest` (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, current documentation is returned and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). When only a prerelease tag matches a stable request, the reason is versionPrerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
             "required": false,
             "schema": {
               "type": "string",
-              "pattern": "^v?[0-9]+([._][0-9]+){0,2}([-+][a-zA-Z0-9.-]+)?$"
+              "pattern": "^([Ll][Aa][Tt][Ee][Ss][Tt]|[Vv]?[0-9]+([._][0-9]+){0,2}([-+][a-zA-Z0-9.-]+)?)$"
             },
             "example": "15.2"
           },
@@ -1938,6 +1938,18 @@
           "maxLength": 500
         },
         "example": "How to manage state with hooks"
+      },
+      "SearchQueryParam": {
+        "name": "query",
+        "in": "query",
+        "description": "The question or task to search documentation for. Long questions and pasted error output are accepted.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "example": "How do I write optimistic updates with TanStack Query v5?"
       },
       "LibraryIdParam": {
         "name": "libraryId",
