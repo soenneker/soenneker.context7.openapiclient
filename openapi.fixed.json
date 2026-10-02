@@ -17,65 +17,6 @@
     }
   ],
   "paths": {
-    "/docs7/analytics": {
-      "post": {
-        "summary": "Record a Docs7 browser page view",
-        "description": "Used by the Docs7 analytics script on an external docs site. Requires a configured site ID and a matching Origin and page URL. Does not use session cookies, API keys, or Context7 API quota. This endpoint accepts browser reports, not authenticated crawler records.",
-        "operationId": "RecordDocs7PageView",
-        "parameters": [
-          {
-            "name": "Origin",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uri"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "text/plain": {
-              "schema": {
-                "$ref": "#/components/schemas/RecordDocs7PageViewPlainRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Page view recorded or known bot ignored"
-          },
-          "400": {
-            "description": "Invalid event"
-          },
-          "403": {
-            "description": "Site unavailable, hosting enabled, or origin/path does not match"
-          },
-          "413": {
-            "description": "Event body exceeds 8192 bytes"
-          },
-          "429": {
-            "description": "Collector rate limit exceeded"
-          },
-          "503": {
-            "description": "Collector storage or rate limiter unavailable"
-          }
-        },
-        "security": []
-      },
-      "options": {
-        "summary": "Allow browser analytics preflight",
-        "operationId": "Docs7AnalyticsPreflight",
-        "responses": {
-          "204": {
-            "description": "Credential-free POST allowed"
-          }
-        },
-        "security": []
-      }
-    },
     "/v2/libs/search": {
       "get": {
         "tags": [
@@ -658,6 +599,20 @@
           },
           "500": {
             "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "description": "Bad Gateway - The refresh service did not respond",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "refresh_failed",
+                  "message": "The refresh service did not respond. Please try again later."
+                }
+              }
+            }
           }
         },
         "security": [
@@ -2860,30 +2815,6 @@
           }
         },
         "description": "Update website-specific quality filters."
-      },
-      "RecordDocs7PageViewPlainRequest": {
-        "required": [
-          "siteId",
-          "url",
-          "referrer"
-        ],
-        "type": "object",
-        "properties": {
-          "siteId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "url": {
-            "maxLength": 2048,
-            "type": "string",
-            "format": "uri"
-          },
-          "referrer": {
-            "maxLength": 2048,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
       },
       "SearchDocumentation200PlainResponse": {
         "type": "string"

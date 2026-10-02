@@ -46,6 +46,7 @@ namespace Soenneker.Context7.OpenApiClient.V1.Refresh
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 502 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Context7.OpenApiClient.Models.RefreshLibrary200Response?> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.RefreshLibraryRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,6 +66,7 @@ namespace Soenneker.Context7.OpenApiClient.V1.Refresh
                 { "404", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "502", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.RefreshLibrary200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.RefreshLibrary200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

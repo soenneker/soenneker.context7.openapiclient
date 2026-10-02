@@ -17,82 +17,6 @@
     }
   ],
   "paths": {
-    "/docs7/analytics": {
-      "post": {
-        "operationId": "recordDocs7PageView",
-        "summary": "Record a Docs7 browser page view",
-        "description": "Used by the Docs7 analytics script on an external docs site. Requires a configured site ID and a matching Origin and page URL. Does not use session cookies, API keys, or Context7 API quota. This endpoint accepts browser reports, not authenticated crawler records.",
-        "security": [],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Origin",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uri"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "text/plain": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": ["siteId", "url", "referrer"],
-                "properties": {
-                  "siteId": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
-                  "url": {
-                    "type": "string",
-                    "format": "uri",
-                    "maxLength": 2048
-                  },
-                  "referrer": {
-                    "type": "string",
-                    "maxLength": 2048
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Page view recorded or known bot ignored"
-          },
-          "400": {
-            "description": "Invalid event"
-          },
-          "403": {
-            "description": "Site unavailable, hosting enabled, or origin/path does not match"
-          },
-          "413": {
-            "description": "Event body exceeds 8192 bytes"
-          },
-          "429": {
-            "description": "Collector rate limit exceeded"
-          },
-          "503": {
-            "description": "Collector storage or rate limiter unavailable"
-          }
-        }
-      },
-      "options": {
-        "operationId": "docs7AnalyticsPreflight",
-        "summary": "Allow browser analytics preflight",
-        "security": [],
-        "responses": {
-          "204": {
-            "description": "Credential-free POST allowed"
-          }
-        }
-      }
-    },
     "/v2/libs/search": {
       "get": {
         "summary": "Search for libraries",
@@ -632,6 +556,20 @@
           },
           "500": {
             "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "description": "Bad Gateway - The refresh service did not respond",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "refresh_failed",
+                  "message": "The refresh service did not respond. Please try again later."
+                }
+              }
+            }
           }
         },
         "security": [
