@@ -60,7 +60,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Total tokens in documentation</summary>
         public int? TotalTokens { get; set; }
         /// <summary>Source reputation score (0-10)</summary>
-        public int? TrustScore { get; set; }
+        public double? TrustScore { get; set; }
         /// <summary>Available version tags</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,7 +104,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "totalSnippets", n => { TotalSnippets = n.GetIntValue(); } },
                 { "totalTokens", n => { TotalTokens = n.GetIntValue(); } },
-                { "trustScore", n => { TrustScore = n.GetIntValue(); } },
+                { "trustScore", n => { TrustScore = n.GetDoubleValue(); } },
                 { "versions", n => { Versions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -125,7 +125,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteStringValue("title", Title);
             writer.WriteIntValue("totalSnippets", TotalSnippets);
             writer.WriteIntValue("totalTokens", TotalTokens);
-            writer.WriteIntValue("trustScore", TrustScore);
+            writer.WriteDoubleValue("trustScore", TrustScore);
             writer.WriteCollectionOfPrimitiveValues<string>("versions", Versions);
             writer.WriteAdditionalData(AdditionalData);
         }
