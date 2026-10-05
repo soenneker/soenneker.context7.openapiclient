@@ -6,6 +6,7 @@ using Soenneker.Context7.OpenApiClient.V2.Add;
 using Soenneker.Context7.OpenApiClient.V2.Context;
 using Soenneker.Context7.OpenApiClient.V2.Libs;
 using Soenneker.Context7.OpenApiClient.V2.Policies;
+using Soenneker.Context7.OpenApiClient.V2.Usage;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -37,6 +38,11 @@ namespace Soenneker.Context7.OpenApiClient.V2
         public global::Soenneker.Context7.OpenApiClient.V2.Policies.PoliciesRequestBuilder Policies
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Policies.PoliciesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The usage property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Usage.UsageRequestBuilder Usage
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Usage.UsageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.V2.V2RequestBuilder"/> and sets the default values.

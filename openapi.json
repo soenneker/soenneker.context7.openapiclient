@@ -895,6 +895,115 @@
         ]
       }
     },
+    "/v2/usage": {
+      "get": {
+        "summary": "Get API usage",
+        "description": "See your requests this month, what extra requests cost your teamspace, and the teamspace's requests per day. `member` is the member who owns the API key and has the same numbers as the `RateLimit-*` headers on search and docs responses. `teamspace` covers all members. Calls to this endpoint do not count as requests.",
+        "operationId": "getUsage",
+        "tags": [
+          "Usage"
+        ],
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "description": "Number of days in `teamspace.daily`, ending today (UTC). Free plans return at most the last 10 days.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 90,
+              "default": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usage for the current month and the requested days",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageResponse"
+                },
+                "examples": {
+                  "pro": {
+                    "summary": "Pro plan, one member past the included requests",
+                    "value": {
+                      "plan": "pro",
+                      "usageResetsAt": "2026-11-01T00:00:00.000Z",
+                      "member": {
+                        "requests": 2340,
+                        "includedInPlan": 2000
+                      },
+                      "teamspace": {
+                        "extraRequests": 340,
+                        "extraCostUsd": 1.7,
+                        "spendingLimitUsd": 50,
+                        "daily": [
+                          {
+                            "date": "2026-10-03",
+                            "requests": 530,
+                            "searchRequests": 120,
+                            "docsRequests": 410
+                          },
+                          {
+                            "date": "2026-10-04",
+                            "requests": 463,
+                            "searchRequests": 98,
+                            "docsRequests": 365
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "free": {
+                    "summary": "Free plan",
+                    "value": {
+                      "plan": "free",
+                      "usageResetsAt": "2026-11-01T00:00:00.000Z",
+                      "member": {
+                        "requests": 412,
+                        "includedInPlan": 1000
+                      },
+                      "teamspace": {
+                        "extraRequests": 0,
+                        "extraCostUsd": 0,
+                        "spendingLimitUsd": null,
+                        "daily": [
+                          {
+                            "date": "2026-10-04",
+                            "requests": 37,
+                            "searchRequests": 12,
+                            "docsRequests": 25
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/v2/add/repo/github": {
       "post": {
         "summary": "Add a GitHub repository",
@@ -2834,6 +2943,106 @@
           "accessibleLibraryCount"
         ]
       },
+      "UsageResponse": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "free",
+              "pro",
+              "enterprise",
+              "payg"
+            ],
+            "description": "Plan of the teamspace the API key belongs to. `payg` (pay-as-you-go) includes no requests and bills every request."
+          },
+          "usageResetsAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the monthly numbers in `member` and `teamspace` start again from zero: the first day of next month, UTC. `teamspace.daily` keeps its history."
+          },
+          "member": {
+            "type": "object",
+            "description": "The member who owns the API key, this month. Each member has their own included requests. On the Free plan, the member's requests stop with a 429 when `requests` reaches `includedInPlan`. On paid plans and `payg`, they continue and count as `teamspace.extraRequests`.",
+            "properties": {
+              "requests": {
+                "type": "integer",
+                "description": "Search and docs requests this member made this month"
+              },
+              "includedInPlan": {
+                "type": "integer",
+                "description": "Requests the plan includes for this member each month. 0 on `payg`."
+              }
+            },
+            "required": [
+              "requests",
+              "includedInPlan"
+            ]
+          },
+          "teamspace": {
+            "type": "object",
+            "description": "All members of the teamspace together. To get the teamspace's requests for a period, add up `daily`.",
+            "properties": {
+              "extraRequests": {
+                "type": "integer",
+                "description": "Requests this month beyond each member's `includedInPlan`. Always 0 on the Free plan."
+              },
+              "extraCostUsd": {
+                "type": "number",
+                "description": "Cost of `extraRequests` in US dollars, as it will appear on the invoice. Always 0 on the Free plan."
+              },
+              "spendingLimitUsd": {
+                "type": "number",
+                "nullable": true,
+                "description": "Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests return 402 until `resetsAt`. `null` if no limit is set."
+              },
+              "daily": {
+                "type": "array",
+                "description": "Requests of all members per UTC day, oldest first. Every day is present; days without requests are 0.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "requests": {
+                      "type": "integer",
+                      "description": "All requests on this day (`searchRequests` + `docsRequests`)"
+                    },
+                    "searchRequests": {
+                      "type": "integer",
+                      "description": "Library search requests"
+                    },
+                    "docsRequests": {
+                      "type": "integer",
+                      "description": "Documentation and context requests"
+                    }
+                  },
+                  "required": [
+                    "date",
+                    "requests",
+                    "searchRequests",
+                    "docsRequests"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "extraRequests",
+              "extraCostUsd",
+              "spendingLimitUsd",
+              "daily"
+            ]
+          }
+        },
+        "required": [
+          "plan",
+          "usageResetsAt",
+          "member",
+          "teamspace"
+        ]
+      },
       "ListOperation": {
         "type": "object",
         "description": "Incremental add/remove operation on a list of library identifiers or domains. Use 'clear' to remove all entries at once.",
@@ -3379,6 +3588,10 @@
     {
       "name": "Metrics",
       "description": "Retrieve usage metrics for libraries"
+    },
+    {
+      "name": "Usage",
+      "description": "See member and teamspace API usage"
     }
   ]
 }
