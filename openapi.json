@@ -384,6 +384,9 @@
           },
           {
             "$ref": "#/components/parameters/FastParam"
+          },
+          {
+            "$ref": "#/components/parameters/LanguageParam"
           }
         ],
         "responses": {
@@ -2061,6 +2064,16 @@
           "default": "false"
         },
         "example": "true"
+      },
+      "LanguageParam": {
+        "name": "language",
+        "in": "query",
+        "description": "Optional programming language the caller writes in, such as `Python` or `TypeScript`. A soft ranking preference: the SDK and code examples in that language rank first, and other documentation is still returned when nothing in that language matches. Only the first 40 characters are used.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "Python"
       },
       "DaysParam": {
         "name": "days",

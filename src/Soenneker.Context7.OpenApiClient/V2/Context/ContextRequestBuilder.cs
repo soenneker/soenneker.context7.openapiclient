@@ -22,7 +22,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,type*}", pathParameters)
+        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,type*}", rawUrl)
+        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -107,6 +107,16 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
             /// <summary>When `true`, skip LLM reranking and return top vector-search results directly. Trades relevance quality for lower latency.</summary>
             [QueryParameter("fast")]
             public global::Soenneker.Context7.OpenApiClient.Models.FastParam? Fast { get; set; }
+            /// <summary>Optional programming language the caller writes in, such as `Python` or `TypeScript`. A soft ranking preference: the SDK and code examples in that language rank first, and other documentation is still returned when nothing in that language matches. Only the first 40 characters are used.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("language")]
+            public string? Language { get; set; }
+#nullable restore
+#else
+            [QueryParameter("language")]
+            public string Language { get; set; }
+#endif
             /// <summary>Context7-compatible library ID — the URL path of the library on context7.com. Use `/owner/repo` for GitHub repositories, or `/&lt;source&gt;/&lt;id&gt;` for other sources (websites, llms.txt, GitLab/Bitbucket, etc.). Optionally suffix with `/&lt;version&gt;` or `@&lt;version&gt;` to pin a specific version. See [Library ID format](/api-guide#library-id-format).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
