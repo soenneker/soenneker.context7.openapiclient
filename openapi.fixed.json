@@ -989,13 +989,15 @@
                             "date": "2026-10-03",
                             "requests": 530,
                             "searchRequests": 120,
-                            "docsRequests": 410
+                            "docsRequests": 410,
+                            "extraCostUsd": 0.9
                           },
                           {
                             "date": "2026-10-04",
                             "requests": 463,
                             "searchRequests": 98,
-                            "docsRequests": 365
+                            "docsRequests": 365,
+                            "extraCostUsd": 0.8
                           }
                         ]
                       }
@@ -1019,7 +1021,8 @@
                             "date": "2026-10-04",
                             "requests": 37,
                             "searchRequests": 12,
-                            "docsRequests": 25
+                            "docsRequests": 25,
+                            "extraCostUsd": 0
                           }
                         ]
                       }
@@ -2668,7 +2671,7 @@
             "items": {
               "$ref": "#/components/schemas/UsageResponseTeamspaceDailyItem"
             },
-            "description": "Requests of all members per UTC day, oldest first. Every day is present; days without requests are 0."
+            "description": "Requests of all members per UTC day, oldest first, with the cost of that day\u0027s extra requests. Every day is present; days without requests are 0."
           }
         },
         "description": "All members of the teamspace together. To get the teamspace\u0027s requests for a period, add up \u0060daily\u0060."
@@ -2822,7 +2825,8 @@
           "date",
           "requests",
           "searchRequests",
-          "docsRequests"
+          "docsRequests",
+          "extraCostUsd"
         ],
         "type": "object",
         "properties": {
@@ -2841,6 +2845,10 @@
           "docsRequests": {
             "type": "integer",
             "description": "Documentation and context requests"
+          },
+          "extraCostUsd": {
+            "type": "number",
+            "description": "Cost of this day\u0027s extra requests in US dollars. The days of the current month add up to \u0060teamspace.extraCostUsd\u0060. Always 0 on the Free plan."
           }
         }
       },

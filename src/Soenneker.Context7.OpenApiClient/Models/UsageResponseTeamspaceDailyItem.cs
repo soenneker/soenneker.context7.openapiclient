@@ -19,6 +19,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public Date? Date { get; set; }
         /// <summary>Documentation and context requests</summary>
         public int? DocsRequests { get; set; }
+        /// <summary>Cost of this day&apos;s extra requests in US dollars. The days of the current month add up to `teamspace.extraCostUsd`. Always 0 on the Free plan.</summary>
+        public double? ExtraCostUsd { get; set; }
         /// <summary>All requests on this day (`searchRequests` + `docsRequests`)</summary>
         public int? Requests { get; set; }
         /// <summary>Library search requests</summary>
@@ -50,6 +52,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "date", n => { Date = n.GetDateValue(); } },
                 { "docsRequests", n => { DocsRequests = n.GetIntValue(); } },
+                { "extraCostUsd", n => { ExtraCostUsd = n.GetDoubleValue(); } },
                 { "requests", n => { Requests = n.GetIntValue(); } },
                 { "searchRequests", n => { SearchRequests = n.GetIntValue(); } },
             };
@@ -63,6 +66,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateValue("date", Date);
             writer.WriteIntValue("docsRequests", DocsRequests);
+            writer.WriteDoubleValue("extraCostUsd", ExtraCostUsd);
             writer.WriteIntValue("requests", Requests);
             writer.WriteIntValue("searchRequests", SearchRequests);
             writer.WriteAdditionalData(AdditionalData);
