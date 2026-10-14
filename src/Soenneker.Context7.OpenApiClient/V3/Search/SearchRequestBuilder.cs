@@ -110,7 +110,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
             [QueryParameter("language")]
             public string Language { get; set; }
 #endif
-            /// <summary>Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. An exact ID that is not indexed, or has no documentation to serve, is searched by its product name instead. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.</summary>
+            /// <summary>Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. An exact ID that is not indexed, or has no documentation to serve, is searched by its product name instead. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library, including when the ID is searched by its product name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("library")]

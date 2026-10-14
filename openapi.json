@@ -117,7 +117,7 @@
           {
             "name": "library",
             "in": "query",
-            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. An exact ID that is not indexed, or has no documentation to serve, is searched by its product name instead. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library.",
+            "description": "Optional library hints. Repeat for up to four values; each may be a fuzzy product name such as `next.js` or an exact Context7 ID such as `/vercel/next.js`. An exact ID that is not indexed, or has no documentation to serve, is searched by its product name instead. A version-like tag (/vercel/next.js@15) is resolved like the version parameter for that library, including when the ID is searched by its product name.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -468,6 +468,129 @@
           {
             "bearerAuth": []
           }
+        ]
+      }
+    },
+    "/v2/ask": {
+      "get": {
+        "summary": "Ask a registered website",
+        "description": "Answer a question from the pages of one website registered with Context7 Ask. AI agents find this endpoint in the hidden note, llms.txt section or Link header the site publishes. No API key is needed. Without `query`, the endpoint returns a short description of itself.",
+        "operationId": "askSite",
+        "tags": [
+          "Ask"
+        ],
+        "parameters": [
+          {
+            "name": "siteKey",
+            "in": "query",
+            "required": true,
+            "description": "The site's public key, shown in the Context7 Ask dashboard.",
+            "schema": {
+              "type": "string",
+              "example": "ask_4f9c2e81a7b3d6e05c1f8a92"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "description": "The question, URL-encoded.",
+            "schema": {
+              "type": "string",
+              "example": "How do I retry webhooks?"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation from the site that answers the question, with a source link for each part. If nothing matches, the text says so.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "The site is still being read. Try again later.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before trying again.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The site key or the question is not valid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No site is published for that key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests for this site.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before trying again.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The question could not be answered.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The site's documentation is not available.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {}
         ]
       }
     },
@@ -3593,6 +3716,10 @@
     {
       "name": "Context",
       "description": "Retrieve documentation context for queries"
+    },
+    {
+      "name": "Ask",
+      "description": "Answer questions from a website registered with Context7 Ask"
     },
     {
       "name": "Refresh",

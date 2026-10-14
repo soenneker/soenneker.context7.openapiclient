@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.V2.Add;
+using Soenneker.Context7.OpenApiClient.V2.Ask;
 using Soenneker.Context7.OpenApiClient.V2.Context;
 using Soenneker.Context7.OpenApiClient.V2.Libs;
 using Soenneker.Context7.OpenApiClient.V2.Policies;
@@ -23,6 +24,11 @@ namespace Soenneker.Context7.OpenApiClient.V2
         public global::Soenneker.Context7.OpenApiClient.V2.Add.AddRequestBuilder Add
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Add.AddRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The ask property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Ask.AskRequestBuilder Ask
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Ask.AskRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The context property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder Context
