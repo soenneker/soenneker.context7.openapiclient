@@ -138,7 +138,7 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version preference. `latest` (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, current documentation is returned and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). When only a prerelease tag matches a stable request, the reason is versionPrerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
+            "description": "Optional version preference. `latest` (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor) or else current documentation is returned, and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). A prerelease tag serves only a request for that prerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
             "required": false,
             "schema": {
               "type": "string",
@@ -185,23 +185,21 @@
                 }
               },
               "X-Context7-Search-Reason": {
-                "description": "Reason for partial results. Present with X-Context7-Search-Status. partialSearchFailure: an operational failure or reranker fallback. versionUnverified: at least one returned library has no documentation indexed for the requested version, so current documentation is served. versionPrerelease: at least one returned library serves a prerelease tag for a stable version request.",
+                "description": "Reason for partial results. Present with X-Context7-Search-Status. partialSearchFailure: an operational failure or reranker fallback. versionUnverified: at least one returned library has no documentation indexed for the requested version, so the newest stable release of that line or current documentation is served.",
                 "schema": {
                   "type": "string",
                   "enum": [
                     "partialSearchFailure",
-                    "versionUnverified",
-                    "versionPrerelease"
+                    "versionUnverified"
                   ]
                 }
               },
               "X-Context7-Search-Version": {
-                "description": "Present when a version was requested. The worst outcome across returned libraries: verified, prerelease, or unverified. The JSON version field carries the per-library detail.",
+                "description": "Present when a version was requested. The worst outcome across returned libraries: verified or unverified. The JSON version field carries the per-library detail.",
                 "schema": {
                   "type": "string",
                   "enum": [
                     "verified",
-                    "prerelease",
                     "unverified"
                   ]
                 }
@@ -2538,7 +2536,6 @@
                     "type": "string",
                     "enum": [
                       "verified",
-                      "prerelease",
                       "unverified"
                     ],
                     "description": "Worst outcome across the returned libraries."
@@ -2567,14 +2564,13 @@
                         "served": {
                           "type": "string",
                           "nullable": true,
-                          "description": "The indexed tag served, or the requested version when the source id pins it. Null when current documentation was served instead.",
+                          "description": "The indexed tag served: the matching tag or, when unverified, the newest stable release of the requested line that is newer than the request. The requested version when the source id pins it. Null when current documentation was served instead.",
                           "example": "v15.1.11"
                         },
                         "status": {
                           "type": "string",
                           "enum": [
                             "verified",
-                            "prerelease",
                             "unverified"
                           ]
                         }
