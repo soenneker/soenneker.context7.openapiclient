@@ -27,7 +27,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public double? ExtraCostUsd { get; set; }
         /// <summary>Requests this month beyond each member&apos;s `includedInPlan`. Always 0 on the Free plan.</summary>
         public int? ExtraRequests { get; set; }
-        /// <summary>Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests return 402 until `resetsAt`. `null` if no limit is set.</summary>
+        /// <summary>Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests that would add to `extraRequests` return 402 until `usageResetsAt`; requests within the member&apos;s `includedInPlan` still work. `0` blocks all extra requests. `null` if no limit is set.</summary>
         public double? SpendingLimitUsd { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace"/> and sets the default values.

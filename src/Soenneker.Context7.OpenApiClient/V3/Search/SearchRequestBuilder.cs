@@ -22,7 +22,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v3/search?query={query}{&language*,library*,type*,version*}", pathParameters)
+        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v3/search?query={query}{&context*,language*,library*,type*,version*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v3/search?query={query}{&language*,library*,type*,version*}", rawUrl)
+        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v3/search?query={query}{&context*,language*,library*,type*,version*}", rawUrl)
         {
         }
         /// <summary>
@@ -100,6 +100,9 @@ namespace Soenneker.Context7.OpenApiClient.V3.Search
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SearchRequestBuilderGetQueryParameters 
         {
+            /// <summary>Optional. `broad` appends more sections of the best-matching documentation pages, up to about 3,500 extra tokens, after the ranked results. How-to, migration, troubleshooting, and overview questions get these sections without it; use it when a question needs several facts but reads as a single-fact question.</summary>
+            [QueryParameter("context")]
+            public global::Soenneker.Context7.OpenApiClient.Models.BroadContext? Context { get; set; }
             /// <summary>Optional programming-language preference used for library selection, retrieval, and reranking. This is a soft preference and does not exclude language-neutral documentation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

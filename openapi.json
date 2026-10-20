@@ -157,6 +157,19 @@
               "maxLength": 40
             },
             "example": "TypeScript"
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "description": "Optional. `broad` appends more sections of the best-matching documentation pages, up to about 3,500 extra tokens, after the ranked results. How-to, migration, troubleshooting, and overview questions get these sections without it; use it when a question needs several facts but reads as a single-fact question.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "broad"
+              ]
+            },
+            "example": "broad"
           }
         ],
         "responses": {
@@ -2428,10 +2441,17 @@
               "libraryId": {
                 "type": "string",
                 "description": "Context7 library ID that produced this snippet"
+              },
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+                "example": 1
               }
             },
             "required": [
-              "libraryId"
+              "libraryId",
+              "rank"
             ]
           }
         ]
@@ -2447,10 +2467,17 @@
               "libraryId": {
                 "type": "string",
                 "description": "Context7 library ID that produced this snippet"
+              },
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+                "example": 1
               }
             },
             "required": [
-              "libraryId"
+              "libraryId",
+              "rank"
             ]
           }
         ]
@@ -3129,7 +3156,7 @@
               "spendingLimitUsd": {
                 "type": "number",
                 "nullable": true,
-                "description": "Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests return 402 until `resetsAt`. `null` if no limit is set."
+                "description": "Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests that would add to `extraRequests` return 402 until `usageResetsAt`; requests within the member's `includedInPlan` still work. `0` blocks all extra requests. `null` if no limit is set."
               },
               "daily": {
                 "type": "array",

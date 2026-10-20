@@ -152,6 +152,15 @@
               "type": "string"
             },
             "example": "TypeScript"
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "description": "Optional. \u0060broad\u0060 appends more sections of the best-matching documentation pages, up to about 3,500 extra tokens, after the ranked results. How-to, migration, troubleshooting, and overview questions get these sections without it; use it when a question needs several facts but reads as a single-fact question.",
+            "schema": {
+              "$ref": "#/components/schemas/BroadContext"
+            },
+            "example": "broad"
           }
         ],
         "responses": {
@@ -2062,7 +2071,8 @@
           "codeId",
           "pageTitle",
           "codeList",
-          "libraryId"
+          "libraryId",
+          "rank"
         ],
         "type": "object",
         "properties": {
@@ -2108,6 +2118,12 @@
           "libraryId": {
             "type": "string",
             "description": "Context7 library ID that produced this snippet"
+          },
+          "rank": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+            "example": 1
           }
         }
       },
@@ -2115,7 +2131,8 @@
         "required": [
           "content",
           "contentTokens",
-          "libraryId"
+          "libraryId",
+          "rank"
         ],
         "type": "object",
         "properties": {
@@ -2138,6 +2155,12 @@
           "libraryId": {
             "type": "string",
             "description": "Context7 library ID that produced this snippet"
+          },
+          "rank": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+            "example": 1
           }
         }
       },
@@ -2596,25 +2619,39 @@
       },
       "SearchCodeSnippetAllOf2": {
         "required": [
-          "libraryId"
+          "libraryId",
+          "rank"
         ],
         "type": "object",
         "properties": {
           "libraryId": {
             "type": "string",
             "description": "Context7 library ID that produced this snippet"
+          },
+          "rank": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+            "example": 1
           }
         }
       },
       "SearchInfoSnippetAllOf2": {
         "required": [
-          "libraryId"
+          "libraryId",
+          "rank"
         ],
         "type": "object",
         "properties": {
           "libraryId": {
             "type": "string",
             "description": "Context7 library ID that produced this snippet"
+          },
+          "rank": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+            "example": 1
           }
         }
       },
@@ -2775,7 +2812,7 @@
           },
           "spendingLimitUsd": {
             "type": "number",
-            "description": "Monthly limit for \u0060extraCostUsd\u0060 in US dollars. When \u0060extraCostUsd\u0060 reaches it, search and docs requests return 402 until \u0060resetsAt\u0060. \u0060null\u0060 if no limit is set.",
+            "description": "Monthly limit for \u0060extraCostUsd\u0060 in US dollars. When \u0060extraCostUsd\u0060 reaches it, search and docs requests that would add to \u0060extraRequests\u0060 return 402 until \u0060usageResetsAt\u0060; requests within the member\u0027s \u0060includedInPlan\u0060 still work. \u00600\u0060 blocks all extra requests. \u0060null\u0060 if no limit is set.",
             "nullable": true
           },
           "daily": {
@@ -3822,6 +3859,23 @@
             {
               "value": "false",
               "name": "FalseValue"
+            }
+          ]
+        }
+      },
+      "BroadContext": {
+        "enum": [
+          "broad"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "BroadContext",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "broad",
+              "name": "Broad"
             }
           ]
         }
