@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.Context7.OpenApiClient.Models
 {
-    /// <summary>
-    /// A code snippet from library documentation
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CodeSnippet : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ContextCodeSnippet : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -67,6 +66,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string PageTitle { get; set; }
 #endif
+        /// <summary>1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model&apos;s relevance order when it ranked them).</summary>
+        public int? Rank { get; set; }
         /// <summary>Repo-relative source file path for dynamic snippets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,21 +77,21 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public string SourceFile { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet"/> and sets the default values.
         /// </summary>
-        public CodeSnippet()
+        public ContextCodeSnippet()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet();
+            return new global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +109,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "codeTokens", n => { CodeTokens = n.GetIntValue(); } },
                 { "isDynamic", n => { IsDynamic = n.GetBoolValue(); } },
                 { "pageTitle", n => { PageTitle = n.GetStringValue(); } },
+                { "rank", n => { Rank = n.GetIntValue(); } },
                 { "sourceFile", n => { SourceFile = n.GetStringValue(); } },
             };
         }
@@ -126,6 +128,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteIntValue("codeTokens", CodeTokens);
             writer.WriteBoolValue("isDynamic", IsDynamic);
             writer.WriteStringValue("pageTitle", PageTitle);
+            writer.WriteIntValue("rank", Rank);
             writer.WriteStringValue("sourceFile", SourceFile);
             writer.WriteAdditionalData(AdditionalData);
         }

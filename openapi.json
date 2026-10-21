@@ -189,7 +189,7 @@
             },
             "headers": {
               "X-Context7-Search-Status": {
-                "description": "Present with value partial when successful results are returned after an operational search failure or reranker fallback, or when a requested version could not be served as asked. This is not a relevance score.",
+                "description": "Present with value partial when successful results are returned after an operational search failure or reranker fallback, or when no returned library serves the requested version. This is not a relevance score.",
                 "schema": {
                   "type": "string",
                   "enum": [
@@ -198,7 +198,7 @@
                 }
               },
               "X-Context7-Search-Reason": {
-                "description": "Reason for partial results. Present with X-Context7-Search-Status. partialSearchFailure: an operational failure or reranker fallback. versionUnverified: at least one returned library has no documentation indexed for the requested version, so the newest stable release of that line or current documentation is served.",
+                "description": "Reason for partial results. Present with X-Context7-Search-Status. partialSearchFailure: an operational failure or reranker fallback. versionUnverified: no returned library has documentation indexed for the requested version, so the newest stable release of that line or current documentation is served. When at least one returned library serves the requested version, the search is complete; X-Context7-Search-Version and the version field still report each library that fell back.",
                 "schema": {
                   "type": "string",
                   "enum": [
@@ -378,7 +378,7 @@
     "/v2/context": {
       "get": {
         "summary": "Get documentation context",
-        "description": "Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question.",
+        "description": "Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library's current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.",
         "operationId": "getContext",
         "tags": [
           "Context"
@@ -422,7 +422,8 @@
                           "language": "typescript",
                           "code": "import { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n\nexport function middleware(request: NextRequest) {\n  const token = request.cookies.get('token')\n  if (!token) {\n    return NextResponse.redirect(new URL('/login', request.url))\n  }\n  return NextResponse.next()\n}"
                         }
-                      ]
+                      ],
+                      "rank": 2
                     }
                   ],
                   "infoSnippets": [
@@ -430,7 +431,8 @@
                       "pageId": "https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx",
                       "breadcrumb": "Routing > Middleware",
                       "content": "Middleware allows you to run code before a request is completed...",
-                      "contentTokens": 200
+                      "contentTokens": 200,
+                      "rank": 1
                     }
                   ]
                 }
@@ -1945,7 +1947,7 @@
                   },
                   "projectId": {
                     "type": "string",
-                    "description": "The team project ID to associate this Confluence space with"
+                    "description": "Optional. Requests with an API key or token use its teamspace; a different value returns 403 `teamspace_mismatch`."
                   }
                 }
               },
@@ -1955,8 +1957,7 @@
                 "spaceKey": "DOCS",
                 "spaceName": "Documentation",
                 "title": "My Docs",
-                "description": "Internal documentation",
-                "projectId": "project-uuid"
+                "description": "Internal documentation"
               }
             }
           }
@@ -2041,7 +2042,7 @@
                   },
                   "projectId": {
                     "type": "string",
-                    "description": "The team project ID to associate these Notion pages with"
+                    "description": "Optional. Requests with an API key or token use its teamspace; a different value returns 403 `teamspace_mismatch`."
                   }
                 }
               },
@@ -2053,8 +2054,7 @@
                   "page-2"
                 ],
                 "title": "Product Docs",
-                "description": "Internal Notion knowledge base",
-                "projectId": "project-uuid"
+                "description": "Internal Notion knowledge base"
               }
             }
           }
@@ -2430,6 +2430,48 @@
           "contentTokens"
         ]
       },
+      "ContextCodeSnippet": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CodeSnippet"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model's relevance order when it ranked them).",
+                "example": 1
+              }
+            },
+            "required": [
+              "rank"
+            ]
+          }
+        ]
+      },
+      "ContextInfoSnippet": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/InfoSnippet"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model's relevance order when it ranked them).",
+                "example": 1
+              }
+            },
+            "required": [
+              "rank"
+            ]
+          }
+        ]
+      },
       "SearchCodeSnippet": {
         "allOf": [
           {
@@ -2618,14 +2660,14 @@
             "type": "array",
             "description": "Relevant code snippets",
             "items": {
-              "$ref": "#/components/schemas/CodeSnippet"
+              "$ref": "#/components/schemas/ContextCodeSnippet"
             }
           },
           "infoSnippets": {
             "type": "array",
             "description": "Relevant documentation snippets",
             "items": {
-              "$ref": "#/components/schemas/InfoSnippet"
+              "$ref": "#/components/schemas/ContextInfoSnippet"
             }
           },
           "rules": {
@@ -2653,6 +2695,48 @@
                   "type": "string"
                 }
               }
+            }
+          },
+          "version": {
+            "type": "object",
+            "description": "Present only when the library ID names a version that is not indexed. Says what was served instead, with the fields of each entry of the Search API's `version.libraries`. The text response states the same in a leading version note when the status is unverified.",
+            "required": [
+              "libraryId",
+              "requested",
+              "served",
+              "status"
+            ],
+            "properties": {
+              "libraryId": {
+                "type": "string",
+                "description": "The library id served, including the served tag when one was matched.",
+                "example": "/vercel/next.js/v15.1.11"
+              },
+              "requested": {
+                "type": "string",
+                "description": "The version named by the library ID.",
+                "example": "v15.0.0"
+              },
+              "served": {
+                "type": "string",
+                "nullable": true,
+                "description": "The indexed tag served: the matching tag or, when unverified, the newest stable release of the requested line that is newer than the request. Null when current documentation was served instead.",
+                "example": "v15.1.11"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "verified",
+                  "unverified"
+                ],
+                "description": "verified when the served tag matches the requested version (`15` served by v15.1.11); unverified when another release or current documentation was served."
+              }
+            },
+            "example": {
+              "libraryId": "/vercel/next.js/v15.1.11",
+              "requested": "v15.0.0",
+              "served": "v15.1.11",
+              "status": "unverified"
             }
           }
         },
@@ -3494,7 +3578,7 @@
                 "summary": "Version not found",
                 "value": {
                   "error": "version_not_found",
-                  "message": "Version \"v1.0.0\" not found for library \"/owner/repo\". Available versions: v2.0.0, v1.5.0"
+                  "message": "Version \"canary\" not found for library \"/owner/repo\". Available versions: v2.0.0, v1.5.0"
                 }
               },
               "noSnippetsFound": {

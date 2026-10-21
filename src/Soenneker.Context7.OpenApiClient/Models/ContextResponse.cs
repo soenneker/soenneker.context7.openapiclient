@@ -18,18 +18,18 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Relevant code snippets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet>? CodeSnippets { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet>? CodeSnippets { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet> CodeSnippets { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet> CodeSnippets { get; set; }
 #endif
         /// <summary>Relevant documentation snippets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet>? InfoSnippets { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet>? InfoSnippets { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet> InfoSnippets { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet> InfoSnippets { get; set; }
 #endif
         /// <summary>Optional library-specific rules and guidelines</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,6 +38,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Context7.OpenApiClient.Models.ContextResponseRules Rules { get; set; }
+#endif
+        /// <summary>Present only when the library ID names a version that is not indexed. Says what was served instead, with the fields of each entry of the Search API&apos;s `version.libraries`. The text response states the same in a leading version note when the status is unverified.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Context7.OpenApiClient.Models.ContextResponseVersion? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.ContextResponseVersion Version { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextResponse"/> and sets the default values.
@@ -64,9 +72,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "codeSnippets", n => { CodeSnippets = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet>(global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "infoSnippets", n => { InfoSnippets = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet>(global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "codeSnippets", n => { CodeSnippets = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet>(global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "infoSnippets", n => { InfoSnippets = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet>(global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "rules", n => { Rules = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.ContextResponseRules>(global::Soenneker.Context7.OpenApiClient.Models.ContextResponseRules.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.ContextResponseVersion>(global::Soenneker.Context7.OpenApiClient.Models.ContextResponseVersion.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,9 +85,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.CodeSnippet>("codeSnippets", CodeSnippets);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet>("infoSnippets", InfoSnippets);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.ContextCodeSnippet>("codeSnippets", CodeSnippets);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet>("infoSnippets", InfoSnippets);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.ContextResponseRules>("rules", Rules);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.ContextResponseVersion>("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

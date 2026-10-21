@@ -38,7 +38,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public List<string> PageIds { get; set; }
 #endif
-        /// <summary>The team project ID to associate this Confluence space with</summary>
+        /// <summary>Optional. Requests with an API key or token use its teamspace; a different value returns 403 `teamspace_mismatch`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProjectId { get; set; }

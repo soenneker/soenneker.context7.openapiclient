@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         {
         }
         /// <summary>
-        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question.
+        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library&apos;s current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ContextResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ContextResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question.
+        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library&apos;s current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -99,7 +99,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
             return new global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question.
+        /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library&apos;s current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ContextRequestBuilderGetQueryParameters 

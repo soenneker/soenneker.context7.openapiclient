@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.Context7.OpenApiClient.Models
 {
-    /// <summary>
-    /// A documentation snippet
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class InfoSnippet : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ContextInfoSnippet : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -41,22 +40,24 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string PageId { get; set; }
 #endif
+        /// <summary>1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model&apos;s relevance order when it ranked them).</summary>
+        public int? Rank { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet"/> and sets the default values.
         /// </summary>
-        public InfoSnippet()
+        public ContextInfoSnippet()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.InfoSnippet();
+            return new global::Soenneker.Context7.OpenApiClient.Models.ContextInfoSnippet();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +71,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "contentTokens", n => { ContentTokens = n.GetIntValue(); } },
                 { "pageId", n => { PageId = n.GetStringValue(); } },
+                { "rank", n => { Rank = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -83,6 +85,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteStringValue("content", Content);
             writer.WriteIntValue("contentTokens", ContentTokens);
             writer.WriteStringValue("pageId", PageId);
+            writer.WriteIntValue("rank", Rank);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
