@@ -7,6 +7,7 @@ using Soenneker.Context7.OpenApiClient.V2.Ask;
 using Soenneker.Context7.OpenApiClient.V2.Context;
 using Soenneker.Context7.OpenApiClient.V2.Libs;
 using Soenneker.Context7.OpenApiClient.V2.Policies;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces;
 using Soenneker.Context7.OpenApiClient.V2.Usage;
 using System.Collections.Generic;
 using System.IO;
@@ -44,6 +45,11 @@ namespace Soenneker.Context7.OpenApiClient.V2
         public global::Soenneker.Context7.OpenApiClient.V2.Policies.PoliciesRequestBuilder Policies
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Policies.PoliciesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The teamspaces property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.TeamspacesRequestBuilder Teamspaces
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.TeamspacesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The usage property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Usage.UsageRequestBuilder Usage

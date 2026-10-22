@@ -65,9 +65,9 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.
+        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase. With `dryRun: true` nothing is saved; the response shows the policies the patch would give, `accessibleLibraryCount` after the change, and `currentAccessibleLibraryCount` before it.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.UpdatePolicies200Response"/></returns>
         /// <param name="body">Incremental policy update. All fields are optional — only provided fields are modified. At least one of &apos;sourceTypes&apos; or &apos;libraryFilters&apos; must be provided.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -78,11 +78,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse?> PatchAsync(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.UpdatePolicies200Response?> PatchAsync(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse> PatchAsync(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.UpdatePolicies200Response> PatchAsync(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -95,7 +95,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
                 { "404", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.PolicyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.UpdatePolicies200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.UpdatePolicies200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve the current policy configuration for the teamspace associated with the API key. Includes source type access settings and public repository filters.
@@ -117,7 +117,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Policies
             return requestInfo;
         }
         /// <summary>
-        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase.
+        /// Incrementally update policy configuration for the teamspace associated with the API key. Only the fields you include in the request body are modified — omitted fields remain unchanged. For source types, use `enable`/`disable` arrays (both allowed if no overlap). For library lists, use `add`/`remove` objects or `clear: true` to remove all. Requires owner or admin role. All field names use camelCase. With `dryRun: true` nothing is saved; the response shows the policies the patch would give, `accessibleLibraryCount` after the change, and `currentAccessibleLibraryCount` before it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Incremental policy update. All fields are optional — only provided fields are modified. At least one of &apos;sourceTypes&apos; or &apos;libraryFilters&apos; must be provided.</param>

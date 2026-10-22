@@ -15,6 +15,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Preview the change and its library count without saving.</summary>
+        public bool? DryRun { get; set; }
         /// <summary>Update library access filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "dryRun", n => { DryRun = n.GetBoolValue(); } },
                 { "libraryFilters", n => { LibraryFilters = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestLibraryFilters>(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestLibraryFilters.CreateFromDiscriminatorValue); } },
                 { "sourceTypes", n => { SourceTypes = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes>(global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +70,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("dryRun", DryRun);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestLibraryFilters>("libraryFilters", LibraryFilters);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes>("sourceTypes", SourceTypes);
             writer.WriteAdditionalData(AdditionalData);
