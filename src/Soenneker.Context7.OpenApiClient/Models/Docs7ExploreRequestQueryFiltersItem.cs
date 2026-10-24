@@ -27,10 +27,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>String, integer or boolean, by field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItem"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "field", n => { Field = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemOperator>(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemValue>(global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemValue.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("field", Field);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequestQueryFiltersItemValue>("value", Value);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

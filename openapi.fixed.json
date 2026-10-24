@@ -174,7 +174,6 @@
                     "partial"
                   ],
                   "type": "string",
-                  "additionalProperties": false,
                   "x-ms-enum": {
                     "name": "XContext7SearchStatus",
                     "modelAsString": false,
@@ -195,7 +194,6 @@
                     "versionUnverified"
                   ],
                   "type": "string",
-                  "additionalProperties": false,
                   "x-ms-enum": {
                     "name": "XContext7SearchReason",
                     "modelAsString": false,
@@ -220,7 +218,6 @@
                     "unverified"
                   ],
                   "type": "string",
-                  "additionalProperties": false,
                   "x-ms-enum": {
                     "name": "XContext7SearchVersion",
                     "modelAsString": false,
@@ -8858,7 +8855,11 @@
             "items": {
               "type": "string"
             },
-            "description": "Available version tags"
+            "description": "Available version tags",
+            "example": [
+              "v15.1.8",
+              "v14.3.0"
+            ]
           }
         },
         "description": "Library metadata"
@@ -9184,24 +9185,16 @@
         "type": "object",
         "properties": {
           "codeSnippets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContextCodeSnippet"
-            },
-            "description": "Relevant code snippets"
+            "$ref": "#/components/schemas/SearchContextResponseCodeSnippets"
           },
           "infoSnippets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContextInfoSnippet"
-            },
-            "description": "Relevant documentation snippets"
+            "$ref": "#/components/schemas/SearchContextResponseInfoSnippets"
           },
           "rules": {
-            "$ref": "#/components/schemas/ContextResponseRules"
+            "$ref": "#/components/schemas/SearchContextResponseRules"
           },
           "version": {
-            "$ref": "#/components/schemas/ContextResponseVersion"
+            "$ref": "#/components/schemas/SearchContextResponseVersion"
           }
         }
       },
@@ -10364,7 +10357,6 @@
         "description": "Notion pages, added as a private source. Needs the owner or admin role and a Notion account connected in the dashboard."
       },
       "TeamspaceLibraryAddRequest": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/TeamspaceLibraryRepoSource"
@@ -10385,84 +10377,6 @@
             "$ref": "#/components/schemas/TeamspaceLibraryNotionSource"
           }
         ],
-        "properties": {
-          "docsRepoUrl": {
-            "type": "string",
-            "description": "Repository URL.",
-            "format": "uri",
-            "example": "https://github.com/acme/docs"
-          },
-          "private": {
-            "type": "boolean",
-            "description": "Add as a private source of this teamspace. Needs the owner or admin role and a paid plan. The token comes from \u0060gitToken\u0060, or from the GitHub, GitLab or Bitbucket account connected in the dashboard. \u0060git\u0060 needs \u0060gitToken\u0060."
-          },
-          "gitToken": {
-            "type": "string",
-            "description": "Personal access token for a private repository."
-          },
-          "skipVersionFiltering": {
-            "type": "boolean",
-            "description": "Keep pages that look version-specific (private repositories)."
-          },
-          "generateDocs": {
-            "type": "boolean",
-            "description": "Generate documentation from the source code (private repositories)."
-          },
-          "websiteUrl": {
-            "type": "string",
-            "description": "Documentation website to crawl.",
-            "format": "uri",
-            "example": "https://docs.example.com"
-          },
-          "websiteBaseUrl": {
-            "type": "string",
-            "description": "Only crawl pages under this URL.",
-            "format": "uri"
-          },
-          "llmstxtUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://docs.example.com/llms.txt"
-          },
-          "openApiUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://api.example.com/openapi.json"
-          },
-          "cloudId": {
-            "type": "string"
-          },
-          "siteUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://acme.atlassian.net"
-          },
-          "spaceKey": {
-            "type": "string"
-          },
-          "spaceName": {
-            "type": "string"
-          },
-          "pageIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Only these pages. Omit for the whole space."
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "workspaceId": {
-            "type": "string"
-          },
-          "workspaceName": {
-            "type": "string"
-          }
-        },
         "description": "The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard."
       },
       "TeamspaceLibraryConfigUpdate": {
@@ -11183,7 +11097,6 @@
         "required": [
           "kind"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf1"
@@ -11193,11 +11106,6 @@
           }
         ],
         "properties": {
-          "branch": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string"
-          },
           "kind": {
             "type": "string"
           }
@@ -12059,7 +11967,6 @@
         "required": [
           "kind"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/AskVerificationOneOf1"
@@ -12072,18 +11979,6 @@
           }
         ],
         "properties": {
-          "verifiedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "reason": {
-            "type": "string",
-            "description": "What to fix, in words for the site owner."
-          },
-          "checkedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "kind": {
             "type": "string"
           }
@@ -12128,7 +12023,6 @@
         "required": [
           "kind"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatusOneOf1"
@@ -12144,9 +12038,6 @@
           }
         ],
         "properties": {
-          "reason": {
-            "type": "string"
-          },
           "kind": {
             "type": "string"
           }
@@ -12273,7 +12164,6 @@
           "unknown"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The client that asked, by company.",
         "x-ms-enum": {
           "name": "AskClient",
@@ -14334,7 +14224,7 @@
             "$ref": "#/components/schemas/Docs7ExploreRequestQueryFiltersItemOperator"
           },
           "value": {
-            "$ref": "#/components/schemas/Docs7ExploreRequestQueryFiltersItemValue"
+            "description": "String, integer or boolean, by field."
           }
         }
       },
@@ -14581,7 +14471,6 @@
         }
       },
       "UpdatePolicies200Response": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PolicyResponse"
@@ -14589,26 +14478,7 @@
           {
             "$ref": "#/components/schemas/TeamspacePolicyDryRunResponse"
           }
-        ],
-        "properties": {
-          "sourceTypes": {
-            "$ref": "#/components/schemas/PolicyResponseSourceTypes"
-          },
-          "libraryFilters": {
-            "$ref": "#/components/schemas/PolicyResponseLibraryFilters"
-          },
-          "accessibleLibraryCount": {
-            "type": "integer",
-            "description": "Number of public libraries currently accessible under these filters"
-          },
-          "dryRun": {
-            "$ref": "#/components/schemas/TeamspacePolicyDryRunResponseDryRun"
-          },
-          "currentAccessibleLibraryCount": {
-            "type": "integer",
-            "description": "Libraries the saved policies allow now."
-          }
-        }
+        ]
       },
       "AddGitRepoRequest": {
         "required": [
@@ -15019,21 +14889,19 @@
       },
       "UpdateTeamspacePoliciesRequest": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PatchPoliciesRequest"
+          }
+        ],
         "properties": {
           "dryRun": {
             "type": "boolean",
             "description": "Preview the change and its library count without saving."
-          },
-          "sourceTypes": {
-            "$ref": "#/components/schemas/PatchPoliciesRequestSourceTypes"
-          },
-          "libraryFilters": {
-            "$ref": "#/components/schemas/PatchPoliciesRequestLibraryFilters"
           }
         }
       },
       "UpdateTeamspacePolicies200Response": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PolicyResponse"
@@ -15041,26 +14909,7 @@
           {
             "$ref": "#/components/schemas/TeamspacePolicyDryRunResponse"
           }
-        ],
-        "properties": {
-          "sourceTypes": {
-            "$ref": "#/components/schemas/PolicyResponseSourceTypes"
-          },
-          "libraryFilters": {
-            "$ref": "#/components/schemas/PolicyResponseLibraryFilters"
-          },
-          "accessibleLibraryCount": {
-            "type": "integer",
-            "description": "Number of public libraries currently accessible under these filters"
-          },
-          "dryRun": {
-            "$ref": "#/components/schemas/TeamspacePolicyDryRunResponseDryRun"
-          },
-          "currentAccessibleLibraryCount": {
-            "type": "integer",
-            "description": "Libraries the saved policies allow now."
-          }
-        }
+        ]
       },
       "CreateLibraryRequestRequest": {
         "required": [
@@ -15211,7 +15060,6 @@
         }
       },
       "GetTeamspaceLibraryAnalytics200Response": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/TeamspaceLibraryUsageReport"
@@ -15225,44 +15073,7 @@
           {
             "$ref": "#/components/schemas/McpClientMetrics"
           }
-        ],
-        "properties": {
-          "current": {
-            "$ref": "#/components/schemas/TeamspaceLibraryUsageReportCurrent"
-          },
-          "daily": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DailyStatsPoint"
-            },
-            "description": "Per-day counts, oldest first, for up to \u0060days\u0060 days."
-          },
-          "libraryId": {
-            "type": "string"
-          },
-          "topics": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TopicCount"
-            }
-          },
-          "totalRequests": {
-            "type": "integer"
-          },
-          "countries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CountryCount"
-            }
-          },
-          "dailyData": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/McpDailyClientData"
-            },
-            "description": "Per-day MCP client unique-user breakdown, ordered from oldest to newest"
-          }
-        }
+        ]
       },
       "GetDocsSite200Response": {
         "required": [
@@ -15788,8 +15599,132 @@
           }
         }
       },
-      "GetDocsSite200ResponseData": {
+      "SearchContextResponseCodeSnippets": {
+        "allOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContextCodeSnippet"
+            },
+            "description": "Relevant code snippets"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchCodeSnippet"
+            },
+            "description": "Relevant code snippets with their selected library"
+          }
+        ]
+      },
+      "SearchContextResponseInfoSnippets": {
+        "allOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContextInfoSnippet"
+            },
+            "description": "Relevant documentation snippets"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchInfoSnippet"
+            },
+            "description": "Relevant documentation snippets with their selected library"
+          }
+        ]
+      },
+      "SearchContextResponseRules": {
         "type": "object",
+        "properties": {
+          "global": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Global team rules that apply to every returned library"
+          },
+          "libraries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchContextResponseAllOf2RulesLibrariesItem"
+            },
+            "description": "Rules scoped to a specific returned library"
+          },
+          "libraryOwn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rules defined by the library owner"
+          },
+          "libraryTeam": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Library-specific rules from the team"
+          }
+        }
+      },
+      "SearchContextResponseVersion": {
+        "type": "object",
+        "properties": {
+          "requested": {
+            "type": "string",
+            "description": "The version parameter, when given.",
+            "example": "15"
+          },
+          "status": {
+            "enum": [
+              "verified",
+              "unverified"
+            ],
+            "type": "string",
+            "description": "Worst outcome across the returned libraries.",
+            "x-ms-enum": {
+              "name": "Status",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "verified",
+                  "name": "Verified"
+                },
+                {
+                  "value": "unverified",
+                  "name": "Unverified"
+                }
+              ]
+            }
+          },
+          "libraries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionLibrariesItem"
+            }
+          },
+          "libraryId": {
+            "type": "string",
+            "description": "The library id served, including the served tag when one was matched.",
+            "example": "/vercel/next.js/v15.1.11"
+          },
+          "served": {
+            "type": "string",
+            "description": "The indexed tag served: the matching tag or, when unverified, the newest stable release of the requested line that is newer than the request. Null when current documentation was served instead.",
+            "nullable": true,
+            "example": "v15.1.11"
+          }
+        },
+        "required": [
+          "status",
+          "libraries",
+          "libraryId",
+          "requested",
+          "served"
+        ]
+      },
+      "GetDocsSite200ResponseData": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/Docs7Site"
@@ -15797,116 +15732,7 @@
           {
             "$ref": "#/components/schemas/Docs7LocalSite"
           }
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "Teamspace id.",
-            "format": "uuid"
-          },
-          "repoUrl": {
-            "type": "string",
-            "format": "uri"
-          },
-          "repositoryId": {
-            "type": "string",
-            "description": "GitHub repository id."
-          },
-          "installationId": {
-            "type": "integer",
-            "description": "GitHub App installation id."
-          },
-          "branch": {
-            "type": "string",
-            "description": "Pinned production branch. Null follows the default branch.",
-            "nullable": true
-          },
-          "defaultBranch": {
-            "type": "string",
-            "nullable": true
-          },
-          "docsPath": {
-            "type": "string",
-            "description": "Docs folder in the repository; \u0060.\u0060 is the root."
-          },
-          "analyticsUrl": {
-            "type": "string",
-            "description": "External docs URL for browser analytics of a site that Docs7 does not host.",
-            "format": "uri",
-            "nullable": true
-          },
-          "workerName": {
-            "type": "string"
-          },
-          "platformHostname": {
-            "type": "string",
-            "example": "acme-docs.docs7.io"
-          },
-          "customDomain": {
-            "type": "string",
-            "nullable": true
-          },
-          "customDomainPath": {
-            "type": "string",
-            "description": "Path prefix the docs are served under on the custom domain.",
-            "nullable": true
-          },
-          "customHostnameId": {
-            "type": "string",
-            "nullable": true
-          },
-          "customDomainError": {
-            "type": "string",
-            "nullable": true
-          },
-          "customDomainRecords": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Docs7DnsRecord"
-            }
-          },
-          "context7Index": {
-            "type": "boolean",
-            "description": "Whether the repository is indexed in Context7."
-          },
-          "context7LibraryName": {
-            "type": "string",
-            "example": "/acme/docs"
-          },
-          "improveSchedule": {
-            "$ref": "#/components/schemas/Docs7SiteImproveSchedule"
-          },
-          "pullRequestReview": {
-            "$ref": "#/components/schemas/Docs7PullRequestReview"
-          },
-          "codeWatch": {
-            "$ref": "#/components/schemas/Docs7SiteCodeWatch"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "buildFixSchedule": {
-            "$ref": "#/components/schemas/Docs7SiteBuildFixSchedule"
-          },
-          "source": {
-            "$ref": "#/components/schemas/LocalSource"
-          },
-          "name": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "McpDailyClientDataUniqueUsersByClientProperty": {
         "type": "object",
@@ -15949,10 +15775,6 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/TeamspaceRule"
         }
-      },
-      "Docs7ExploreRequestQueryFiltersItemValue": {
-        "type": "object",
-        "description": "String, integer or boolean, by field."
       },
       "RemoveTeamspaceMember200ResponseData": {
         "type": "object",
@@ -16022,7 +15844,6 @@
           "delete"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Processing state of the library",
         "example": "finalized",
         "x-ms-enum": {
@@ -16060,7 +15881,6 @@
           "payg"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Plan of the teamspace the API key belongs to. \u0060payg\u0060 (pay-as-you-go) includes no requests and bills every request.",
         "x-ms-enum": {
           "name": "UsageResponsePlan",
@@ -16092,7 +15912,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The caller\u0027s role in this teamspace.",
         "x-ms-enum": {
           "name": "TeamspaceSummaryRole",
@@ -16120,7 +15939,6 @@
           "enterprise"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The owner\u0027s plan. The teamspace\u0027s features follow it.",
         "nullable": true,
         "x-ms-enum": {
@@ -16148,7 +15966,6 @@
           "payg"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceSummaryBillingModel",
           "modelAsString": false,
@@ -16170,7 +15987,6 @@
           "vercel_marketplace"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060vercel_marketplace\u0060 teamspaces are billed and managed by Vercel.",
         "x-ms-enum": {
           "name": "TeamspaceSummaryBillingSource",
@@ -16194,7 +16010,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceMemberRole",
           "modelAsString": false,
@@ -16220,7 +16035,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceInvitationRole",
           "modelAsString": false,
@@ -16249,7 +16063,6 @@
           "notion"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceRuleLibraryType",
           "modelAsString": false,
@@ -16297,8 +16110,7 @@
         "enum": [
           true
         ],
-        "type": "boolean",
-        "additionalProperties": false
+        "type": "boolean"
       },
       "TeamspaceLibraryRequestRequestType": {
         "enum": [
@@ -16310,7 +16122,6 @@
           "unexcept"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060allow\u0060/\u0060unallow\u0060 edit the allowed list (select mode), \u0060block\u0060/\u0060unblock\u0060 the blocked list and \u0060except\u0060/\u0060unexcept\u0060 the exceptions list (quality mode).",
         "x-ms-enum": {
           "name": "TeamspaceLibraryRequestRequestType",
@@ -16350,7 +16161,6 @@
           "enterprise"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceUsageResponseOwnerPlan",
           "modelAsString": false,
@@ -16376,7 +16186,6 @@
           "payg"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceUsageResponseBillingModel",
           "modelAsString": false,
@@ -16405,7 +16214,6 @@
           "notion"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Source type.",
         "x-ms-enum": {
           "name": "TeamspaceLibrarySummaryType",
@@ -16458,7 +16266,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Parse state. \u0060processing\u0060: a parse runs. \u0060finalizing\u0060: the new data is ready and cleanup still runs. \u0060complete\u0060: done. \u0060error\u0060: the last parse failed, or a first parse ended without a library.",
         "x-ms-enum": {
           "name": "TeamspaceLibrarySummaryState",
@@ -16491,7 +16298,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Parse state. \u0060processing\u0060: a parse runs. \u0060finalizing\u0060: the new data is ready and cleanup still runs. \u0060complete\u0060: done. \u0060error\u0060: the last parse failed, or a first parse ended without a library.",
         "x-ms-enum": {
           "name": "TeamspaceLibraryVersionState",
@@ -16524,7 +16330,6 @@
           "crawled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TeamspaceLibraryTaskLockState",
           "modelAsString": false,
@@ -16556,7 +16361,6 @@
           "git"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060git\u0060 is any other Git host (self-hosted).",
         "x-ms-enum": {
           "name": "TeamspaceLibraryRepoSourceSource",
@@ -16586,7 +16390,6 @@
           "website"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WebsiteSource",
           "modelAsString": false,
@@ -16603,7 +16406,6 @@
           "llmstxt"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "LlmstxtSource",
           "modelAsString": false,
@@ -16620,7 +16422,6 @@
           "openapi"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OpenApiSource",
           "modelAsString": false,
@@ -16637,7 +16438,6 @@
           "confluence"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ConfluenceSource",
           "modelAsString": false,
@@ -16654,7 +16454,6 @@
           "notion"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NotionSource",
           "modelAsString": false,
@@ -16672,7 +16471,6 @@
           "context7json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Where the parser reads settings from: these settings, or the repository\u0027s \u0060context7.json\u0060 (claimed repositories).",
         "x-ms-enum": {
           "name": "TeamspaceLibraryConfigUpdateConfigSource",
@@ -16695,7 +16493,6 @@
           "context7json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "nullable": true,
         "x-ms-enum": {
           "name": "TeamspaceLibraryConfigConfigSource",
@@ -16718,7 +16515,6 @@
           "hostedFile"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060repository\u0060: commit the file to the root of the repository\u0027s default branch. \u0060hostedFile\u0060: host it anywhere under \u0060hostUnder\u0060 (websites, llms.txt, OpenAPI).",
         "x-ms-enum": {
           "name": "TeamspaceLibraryClaimMethod",
@@ -16740,7 +16536,6 @@
           "context7.json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Context7JsonFileName",
           "modelAsString": false,
@@ -16758,7 +16553,6 @@
           "context7json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Repositories: where the parser reads settings from after the claim. Default \u0060dashboard\u0060.",
         "x-ms-enum": {
           "name": "TeamspaceLibraryClaimVerifyRequestConfigSource",
@@ -16781,7 +16575,6 @@
           "tls_certificate"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DnsRecordPurpose",
           "modelAsString": false,
@@ -16803,7 +16596,6 @@
           "TXT"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DnsRecordType",
           "modelAsString": false,
@@ -16826,7 +16618,6 @@
           "commit"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "What the agent does with its fixes. The findings comment is always posted, and every check always runs.",
         "x-ms-enum": {
           "name": "Docs7PullRequestReviewResponse",
@@ -16853,7 +16644,6 @@
           "on"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060off\u0060: added for the agents only, nothing is published.",
         "x-ms-enum": {
           "name": "Docs7SiteHosting",
@@ -16876,7 +16666,6 @@
           "proxy"
         ],
         "type": "string",
-        "additionalProperties": false,
         "nullable": true,
         "x-ms-enum": {
           "name": "Docs7SiteCustomDomainRouting",
@@ -16905,7 +16694,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7SiteCustomDomainStatus",
           "modelAsString": false,
@@ -16952,7 +16740,6 @@
           "weekly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "How often the Context7 Agent runs on its own.",
         "x-ms-enum": {
           "name": "Docs7SiteImproveSchedule",
@@ -16981,7 +16768,6 @@
           "weekly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "When the Build Fix Agent fixes the issues of the latest production build (hosted sites).",
         "x-ms-enum": {
           "name": "Docs7SiteBuildFixSchedule",
@@ -17011,7 +16797,6 @@
           "local"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "LocalSource",
           "modelAsString": false,
@@ -17028,7 +16813,6 @@
           "on"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OnHosting",
           "modelAsString": false,
@@ -17045,7 +16829,6 @@
           "none"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NoneCustomDomainStatus",
           "modelAsString": false,
@@ -17063,7 +16846,6 @@
           "proxy"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Required with \u0060customDomain\u0060. Owner or admin.",
         "x-ms-enum": {
           "name": "Docs7CreateSiteRequestCustomDomainRouting",
@@ -17086,7 +16868,6 @@
           "proxy"
         ],
         "type": "string",
-        "additionalProperties": false,
         "nullable": true,
         "x-ms-enum": {
           "name": "Docs7UpdateSiteRequestCustomDomainRouting",
@@ -17110,7 +16891,6 @@
           "weekly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7UpdateSiteRequestImproveSchedule",
           "modelAsString": false,
@@ -17138,7 +16918,6 @@
           "weekly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "When the Build Fix Agent fixes the issues of the latest production build (hosted sites).",
         "x-ms-enum": {
           "name": "Docs7UpdateSiteRequestBuildFixSchedule",
@@ -17169,7 +16948,6 @@
           "preview"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentTargetEnum",
           "modelAsString": false,
@@ -17193,7 +16971,6 @@
           "pull_request"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentTrigger",
           "modelAsString": false,
@@ -17226,7 +17003,6 @@
           "canceled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentState",
           "modelAsString": false,
@@ -17260,7 +17036,6 @@
           "cli"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentSourceKind",
           "modelAsString": false,
@@ -17282,7 +17057,6 @@
           "preview"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7LocalDeploymentTarget",
           "modelAsString": false,
@@ -17303,7 +17077,6 @@
           "local"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060local\u0060 for a preview; null for production.",
         "nullable": true,
         "x-ms-enum": {
@@ -17322,7 +17095,6 @@
           "cli"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CliTrigger",
           "modelAsString": false,
@@ -17344,7 +17116,6 @@
           "canceled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060awaiting_upload\u0060: the CLI has not uploaded the files yet.",
         "x-ms-enum": {
           "name": "Docs7LocalDeploymentState",
@@ -17383,7 +17154,6 @@
           "proxy"
         ],
         "type": "string",
-        "additionalProperties": false,
         "nullable": true,
         "x-ms-enum": {
           "name": "Docs7DeploymentTargetCustomDomainRouting",
@@ -17410,7 +17180,6 @@
           "deployment_failure"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7HealthIssueKind",
           "modelAsString": false,
@@ -17448,7 +17217,6 @@
           "warning"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7HealthIssueSeverity",
           "modelAsString": false,
@@ -17472,7 +17240,6 @@
           "superseded"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentRunState",
           "modelAsString": false,
@@ -17503,7 +17270,6 @@
           "pull_request"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentRunTrigger",
           "modelAsString": false,
@@ -17529,7 +17295,6 @@
           "pro"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentUsagePlan",
           "modelAsString": false,
@@ -17551,7 +17316,6 @@
           "shipped"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7FeatureRequestStatus",
           "modelAsString": false,
@@ -17572,15 +17336,13 @@
           7,
           90
         ],
-        "type": "integer",
-        "additionalProperties": false
+        "type": "integer"
       },
       "ProductionKind": {
         "enum": [
           "production"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ProductionKind",
           "modelAsString": false,
@@ -17597,7 +17359,6 @@
           "preview"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PreviewKind",
           "modelAsString": false,
@@ -17614,7 +17375,6 @@
           "pending"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PendingKind",
           "modelAsString": false,
@@ -17631,7 +17391,6 @@
           "verified"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "VerifiedKind",
           "modelAsString": false,
@@ -17648,7 +17407,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "FailedKind",
           "modelAsString": false,
@@ -17665,7 +17423,6 @@
           "submitted"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SubmittedKind",
           "modelAsString": false,
@@ -17682,7 +17439,6 @@
           "ready"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ReadyKind",
           "modelAsString": false,
@@ -17700,7 +17456,6 @@
           "unverified"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "verified when the served tag matches the requested version (\u006015\u0060 served by v15.1.11); unverified when another release or current documentation was served.",
         "x-ms-enum": {
           "name": "ContextResponseVersionStatus",
@@ -17724,7 +17479,6 @@
           null
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection",
         "nullable": true,
         "x-ms-enum": {
@@ -17752,7 +17506,6 @@
           "llmstxt"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PatchPoliciesRequestSourceTypesEnableItem",
           "modelAsString": false,
@@ -17794,7 +17547,6 @@
           "llmstxt"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PatchPoliciesRequestSourceTypesDisableItem",
           "modelAsString": false,
@@ -17833,7 +17585,6 @@
           null
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Filter mode (null to clear)",
         "nullable": true,
         "x-ms-enum": {
@@ -17856,7 +17607,6 @@
           "pending_invitation"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PendingInvitationType",
           "modelAsString": false,
@@ -17877,7 +17627,6 @@
           "platform"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentFailureKind",
           "modelAsString": false,
@@ -17913,7 +17662,6 @@
           "target_changed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7DeploymentCancellationReason",
           "modelAsString": false,
@@ -17946,7 +17694,6 @@
           "platform"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7LocalDeploymentFailureKind",
           "modelAsString": false,
@@ -17982,7 +17729,6 @@
           "target_changed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7LocalDeploymentCancellationReason",
           "modelAsString": false,
@@ -18011,7 +17757,6 @@
           "intercom_trusted_domain"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "IntercomTrustedDomainKind",
           "modelAsString": false,
@@ -18033,7 +17778,6 @@
           "code_change"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentRunInputKind",
           "modelAsString": false,
@@ -18073,7 +17817,6 @@
           "unknown"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentRunPullRequestState",
           "modelAsString": false,
@@ -18103,7 +17846,6 @@
           "Ask endpoint"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7QueryAnalyticsAgentQuestionsItemSource",
           "modelAsString": false,
@@ -18127,7 +17869,6 @@
           "page-views"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7ExploreRequestQueryDataset",
           "modelAsString": false,
@@ -18157,7 +17898,6 @@
           "oldest"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7ExploreRequestQueryOrder",
           "modelAsString": false,
@@ -18180,7 +17920,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7ConversationTurnsItemStatus",
           "modelAsString": false,
@@ -18206,7 +17945,6 @@
           "unverified"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Worst outcome across the returned libraries.",
         "x-ms-enum": {
           "name": "SearchContextResponseAllOf2VersionStatus",
@@ -18231,7 +17969,6 @@
           "standards"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7AgentRunReviewFindingsItemCheck",
           "modelAsString": false,
@@ -18268,7 +18005,6 @@
           "lte"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Text fields: eq, neq, contains, notContains, startsWith. Number fields: eq, neq, gt, gte, lt, lte. Boolean fields: eq.",
         "x-ms-enum": {
           "name": "Docs7ExploreRequestQueryFiltersItemOperator",
@@ -18319,7 +18055,6 @@
           "unverified"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SearchContextResponseAllOf2VersionLibrariesItemStatus",
           "modelAsString": false,
@@ -18346,7 +18081,6 @@
           "unchanged"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Docs7BuildOriginPullRequestChangesFilesItemStatus",
           "modelAsString": false,
@@ -18387,7 +18121,6 @@
           "true"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Set to \u0027true\u0027 to force reprocessing",
         "x-ms-enum": {
           "name": "TrueValueForce",
@@ -18406,7 +18139,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "InviteTeamspaceMemberRequestRole",
           "modelAsString": false,
@@ -18428,7 +18160,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateTeamspaceMemberRoleRequestRole",
           "modelAsString": false,
@@ -18450,7 +18181,6 @@
           "developer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateTeamspaceInvitationRoleRequestRole",
           "modelAsString": false,
@@ -18479,7 +18209,6 @@
           "notion"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Display hint for the library.",
         "x-ms-enum": {
           "name": "CreateTeamspaceRuleRequestLibraryType",
@@ -18534,7 +18263,6 @@
           "unexcept"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060allow\u0060/\u0060unallow\u0060 edit the allowed list (select mode), \u0060block\u0060/\u0060unblock\u0060 the blocked list and \u0060except\u0060/\u0060unexcept\u0060 the exceptions list (quality mode).",
         "x-ms-enum": {
           "name": "CreateLibraryRequestRequestRequestType",
@@ -18573,7 +18301,6 @@
           "shipped"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateDocsFeatureRequestRequestStatus",
           "modelAsString": false,
@@ -18593,22 +18320,19 @@
         "enum": [
           true
         ],
-        "type": "boolean",
-        "additionalProperties": false
+        "type": "boolean"
       },
       "DeleteDocsSite200ResponseDataDeleted": {
         "enum": [
           true
         ],
-        "type": "boolean",
-        "additionalProperties": false
+        "type": "boolean"
       },
       "DeleteDocsPreview200ResponseDataDeleted": {
         "enum": [
           true
         ],
-        "type": "boolean",
-        "additionalProperties": false
+        "type": "boolean"
       },
       "TypeParam": {
         "enum": [
@@ -18616,7 +18340,6 @@
           "txt"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TypeParam",
           "modelAsString": false,
@@ -18638,7 +18361,6 @@
           "false"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "FastParam",
           "modelAsString": false,
@@ -18659,7 +18381,6 @@
           "broad"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BroadContext",
           "modelAsString": false,
@@ -18679,7 +18400,6 @@
           "clients"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "V2TeamspacesTeamspaceIdLibrariesOwnerRepoAnalyticsReport",
           "modelAsString": false,
@@ -18710,7 +18430,6 @@
           "watch"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ListDocsAgentRunsHistoryParameter",
           "modelAsString": false,
@@ -18735,7 +18454,6 @@
           "1"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Value1Previews",
           "modelAsString": false,
@@ -18752,7 +18470,6 @@
           "1"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Value1Summary",
           "modelAsString": false,
@@ -18771,7 +18488,6 @@
           "30"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "GetAskSiteAnalyticsDaysParameter",
           "modelAsString": false,
@@ -18798,7 +18514,6 @@
           "30"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ListAskSiteQuestionsDaysParameter",
           "modelAsString": false,
@@ -18824,7 +18539,6 @@
           "no_match"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ListAskSiteQuestionsAnswerParameter",
           "modelAsString": false,
