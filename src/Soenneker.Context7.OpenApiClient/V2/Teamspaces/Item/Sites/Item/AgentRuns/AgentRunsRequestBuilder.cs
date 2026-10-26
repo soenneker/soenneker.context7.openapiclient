@@ -101,7 +101,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRu
             /// <summary>Which agent.</summary>
             [QueryParameter("history")]
             public global::Soenneker.Context7.OpenApiClient.Models.ListDocsAgentRunsHistoryParameter? History { get; set; }
-            /// <summary>Return only the newest n runs.</summary>
+            /// <summary>How many of the newest runs to return. The history keeps the newest 500 runs of each agent.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
         }

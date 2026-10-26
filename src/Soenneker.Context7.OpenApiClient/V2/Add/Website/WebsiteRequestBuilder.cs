@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Add.Website
         {
         }
         /// <summary>
-        /// Submit a website URL for documentation processing.
+        /// Submit a website URL for documentation processing. A URL that is a version of a website library already on Context7 (for example `https://docs.gitlab.com/18.4/` when `/websites/gitlab` exists) is added to that library as a version, and the response includes `version`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -69,7 +69,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Add.Website
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submit a website URL for documentation processing.
+        /// Submit a website URL for documentation processing. A URL that is a version of a website library already on Context7 (for example `https://docs.gitlab.com/18.4/` when `/websites/gitlab` exists) is added to that library as a version, and the response includes `version`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

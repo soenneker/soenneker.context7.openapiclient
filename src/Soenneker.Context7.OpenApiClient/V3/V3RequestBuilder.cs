@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Context7.OpenApiClient.V3.Fetch;
 using Soenneker.Context7.OpenApiClient.V3.Search;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.Context7.OpenApiClient.V3
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class V3RequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The fetch property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V3.Fetch.FetchRequestBuilder Fetch
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V3.Fetch.FetchRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The search property</summary>
         public global::Soenneker.Context7.OpenApiClient.V3.Search.SearchRequestBuilder Search
         {

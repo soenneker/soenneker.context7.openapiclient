@@ -31,6 +31,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
+        /// <summary>Only for websites: the version the URL was added as, when it is a version of an existing library. Request it as `&lt;libraryName&gt;/&lt;version&gt;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Version { get; set; }
+#nullable restore
+#else
+        public string Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse"/> and sets the default values.
         /// </summary>
@@ -58,6 +66,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "libraryName", n => { LibraryName = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
+                { "version", n => { Version = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -69,6 +78,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("libraryName", LibraryName);
             writer.WriteStringValue("message", Message);
+            writer.WriteStringValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
