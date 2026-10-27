@@ -88,6 +88,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #endif
         /// <summary>The siteId property</summary>
         public Guid? SiteId { get; set; }
+        /// <summary>Example Check Agent batches: the pages the batch checked and each code example&apos;s result. Null for other agents and while the batch runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunSnippets? Snippets { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunSnippets Snippets { get; set; }
+#endif
         /// <summary>The state property</summary>
         public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunState? State { get; set; }
         /// <summary>The agent&apos;s final message.</summary>
@@ -146,6 +154,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "pullRequest", n => { PullRequest = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest.CreateFromDiscriminatorValue); } },
                 { "review", n => { Review = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview.CreateFromDiscriminatorValue); } },
                 { "siteId", n => { SiteId = n.GetGuidValue(); } },
+                { "snippets", n => { Snippets = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunSnippets>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunSnippets.CreateFromDiscriminatorValue); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunState>(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "trigger", n => { Trigger = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunTrigger>(); } },
@@ -172,6 +181,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest>("pullRequest", PullRequest);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview>("review", Review);
             writer.WriteGuidValue("siteId", SiteId);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunSnippets>("snippets", Snippets);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunState>("state", State);
             writer.WriteStringValue("summary", Summary);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunTrigger>("trigger", Trigger);

@@ -75,6 +75,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public List<string> Folders { get; set; }
 #endif
+        /// <summary>Null for public repositories.</summary>
+        public bool? GenerateDocs { get; set; }
         /// <summary>The projectTitle property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -137,6 +139,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "excludeFolders", n => { ExcludeFolders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "excludeUrls", n => { ExcludeUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "folders", n => { Folders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "generateDocs", n => { GenerateDocs = n.GetBoolValue(); } },
                 { "projectTitle", n => { ProjectTitle = n.GetStringValue(); } },
                 { "rules", n => { Rules = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "skipClaudeVersionExclusion", n => { SkipClaudeVersionExclusion = n.GetBoolValue(); } },
@@ -160,6 +163,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("excludeFolders", ExcludeFolders);
             writer.WriteCollectionOfPrimitiveValues<string>("excludeUrls", ExcludeUrls);
             writer.WriteCollectionOfPrimitiveValues<string>("folders", Folders);
+            writer.WriteBoolValue("generateDocs", GenerateDocs);
             writer.WriteStringValue("projectTitle", ProjectTitle);
             writer.WriteCollectionOfPrimitiveValues<string>("rules", Rules);
             writer.WriteBoolValue("skipClaudeVersionExclusion", SkipClaudeVersionExclusion);

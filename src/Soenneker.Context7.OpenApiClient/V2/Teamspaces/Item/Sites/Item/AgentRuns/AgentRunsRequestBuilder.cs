@@ -98,7 +98,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRu
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AgentRunsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Which agent.</summary>
+            /// <summary>Which agent. `snippets` returns the Example Check Agent&apos;s batch runs; one check is many batches.</summary>
             [QueryParameter("history")]
             public global::Soenneker.Context7.OpenApiClient.Models.ListDocsAgentRunsHistoryParameter? History { get; set; }
             /// <summary>How many of the newest runs to return. The history keeps the newest 500 runs of each agent.</summary>

@@ -20,5 +20,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
         #pragma warning disable CS1591
         Watch,
         #pragma warning restore CS1591
+        [EnumMember(Value = "snippets")]
+        #pragma warning disable CS1591
+        Snippets,
+        #pragma warning restore CS1591
     }
 }

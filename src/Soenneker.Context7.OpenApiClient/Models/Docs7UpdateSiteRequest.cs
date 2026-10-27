@@ -89,6 +89,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string Slug { get; set; }
 #endif
+        /// <summary>Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro).</summary>
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequestSnippetSchedule? SnippetSchedule { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequest"/> and sets the default values.
         /// </summary>
@@ -127,6 +129,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "improveSchedule", n => { ImproveSchedule = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequestImproveSchedule>(); } },
                 { "pullRequestReview", n => { PullRequestReview = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview>(global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
+                { "snippetSchedule", n => { SnippetSchedule = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequestSnippetSchedule>(); } },
             };
         }
         /// <summary>
@@ -149,6 +152,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequestImproveSchedule>("improveSchedule", ImproveSchedule);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview>("pullRequestReview", PullRequestReview);
             writer.WriteStringValue("slug", Slug);
+            writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7UpdateSiteRequestSnippetSchedule>("snippetSchedule", SnippetSchedule);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

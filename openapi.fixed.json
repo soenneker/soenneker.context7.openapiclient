@@ -4455,7 +4455,7 @@
           "Docs7 Sites"
         ],
         "summary": "Add a Docs7 site",
-        "description": "Connect a GitHub repository. Docs7 checks that both the Docs7 GitHub App and the caller\u0027s own GitHub account can read the repository. The caller must have connected GitHub in the Context7 dashboard once (the dashboard stores the GitHub authorization); without it the answer is 400 \u0060github_access_missing\u0060. A repository with \u0060docs.json\u0060 or \u0060mint.json\u0060 is published (\u0060hosting: \u0022on\u0022\u0060) and its first build starts; without one the site is added for the agents only (\u0060hosting: \u0022off\u0022\u0060). Developers can set only \u0060repoUrl\u0060, \u0060branch\u0060, \u0060docsPath\u0060 and \u0060context7Index\u0060. Docs7 Free includes 3 sites and public repositories only.",
+        "description": "Connect a GitHub repository. Docs7 checks that both the Docs7 GitHub App and the caller\u0027s own GitHub account can read the repository. The caller must have connected GitHub in the Context7 dashboard once (the dashboard stores the GitHub authorization); without it the answer is 400 \u0060github_access_missing\u0060. \u0060hosting\u0060 chooses whether Docs7 publishes the docs (\u0060\u0022on\u0022\u0060, first build starts) or the site is added for the agents only (\u0060\u0022off\u0022\u0060); without it, a \u0060docsPath\u0060 with \u0060docs.json\u0060 or \u0060mint.json\u0060 is published and any other is added for the agents only. Developers can set only \u0060repoUrl\u0060, \u0060branch\u0060, \u0060docsPath\u0060, \u0060context7Index\u0060 and \u0060hosting\u0060. Docs7 Free includes 3 sites and public repositories only.",
         "operationId": "CreateDocsSite",
         "parameters": [
           {
@@ -6230,7 +6230,7 @@
           {
             "name": "history",
             "in": "query",
-            "description": "Which agent.",
+            "description": "Which agent. \u0060snippets\u0060 returns the Example Check Agent\u0027s batch runs; one check is many batches.",
             "schema": {
               "$ref": "#/components/schemas/ListDocsAgentRunsHistoryParameter"
             }
@@ -10768,6 +10768,10 @@
             "type": "boolean",
             "description": "Keep pages that look version-specific."
           },
+          "generateDocs": {
+            "type": "boolean",
+            "description": "Generate docs from the source code on each refresh with new commits (private repositories). Each run is billed as parsing."
+          },
           "configSource": {
             "$ref": "#/components/schemas/TeamspaceLibraryConfigUpdateConfigSource"
           }
@@ -10842,6 +10846,11 @@
           },
           "skipClaudeVersionExclusion": {
             "type": "boolean",
+            "nullable": true
+          },
+          "generateDocs": {
+            "type": "boolean",
+            "description": "Null for public repositories.",
             "nullable": true
           },
           "configSource": {
@@ -11187,6 +11196,9 @@
           },
           "buildFixSchedule": {
             "$ref": "#/components/schemas/Docs7SiteBuildFixSchedule"
+          },
+          "snippetSchedule": {
+            "$ref": "#/components/schemas/Docs7SiteSnippetSchedule"
           }
         },
         "description": "A Docs7 site built from a GitHub repository."
@@ -11326,6 +11338,9 @@
             "type": "boolean",
             "description": "Also index the repository in Context7."
           },
+          "hosting": {
+            "$ref": "#/components/schemas/Docs7CreateSiteRequestHosting"
+          },
           "slug": {
             "maxLength": 40,
             "minLength": 3,
@@ -11397,6 +11412,9 @@
           },
           "buildFixSchedule": {
             "$ref": "#/components/schemas/Docs7UpdateSiteRequestBuildFixSchedule"
+          },
+          "snippetSchedule": {
+            "$ref": "#/components/schemas/Docs7UpdateSiteRequestSnippetSchedule"
           }
         },
         "description": "Only the fields to change."
@@ -11840,6 +11858,9 @@
           },
           "review": {
             "$ref": "#/components/schemas/Docs7AgentRunReview"
+          },
+          "snippets": {
+            "$ref": "#/components/schemas/Docs7AgentRunSnippets"
           },
           "cost": {
             "$ref": "#/components/schemas/Docs7AgentRunCost"
@@ -13662,6 +13683,30 @@
         "description": "PR Review Agent result.",
         "nullable": true
       },
+      "Docs7AgentRunSnippets": {
+        "type": "object",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "last": {
+            "type": "boolean",
+            "description": "No page is left after these: the batch ended its check."
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Docs7AgentRunSnippetsBlocksItem"
+            },
+            "nullable": true
+          }
+        },
+        "description": "Example Check Agent batches: the pages the batch checked and each code example\u0027s result. Null for other agents and while the batch runs.",
+        "nullable": true
+      },
       "Docs7AgentRunCost": {
         "type": "object",
         "properties": {
@@ -14531,6 +14576,40 @@
           },
           "fixed": {
             "type": "boolean"
+          }
+        }
+      },
+      "Docs7AgentRunSnippetsBlocksItem": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer"
+          },
+          "language": {
+            "$ref": "#/components/schemas/Docs7AgentRunSnippetsBlocksItemLanguage"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Docs7AgentRunSnippetsBlocksItemStatus"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "fixed": {
+            "type": "boolean"
+          },
+          "removed": {
+            "type": "boolean",
+            "description": "Taken off the page until the released SDK or the service supports what the page documents."
+          },
+          "needs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For an example skipped because a service has no variable: the environment variables it reads."
           }
         }
       },
@@ -17205,6 +17284,28 @@
           ]
         }
       },
+      "Docs7SiteSnippetSchedule": {
+        "enum": [
+          "off",
+          "monthly"
+        ],
+        "type": "string",
+        "description": "Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro).",
+        "x-ms-enum": {
+          "name": "Docs7SiteSnippetSchedule",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "off",
+              "name": "Off"
+            },
+            {
+              "value": "monthly",
+              "name": "Monthly"
+            }
+          ]
+        }
+      },
       "LocalSource": {
         "enum": [
           "local"
@@ -17249,6 +17350,28 @@
             {
               "value": "none",
               "name": "None"
+            }
+          ]
+        }
+      },
+      "Docs7CreateSiteRequestHosting": {
+        "enum": [
+          "on",
+          "off"
+        ],
+        "type": "string",
+        "description": "\u0060on\u0060 publishes the docs and needs \u0060docs.json\u0060 or \u0060mint.json\u0060 in \u0060docsPath\u0060; without one the answer is 400 \u0060docs_config_missing\u0060, and its message names the folders that have one. \u0060off\u0060 adds the repository for the agents only. Default: \u0060on\u0060 when \u0060docsPath\u0060 has a config, else \u0060off\u0060.",
+        "x-ms-enum": {
+          "name": "Docs7CreateSiteRequestHosting",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "on",
+              "name": "On"
+            },
+            {
+              "value": "off",
+              "name": "Off"
             }
           ]
         }
@@ -17351,6 +17474,28 @@
             {
               "value": "weekly",
               "name": "Weekly"
+            }
+          ]
+        }
+      },
+      "Docs7UpdateSiteRequestSnippetSchedule": {
+        "enum": [
+          "off",
+          "monthly"
+        ],
+        "type": "string",
+        "description": "Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro).",
+        "x-ms-enum": {
+          "name": "Docs7UpdateSiteRequestSnippetSchedule",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "off",
+              "name": "Off"
+            },
+            {
+              "value": "monthly",
+              "name": "Monthly"
             }
           ]
         }
@@ -18187,8 +18332,10 @@
           "health",
           "feature_requests",
           "page_feedback",
+          "migrate",
           "review",
-          "code_change"
+          "code_change",
+          "snippets"
         ],
         "type": "string",
         "x-ms-enum": {
@@ -18212,12 +18359,20 @@
               "name": "PageFeedback"
             },
             {
+              "value": "migrate",
+              "name": "Migrate"
+            },
+            {
               "value": "review",
               "name": "Review"
             },
             {
               "value": "code_change",
               "name": "CodeChange"
+            },
+            {
+              "value": "snippets",
+              "name": "Snippets"
             }
           ]
         }
@@ -18401,6 +18556,58 @@
             {
               "value": "standards",
               "name": "Standards"
+            }
+          ]
+        }
+      },
+      "Docs7AgentRunSnippetsBlocksItemLanguage": {
+        "enum": [
+          "typescript",
+          "javascript",
+          "python"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Docs7AgentRunSnippetsBlocksItemLanguage",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "typescript",
+              "name": "Typescript"
+            },
+            {
+              "value": "javascript",
+              "name": "Javascript"
+            },
+            {
+              "value": "python",
+              "name": "Python"
+            }
+          ]
+        }
+      },
+      "Docs7AgentRunSnippetsBlocksItemStatus": {
+        "enum": [
+          "pass",
+          "fail",
+          "skipped"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Docs7AgentRunSnippetsBlocksItemStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pass",
+              "name": "Pass"
+            },
+            {
+              "value": "fail",
+              "name": "Fail"
+            },
+            {
+              "value": "skipped",
+              "name": "Skipped"
             }
           ]
         }
@@ -18840,7 +19047,8 @@
         "enum": [
           "improve",
           "review",
-          "watch"
+          "watch",
+          "snippets"
         ],
         "type": "string",
         "x-ms-enum": {
@@ -18858,6 +19066,10 @@
             {
               "value": "watch",
               "name": "Watch"
+            },
+            {
+              "value": "snippets",
+              "name": "Snippets"
             }
           ]
         }

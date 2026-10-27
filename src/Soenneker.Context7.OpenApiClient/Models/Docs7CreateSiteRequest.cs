@@ -48,6 +48,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string DocsPath { get; set; }
 #endif
+        /// <summary>`on` publishes the docs and needs `docs.json` or `mint.json` in `docsPath`; without one the answer is 400 `docs_config_missing`, and its message names the folders that have one. `off` adds the repository for the agents only. Default: `on` when `docsPath` has a config, else `off`.</summary>
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestHosting? Hosting { get; set; }
         /// <summary>The repoUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,6 +90,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "customDomainPath", n => { CustomDomainPath = n.GetStringValue(); } },
                 { "customDomainRouting", n => { CustomDomainRouting = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestCustomDomainRouting>(); } },
                 { "docsPath", n => { DocsPath = n.GetStringValue(); } },
+                { "hosting", n => { Hosting = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestHosting>(); } },
                 { "repoUrl", n => { RepoUrl = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
             };
@@ -105,6 +108,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteStringValue("customDomainPath", CustomDomainPath);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestCustomDomainRouting>("customDomainRouting", CustomDomainRouting);
             writer.WriteStringValue("docsPath", DocsPath);
+            writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestHosting>("hosting", Hosting);
             writer.WriteStringValue("repoUrl", RepoUrl);
             writer.WriteStringValue("slug", Slug);
         }

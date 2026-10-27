@@ -5025,7 +5025,7 @@
           "Docs7 Sites"
         ],
         "summary": "Add a Docs7 site",
-        "description": "Connect a GitHub repository. Docs7 checks that both the Docs7 GitHub App and the caller's own GitHub account can read the repository. The caller must have connected GitHub in the Context7 dashboard once (the dashboard stores the GitHub authorization); without it the answer is 400 `github_access_missing`. A repository with `docs.json` or `mint.json` is published (`hosting: \"on\"`) and its first build starts; without one the site is added for the agents only (`hosting: \"off\"`). Developers can set only `repoUrl`, `branch`, `docsPath` and `context7Index`. Docs7 Free includes 3 sites and public repositories only.",
+        "description": "Connect a GitHub repository. Docs7 checks that both the Docs7 GitHub App and the caller's own GitHub account can read the repository. The caller must have connected GitHub in the Context7 dashboard once (the dashboard stores the GitHub authorization); without it the answer is 400 `github_access_missing`. `hosting` chooses whether Docs7 publishes the docs (`\"on\"`, first build starts) or the site is added for the agents only (`\"off\"`); without it, a `docsPath` with `docs.json` or `mint.json` is published and any other is added for the agents only. Developers can set only `repoUrl`, `branch`, `docsPath`, `context7Index` and `hosting`. Docs7 Free includes 3 sites and public repositories only.",
         "operationId": "createDocsSite",
         "parameters": [
           {
@@ -6961,13 +6961,14 @@
             "name": "history",
             "in": "query",
             "required": false,
-            "description": "Which agent.",
+            "description": "Which agent. `snippets` returns the Example Check Agent's batch runs; one check is many batches.",
             "schema": {
               "type": "string",
               "enum": [
                 "improve",
                 "review",
-                "watch"
+                "watch",
+                "snippets"
               ],
               "default": "improve"
             }
@@ -12535,6 +12536,10 @@
             "type": "boolean",
             "description": "Keep pages that look version-specific."
           },
+          "generateDocs": {
+            "type": "boolean",
+            "description": "Generate docs from the source code on each refresh with new commits (private repositories). Each run is billed as parsing."
+          },
           "configSource": {
             "type": "string",
             "enum": [
@@ -12615,6 +12620,11 @@
           "skipClaudeVersionExclusion": {
             "type": "boolean",
             "nullable": true
+          },
+          "generateDocs": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Null for public repositories."
           },
           "configSource": {
             "type": "string",
@@ -13075,6 +13085,14 @@
               "weekly"
             ],
             "description": "When the Build Fix Agent fixes the issues of the latest production build (hosted sites)."
+          },
+          "snippetSchedule": {
+            "type": "string",
+            "enum": [
+              "off",
+              "monthly"
+            ],
+            "description": "Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro)."
           }
         },
         "description": "A Docs7 site built from a GitHub repository."
@@ -13237,6 +13255,14 @@
             "type": "boolean",
             "description": "Also index the repository in Context7."
           },
+          "hosting": {
+            "type": "string",
+            "enum": [
+              "on",
+              "off"
+            ],
+            "description": "`on` publishes the docs and needs `docs.json` or `mint.json` in `docsPath`; without one the answer is 400 `docs_config_missing`, and its message names the folders that have one. `off` adds the repository for the agents only. Default: `on` when `docsPath` has a config, else `off`."
+          },
           "slug": {
             "type": "string",
             "minLength": 3,
@@ -13352,6 +13378,14 @@
               "weekly"
             ],
             "description": "When the Build Fix Agent fixes the issues of the latest production build (hosted sites)."
+          },
+          "snippetSchedule": {
+            "type": "string",
+            "enum": [
+              "off",
+              "monthly"
+            ],
+            "description": "Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro)."
           }
         },
         "description": "Only the fields to change."
@@ -14088,8 +14122,10 @@
                   "health",
                   "feature_requests",
                   "page_feedback",
+                  "migrate",
                   "review",
-                  "code_change"
+                  "code_change",
+                  "snippets"
                 ]
               }
             },
@@ -14164,6 +14200,71 @@
             },
             "description": "PR Review Agent result.",
             "nullable": true
+          },
+          "snippets": {
+            "type": "object",
+            "nullable": true,
+            "description": "Example Check Agent batches: the pages the batch checked and each code example's result. Null for other agents and while the batch runs.",
+            "properties": {
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "last": {
+                "type": "boolean",
+                "description": "No page is left after these: the batch ended its check."
+              },
+              "blocks": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "file": {
+                      "type": "string"
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "typescript",
+                        "javascript",
+                        "python"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "fail",
+                        "skipped"
+                      ]
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "fixed": {
+                      "type": "boolean"
+                    },
+                    "removed": {
+                      "type": "boolean",
+                      "description": "Taken off the page until the released SDK or the service supports what the page documents."
+                    },
+                    "needs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "For an example skipped because a service has no variable: the environment variables it reads."
+                    }
+                  }
+                }
+              }
+            }
           },
           "cost": {
             "type": "object",

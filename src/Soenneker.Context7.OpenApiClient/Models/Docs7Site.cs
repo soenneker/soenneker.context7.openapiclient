@@ -163,6 +163,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string RepoUrl { get; set; }
 #endif
+        /// <summary>Whether the Example Check Agent runs every code example of the docs once a month (Docs7 Pro).</summary>
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteSnippetSchedule? SnippetSchedule { get; set; }
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The workerName property</summary>
@@ -224,6 +226,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "pullRequestReview", n => { PullRequestReview = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview>(global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview.CreateFromDiscriminatorValue); } },
                 { "repoUrl", n => { RepoUrl = n.GetStringValue(); } },
                 { "repositoryId", n => { RepositoryId = n.GetStringValue(); } },
+                { "snippetSchedule", n => { SnippetSchedule = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteSnippetSchedule>(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workerName", n => { WorkerName = n.GetStringValue(); } },
             };
@@ -261,6 +264,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7PullRequestReview>("pullRequestReview", PullRequestReview);
             writer.WriteStringValue("repositoryId", RepositoryId);
             writer.WriteStringValue("repoUrl", RepoUrl);
+            writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteSnippetSchedule>("snippetSchedule", SnippetSchedule);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("workerName", WorkerName);
             writer.WriteAdditionalData(AdditionalData);

@@ -24,6 +24,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         #pragma warning disable CS1591
         PageFeedback,
         #pragma warning restore CS1591
+        [EnumMember(Value = "migrate")]
+        #pragma warning disable CS1591
+        Migrate,
+        #pragma warning restore CS1591
         [EnumMember(Value = "review")]
         #pragma warning disable CS1591
         Review,
@@ -31,6 +35,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         [EnumMember(Value = "code_change")]
         #pragma warning disable CS1591
         CodeChange,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "snippets")]
+        #pragma warning disable CS1591
+        Snippets,
         #pragma warning restore CS1591
     }
 }
