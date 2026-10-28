@@ -4,14 +4,21 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.Models;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentPullRequests;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRuns;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentUsage;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analytics;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AnalyticsScript;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Connect;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Deployments;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Domain;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.ExampleCheck;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.FeatureRequests;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Github;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.LocalDeployments;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Migration;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Previews;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.PullRequests;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -25,6 +32,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithSiteItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The agentPullRequests property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentPullRequests.AgentPullRequestsRequestBuilder AgentPullRequests
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentPullRequests.AgentPullRequestsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The agentRuns property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRuns.AgentRunsRequestBuilder AgentRuns
         {
@@ -40,6 +52,16 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analytics.AnalyticsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The analyticsScript property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AnalyticsScript.AnalyticsScriptRequestBuilder AnalyticsScript
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AnalyticsScript.AnalyticsScriptRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The connect property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Connect.ConnectRequestBuilder Connect
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Connect.ConnectRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The deployments property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Deployments.DeploymentsRequestBuilder Deployments
         {
@@ -50,20 +72,40 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Domain.DomainRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The exampleCheck property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.ExampleCheck.ExampleCheckRequestBuilder ExampleCheck
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.ExampleCheck.ExampleCheckRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The featureRequests property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.FeatureRequests.FeatureRequestsRequestBuilder FeatureRequests
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.FeatureRequests.FeatureRequestsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The github property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Github.GithubRequestBuilder Github
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Github.GithubRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The localDeployments property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.LocalDeployments.LocalDeploymentsRequestBuilder LocalDeployments
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.LocalDeployments.LocalDeploymentsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The migration property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Migration.MigrationRequestBuilder Migration
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Migration.MigrationRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The previews property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Previews.PreviewsRequestBuilder Previews
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Previews.PreviewsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pullRequests property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.PullRequests.PullRequestsRequestBuilder PullRequests
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.PullRequests.PullRequestsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.WithSiteItemRequestBuilder"/> and sets the default values.

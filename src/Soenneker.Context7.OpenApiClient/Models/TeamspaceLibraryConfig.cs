@@ -77,6 +77,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #endif
         /// <summary>Null for public repositories.</summary>
         public bool? GenerateDocs { get; set; }
+        /// <summary>The includeExtensions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? IncludeExtensions { get; set; }
+#nullable restore
+#else
+        public List<string> IncludeExtensions { get; set; }
+#endif
         /// <summary>The projectTitle property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,6 +148,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "excludeUrls", n => { ExcludeUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "folders", n => { Folders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "generateDocs", n => { GenerateDocs = n.GetBoolValue(); } },
+                { "includeExtensions", n => { IncludeExtensions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "projectTitle", n => { ProjectTitle = n.GetStringValue(); } },
                 { "rules", n => { Rules = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "skipClaudeVersionExclusion", n => { SkipClaudeVersionExclusion = n.GetBoolValue(); } },
@@ -164,6 +173,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("excludeUrls", ExcludeUrls);
             writer.WriteCollectionOfPrimitiveValues<string>("folders", Folders);
             writer.WriteBoolValue("generateDocs", GenerateDocs);
+            writer.WriteCollectionOfPrimitiveValues<string>("includeExtensions", IncludeExtensions);
             writer.WriteStringValue("projectTitle", ProjectTitle);
             writer.WriteCollectionOfPrimitiveValues<string>("rules", Rules);
             writer.WriteBoolValue("skipClaudeVersionExclusion", SkipClaudeVersionExclusion);

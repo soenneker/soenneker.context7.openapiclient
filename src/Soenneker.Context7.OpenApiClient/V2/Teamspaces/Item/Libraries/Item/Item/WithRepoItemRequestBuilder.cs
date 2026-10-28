@@ -6,10 +6,16 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.Models;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Analytics;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Benchmarks;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Block;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Claim;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Redirect;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Refresh;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Suggestions;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Transfer;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Verification;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Versions;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Visibility;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Widget;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -33,10 +39,20 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Benchmarks.BenchmarksRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The block property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Block.BlockRequestBuilder Block
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Block.BlockRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The claim property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Claim.ClaimRequestBuilder Claim
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Claim.ClaimRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The redirect property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Redirect.RedirectRequestBuilder Redirect
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Redirect.RedirectRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refresh property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Refresh.RefreshRequestBuilder Refresh
@@ -48,10 +64,30 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Suggestions.SuggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The transfer property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Transfer.TransferRequestBuilder Transfer
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Transfer.TransferRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The verification property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Verification.VerificationRequestBuilder Verification
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Verification.VerificationRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The versions property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Versions.VersionsRequestBuilder Versions
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The visibility property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Visibility.VisibilityRequestBuilder Visibility
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Visibility.VisibilityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The widget property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Widget.WidgetRequestBuilder Widget
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Widget.WidgetRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.WithRepoItemRequestBuilder"/> and sets the default values.

@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.Models;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Invitations;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.LibraryRequests;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Members;
@@ -36,6 +37,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Invitations.InvitationsRequestBuilder Invitations
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Invitations.InvitationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The inviteLink property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink.InviteLinkRequestBuilder InviteLink
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink.InviteLinkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The libraries property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.LibrariesRequestBuilder Libraries

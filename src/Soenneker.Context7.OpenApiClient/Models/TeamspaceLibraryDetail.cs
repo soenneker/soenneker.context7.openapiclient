@@ -24,6 +24,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
+        /// <summary>The owner settings (what the PATCH changes), for a library the teamspace owns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Config? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Config Config { get; set; }
+#endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,6 +133,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "benchmarkScore", n => { BenchmarkScore = n.GetDoubleValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Config>(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Config.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "issues", n => { Issues = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Issues>(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Issues.CreateFromDiscriminatorValue); } },
@@ -152,6 +161,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("benchmarkScore", BenchmarkScore);
             writer.WriteStringValue("branch", Branch);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Config>("config", Config);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Issues>("issues", Issues);
