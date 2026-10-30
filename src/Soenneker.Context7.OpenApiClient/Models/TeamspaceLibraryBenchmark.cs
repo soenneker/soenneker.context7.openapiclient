@@ -17,49 +17,54 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("benchmarkDate") is { } nullNodeBenchmarkDate && nullNodeBenchmarkDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkDate = null;
-            if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
-            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
-            if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
-            if (parseNode.GetChildNode("subscores") is { } nullNodeSubscores && nullNodeSubscores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subscores = null;
+            if (parseNode.GetChildNode("benchmarkDate") is null) { _explicitNullValueBenchmarkDate = default!; _explicitNullProperties?.Remove("benchmarkDate"); }
+            else if (parseNode.GetChildNode("benchmarkDate") is { } nullNodeBenchmarkDate && nullNodeBenchmarkDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkDate = null;
+            if (parseNode.GetChildNode("explanation") is null) { _explicitNullValueExplanation = default!; _explicitNullProperties?.Remove("explanation"); }
+            else if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("score") is null) { _explicitNullValueScore = default!; _explicitNullProperties?.Remove("score"); }
+            else if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
+            if (parseNode.GetChildNode("subscores") is null) { _explicitNullValueSubscores = default!; _explicitNullProperties?.Remove("subscores"); }
+            else if (parseNode.GetChildNode("subscores") is { } nullNodeSubscores && nullNodeSubscores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subscores = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The benchmarkDate property</summary>
-        public DateTimeOffset? BenchmarkDate { get => _explicitNullValueBenchmarkDate; set { _explicitNullValueBenchmarkDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkDate"); else _explicitNullProperties?.Remove("benchmarkDate"); } }
+        public DateTimeOffset? BenchmarkDate { get => _explicitNullValueBenchmarkDate; set { _explicitNullValueBenchmarkDate = value; AdditionalData?.Remove("benchmarkDate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkDate"); else _explicitNullProperties?.Remove("benchmarkDate"); } }
         private DateTimeOffset? _explicitNullValueBenchmarkDate = default!;
         /// <summary>Why the grader gave this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string? _explicitNullValueExplanation = default!;
 #nullable restore
 #else
-        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string _explicitNullValueExplanation = default!;
 #endif
         /// <summary>The question that was asked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>0 to 100.</summary>
-        public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; AdditionalData?.Remove("score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
         private double? _explicitNullValueScore = default!;
         /// <summary>The subscores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores? Subscores { get => _explicitNullValueSubscores; set { _explicitNullValueSubscores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscores"); else _explicitNullProperties?.Remove("subscores"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores? Subscores { get => _explicitNullValueSubscores; set { _explicitNullValueSubscores = value; AdditionalData?.Remove("subscores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscores"); else _explicitNullProperties?.Remove("subscores"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores? _explicitNullValueSubscores = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores Subscores { get => _explicitNullValueSubscores; set { _explicitNullValueSubscores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscores"); else _explicitNullProperties?.Remove("subscores"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores Subscores { get => _explicitNullValueSubscores; set { _explicitNullValueSubscores = value; AdditionalData?.Remove("subscores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscores"); else _explicitNullProperties?.Remove("subscores"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores _explicitNullValueSubscores = default!;
 #endif
         /// <summary>

@@ -17,13 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("limitCents") is { } nullNodeLimitCents && nullNodeLimitCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitCents = null;
+            if (parseNode.GetChildNode("limitCents") is null) { _explicitNullValueLimitCents = default!; _explicitNullProperties?.Remove("limitCents"); }
+            else if (parseNode.GetChildNode("limitCents") is { } nullNodeLimitCents && nullNodeLimitCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitCents = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cents; null removes the limit.</summary>
-        public int? LimitCents { get => _explicitNullValueLimitCents; set { _explicitNullValueLimitCents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitCents"); else _explicitNullProperties?.Remove("limitCents"); } }
+        public int? LimitCents { get => _explicitNullValueLimitCents; set { _explicitNullValueLimitCents = value; AdditionalData?.Remove("limitCents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitCents"); else _explicitNullProperties?.Remove("limitCents"); } }
         private int? _explicitNullValueLimitCents = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.UpdateSpendingLimitRequest"/> and sets the default values.

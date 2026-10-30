@@ -17,25 +17,29 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("conversations") is { } nullNodeConversations && nullNodeConversations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversations = null;
-            if (parseNode.GetChildNode("noResultSearches") is { } nullNodeNoResultSearches && nullNodeNoResultSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoResultSearches = null;
-            if (parseNode.GetChildNode("questions") is { } nullNodeQuestions && nullNodeQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Questions = null;
-            if (parseNode.GetChildNode("searches") is { } nullNodeSearches && nullNodeSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Searches = null;
+            if (parseNode.GetChildNode("conversations") is null) { _explicitNullValueConversations = default!; _explicitNullProperties?.Remove("conversations"); }
+            else if (parseNode.GetChildNode("conversations") is { } nullNodeConversations && nullNodeConversations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversations = null;
+            if (parseNode.GetChildNode("noResultSearches") is null) { _explicitNullValueNoResultSearches = default!; _explicitNullProperties?.Remove("noResultSearches"); }
+            else if (parseNode.GetChildNode("noResultSearches") is { } nullNodeNoResultSearches && nullNodeNoResultSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoResultSearches = null;
+            if (parseNode.GetChildNode("questions") is null) { _explicitNullValueQuestions = default!; _explicitNullProperties?.Remove("questions"); }
+            else if (parseNode.GetChildNode("questions") is { } nullNodeQuestions && nullNodeQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Questions = null;
+            if (parseNode.GetChildNode("searches") is null) { _explicitNullValueSearches = default!; _explicitNullProperties?.Remove("searches"); }
+            else if (parseNode.GetChildNode("searches") is { } nullNodeSearches && nullNodeSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Searches = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The conversations property</summary>
-        public int? Conversations { get => _explicitNullValueConversations; set { _explicitNullValueConversations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations"); else _explicitNullProperties?.Remove("conversations"); } }
+        public int? Conversations { get => _explicitNullValueConversations; set { _explicitNullValueConversations = value; AdditionalData?.Remove("conversations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations"); else _explicitNullProperties?.Remove("conversations"); } }
         private int? _explicitNullValueConversations = default!;
         /// <summary>The noResultSearches property</summary>
-        public int? NoResultSearches { get => _explicitNullValueNoResultSearches; set { _explicitNullValueNoResultSearches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("noResultSearches"); else _explicitNullProperties?.Remove("noResultSearches"); } }
+        public int? NoResultSearches { get => _explicitNullValueNoResultSearches; set { _explicitNullValueNoResultSearches = value; AdditionalData?.Remove("noResultSearches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("noResultSearches"); else _explicitNullProperties?.Remove("noResultSearches"); } }
         private int? _explicitNullValueNoResultSearches = default!;
         /// <summary>The questions property</summary>
-        public int? Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
+        public int? Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; AdditionalData?.Remove("questions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
         private int? _explicitNullValueQuestions = default!;
         /// <summary>The searches property</summary>
-        public int? Searches { get => _explicitNullValueSearches; set { _explicitNullValueSearches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searches"); else _explicitNullProperties?.Remove("searches"); } }
+        public int? Searches { get => _explicitNullValueSearches; set { _explicitNullValueSearches = value; AdditionalData?.Remove("searches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searches"); else _explicitNullProperties?.Remove("searches"); } }
         private int? _explicitNullValueSearches = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals"/> and sets the default values.

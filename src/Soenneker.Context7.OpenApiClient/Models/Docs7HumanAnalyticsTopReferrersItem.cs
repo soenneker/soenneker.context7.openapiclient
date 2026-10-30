@@ -17,8 +17,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("referrer") is { } nullNodeReferrer && nullNodeReferrer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Referrer = null;
-            if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
+            if (parseNode.GetChildNode("referrer") is null) { _explicitNullValueReferrer = default!; _explicitNullProperties?.Remove("referrer"); }
+            else if (parseNode.GetChildNode("referrer") is { } nullNodeReferrer && nullNodeReferrer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Referrer = null;
+            if (parseNode.GetChildNode("visitors") is null) { _explicitNullValueVisitors = default!; _explicitNullProperties?.Remove("visitors"); }
+            else if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>`Direct` when there was none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Referrer { get => _explicitNullValueReferrer; set { _explicitNullValueReferrer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrer"); else _explicitNullProperties?.Remove("referrer"); } }
+        public string? Referrer { get => _explicitNullValueReferrer; set { _explicitNullValueReferrer = value; AdditionalData?.Remove("referrer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrer"); else _explicitNullProperties?.Remove("referrer"); } }
         private string? _explicitNullValueReferrer = default!;
 #nullable restore
 #else
-        public string Referrer { get => _explicitNullValueReferrer; set { _explicitNullValueReferrer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrer"); else _explicitNullProperties?.Remove("referrer"); } }
+        public string Referrer { get => _explicitNullValueReferrer; set { _explicitNullValueReferrer = value; AdditionalData?.Remove("referrer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrer"); else _explicitNullProperties?.Remove("referrer"); } }
         private string _explicitNullValueReferrer = default!;
 #endif
         /// <summary>The visitors property</summary>
-        public int? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        public int? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; AdditionalData?.Remove("visitors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
         private int? _explicitNullValueVisitors = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7HumanAnalyticsTopReferrersItem"/> and sets the default values.

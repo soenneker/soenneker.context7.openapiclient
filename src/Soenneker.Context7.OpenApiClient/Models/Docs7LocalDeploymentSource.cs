@@ -18,47 +18,53 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("archiveBytes") is { } nullNodeArchiveBytes && nullNodeArchiveBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArchiveBytes = null;
-            if (parseNode.GetChildNode("cliVersion") is { } nullNodeCliVersion && nullNodeCliVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CliVersion = null;
-            if (parseNode.GetChildNode("directoryCount") is { } nullNodeDirectoryCount && nullNodeDirectoryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirectoryCount = null;
-            if (parseNode.GetChildNode("fileCount") is { } nullNodeFileCount && nullNodeFileCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileCount = null;
-            if (parseNode.GetChildNode("sha256") is { } nullNodeSha256 && nullNodeSha256.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sha256 = null;
-            if (parseNode.GetChildNode("sourceBytes") is { } nullNodeSourceBytes && nullNodeSourceBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceBytes = null;
+            if (parseNode.GetChildNode("archiveBytes") is null) { _explicitNullValueArchiveBytes = default!; _explicitNullProperties?.Remove("archiveBytes"); }
+            else if (parseNode.GetChildNode("archiveBytes") is { } nullNodeArchiveBytes && nullNodeArchiveBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArchiveBytes = null;
+            if (parseNode.GetChildNode("cliVersion") is null) { _explicitNullValueCliVersion = default!; _explicitNullProperties?.Remove("cliVersion"); }
+            else if (parseNode.GetChildNode("cliVersion") is { } nullNodeCliVersion && nullNodeCliVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CliVersion = null;
+            if (parseNode.GetChildNode("directoryCount") is null) { _explicitNullValueDirectoryCount = default!; _explicitNullProperties?.Remove("directoryCount"); }
+            else if (parseNode.GetChildNode("directoryCount") is { } nullNodeDirectoryCount && nullNodeDirectoryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirectoryCount = null;
+            if (parseNode.GetChildNode("fileCount") is null) { _explicitNullValueFileCount = default!; _explicitNullProperties?.Remove("fileCount"); }
+            else if (parseNode.GetChildNode("fileCount") is { } nullNodeFileCount && nullNodeFileCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileCount = null;
+            if (parseNode.GetChildNode("sha256") is null) { _explicitNullValueSha256 = default!; _explicitNullProperties?.Remove("sha256"); }
+            else if (parseNode.GetChildNode("sha256") is { } nullNodeSha256 && nullNodeSha256.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sha256 = null;
+            if (parseNode.GetChildNode("sourceBytes") is null) { _explicitNullValueSourceBytes = default!; _explicitNullProperties?.Remove("sourceBytes"); }
+            else if (parseNode.GetChildNode("sourceBytes") is { } nullNodeSourceBytes && nullNodeSourceBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceBytes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The archiveBytes property</summary>
-        public int? ArchiveBytes { get => _explicitNullValueArchiveBytes; set { _explicitNullValueArchiveBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archiveBytes"); else _explicitNullProperties?.Remove("archiveBytes"); } }
+        public int? ArchiveBytes { get => _explicitNullValueArchiveBytes; set { _explicitNullValueArchiveBytes = value; AdditionalData?.Remove("archiveBytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archiveBytes"); else _explicitNullProperties?.Remove("archiveBytes"); } }
         private int? _explicitNullValueArchiveBytes = default!;
         /// <summary>The cliVersion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CliVersion { get => _explicitNullValueCliVersion; set { _explicitNullValueCliVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cliVersion"); else _explicitNullProperties?.Remove("cliVersion"); } }
+        public string? CliVersion { get => _explicitNullValueCliVersion; set { _explicitNullValueCliVersion = value; AdditionalData?.Remove("cliVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cliVersion"); else _explicitNullProperties?.Remove("cliVersion"); } }
         private string? _explicitNullValueCliVersion = default!;
 #nullable restore
 #else
-        public string CliVersion { get => _explicitNullValueCliVersion; set { _explicitNullValueCliVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cliVersion"); else _explicitNullProperties?.Remove("cliVersion"); } }
+        public string CliVersion { get => _explicitNullValueCliVersion; set { _explicitNullValueCliVersion = value; AdditionalData?.Remove("cliVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cliVersion"); else _explicitNullProperties?.Remove("cliVersion"); } }
         private string _explicitNullValueCliVersion = default!;
 #endif
         /// <summary>The directoryCount property</summary>
-        public int? DirectoryCount { get => _explicitNullValueDirectoryCount; set { _explicitNullValueDirectoryCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("directoryCount"); else _explicitNullProperties?.Remove("directoryCount"); } }
+        public int? DirectoryCount { get => _explicitNullValueDirectoryCount; set { _explicitNullValueDirectoryCount = value; AdditionalData?.Remove("directoryCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("directoryCount"); else _explicitNullProperties?.Remove("directoryCount"); } }
         private int? _explicitNullValueDirectoryCount = default!;
         /// <summary>The fileCount property</summary>
-        public int? FileCount { get => _explicitNullValueFileCount; set { _explicitNullValueFileCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileCount"); else _explicitNullProperties?.Remove("fileCount"); } }
+        public int? FileCount { get => _explicitNullValueFileCount; set { _explicitNullValueFileCount = value; AdditionalData?.Remove("fileCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileCount"); else _explicitNullProperties?.Remove("fileCount"); } }
         private int? _explicitNullValueFileCount = default!;
         /// <summary>The sha256 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Sha256 { get => _explicitNullValueSha256; set { _explicitNullValueSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sha256"); else _explicitNullProperties?.Remove("sha256"); } }
+        public string? Sha256 { get => _explicitNullValueSha256; set { _explicitNullValueSha256 = value; AdditionalData?.Remove("sha256"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sha256"); else _explicitNullProperties?.Remove("sha256"); } }
         private string? _explicitNullValueSha256 = default!;
 #nullable restore
 #else
-        public string Sha256 { get => _explicitNullValueSha256; set { _explicitNullValueSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sha256"); else _explicitNullProperties?.Remove("sha256"); } }
+        public string Sha256 { get => _explicitNullValueSha256; set { _explicitNullValueSha256 = value; AdditionalData?.Remove("sha256"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sha256"); else _explicitNullProperties?.Remove("sha256"); } }
         private string _explicitNullValueSha256 = default!;
 #endif
         /// <summary>The sourceBytes property</summary>
-        public int? SourceBytes { get => _explicitNullValueSourceBytes; set { _explicitNullValueSourceBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceBytes"); else _explicitNullProperties?.Remove("sourceBytes"); } }
+        public int? SourceBytes { get => _explicitNullValueSourceBytes; set { _explicitNullValueSourceBytes = value; AdditionalData?.Remove("sourceBytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceBytes"); else _explicitNullProperties?.Remove("sourceBytes"); } }
         private int? _explicitNullValueSourceBytes = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7LocalDeploymentSource"/> and sets the default values.

@@ -17,50 +17,55 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("libraryIdentifier") is { } nullNodeLibraryIdentifier && nullNodeLibraryIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryIdentifier = null;
-            if (parseNode.GetChildNode("requestedByEmail") is { } nullNodeRequestedByEmail && nullNodeRequestedByEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedByEmail = null;
-            if (parseNode.GetChildNode("requestType") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
+            if (parseNode.GetChildNode("createdAt") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("createdAt"); }
+            else if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("libraryIdentifier") is null) { _explicitNullValueLibraryIdentifier = default!; _explicitNullProperties?.Remove("libraryIdentifier"); }
+            else if (parseNode.GetChildNode("libraryIdentifier") is { } nullNodeLibraryIdentifier && nullNodeLibraryIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryIdentifier = null;
+            if (parseNode.GetChildNode("requestedByEmail") is null) { _explicitNullValueRequestedByEmail = default!; _explicitNullProperties?.Remove("requestedByEmail"); }
+            else if (parseNode.GetChildNode("requestedByEmail") is { } nullNodeRequestedByEmail && nullNodeRequestedByEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedByEmail = null;
+            if (parseNode.GetChildNode("requestType") is null) { _explicitNullValueRequestType = default!; _explicitNullProperties?.Remove("requestType"); }
+            else if (parseNode.GetChildNode("requestType") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The createdAt property</summary>
-        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("createdAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>`{requestType}:{libraryIdentifier}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>A library id starting with `/` (`/org/repo`, `/org`), or a root domain (`stripe.com`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        public string? LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; AdditionalData?.Remove("libraryIdentifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
         private string? _explicitNullValueLibraryIdentifier = default!;
 #nullable restore
 #else
-        public string LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        public string LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; AdditionalData?.Remove("libraryIdentifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
         private string _explicitNullValueLibraryIdentifier = default!;
 #endif
         /// <summary>The requestedByEmail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestedByEmail { get => _explicitNullValueRequestedByEmail; set { _explicitNullValueRequestedByEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestedByEmail"); else _explicitNullProperties?.Remove("requestedByEmail"); } }
+        public string? RequestedByEmail { get => _explicitNullValueRequestedByEmail; set { _explicitNullValueRequestedByEmail = value; AdditionalData?.Remove("requestedByEmail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestedByEmail"); else _explicitNullProperties?.Remove("requestedByEmail"); } }
         private string? _explicitNullValueRequestedByEmail = default!;
 #nullable restore
 #else
-        public string RequestedByEmail { get => _explicitNullValueRequestedByEmail; set { _explicitNullValueRequestedByEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestedByEmail"); else _explicitNullProperties?.Remove("requestedByEmail"); } }
+        public string RequestedByEmail { get => _explicitNullValueRequestedByEmail; set { _explicitNullValueRequestedByEmail = value; AdditionalData?.Remove("requestedByEmail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestedByEmail"); else _explicitNullProperties?.Remove("requestedByEmail"); } }
         private string _explicitNullValueRequestedByEmail = default!;
 #endif
         /// <summary>`allow`/`unallow` edit the allowed list (select mode), `block`/`unblock` the blocked list and `except`/`unexcept` the exceptions list (quality mode).</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequestRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestType"); else _explicitNullProperties?.Remove("requestType"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequestRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; AdditionalData?.Remove("requestType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestType"); else _explicitNullProperties?.Remove("requestType"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequestRequestType? _explicitNullValueRequestType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequest"/> and sets the default values.
@@ -90,7 +95,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "libraryIdentifier", n => { LibraryIdentifier = n.GetStringValue(); } },
-                { "requestType", n => { RequestType = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequestRequestType>(); } },
+                { "requestType", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRequestRequestType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRequestType = default; _explicitNullProperties?.Remove("requestType"); AdditionalData["requestType"] = unknown; } else { RequestType = parsed; AdditionalData.Remove("requestType"); } } },
                 { "requestedByEmail", n => { RequestedByEmail = n.GetStringValue(); } },
             };
         }

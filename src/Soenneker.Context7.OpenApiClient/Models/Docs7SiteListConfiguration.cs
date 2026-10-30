@@ -17,8 +17,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("customDomainCnameTarget") is { } nullNodeCustomDomainCnameTarget && nullNodeCustomDomainCnameTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDomainCnameTarget = null;
-            if (parseNode.GetChildNode("hostingZone") is { } nullNodeHostingZone && nullNodeHostingZone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostingZone = null;
+            if (parseNode.GetChildNode("customDomainCnameTarget") is null) { _explicitNullValueCustomDomainCnameTarget = default!; _explicitNullProperties?.Remove("customDomainCnameTarget"); }
+            else if (parseNode.GetChildNode("customDomainCnameTarget") is { } nullNodeCustomDomainCnameTarget && nullNodeCustomDomainCnameTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDomainCnameTarget = null;
+            if (parseNode.GetChildNode("hostingZone") is null) { _explicitNullValueHostingZone = default!; _explicitNullProperties?.Remove("hostingZone"); }
+            else if (parseNode.GetChildNode("hostingZone") is { } nullNodeHostingZone && nullNodeHostingZone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostingZone = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>CNAME target for a custom domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
+        public string? CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; AdditionalData?.Remove("customDomainCnameTarget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
         private string? _explicitNullValueCustomDomainCnameTarget = default!;
 #nullable restore
 #else
-        public string CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
+        public string CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; AdditionalData?.Remove("customDomainCnameTarget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
         private string _explicitNullValueCustomDomainCnameTarget = default!;
 #endif
         /// <summary>Domain of platform hostnames.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
+        public string? HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; AdditionalData?.Remove("hostingZone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
         private string? _explicitNullValueHostingZone = default!;
 #nullable restore
 #else
-        public string HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
+        public string HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; AdditionalData?.Remove("hostingZone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
         private string _explicitNullValueHostingZone = default!;
 #endif
         /// <summary>

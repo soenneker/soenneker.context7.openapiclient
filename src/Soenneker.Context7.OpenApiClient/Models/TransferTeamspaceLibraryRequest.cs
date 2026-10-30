@@ -17,13 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("destinationTeamspaceId") is { } nullNodeDestinationTeamspaceId && nullNodeDestinationTeamspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationTeamspaceId = null;
+            if (parseNode.GetChildNode("destinationTeamspaceId") is null) { _explicitNullValueDestinationTeamspaceId = default!; _explicitNullProperties?.Remove("destinationTeamspaceId"); }
+            else if (parseNode.GetChildNode("destinationTeamspaceId") is { } nullNodeDestinationTeamspaceId && nullNodeDestinationTeamspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationTeamspaceId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The destinationTeamspaceId property</summary>
-        public Guid? DestinationTeamspaceId { get => _explicitNullValueDestinationTeamspaceId; set { _explicitNullValueDestinationTeamspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destinationTeamspaceId"); else _explicitNullProperties?.Remove("destinationTeamspaceId"); } }
+        public Guid? DestinationTeamspaceId { get => _explicitNullValueDestinationTeamspaceId; set { _explicitNullValueDestinationTeamspaceId = value; AdditionalData?.Remove("destinationTeamspaceId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destinationTeamspaceId"); else _explicitNullProperties?.Remove("destinationTeamspaceId"); } }
         private Guid? _explicitNullValueDestinationTeamspaceId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TransferTeamspaceLibraryRequest"/> and sets the default values.

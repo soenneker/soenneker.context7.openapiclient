@@ -17,13 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("makePublic") is { } nullNodeMakePublic && nullNodeMakePublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakePublic = null;
+            if (parseNode.GetChildNode("makePublic") is null) { _explicitNullValueMakePublic = default!; _explicitNullProperties?.Remove("makePublic"); }
+            else if (parseNode.GetChildNode("makePublic") is { } nullNodeMakePublic && nullNodeMakePublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakePublic = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The makePublic property</summary>
-        public bool? MakePublic { get => _explicitNullValueMakePublic; set { _explicitNullValueMakePublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makePublic"); else _explicitNullProperties?.Remove("makePublic"); } }
+        public bool? MakePublic { get => _explicitNullValueMakePublic; set { _explicitNullValueMakePublic = value; AdditionalData?.Remove("makePublic"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makePublic"); else _explicitNullProperties?.Remove("makePublic"); } }
         private bool? _explicitNullValueMakePublic = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.SetTeamspaceLibraryVisibilityRequest"/> and sets the default values.

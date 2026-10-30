@@ -18,34 +18,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("accessibleLibraryCount") is { } nullNodeAccessibleLibraryCount && nullNodeAccessibleLibraryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessibleLibraryCount = null;
-            if (parseNode.GetChildNode("libraryFilters") is { } nullNodeLibraryFilters && nullNodeLibraryFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryFilters = null;
-            if (parseNode.GetChildNode("sourceTypes") is { } nullNodeSourceTypes && nullNodeSourceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTypes = null;
+            if (parseNode.GetChildNode("accessibleLibraryCount") is null) { _explicitNullValueAccessibleLibraryCount = default!; _explicitNullProperties?.Remove("accessibleLibraryCount"); }
+            else if (parseNode.GetChildNode("accessibleLibraryCount") is { } nullNodeAccessibleLibraryCount && nullNodeAccessibleLibraryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessibleLibraryCount = null;
+            if (parseNode.GetChildNode("libraryFilters") is null) { _explicitNullValueLibraryFilters = default!; _explicitNullProperties?.Remove("libraryFilters"); }
+            else if (parseNode.GetChildNode("libraryFilters") is { } nullNodeLibraryFilters && nullNodeLibraryFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryFilters = null;
+            if (parseNode.GetChildNode("sourceTypes") is null) { _explicitNullValueSourceTypes = default!; _explicitNullProperties?.Remove("sourceTypes"); }
+            else if (parseNode.GetChildNode("sourceTypes") is { } nullNodeSourceTypes && nullNodeSourceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTypes = null;
         }
 
         /// <summary>Number of public libraries currently accessible under these filters</summary>
-        public int? AccessibleLibraryCount { get => _explicitNullValueAccessibleLibraryCount; set { _explicitNullValueAccessibleLibraryCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accessibleLibraryCount"); else _explicitNullProperties?.Remove("accessibleLibraryCount"); } }
+        public int? AccessibleLibraryCount { get => _explicitNullValueAccessibleLibraryCount; set { _explicitNullValueAccessibleLibraryCount = value; AdditionalData?.Remove("accessibleLibraryCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accessibleLibraryCount"); else _explicitNullProperties?.Remove("accessibleLibraryCount"); } }
         private int? _explicitNullValueAccessibleLibraryCount = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Library access filters. Mode determines which sub-object is active.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters? LibraryFilters { get => _explicitNullValueLibraryFilters; set { _explicitNullValueLibraryFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryFilters"); else _explicitNullProperties?.Remove("libraryFilters"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters? LibraryFilters { get => _explicitNullValueLibraryFilters; set { _explicitNullValueLibraryFilters = value; AdditionalData?.Remove("libraryFilters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryFilters"); else _explicitNullProperties?.Remove("libraryFilters"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters? _explicitNullValueLibraryFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters LibraryFilters { get => _explicitNullValueLibraryFilters; set { _explicitNullValueLibraryFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryFilters"); else _explicitNullProperties?.Remove("libraryFilters"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters LibraryFilters { get => _explicitNullValueLibraryFilters; set { _explicitNullValueLibraryFilters = value; AdditionalData?.Remove("libraryFilters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryFilters"); else _explicitNullProperties?.Remove("libraryFilters"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFilters _explicitNullValueLibraryFilters = default!;
 #endif
         /// <summary>Access settings for each documentation source type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes? SourceTypes { get => _explicitNullValueSourceTypes; set { _explicitNullValueSourceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceTypes"); else _explicitNullProperties?.Remove("sourceTypes"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes? SourceTypes { get => _explicitNullValueSourceTypes; set { _explicitNullValueSourceTypes = value; AdditionalData?.Remove("sourceTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceTypes"); else _explicitNullProperties?.Remove("sourceTypes"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes? _explicitNullValueSourceTypes = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes SourceTypes { get => _explicitNullValueSourceTypes; set { _explicitNullValueSourceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceTypes"); else _explicitNullProperties?.Remove("sourceTypes"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes SourceTypes { get => _explicitNullValueSourceTypes; set { _explicitNullValueSourceTypes = value; AdditionalData?.Remove("sourceTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceTypes"); else _explicitNullProperties?.Remove("sourceTypes"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseSourceTypes _explicitNullValueSourceTypes = default!;
 #endif
         /// <summary>

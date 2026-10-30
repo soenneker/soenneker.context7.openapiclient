@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("removedUserId") is { } nullNodeRemovedUserId && nullNodeRemovedUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovedUserId = null;
+            if (parseNode.GetChildNode("removedUserId") is null) { _explicitNullValueRemovedUserId = default!; _explicitNullProperties?.Remove("removedUserId"); }
+            else if (parseNode.GetChildNode("removedUserId") is { } nullNodeRemovedUserId && nullNodeRemovedUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovedUserId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The removedUserId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemovedUserId { get => _explicitNullValueRemovedUserId; set { _explicitNullValueRemovedUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removedUserId"); else _explicitNullProperties?.Remove("removedUserId"); } }
+        public string? RemovedUserId { get => _explicitNullValueRemovedUserId; set { _explicitNullValueRemovedUserId = value; AdditionalData?.Remove("removedUserId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removedUserId"); else _explicitNullProperties?.Remove("removedUserId"); } }
         private string? _explicitNullValueRemovedUserId = default!;
 #nullable restore
 #else
-        public string RemovedUserId { get => _explicitNullValueRemovedUserId; set { _explicitNullValueRemovedUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removedUserId"); else _explicitNullProperties?.Remove("removedUserId"); } }
+        public string RemovedUserId { get => _explicitNullValueRemovedUserId; set { _explicitNullValueRemovedUserId = value; AdditionalData?.Remove("removedUserId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removedUserId"); else _explicitNullProperties?.Remove("removedUserId"); } }
         private string _explicitNullValueRemovedUserId = default!;
 #endif
         /// <summary>

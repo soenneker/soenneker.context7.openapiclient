@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("suggestions") is { } nullNodeSuggestions && nullNodeSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestions = null;
+            if (parseNode.GetChildNode("suggestions") is null) { _explicitNullValueSuggestions = default!; _explicitNullProperties?.Remove("suggestions"); }
+            else if (parseNode.GetChildNode("suggestions") is { } nullNodeSuggestions && nullNodeSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The suggestions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion>? Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion>? Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; AdditionalData?.Remove("suggestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion>? _explicitNullValueSuggestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion> Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion> Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; AdditionalData?.Remove("suggestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion> _explicitNullValueSuggestions = default!;
 #endif
         /// <summary>

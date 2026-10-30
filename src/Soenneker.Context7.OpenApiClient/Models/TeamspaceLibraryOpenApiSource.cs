@@ -17,8 +17,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("openApiUrl") is { } nullNodeOpenApiUrl && nullNodeOpenApiUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenApiUrl = null;
-            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("openApiUrl") is null) { _explicitNullValueOpenApiUrl = default!; _explicitNullProperties?.Remove("openApiUrl"); }
+            else if (parseNode.GetChildNode("openApiUrl") is { } nullNodeOpenApiUrl && nullNodeOpenApiUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenApiUrl = null;
+            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
+            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The openApiUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
+        public string? OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; AdditionalData?.Remove("openApiUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
         private string? _explicitNullValueOpenApiUrl = default!;
 #nullable restore
 #else
-        public string OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
+        public string OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; AdditionalData?.Remove("openApiUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
         private string _explicitNullValueOpenApiUrl = default!;
 #endif
         /// <summary>The source property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.OpenApiSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.OpenApiSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.OpenApiSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryOpenApiSource"/> and sets the default values.
@@ -62,7 +64,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "openApiUrl", n => { OpenApiUrl = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.OpenApiSource>(); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.OpenApiSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
             };
         }
         /// <summary>

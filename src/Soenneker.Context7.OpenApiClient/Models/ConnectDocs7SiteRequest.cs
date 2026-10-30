@@ -17,10 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
-            if (parseNode.GetChildNode("context7Index") is { } nullNodeContext7Index && nullNodeContext7Index.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7Index = null;
-            if (parseNode.GetChildNode("docsPath") is { } nullNodeDocsPath && nullNodeDocsPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsPath = null;
-            if (parseNode.GetChildNode("repoUrl") is { } nullNodeRepoUrl && nullNodeRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoUrl = null;
+            if (parseNode.GetChildNode("branch") is null) { _explicitNullValueBranch = default!; _explicitNullProperties?.Remove("branch"); }
+            else if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("context7Index") is null) { _explicitNullValueContext7Index = default!; _explicitNullProperties?.Remove("context7Index"); }
+            else if (parseNode.GetChildNode("context7Index") is { } nullNodeContext7Index && nullNodeContext7Index.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7Index = null;
+            if (parseNode.GetChildNode("docsPath") is null) { _explicitNullValueDocsPath = default!; _explicitNullProperties?.Remove("docsPath"); }
+            else if (parseNode.GetChildNode("docsPath") is { } nullNodeDocsPath && nullNodeDocsPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsPath = null;
+            if (parseNode.GetChildNode("repoUrl") is null) { _explicitNullValueRepoUrl = default!; _explicitNullProperties?.Remove("repoUrl"); }
+            else if (parseNode.GetChildNode("repoUrl") is { } nullNodeRepoUrl && nullNodeRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>Also keep the docs on Context7.</summary>
-        public bool? Context7Index { get => _explicitNullValueContext7Index; set { _explicitNullValueContext7Index = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Index"); else _explicitNullProperties?.Remove("context7Index"); } }
+        public bool? Context7Index { get => _explicitNullValueContext7Index; set { _explicitNullValueContext7Index = value; AdditionalData?.Remove("context7Index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Index"); else _explicitNullProperties?.Remove("context7Index"); } }
         private bool? _explicitNullValueContext7Index = default!;
         /// <summary>Docs folder, `.` for the root.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocsPath { get => _explicitNullValueDocsPath; set { _explicitNullValueDocsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsPath"); else _explicitNullProperties?.Remove("docsPath"); } }
+        public string? DocsPath { get => _explicitNullValueDocsPath; set { _explicitNullValueDocsPath = value; AdditionalData?.Remove("docsPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsPath"); else _explicitNullProperties?.Remove("docsPath"); } }
         private string? _explicitNullValueDocsPath = default!;
 #nullable restore
 #else
-        public string DocsPath { get => _explicitNullValueDocsPath; set { _explicitNullValueDocsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsPath"); else _explicitNullProperties?.Remove("docsPath"); } }
+        public string DocsPath { get => _explicitNullValueDocsPath; set { _explicitNullValueDocsPath = value; AdditionalData?.Remove("docsPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsPath"); else _explicitNullProperties?.Remove("docsPath"); } }
         private string _explicitNullValueDocsPath = default!;
 #endif
         /// <summary>https://github.com/owner/repo</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoUrl"); else _explicitNullProperties?.Remove("repoUrl"); } }
+        public string? RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; AdditionalData?.Remove("repoUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoUrl"); else _explicitNullProperties?.Remove("repoUrl"); } }
         private string? _explicitNullValueRepoUrl = default!;
 #nullable restore
 #else
-        public string RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoUrl"); else _explicitNullProperties?.Remove("repoUrl"); } }
+        public string RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; AdditionalData?.Remove("repoUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoUrl"); else _explicitNullProperties?.Remove("repoUrl"); } }
         private string _explicitNullValueRepoUrl = default!;
 #endif
         /// <summary>

@@ -17,29 +17,34 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("api") is { } nullNodeApi && nullNodeApi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Api = null;
-            if (parseNode.GetChildNode("clarity") is { } nullNodeClarity && nullNodeClarity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clarity = null;
-            if (parseNode.GetChildNode("completeness") is { } nullNodeCompleteness && nullNodeCompleteness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completeness = null;
-            if (parseNode.GetChildNode("implementation") is { } nullNodeImplementation && nullNodeImplementation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Implementation = null;
-            if (parseNode.GetChildNode("relevance") is { } nullNodeRelevance && nullNodeRelevance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relevance = null;
+            if (parseNode.GetChildNode("api") is null) { _explicitNullValueApi = default!; _explicitNullProperties?.Remove("api"); }
+            else if (parseNode.GetChildNode("api") is { } nullNodeApi && nullNodeApi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Api = null;
+            if (parseNode.GetChildNode("clarity") is null) { _explicitNullValueClarity = default!; _explicitNullProperties?.Remove("clarity"); }
+            else if (parseNode.GetChildNode("clarity") is { } nullNodeClarity && nullNodeClarity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clarity = null;
+            if (parseNode.GetChildNode("completeness") is null) { _explicitNullValueCompleteness = default!; _explicitNullProperties?.Remove("completeness"); }
+            else if (parseNode.GetChildNode("completeness") is { } nullNodeCompleteness && nullNodeCompleteness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completeness = null;
+            if (parseNode.GetChildNode("implementation") is null) { _explicitNullValueImplementation = default!; _explicitNullProperties?.Remove("implementation"); }
+            else if (parseNode.GetChildNode("implementation") is { } nullNodeImplementation && nullNodeImplementation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Implementation = null;
+            if (parseNode.GetChildNode("relevance") is null) { _explicitNullValueRelevance = default!; _explicitNullProperties?.Remove("relevance"); }
+            else if (parseNode.GetChildNode("relevance") is { } nullNodeRelevance && nullNodeRelevance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relevance = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The api property</summary>
-        public double? Api { get => _explicitNullValueApi; set { _explicitNullValueApi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api"); else _explicitNullProperties?.Remove("api"); } }
+        public double? Api { get => _explicitNullValueApi; set { _explicitNullValueApi = value; AdditionalData?.Remove("api"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api"); else _explicitNullProperties?.Remove("api"); } }
         private double? _explicitNullValueApi = default!;
         /// <summary>The clarity property</summary>
-        public double? Clarity { get => _explicitNullValueClarity; set { _explicitNullValueClarity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarity"); else _explicitNullProperties?.Remove("clarity"); } }
+        public double? Clarity { get => _explicitNullValueClarity; set { _explicitNullValueClarity = value; AdditionalData?.Remove("clarity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarity"); else _explicitNullProperties?.Remove("clarity"); } }
         private double? _explicitNullValueClarity = default!;
         /// <summary>The completeness property</summary>
-        public double? Completeness { get => _explicitNullValueCompleteness; set { _explicitNullValueCompleteness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completeness"); else _explicitNullProperties?.Remove("completeness"); } }
+        public double? Completeness { get => _explicitNullValueCompleteness; set { _explicitNullValueCompleteness = value; AdditionalData?.Remove("completeness"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completeness"); else _explicitNullProperties?.Remove("completeness"); } }
         private double? _explicitNullValueCompleteness = default!;
         /// <summary>The implementation property</summary>
-        public double? Implementation { get => _explicitNullValueImplementation; set { _explicitNullValueImplementation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation"); else _explicitNullProperties?.Remove("implementation"); } }
+        public double? Implementation { get => _explicitNullValueImplementation; set { _explicitNullValueImplementation = value; AdditionalData?.Remove("implementation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation"); else _explicitNullProperties?.Remove("implementation"); } }
         private double? _explicitNullValueImplementation = default!;
         /// <summary>The relevance property</summary>
-        public double? Relevance { get => _explicitNullValueRelevance; set { _explicitNullValueRelevance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevance"); else _explicitNullProperties?.Remove("relevance"); } }
+        public double? Relevance { get => _explicitNullValueRelevance; set { _explicitNullValueRelevance = value; AdditionalData?.Remove("relevance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevance"); else _explicitNullProperties?.Remove("relevance"); } }
         private double? _explicitNullValueRelevance = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores"/> and sets the default values.

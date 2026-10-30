@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
-            if (parseNode.GetChildNode("projectName") is { } nullNodeProjectName && nullNodeProjectName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectName = null;
-            if (parseNode.GetChildNode("tagCode") is { } nullNodeTagCode && nullNodeTagCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagCode = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("projectName") is null) { _explicitNullValueProjectName = default!; _explicitNullProperties?.Remove("projectName"); }
+            else if (parseNode.GetChildNode("projectName") is { } nullNodeProjectName && nullNodeProjectName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectName = null;
+            if (parseNode.GetChildNode("tagCode") is null) { _explicitNullValueTagCode = default!; _explicitNullProperties?.Remove("tagCode"); }
+            else if (parseNode.GetChildNode("tagCode") is { } nullNodeTagCode && nullNodeTagCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagCode = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>The projectName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectName { get => _explicitNullValueProjectName; set { _explicitNullValueProjectName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectName"); else _explicitNullProperties?.Remove("projectName"); } }
+        public string? ProjectName { get => _explicitNullValueProjectName; set { _explicitNullValueProjectName = value; AdditionalData?.Remove("projectName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectName"); else _explicitNullProperties?.Remove("projectName"); } }
         private string? _explicitNullValueProjectName = default!;
 #nullable restore
 #else
-        public string ProjectName { get => _explicitNullValueProjectName; set { _explicitNullValueProjectName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectName"); else _explicitNullProperties?.Remove("projectName"); } }
+        public string ProjectName { get => _explicitNullValueProjectName; set { _explicitNullValueProjectName = value; AdditionalData?.Remove("projectName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectName"); else _explicitNullProperties?.Remove("projectName"); } }
         private string _explicitNullValueProjectName = default!;
 #endif
         /// <summary>The tagCode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TagCode { get => _explicitNullValueTagCode; set { _explicitNullValueTagCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagCode"); else _explicitNullProperties?.Remove("tagCode"); } }
+        public string? TagCode { get => _explicitNullValueTagCode; set { _explicitNullValueTagCode = value; AdditionalData?.Remove("tagCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagCode"); else _explicitNullProperties?.Remove("tagCode"); } }
         private string? _explicitNullValueTagCode = default!;
 #nullable restore
 #else
-        public string TagCode { get => _explicitNullValueTagCode; set { _explicitNullValueTagCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagCode"); else _explicitNullProperties?.Remove("tagCode"); } }
+        public string TagCode { get => _explicitNullValueTagCode; set { _explicitNullValueTagCode = value; AdditionalData?.Remove("tagCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagCode"); else _explicitNullProperties?.Remove("tagCode"); } }
         private string _explicitNullValueTagCode = default!;
 #endif
         /// <summary>

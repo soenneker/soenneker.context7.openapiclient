@@ -18,25 +18,29 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cli") is { } nullNodeCli && nullNodeCli.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cli = null;
-            if (parseNode.GetChildNode("mcp") is { } nullNodeMcp && nullNodeMcp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mcp = null;
-            if (parseNode.GetChildNode("page") is { } nullNodePage && nullNodePage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Page = null;
-            if (parseNode.GetChildNode("txt") is { } nullNodeTxt && nullNodeTxt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Txt = null;
+            if (parseNode.GetChildNode("cli") is null) { _explicitNullValueCli = default!; _explicitNullProperties?.Remove("cli"); }
+            else if (parseNode.GetChildNode("cli") is { } nullNodeCli && nullNodeCli.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cli = null;
+            if (parseNode.GetChildNode("mcp") is null) { _explicitNullValueMcp = default!; _explicitNullProperties?.Remove("mcp"); }
+            else if (parseNode.GetChildNode("mcp") is { } nullNodeMcp && nullNodeMcp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mcp = null;
+            if (parseNode.GetChildNode("page") is null) { _explicitNullValuePage = default!; _explicitNullProperties?.Remove("page"); }
+            else if (parseNode.GetChildNode("page") is { } nullNodePage && nullNodePage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Page = null;
+            if (parseNode.GetChildNode("txt") is null) { _explicitNullValueTxt = default!; _explicitNullProperties?.Remove("txt"); }
+            else if (parseNode.GetChildNode("txt") is { } nullNodeTxt && nullNodeTxt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Txt = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Requests served to the Context7 CLI</summary>
-        public int? Cli { get => _explicitNullValueCli; set { _explicitNullValueCli = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cli"); else _explicitNullProperties?.Remove("cli"); } }
+        public int? Cli { get => _explicitNullValueCli; set { _explicitNullValueCli = value; AdditionalData?.Remove("cli"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cli"); else _explicitNullProperties?.Remove("cli"); } }
         private int? _explicitNullValueCli = default!;
         /// <summary>Requests served via the Context7 MCP server</summary>
-        public int? Mcp { get => _explicitNullValueMcp; set { _explicitNullValueMcp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp"); else _explicitNullProperties?.Remove("mcp"); } }
+        public int? Mcp { get => _explicitNullValueMcp; set { _explicitNullValueMcp = value; AdditionalData?.Remove("mcp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp"); else _explicitNullProperties?.Remove("mcp"); } }
         private int? _explicitNullValueMcp = default!;
         /// <summary>Requests served to the context7.com web UI</summary>
-        public int? Page { get => _explicitNullValuePage; set { _explicitNullValuePage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page"); else _explicitNullProperties?.Remove("page"); } }
+        public int? Page { get => _explicitNullValuePage; set { _explicitNullValuePage = value; AdditionalData?.Remove("page"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page"); else _explicitNullProperties?.Remove("page"); } }
         private int? _explicitNullValuePage = default!;
         /// <summary>Plain-text documentation requests</summary>
-        public int? Txt { get => _explicitNullValueTxt; set { _explicitNullValueTxt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("txt"); else _explicitNullProperties?.Remove("txt"); } }
+        public int? Txt { get => _explicitNullValueTxt; set { _explicitNullValueTxt = value; AdditionalData?.Remove("txt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("txt"); else _explicitNullProperties?.Remove("txt"); } }
         private int? _explicitNullValueTxt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryUsageReportCurrent"/> and sets the default values.

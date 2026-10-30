@@ -17,23 +17,25 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("configSource") is { } nullNodeConfigSource && nullNodeConfigSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSource = null;
-            if (parseNode.GetChildNode("context7JsonUrl") is { } nullNodeContext7JsonUrl && nullNodeContext7JsonUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7JsonUrl = null;
+            if (parseNode.GetChildNode("configSource") is null) { _explicitNullValueConfigSource = default!; _explicitNullProperties?.Remove("configSource"); }
+            else if (parseNode.GetChildNode("configSource") is { } nullNodeConfigSource && nullNodeConfigSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSource = null;
+            if (parseNode.GetChildNode("context7JsonUrl") is null) { _explicitNullValueContext7JsonUrl = default!; _explicitNullProperties?.Remove("context7JsonUrl"); }
+            else if (parseNode.GetChildNode("context7JsonUrl") is { } nullNodeContext7JsonUrl && nullNodeContext7JsonUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7JsonUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Repositories: where the parser reads settings from after the claim. Default `dashboard`.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? ConfigSource { get => _explicitNullValueConfigSource; set { _explicitNullValueConfigSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSource"); else _explicitNullProperties?.Remove("configSource"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? ConfigSource { get => _explicitNullValueConfigSource; set { _explicitNullValueConfigSource = value; AdditionalData?.Remove("configSource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSource"); else _explicitNullProperties?.Remove("configSource"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? _explicitNullValueConfigSource = default!;
         /// <summary>URL of the published file. Required for `hostedFile`, and for a repository on a host other than GitHub, GitLab or Bitbucket (the raw file URL).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
+        public string? Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; AdditionalData?.Remove("context7JsonUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
         private string? _explicitNullValueContext7JsonUrl = default!;
 #nullable restore
 #else
-        public string Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
+        public string Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; AdditionalData?.Remove("context7JsonUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
         private string _explicitNullValueContext7JsonUrl = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "configSource", n => { ConfigSource = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource>(); } },
+                { "configSource", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConfigSource = default; _explicitNullProperties?.Remove("configSource"); AdditionalData["configSource"] = unknown; } else { ConfigSource = parsed; AdditionalData.Remove("configSource"); } } },
                 { "context7JsonUrl", n => { Context7JsonUrl = n.GetStringValue(); } },
             };
         }

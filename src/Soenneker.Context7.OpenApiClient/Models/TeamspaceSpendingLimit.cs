@@ -17,25 +17,29 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("alreadyOver") is { } nullNodeAlreadyOver && nullNodeAlreadyOver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyOver = null;
-            if (parseNode.GetChildNode("canEdit") is { } nullNodeCanEdit && nullNodeCanEdit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEdit = null;
-            if (parseNode.GetChildNode("currentSpendCents") is { } nullNodeCurrentSpendCents && nullNodeCurrentSpendCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentSpendCents = null;
-            if (parseNode.GetChildNode("limitCents") is { } nullNodeLimitCents && nullNodeLimitCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitCents = null;
+            if (parseNode.GetChildNode("alreadyOver") is null) { _explicitNullValueAlreadyOver = default!; _explicitNullProperties?.Remove("alreadyOver"); }
+            else if (parseNode.GetChildNode("alreadyOver") is { } nullNodeAlreadyOver && nullNodeAlreadyOver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyOver = null;
+            if (parseNode.GetChildNode("canEdit") is null) { _explicitNullValueCanEdit = default!; _explicitNullProperties?.Remove("canEdit"); }
+            else if (parseNode.GetChildNode("canEdit") is { } nullNodeCanEdit && nullNodeCanEdit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEdit = null;
+            if (parseNode.GetChildNode("currentSpendCents") is null) { _explicitNullValueCurrentSpendCents = default!; _explicitNullProperties?.Remove("currentSpendCents"); }
+            else if (parseNode.GetChildNode("currentSpendCents") is { } nullNodeCurrentSpendCents && nullNodeCurrentSpendCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentSpendCents = null;
+            if (parseNode.GetChildNode("limitCents") is null) { _explicitNullValueLimitCents = default!; _explicitNullProperties?.Remove("limitCents"); }
+            else if (parseNode.GetChildNode("limitCents") is { } nullNodeLimitCents && nullNodeLimitCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitCents = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>PUT only. This month&apos;s spend already reaches the new limit.</summary>
-        public bool? AlreadyOver { get => _explicitNullValueAlreadyOver; set { _explicitNullValueAlreadyOver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alreadyOver"); else _explicitNullProperties?.Remove("alreadyOver"); } }
+        public bool? AlreadyOver { get => _explicitNullValueAlreadyOver; set { _explicitNullValueAlreadyOver = value; AdditionalData?.Remove("alreadyOver"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alreadyOver"); else _explicitNullProperties?.Remove("alreadyOver"); } }
         private bool? _explicitNullValueAlreadyOver = default!;
         /// <summary>GET only. The caller is an owner or admin.</summary>
-        public bool? CanEdit { get => _explicitNullValueCanEdit; set { _explicitNullValueCanEdit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canEdit"); else _explicitNullProperties?.Remove("canEdit"); } }
+        public bool? CanEdit { get => _explicitNullValueCanEdit; set { _explicitNullValueCanEdit = value; AdditionalData?.Remove("canEdit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canEdit"); else _explicitNullProperties?.Remove("canEdit"); } }
         private bool? _explicitNullValueCanEdit = default!;
         /// <summary>Billed API usage this month, in cents.</summary>
-        public int? CurrentSpendCents { get => _explicitNullValueCurrentSpendCents; set { _explicitNullValueCurrentSpendCents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currentSpendCents"); else _explicitNullProperties?.Remove("currentSpendCents"); } }
+        public int? CurrentSpendCents { get => _explicitNullValueCurrentSpendCents; set { _explicitNullValueCurrentSpendCents = value; AdditionalData?.Remove("currentSpendCents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currentSpendCents"); else _explicitNullProperties?.Remove("currentSpendCents"); } }
         private int? _explicitNullValueCurrentSpendCents = default!;
         /// <summary>Monthly cap on billed API usage in cents; null is no cap.</summary>
-        public int? LimitCents { get => _explicitNullValueLimitCents; set { _explicitNullValueLimitCents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitCents"); else _explicitNullProperties?.Remove("limitCents"); } }
+        public int? LimitCents { get => _explicitNullValueLimitCents; set { _explicitNullValueLimitCents = value; AdditionalData?.Remove("limitCents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitCents"); else _explicitNullProperties?.Remove("limitCents"); } }
         private int? _explicitNullValueLimitCents = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit"/> and sets the default values.

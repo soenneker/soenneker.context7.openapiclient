@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
-            if (parseNode.GetChildNode("limitReached") is { } nullNodeLimitReached && nullNodeLimitReached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitReached = null;
-            if (parseNode.GetChildNode("siteLimit") is { } nullNodeSiteLimit && nullNodeSiteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SiteLimit = null;
+            if (parseNode.GetChildNode("data") is null) { _explicitNullValueData = default!; _explicitNullProperties?.Remove("data"); }
+            else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("limitReached") is null) { _explicitNullValueLimitReached = default!; _explicitNullProperties?.Remove("limitReached"); }
+            else if (parseNode.GetChildNode("limitReached") is { } nullNodeLimitReached && nullNodeLimitReached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitReached = null;
+            if (parseNode.GetChildNode("siteLimit") is null) { _explicitNullValueSiteLimit = default!; _explicitNullProperties?.Remove("siteLimit"); }
+            else if (parseNode.GetChildNode("siteLimit") is { } nullNodeSiteLimit && nullNodeSiteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SiteLimit = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,25 +30,25 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> _explicitNullValueData = default!;
 #endif
         /// <summary>Keys of the sites that used this month&apos;s requests. Their endpoint answers 429 until the next UTC month.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
+        public List<string>? LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; AdditionalData?.Remove("limitReached"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
         private List<string>? _explicitNullValueLimitReached = default!;
 #nullable restore
 #else
-        public List<string> LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
+        public List<string> LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; AdditionalData?.Remove("limitReached"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
         private List<string> _explicitNullValueLimitReached = default!;
 #endif
         /// <summary>Most sites the plan allows; null for no limit.</summary>
-        public int? SiteLimit { get => _explicitNullValueSiteLimit; set { _explicitNullValueSiteLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siteLimit"); else _explicitNullProperties?.Remove("siteLimit"); } }
+        public int? SiteLimit { get => _explicitNullValueSiteLimit; set { _explicitNullValueSiteLimit = value; AdditionalData?.Remove("siteLimit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siteLimit"); else _explicitNullProperties?.Remove("siteLimit"); } }
         private int? _explicitNullValueSiteLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskSitesResponse"/> and sets the default values.

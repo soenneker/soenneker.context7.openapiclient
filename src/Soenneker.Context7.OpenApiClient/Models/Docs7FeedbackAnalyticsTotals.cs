@@ -17,29 +17,34 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agents") is { } nullNodeAgents && nullNodeAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agents = null;
-            if (parseNode.GetChildNode("helpful") is { } nullNodeHelpful && nullNodeHelpful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Helpful = null;
-            if (parseNode.GetChildNode("helpfulRate") is { } nullNodeHelpfulRate && nullNodeHelpfulRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HelpfulRate = null;
-            if (parseNode.GetChildNode("responses") is { } nullNodeResponses && nullNodeResponses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Responses = null;
-            if (parseNode.GetChildNode("unhelpful") is { } nullNodeUnhelpful && nullNodeUnhelpful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unhelpful = null;
+            if (parseNode.GetChildNode("agents") is null) { _explicitNullValueAgents = default!; _explicitNullProperties?.Remove("agents"); }
+            else if (parseNode.GetChildNode("agents") is { } nullNodeAgents && nullNodeAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agents = null;
+            if (parseNode.GetChildNode("helpful") is null) { _explicitNullValueHelpful = default!; _explicitNullProperties?.Remove("helpful"); }
+            else if (parseNode.GetChildNode("helpful") is { } nullNodeHelpful && nullNodeHelpful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Helpful = null;
+            if (parseNode.GetChildNode("helpfulRate") is null) { _explicitNullValueHelpfulRate = default!; _explicitNullProperties?.Remove("helpfulRate"); }
+            else if (parseNode.GetChildNode("helpfulRate") is { } nullNodeHelpfulRate && nullNodeHelpfulRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HelpfulRate = null;
+            if (parseNode.GetChildNode("responses") is null) { _explicitNullValueResponses = default!; _explicitNullProperties?.Remove("responses"); }
+            else if (parseNode.GetChildNode("responses") is { } nullNodeResponses && nullNodeResponses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Responses = null;
+            if (parseNode.GetChildNode("unhelpful") is null) { _explicitNullValueUnhelpful = default!; _explicitNullProperties?.Remove("unhelpful"); }
+            else if (parseNode.GetChildNode("unhelpful") is { } nullNodeUnhelpful && nullNodeUnhelpful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unhelpful = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agents property</summary>
-        public int? Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
+        public int? Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; AdditionalData?.Remove("agents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
         private int? _explicitNullValueAgents = default!;
         /// <summary>The helpful property</summary>
-        public int? Helpful { get => _explicitNullValueHelpful; set { _explicitNullValueHelpful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("helpful"); else _explicitNullProperties?.Remove("helpful"); } }
+        public int? Helpful { get => _explicitNullValueHelpful; set { _explicitNullValueHelpful = value; AdditionalData?.Remove("helpful"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("helpful"); else _explicitNullProperties?.Remove("helpful"); } }
         private int? _explicitNullValueHelpful = default!;
         /// <summary>The helpfulRate property</summary>
-        public int? HelpfulRate { get => _explicitNullValueHelpfulRate; set { _explicitNullValueHelpfulRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("helpfulRate"); else _explicitNullProperties?.Remove("helpfulRate"); } }
+        public int? HelpfulRate { get => _explicitNullValueHelpfulRate; set { _explicitNullValueHelpfulRate = value; AdditionalData?.Remove("helpfulRate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("helpfulRate"); else _explicitNullProperties?.Remove("helpfulRate"); } }
         private int? _explicitNullValueHelpfulRate = default!;
         /// <summary>The responses property</summary>
-        public int? Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
+        public int? Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; AdditionalData?.Remove("responses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
         private int? _explicitNullValueResponses = default!;
         /// <summary>The unhelpful property</summary>
-        public int? Unhelpful { get => _explicitNullValueUnhelpful; set { _explicitNullValueUnhelpful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unhelpful"); else _explicitNullProperties?.Remove("unhelpful"); } }
+        public int? Unhelpful { get => _explicitNullValueUnhelpful; set { _explicitNullValueUnhelpful = value; AdditionalData?.Remove("unhelpful"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unhelpful"); else _explicitNullProperties?.Remove("unhelpful"); } }
         private int? _explicitNullValueUnhelpful = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsTotals"/> and sets the default values.

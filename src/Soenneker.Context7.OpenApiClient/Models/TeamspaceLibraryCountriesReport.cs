@@ -18,9 +18,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("countries") is { } nullNodeCountries && nullNodeCountries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Countries = null;
-            if (parseNode.GetChildNode("libraryId") is { } nullNodeLibraryId && nullNodeLibraryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryId = null;
-            if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
+            if (parseNode.GetChildNode("countries") is null) { _explicitNullValueCountries = default!; _explicitNullProperties?.Remove("countries"); }
+            else if (parseNode.GetChildNode("countries") is { } nullNodeCountries && nullNodeCountries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Countries = null;
+            if (parseNode.GetChildNode("libraryId") is null) { _explicitNullValueLibraryId = default!; _explicitNullProperties?.Remove("libraryId"); }
+            else if (parseNode.GetChildNode("libraryId") is { } nullNodeLibraryId && nullNodeLibraryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryId = null;
+            if (parseNode.GetChildNode("totalRequests") is null) { _explicitNullValueTotalRequests = default!; _explicitNullProperties?.Remove("totalRequests"); }
+            else if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,25 +31,25 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The countries property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; AdditionalData?.Remove("countries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? _explicitNullValueCountries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; AdditionalData?.Remove("countries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> _explicitNullValueCountries = default!;
 #endif
         /// <summary>The libraryId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        public string? LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
         private string? _explicitNullValueLibraryId = default!;
 #nullable restore
 #else
-        public string LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        public string LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
         private string _explicitNullValueLibraryId = default!;
 #endif
         /// <summary>The totalRequests property</summary>
-        public int? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
+        public int? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; AdditionalData?.Remove("totalRequests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
         private int? _explicitNullValueTotalRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryCountriesReport"/> and sets the default values.

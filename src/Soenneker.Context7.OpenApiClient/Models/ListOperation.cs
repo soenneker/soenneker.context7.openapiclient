@@ -18,34 +18,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
-            if (parseNode.GetChildNode("clear") is { } nullNodeClear && nullNodeClear.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clear = null;
-            if (parseNode.GetChildNode("remove") is { } nullNodeRemove && nullNodeRemove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remove = null;
+            if (parseNode.GetChildNode("add") is null) { _explicitNullValueAdd = default!; _explicitNullProperties?.Remove("add"); }
+            else if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
+            if (parseNode.GetChildNode("clear") is null) { _explicitNullValueClear = default!; _explicitNullProperties?.Remove("clear"); }
+            else if (parseNode.GetChildNode("clear") is { } nullNodeClear && nullNodeClear.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clear = null;
+            if (parseNode.GetChildNode("remove") is null) { _explicitNullValueRemove = default!; _explicitNullProperties?.Remove("remove"); }
+            else if (parseNode.GetChildNode("remove") is { } nullNodeRemove && nullNodeRemove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remove = null;
         }
 
         /// <summary>Identifiers to add — library paths (e.g. &apos;/org/repo&apos;, &apos;/org&apos;) or domains (e.g. &apos;stripe.com&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<string>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<string>? _explicitNullValueAdd = default!;
 #nullable restore
 #else
-        public List<string> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<string> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<string> _explicitNullValueAdd = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to true to remove all entries. Cannot be used together with &apos;add&apos; or &apos;remove&apos;.</summary>
-        public bool? Clear { get => _explicitNullValueClear; set { _explicitNullValueClear = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear"); else _explicitNullProperties?.Remove("clear"); } }
+        public bool? Clear { get => _explicitNullValueClear; set { _explicitNullValueClear = value; AdditionalData?.Remove("clear"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear"); else _explicitNullProperties?.Remove("clear"); } }
         private bool? _explicitNullValueClear = default!;
         /// <summary>Identifiers to remove — library paths (e.g. &apos;/org/repo&apos;, &apos;/org&apos;) or domains (e.g. &apos;stripe.com&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
+        public List<string>? Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; AdditionalData?.Remove("remove"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
         private List<string>? _explicitNullValueRemove = default!;
 #nullable restore
 #else
-        public List<string> Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
+        public List<string> Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; AdditionalData?.Remove("remove"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
         private List<string> _explicitNullValueRemove = default!;
 #endif
         /// <summary>

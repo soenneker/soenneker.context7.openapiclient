@@ -18,8 +18,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("disable") is { } nullNodeDisable && nullNodeDisable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disable = null;
-            if (parseNode.GetChildNode("enable") is { } nullNodeEnable && nullNodeEnable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enable = null;
+            if (parseNode.GetChildNode("disable") is null) { _explicitNullValueDisable = default!; _explicitNullProperties?.Remove("disable"); }
+            else if (parseNode.GetChildNode("disable") is { } nullNodeDisable && nullNodeDisable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disable = null;
+            if (parseNode.GetChildNode("enable") is null) { _explicitNullValueEnable = default!; _explicitNullProperties?.Remove("enable"); }
+            else if (parseNode.GetChildNode("enable") is { } nullNodeEnable && nullNodeEnable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enable = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Source types to disable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; AdditionalData?.Remove("disable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? _explicitNullValueDisable = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; AdditionalData?.Remove("disable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> _explicitNullValueDisable = default!;
 #endif
         /// <summary>Source types to enable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; AdditionalData?.Remove("enable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? _explicitNullValueEnable = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; AdditionalData?.Remove("enable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> _explicitNullValueEnable = default!;
 #endif
         /// <summary>

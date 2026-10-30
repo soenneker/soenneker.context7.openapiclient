@@ -17,34 +17,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
-            if (parseNode.GetChildNode("websiteBaseUrl") is { } nullNodeWebsiteBaseUrl && nullNodeWebsiteBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteBaseUrl = null;
-            if (parseNode.GetChildNode("websiteUrl") is { } nullNodeWebsiteUrl && nullNodeWebsiteUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteUrl = null;
+            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
+            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("websiteBaseUrl") is null) { _explicitNullValueWebsiteBaseUrl = default!; _explicitNullProperties?.Remove("websiteBaseUrl"); }
+            else if (parseNode.GetChildNode("websiteBaseUrl") is { } nullNodeWebsiteBaseUrl && nullNodeWebsiteBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteBaseUrl = null;
+            if (parseNode.GetChildNode("websiteUrl") is null) { _explicitNullValueWebsiteUrl = default!; _explicitNullProperties?.Remove("websiteUrl"); }
+            else if (parseNode.GetChildNode("websiteUrl") is { } nullNodeWebsiteUrl && nullNodeWebsiteUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The source property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.WebsiteSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.WebsiteSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.WebsiteSource? _explicitNullValueSource = default!;
         /// <summary>Only crawl pages under this URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebsiteBaseUrl { get => _explicitNullValueWebsiteBaseUrl; set { _explicitNullValueWebsiteBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteBaseUrl"); else _explicitNullProperties?.Remove("websiteBaseUrl"); } }
+        public string? WebsiteBaseUrl { get => _explicitNullValueWebsiteBaseUrl; set { _explicitNullValueWebsiteBaseUrl = value; AdditionalData?.Remove("websiteBaseUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteBaseUrl"); else _explicitNullProperties?.Remove("websiteBaseUrl"); } }
         private string? _explicitNullValueWebsiteBaseUrl = default!;
 #nullable restore
 #else
-        public string WebsiteBaseUrl { get => _explicitNullValueWebsiteBaseUrl; set { _explicitNullValueWebsiteBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteBaseUrl"); else _explicitNullProperties?.Remove("websiteBaseUrl"); } }
+        public string WebsiteBaseUrl { get => _explicitNullValueWebsiteBaseUrl; set { _explicitNullValueWebsiteBaseUrl = value; AdditionalData?.Remove("websiteBaseUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteBaseUrl"); else _explicitNullProperties?.Remove("websiteBaseUrl"); } }
         private string _explicitNullValueWebsiteBaseUrl = default!;
 #endif
         /// <summary>Documentation website to crawl.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebsiteUrl { get => _explicitNullValueWebsiteUrl; set { _explicitNullValueWebsiteUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrl"); else _explicitNullProperties?.Remove("websiteUrl"); } }
+        public string? WebsiteUrl { get => _explicitNullValueWebsiteUrl; set { _explicitNullValueWebsiteUrl = value; AdditionalData?.Remove("websiteUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrl"); else _explicitNullProperties?.Remove("websiteUrl"); } }
         private string? _explicitNullValueWebsiteUrl = default!;
 #nullable restore
 #else
-        public string WebsiteUrl { get => _explicitNullValueWebsiteUrl; set { _explicitNullValueWebsiteUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrl"); else _explicitNullProperties?.Remove("websiteUrl"); } }
+        public string WebsiteUrl { get => _explicitNullValueWebsiteUrl; set { _explicitNullValueWebsiteUrl = value; AdditionalData?.Remove("websiteUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrl"); else _explicitNullProperties?.Remove("websiteUrl"); } }
         private string _explicitNullValueWebsiteUrl = default!;
 #endif
         /// <summary>
@@ -72,7 +75,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.WebsiteSource>(); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.WebsiteSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
                 { "websiteBaseUrl", n => { WebsiteBaseUrl = n.GetStringValue(); } },
                 { "websiteUrl", n => { WebsiteUrl = n.GetStringValue(); } },
             };

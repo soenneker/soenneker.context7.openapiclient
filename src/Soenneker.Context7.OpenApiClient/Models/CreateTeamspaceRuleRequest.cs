@@ -17,10 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("docsUrl") is { } nullNodeDocsUrl && nullNodeDocsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsUrl = null;
-            if (parseNode.GetChildNode("libraryId") is { } nullNodeLibraryId && nullNodeLibraryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryId = null;
-            if (parseNode.GetChildNode("libraryType") is { } nullNodeLibraryType && nullNodeLibraryType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryType = null;
-            if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
+            if (parseNode.GetChildNode("docsUrl") is null) { _explicitNullValueDocsUrl = default!; _explicitNullProperties?.Remove("docsUrl"); }
+            else if (parseNode.GetChildNode("docsUrl") is { } nullNodeDocsUrl && nullNodeDocsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsUrl = null;
+            if (parseNode.GetChildNode("libraryId") is null) { _explicitNullValueLibraryId = default!; _explicitNullProperties?.Remove("libraryId"); }
+            else if (parseNode.GetChildNode("libraryId") is { } nullNodeLibraryId && nullNodeLibraryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryId = null;
+            if (parseNode.GetChildNode("libraryType") is null) { _explicitNullValueLibraryType = default!; _explicitNullProperties?.Remove("libraryType"); }
+            else if (parseNode.GetChildNode("libraryType") is { } nullNodeLibraryType && nullNodeLibraryType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryType = null;
+            if (parseNode.GetChildNode("text") is null) { _explicitNullValueText = default!; _explicitNullProperties?.Remove("text"); }
+            else if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>http(s) link shown with the library.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocsUrl { get => _explicitNullValueDocsUrl; set { _explicitNullValueDocsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsUrl"); else _explicitNullProperties?.Remove("docsUrl"); } }
+        public string? DocsUrl { get => _explicitNullValueDocsUrl; set { _explicitNullValueDocsUrl = value; AdditionalData?.Remove("docsUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsUrl"); else _explicitNullProperties?.Remove("docsUrl"); } }
         private string? _explicitNullValueDocsUrl = default!;
 #nullable restore
 #else
-        public string DocsUrl { get => _explicitNullValueDocsUrl; set { _explicitNullValueDocsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsUrl"); else _explicitNullProperties?.Remove("docsUrl"); } }
+        public string DocsUrl { get => _explicitNullValueDocsUrl; set { _explicitNullValueDocsUrl = value; AdditionalData?.Remove("docsUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsUrl"); else _explicitNullProperties?.Remove("docsUrl"); } }
         private string _explicitNullValueDocsUrl = default!;
 #endif
         /// <summary>Library id starting with `/`. Omit or null for a rule on every library.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        public string? LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
         private string? _explicitNullValueLibraryId = default!;
 #nullable restore
 #else
-        public string LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        public string LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
         private string _explicitNullValueLibraryId = default!;
 #endif
         /// <summary>Display hint for the library.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceRuleRequestLibraryType? LibraryType { get => _explicitNullValueLibraryType; set { _explicitNullValueLibraryType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryType"); else _explicitNullProperties?.Remove("libraryType"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceRuleRequestLibraryType? LibraryType { get => _explicitNullValueLibraryType; set { _explicitNullValueLibraryType = value; AdditionalData?.Remove("libraryType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryType"); else _explicitNullProperties?.Remove("libraryType"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceRuleRequestLibraryType? _explicitNullValueLibraryType = default!;
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
         private string? _explicitNullValueText = default!;
 #nullable restore
 #else
-        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
         private string _explicitNullValueText = default!;
 #endif
         /// <summary>
@@ -85,7 +89,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "docsUrl", n => { DocsUrl = n.GetStringValue(); } },
                 { "libraryId", n => { LibraryId = n.GetStringValue(); } },
-                { "libraryType", n => { LibraryType = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceRuleRequestLibraryType>(); } },
+                { "libraryType", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceRuleRequestLibraryType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLibraryType = default; _explicitNullProperties?.Remove("libraryType"); AdditionalData["libraryType"] = unknown; } else { LibraryType = parsed; AdditionalData.Remove("libraryType"); } } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
         }

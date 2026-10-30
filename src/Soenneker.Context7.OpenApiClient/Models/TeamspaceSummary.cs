@@ -17,52 +17,61 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("billingModel") is { } nullNodeBillingModel && nullNodeBillingModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingModel = null;
-            if (parseNode.GetChildNode("billingSource") is { } nullNodeBillingSource && nullNodeBillingSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingSource = null;
-            if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
-            if (parseNode.GetChildNode("docs7ProEnabled") is { } nullNodeDocs7ProEnabled && nullNodeDocs7ProEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Docs7ProEnabled = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("isPersonal") is { } nullNodeIsPersonal && nullNodeIsPersonal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPersonal = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("ownerPlan") is { } nullNodeOwnerPlan && nullNodeOwnerPlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerPlan = null;
-            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+            if (parseNode.GetChildNode("billingModel") is null) { _explicitNullValueBillingModel = default!; _explicitNullProperties?.Remove("billingModel"); }
+            else if (parseNode.GetChildNode("billingModel") is { } nullNodeBillingModel && nullNodeBillingModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingModel = null;
+            if (parseNode.GetChildNode("billingSource") is null) { _explicitNullValueBillingSource = default!; _explicitNullProperties?.Remove("billingSource"); }
+            else if (parseNode.GetChildNode("billingSource") is { } nullNodeBillingSource && nullNodeBillingSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingSource = null;
+            if (parseNode.GetChildNode("createdAt") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("createdAt"); }
+            else if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("docs7ProEnabled") is null) { _explicitNullValueDocs7ProEnabled = default!; _explicitNullProperties?.Remove("docs7ProEnabled"); }
+            else if (parseNode.GetChildNode("docs7ProEnabled") is { } nullNodeDocs7ProEnabled && nullNodeDocs7ProEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Docs7ProEnabled = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("isPersonal") is null) { _explicitNullValueIsPersonal = default!; _explicitNullProperties?.Remove("isPersonal"); }
+            else if (parseNode.GetChildNode("isPersonal") is { } nullNodeIsPersonal && nullNodeIsPersonal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPersonal = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("ownerPlan") is null) { _explicitNullValueOwnerPlan = default!; _explicitNullProperties?.Remove("ownerPlan"); }
+            else if (parseNode.GetChildNode("ownerPlan") is { } nullNodeOwnerPlan && nullNodeOwnerPlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerPlan = null;
+            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
+            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billingModel property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel? BillingModel { get => _explicitNullValueBillingModel; set { _explicitNullValueBillingModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billingModel"); else _explicitNullProperties?.Remove("billingModel"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel? BillingModel { get => _explicitNullValueBillingModel; set { _explicitNullValueBillingModel = value; AdditionalData?.Remove("billingModel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billingModel"); else _explicitNullProperties?.Remove("billingModel"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel? _explicitNullValueBillingModel = default!;
         /// <summary>`vercel_marketplace` teamspaces are billed and managed by Vercel.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource? BillingSource { get => _explicitNullValueBillingSource; set { _explicitNullValueBillingSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billingSource"); else _explicitNullProperties?.Remove("billingSource"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource? BillingSource { get => _explicitNullValueBillingSource; set { _explicitNullValueBillingSource = value; AdditionalData?.Remove("billingSource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billingSource"); else _explicitNullProperties?.Remove("billingSource"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource? _explicitNullValueBillingSource = default!;
         /// <summary>The createdAt property</summary>
-        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("createdAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>The docs7ProEnabled property</summary>
-        public bool? Docs7ProEnabled { get => _explicitNullValueDocs7ProEnabled; set { _explicitNullValueDocs7ProEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docs7ProEnabled"); else _explicitNullProperties?.Remove("docs7ProEnabled"); } }
+        public bool? Docs7ProEnabled { get => _explicitNullValueDocs7ProEnabled; set { _explicitNullValueDocs7ProEnabled = value; AdditionalData?.Remove("docs7ProEnabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docs7ProEnabled"); else _explicitNullProperties?.Remove("docs7ProEnabled"); } }
         private bool? _explicitNullValueDocs7ProEnabled = default!;
         /// <summary>The id property</summary>
-        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private Guid? _explicitNullValueId = default!;
         /// <summary>The user&apos;s personal project. It has no members and no private sources.</summary>
-        public bool? IsPersonal { get => _explicitNullValueIsPersonal; set { _explicitNullValueIsPersonal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isPersonal"); else _explicitNullProperties?.Remove("isPersonal"); } }
+        public bool? IsPersonal { get => _explicitNullValueIsPersonal; set { _explicitNullValueIsPersonal = value; AdditionalData?.Remove("isPersonal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isPersonal"); else _explicitNullProperties?.Remove("isPersonal"); } }
         private bool? _explicitNullValueIsPersonal = default!;
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The owner&apos;s plan. The teamspace&apos;s features follow it.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryOwnerPlan? OwnerPlan { get => _explicitNullValueOwnerPlan; set { _explicitNullValueOwnerPlan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownerPlan"); else _explicitNullProperties?.Remove("ownerPlan"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryOwnerPlan? OwnerPlan { get => _explicitNullValueOwnerPlan; set { _explicitNullValueOwnerPlan = value; AdditionalData?.Remove("ownerPlan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownerPlan"); else _explicitNullProperties?.Remove("ownerPlan"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryOwnerPlan? _explicitNullValueOwnerPlan = default!;
         /// <summary>The caller&apos;s role in this teamspace.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryRole? _explicitNullValueRole = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary"/> and sets the default values.
@@ -89,15 +98,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "billingModel", n => { BillingModel = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel>(); } },
-                { "billingSource", n => { BillingSource = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource>(); } },
+                { "billingModel", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBillingModel = default; _explicitNullProperties?.Remove("billingModel"); AdditionalData["billingModel"] = unknown; } else { BillingModel = parsed; AdditionalData.Remove("billingModel"); } } },
+                { "billingSource", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBillingSource = default; _explicitNullProperties?.Remove("billingSource"); AdditionalData["billingSource"] = unknown; } else { BillingSource = parsed; AdditionalData.Remove("billingSource"); } } },
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "docs7ProEnabled", n => { Docs7ProEnabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "isPersonal", n => { IsPersonal = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "ownerPlan", n => { OwnerPlan = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryOwnerPlan>(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryRole>(); } },
+                { "ownerPlan", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryOwnerPlan>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOwnerPlan = default; _explicitNullProperties?.Remove("ownerPlan"); AdditionalData["ownerPlan"] = unknown; } else { OwnerPlan = parsed; AdditionalData.Remove("ownerPlan"); } } },
+                { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
             };
         }
         /// <summary>

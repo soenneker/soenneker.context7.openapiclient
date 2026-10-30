@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("redirectTo") is { } nullNodeRedirectTo && nullNodeRedirectTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectTo = null;
+            if (parseNode.GetChildNode("redirectTo") is null) { _explicitNullValueRedirectTo = default!; _explicitNullProperties?.Remove("redirectTo"); }
+            else if (parseNode.GetChildNode("redirectTo") is { } nullNodeRedirectTo && nullNodeRedirectTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Target library id, such as `/owner/repo`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RedirectTo { get => _explicitNullValueRedirectTo; set { _explicitNullValueRedirectTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirectTo"); else _explicitNullProperties?.Remove("redirectTo"); } }
+        public string? RedirectTo { get => _explicitNullValueRedirectTo; set { _explicitNullValueRedirectTo = value; AdditionalData?.Remove("redirectTo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirectTo"); else _explicitNullProperties?.Remove("redirectTo"); } }
         private string? _explicitNullValueRedirectTo = default!;
 #nullable restore
 #else
-        public string RedirectTo { get => _explicitNullValueRedirectTo; set { _explicitNullValueRedirectTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirectTo"); else _explicitNullProperties?.Remove("redirectTo"); } }
+        public string RedirectTo { get => _explicitNullValueRedirectTo; set { _explicitNullValueRedirectTo = value; AdditionalData?.Remove("redirectTo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirectTo"); else _explicitNullProperties?.Remove("redirectTo"); } }
         private string _explicitNullValueRedirectTo = default!;
 #endif
         /// <summary>

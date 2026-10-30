@@ -18,15 +18,24 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agentQuestions") is { } nullNodeAgentQuestions && nullNodeAgentQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentQuestions = null;
-            if (parseNode.GetChildNode("categories") is { } nullNodeCategories && nullNodeCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Categories = null;
-            if (parseNode.GetChildNode("dailyQuestions") is { } nullNodeDailyQuestions && nullNodeDailyQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyQuestions = null;
-            if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
-            if (parseNode.GetChildNode("hasPreviews") is { } nullNodeHasPreviews && nullNodeHasPreviews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasPreviews = null;
-            if (parseNode.GetChildNode("hosts") is { } nullNodeHosts && nullNodeHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hosts = null;
-            if (parseNode.GetChildNode("questions") is { } nullNodeQuestions && nullNodeQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Questions = null;
-            if (parseNode.GetChildNode("topSearches") is { } nullNodeTopSearches && nullNodeTopSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSearches = null;
-            if (parseNode.GetChildNode("totals") is { } nullNodeTotals && nullNodeTotals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Totals = null;
+            if (parseNode.GetChildNode("agentQuestions") is null) { _explicitNullValueAgentQuestions = default!; _explicitNullProperties?.Remove("agentQuestions"); }
+            else if (parseNode.GetChildNode("agentQuestions") is { } nullNodeAgentQuestions && nullNodeAgentQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentQuestions = null;
+            if (parseNode.GetChildNode("categories") is null) { _explicitNullValueCategories = default!; _explicitNullProperties?.Remove("categories"); }
+            else if (parseNode.GetChildNode("categories") is { } nullNodeCategories && nullNodeCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Categories = null;
+            if (parseNode.GetChildNode("dailyQuestions") is null) { _explicitNullValueDailyQuestions = default!; _explicitNullProperties?.Remove("dailyQuestions"); }
+            else if (parseNode.GetChildNode("dailyQuestions") is { } nullNodeDailyQuestions && nullNodeDailyQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyQuestions = null;
+            if (parseNode.GetChildNode("days") is null) { _explicitNullValueDays = default!; _explicitNullProperties?.Remove("days"); }
+            else if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
+            if (parseNode.GetChildNode("hasPreviews") is null) { _explicitNullValueHasPreviews = default!; _explicitNullProperties?.Remove("hasPreviews"); }
+            else if (parseNode.GetChildNode("hasPreviews") is { } nullNodeHasPreviews && nullNodeHasPreviews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasPreviews = null;
+            if (parseNode.GetChildNode("hosts") is null) { _explicitNullValueHosts = default!; _explicitNullProperties?.Remove("hosts"); }
+            else if (parseNode.GetChildNode("hosts") is { } nullNodeHosts && nullNodeHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hosts = null;
+            if (parseNode.GetChildNode("questions") is null) { _explicitNullValueQuestions = default!; _explicitNullProperties?.Remove("questions"); }
+            else if (parseNode.GetChildNode("questions") is { } nullNodeQuestions && nullNodeQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Questions = null;
+            if (parseNode.GetChildNode("topSearches") is null) { _explicitNullValueTopSearches = default!; _explicitNullProperties?.Remove("topSearches"); }
+            else if (parseNode.GetChildNode("topSearches") is { } nullNodeTopSearches && nullNodeTopSearches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSearches = null;
+            if (parseNode.GetChildNode("totals") is null) { _explicitNullValueTotals = default!; _explicitNullProperties?.Remove("totals"); }
+            else if (parseNode.GetChildNode("totals") is { } nullNodeTotals && nullNodeTotals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Totals = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,70 +43,70 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The agentQuestions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem>? AgentQuestions { get => _explicitNullValueAgentQuestions; set { _explicitNullValueAgentQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentQuestions"); else _explicitNullProperties?.Remove("agentQuestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem>? AgentQuestions { get => _explicitNullValueAgentQuestions; set { _explicitNullValueAgentQuestions = value; AdditionalData?.Remove("agentQuestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentQuestions"); else _explicitNullProperties?.Remove("agentQuestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem>? _explicitNullValueAgentQuestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem> AgentQuestions { get => _explicitNullValueAgentQuestions; set { _explicitNullValueAgentQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentQuestions"); else _explicitNullProperties?.Remove("agentQuestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem> AgentQuestions { get => _explicitNullValueAgentQuestions; set { _explicitNullValueAgentQuestions = value; AdditionalData?.Remove("agentQuestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentQuestions"); else _explicitNullProperties?.Remove("agentQuestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem> _explicitNullValueAgentQuestions = default!;
 #endif
         /// <summary>Assistant questions by topic.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem>? Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem>? Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; AdditionalData?.Remove("categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem>? _explicitNullValueCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem> Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem> Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; AdditionalData?.Remove("categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem> _explicitNullValueCategories = default!;
 #endif
         /// <summary>The dailyQuestions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem>? DailyQuestions { get => _explicitNullValueDailyQuestions; set { _explicitNullValueDailyQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyQuestions"); else _explicitNullProperties?.Remove("dailyQuestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem>? DailyQuestions { get => _explicitNullValueDailyQuestions; set { _explicitNullValueDailyQuestions = value; AdditionalData?.Remove("dailyQuestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyQuestions"); else _explicitNullProperties?.Remove("dailyQuestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem>? _explicitNullValueDailyQuestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem> DailyQuestions { get => _explicitNullValueDailyQuestions; set { _explicitNullValueDailyQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyQuestions"); else _explicitNullProperties?.Remove("dailyQuestions"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem> DailyQuestions { get => _explicitNullValueDailyQuestions; set { _explicitNullValueDailyQuestions = value; AdditionalData?.Remove("dailyQuestions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyQuestions"); else _explicitNullProperties?.Remove("dailyQuestions"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsDailyQuestionsItem> _explicitNullValueDailyQuestions = default!;
 #endif
         /// <summary>The days property</summary>
-        public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
+        public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; AdditionalData?.Remove("days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
         private int? _explicitNullValueDays = default!;
         /// <summary>The site has branch previews.</summary>
-        public bool? HasPreviews { get => _explicitNullValueHasPreviews; set { _explicitNullValueHasPreviews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasPreviews"); else _explicitNullProperties?.Remove("hasPreviews"); } }
+        public bool? HasPreviews { get => _explicitNullValueHasPreviews; set { _explicitNullValueHasPreviews = value; AdditionalData?.Remove("hasPreviews"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasPreviews"); else _explicitNullProperties?.Remove("hasPreviews"); } }
         private bool? _explicitNullValueHasPreviews = default!;
         /// <summary>Hostnames the site serves now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
+        public List<string>? Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; AdditionalData?.Remove("hosts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
         private List<string>? _explicitNullValueHosts = default!;
 #nullable restore
 #else
-        public List<string> Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
+        public List<string> Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; AdditionalData?.Remove("hosts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
         private List<string> _explicitNullValueHosts = default!;
 #endif
         /// <summary>The questions property</summary>
-        public int? Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
+        public int? Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; AdditionalData?.Remove("questions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
         private int? _explicitNullValueQuestions = default!;
         /// <summary>The topSearches property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem>? TopSearches { get => _explicitNullValueTopSearches; set { _explicitNullValueTopSearches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSearches"); else _explicitNullProperties?.Remove("topSearches"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem>? TopSearches { get => _explicitNullValueTopSearches; set { _explicitNullValueTopSearches = value; AdditionalData?.Remove("topSearches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSearches"); else _explicitNullProperties?.Remove("topSearches"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem>? _explicitNullValueTopSearches = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem> TopSearches { get => _explicitNullValueTopSearches; set { _explicitNullValueTopSearches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSearches"); else _explicitNullProperties?.Remove("topSearches"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem> TopSearches { get => _explicitNullValueTopSearches; set { _explicitNullValueTopSearches = value; AdditionalData?.Remove("topSearches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSearches"); else _explicitNullProperties?.Remove("topSearches"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTopSearchesItem> _explicitNullValueTopSearches = default!;
 #endif
         /// <summary>The totals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals? _explicitNullValueTotals = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsTotals _explicitNullValueTotals = default!;
 #endif
         /// <summary>

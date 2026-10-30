@@ -19,27 +19,30 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
-            if (parseNode.GetChildNode("totalUniqueUsers") is { } nullNodeTotalUniqueUsers && nullNodeTotalUniqueUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUniqueUsers = null;
-            if (parseNode.GetChildNode("uniqueUsersByClient") is { } nullNodeUniqueUsersByClient && nullNodeUniqueUsersByClient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueUsersByClient = null;
+            if (parseNode.GetChildNode("date") is null) { _explicitNullValueDate = default!; _explicitNullProperties?.Remove("date"); }
+            else if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
+            if (parseNode.GetChildNode("totalUniqueUsers") is null) { _explicitNullValueTotalUniqueUsers = default!; _explicitNullProperties?.Remove("totalUniqueUsers"); }
+            else if (parseNode.GetChildNode("totalUniqueUsers") is { } nullNodeTotalUniqueUsers && nullNodeTotalUniqueUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUniqueUsers = null;
+            if (parseNode.GetChildNode("uniqueUsersByClient") is null) { _explicitNullValueUniqueUsersByClient = default!; _explicitNullProperties?.Remove("uniqueUsersByClient"); }
+            else if (parseNode.GetChildNode("uniqueUsersByClient") is { } nullNodeUniqueUsersByClient && nullNodeUniqueUsersByClient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueUsersByClient = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UTC date in `YYYY-MM-DD` format</summary>
-        public Date? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        public Date? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private Date? _explicitNullValueDate = default!;
         /// <summary>Total unique users across all clients for this library on this date</summary>
-        public int? TotalUniqueUsers { get => _explicitNullValueTotalUniqueUsers; set { _explicitNullValueTotalUniqueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalUniqueUsers"); else _explicitNullProperties?.Remove("totalUniqueUsers"); } }
+        public int? TotalUniqueUsers { get => _explicitNullValueTotalUniqueUsers; set { _explicitNullValueTotalUniqueUsers = value; AdditionalData?.Remove("totalUniqueUsers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalUniqueUsers"); else _explicitNullProperties?.Remove("totalUniqueUsers"); } }
         private int? _explicitNullValueTotalUniqueUsers = default!;
         /// <summary>Unique user count per MCP client identifier (e.g., `cursor`, `claude-code`, `codex`)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty? UniqueUsersByClient { get => _explicitNullValueUniqueUsersByClient; set { _explicitNullValueUniqueUsersByClient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueUsersByClient"); else _explicitNullProperties?.Remove("uniqueUsersByClient"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty? UniqueUsersByClient { get => _explicitNullValueUniqueUsersByClient; set { _explicitNullValueUniqueUsersByClient = value; AdditionalData?.Remove("uniqueUsersByClient"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueUsersByClient"); else _explicitNullProperties?.Remove("uniqueUsersByClient"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty? _explicitNullValueUniqueUsersByClient = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty UniqueUsersByClient { get => _explicitNullValueUniqueUsersByClient; set { _explicitNullValueUniqueUsersByClient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueUsersByClient"); else _explicitNullProperties?.Remove("uniqueUsersByClient"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty UniqueUsersByClient { get => _explicitNullValueUniqueUsersByClient; set { _explicitNullValueUniqueUsersByClient = value; AdditionalData?.Remove("uniqueUsersByClient"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueUsersByClient"); else _explicitNullProperties?.Remove("uniqueUsersByClient"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientDataUniqueUsersByClientProperty _explicitNullValueUniqueUsersByClient = default!;
 #endif
         /// <summary>

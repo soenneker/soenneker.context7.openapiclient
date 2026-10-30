@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
-            if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
-            if (parseNode.GetChildNode("libraryName") is { } nullNodeLibraryName && nullNodeLibraryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryName = null;
+            if (parseNode.GetChildNode("branch") is null) { _explicitNullValueBranch = default!; _explicitNullProperties?.Remove("branch"); }
+            else if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("gitToken") is null) { _explicitNullValueGitToken = default!; _explicitNullProperties?.Remove("gitToken"); }
+            else if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
+            if (parseNode.GetChildNode("libraryName") is null) { _explicitNullValueLibraryName = default!; _explicitNullProperties?.Remove("libraryName"); }
+            else if (parseNode.GetChildNode("libraryName") is { } nullNodeLibraryName && nullNodeLibraryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Optional branch name to refresh</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>Optional Git access token for refreshing private repositories. If not provided, the stored OAuth token will be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string? _explicitNullValueGitToken = default!;
 #nullable restore
 #else
-        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string _explicitNullValueGitToken = default!;
 #endif
         /// <summary>Library identifier — the URL path of the library on context7.com. Use `/owner/repo` for GitHub repositories (e.g., `/vercel/next.js`), or `/&lt;source&gt;/&lt;id&gt;` for other sources (e.g., `/websites/uploadcare_com`, `/llmstxt/&lt;source&gt;`). See [Library ID format](/api-guide#library-id-format).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
+        public string? LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; AdditionalData?.Remove("libraryName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
         private string? _explicitNullValueLibraryName = default!;
 #nullable restore
 #else
-        public string LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
+        public string LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; AdditionalData?.Remove("libraryName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
         private string _explicitNullValueLibraryName = default!;
 #endif
         /// <summary>

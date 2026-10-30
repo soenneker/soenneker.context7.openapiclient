@@ -17,8 +17,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("llmstxtUrl") is { } nullNodeLlmstxtUrl && nullNodeLlmstxtUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmstxtUrl = null;
-            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("llmstxtUrl") is null) { _explicitNullValueLlmstxtUrl = default!; _explicitNullProperties?.Remove("llmstxtUrl"); }
+            else if (parseNode.GetChildNode("llmstxtUrl") is { } nullNodeLlmstxtUrl && nullNodeLlmstxtUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmstxtUrl = null;
+            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
+            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The llmstxtUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
+        public string? LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; AdditionalData?.Remove("llmstxtUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
         private string? _explicitNullValueLlmstxtUrl = default!;
 #nullable restore
 #else
-        public string LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
+        public string LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; AdditionalData?.Remove("llmstxtUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
         private string _explicitNullValueLlmstxtUrl = default!;
 #endif
         /// <summary>The source property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.LlmstxtSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.LlmstxtSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.LlmstxtSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryLlmsTxtSource"/> and sets the default values.
@@ -62,7 +64,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "llmstxtUrl", n => { LlmstxtUrl = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.LlmstxtSource>(); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.LlmstxtSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
             };
         }
         /// <summary>

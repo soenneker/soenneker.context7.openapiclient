@@ -18,12 +18,18 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
-            if (parseNode.GetChildNode("customDomainRouting") is { } nullNodeCustomDomainRouting && nullNodeCustomDomainRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDomainRouting = null;
-            if (parseNode.GetChildNode("hostname") is { } nullNodeHostname && nullNodeHostname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hostname = null;
-            if (parseNode.GetChildNode("liveDeploymentId") is { } nullNodeLiveDeploymentId && nullNodeLiveDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveDeploymentId = null;
-            if (parseNode.GetChildNode("publicUrl") is { } nullNodePublicUrl && nullNodePublicUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicUrl = null;
-            if (parseNode.GetChildNode("workerName") is { } nullNodeWorkerName && nullNodeWorkerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerName = null;
+            if (parseNode.GetChildNode("branch") is null) { _explicitNullValueBranch = default!; _explicitNullProperties?.Remove("branch"); }
+            else if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("customDomainRouting") is null) { _explicitNullValueCustomDomainRouting = default!; _explicitNullProperties?.Remove("customDomainRouting"); }
+            else if (parseNode.GetChildNode("customDomainRouting") is { } nullNodeCustomDomainRouting && nullNodeCustomDomainRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDomainRouting = null;
+            if (parseNode.GetChildNode("hostname") is null) { _explicitNullValueHostname = default!; _explicitNullProperties?.Remove("hostname"); }
+            else if (parseNode.GetChildNode("hostname") is { } nullNodeHostname && nullNodeHostname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hostname = null;
+            if (parseNode.GetChildNode("liveDeploymentId") is null) { _explicitNullValueLiveDeploymentId = default!; _explicitNullProperties?.Remove("liveDeploymentId"); }
+            else if (parseNode.GetChildNode("liveDeploymentId") is { } nullNodeLiveDeploymentId && nullNodeLiveDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveDeploymentId = null;
+            if (parseNode.GetChildNode("publicUrl") is null) { _explicitNullValuePublicUrl = default!; _explicitNullProperties?.Remove("publicUrl"); }
+            else if (parseNode.GetChildNode("publicUrl") is { } nullNodePublicUrl && nullNodePublicUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicUrl = null;
+            if (parseNode.GetChildNode("workerName") is null) { _explicitNullValueWorkerName = default!; _explicitNullProperties?.Remove("workerName"); }
+            else if (parseNode.GetChildNode("workerName") is { } nullNodeWorkerName && nullNodeWorkerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,47 +37,47 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Null for production.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>The customDomainRouting property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting? CustomDomainRouting { get => _explicitNullValueCustomDomainRouting; set { _explicitNullValueCustomDomainRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainRouting"); else _explicitNullProperties?.Remove("customDomainRouting"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting? CustomDomainRouting { get => _explicitNullValueCustomDomainRouting; set { _explicitNullValueCustomDomainRouting = value; AdditionalData?.Remove("customDomainRouting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainRouting"); else _explicitNullProperties?.Remove("customDomainRouting"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting? _explicitNullValueCustomDomainRouting = default!;
         /// <summary>The hostname property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hostname { get => _explicitNullValueHostname; set { _explicitNullValueHostname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostname"); else _explicitNullProperties?.Remove("hostname"); } }
+        public string? Hostname { get => _explicitNullValueHostname; set { _explicitNullValueHostname = value; AdditionalData?.Remove("hostname"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostname"); else _explicitNullProperties?.Remove("hostname"); } }
         private string? _explicitNullValueHostname = default!;
 #nullable restore
 #else
-        public string Hostname { get => _explicitNullValueHostname; set { _explicitNullValueHostname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostname"); else _explicitNullProperties?.Remove("hostname"); } }
+        public string Hostname { get => _explicitNullValueHostname; set { _explicitNullValueHostname = value; AdditionalData?.Remove("hostname"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostname"); else _explicitNullProperties?.Remove("hostname"); } }
         private string _explicitNullValueHostname = default!;
 #endif
         /// <summary>The liveDeploymentId property</summary>
-        public Guid? LiveDeploymentId { get => _explicitNullValueLiveDeploymentId; set { _explicitNullValueLiveDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveDeploymentId"); else _explicitNullProperties?.Remove("liveDeploymentId"); } }
+        public Guid? LiveDeploymentId { get => _explicitNullValueLiveDeploymentId; set { _explicitNullValueLiveDeploymentId = value; AdditionalData?.Remove("liveDeploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveDeploymentId"); else _explicitNullProperties?.Remove("liveDeploymentId"); } }
         private Guid? _explicitNullValueLiveDeploymentId = default!;
         /// <summary>The publicUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PublicUrl { get => _explicitNullValuePublicUrl; set { _explicitNullValuePublicUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicUrl"); else _explicitNullProperties?.Remove("publicUrl"); } }
+        public string? PublicUrl { get => _explicitNullValuePublicUrl; set { _explicitNullValuePublicUrl = value; AdditionalData?.Remove("publicUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicUrl"); else _explicitNullProperties?.Remove("publicUrl"); } }
         private string? _explicitNullValuePublicUrl = default!;
 #nullable restore
 #else
-        public string PublicUrl { get => _explicitNullValuePublicUrl; set { _explicitNullValuePublicUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicUrl"); else _explicitNullProperties?.Remove("publicUrl"); } }
+        public string PublicUrl { get => _explicitNullValuePublicUrl; set { _explicitNullValuePublicUrl = value; AdditionalData?.Remove("publicUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicUrl"); else _explicitNullProperties?.Remove("publicUrl"); } }
         private string _explicitNullValuePublicUrl = default!;
 #endif
         /// <summary>The workerName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkerName { get => _explicitNullValueWorkerName; set { _explicitNullValueWorkerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workerName"); else _explicitNullProperties?.Remove("workerName"); } }
+        public string? WorkerName { get => _explicitNullValueWorkerName; set { _explicitNullValueWorkerName = value; AdditionalData?.Remove("workerName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workerName"); else _explicitNullProperties?.Remove("workerName"); } }
         private string? _explicitNullValueWorkerName = default!;
 #nullable restore
 #else
-        public string WorkerName { get => _explicitNullValueWorkerName; set { _explicitNullValueWorkerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workerName"); else _explicitNullProperties?.Remove("workerName"); } }
+        public string WorkerName { get => _explicitNullValueWorkerName; set { _explicitNullValueWorkerName = value; AdditionalData?.Remove("workerName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workerName"); else _explicitNullProperties?.Remove("workerName"); } }
         private string _explicitNullValueWorkerName = default!;
 #endif
         /// <summary>
@@ -100,7 +106,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "branch", n => { Branch = n.GetStringValue(); } },
-                { "customDomainRouting", n => { CustomDomainRouting = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting>(); } },
+                { "customDomainRouting", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCustomDomainRouting = default; _explicitNullProperties?.Remove("customDomainRouting"); AdditionalData["customDomainRouting"] = unknown; } else { CustomDomainRouting = parsed; AdditionalData.Remove("customDomainRouting"); } } },
                 { "hostname", n => { Hostname = n.GetStringValue(); } },
                 { "liveDeploymentId", n => { LiveDeploymentId = n.GetGuidValue(); } },
                 { "publicUrl", n => { PublicUrl = n.GetStringValue(); } },

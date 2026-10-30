@@ -18,9 +18,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("commentUrl") is { } nullNodeCommentUrl && nullNodeCommentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentUrl = null;
-            if (parseNode.GetChildNode("commitSha") is { } nullNodeCommitSha && nullNodeCommitSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommitSha = null;
-            if (parseNode.GetChildNode("findings") is { } nullNodeFindings && nullNodeFindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Findings = null;
+            if (parseNode.GetChildNode("commentUrl") is null) { _explicitNullValueCommentUrl = default!; _explicitNullProperties?.Remove("commentUrl"); }
+            else if (parseNode.GetChildNode("commentUrl") is { } nullNodeCommentUrl && nullNodeCommentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentUrl = null;
+            if (parseNode.GetChildNode("commitSha") is null) { _explicitNullValueCommitSha = default!; _explicitNullProperties?.Remove("commitSha"); }
+            else if (parseNode.GetChildNode("commitSha") is { } nullNodeCommitSha && nullNodeCommitSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommitSha = null;
+            if (parseNode.GetChildNode("findings") is null) { _explicitNullValueFindings = default!; _explicitNullProperties?.Remove("findings"); }
+            else if (parseNode.GetChildNode("findings") is { } nullNodeFindings && nullNodeFindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Findings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The commentUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commentUrl"); else _explicitNullProperties?.Remove("commentUrl"); } }
+        public string? CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; AdditionalData?.Remove("commentUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commentUrl"); else _explicitNullProperties?.Remove("commentUrl"); } }
         private string? _explicitNullValueCommentUrl = default!;
 #nullable restore
 #else
-        public string CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commentUrl"); else _explicitNullProperties?.Remove("commentUrl"); } }
+        public string CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; AdditionalData?.Remove("commentUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commentUrl"); else _explicitNullProperties?.Remove("commentUrl"); } }
         private string _explicitNullValueCommentUrl = default!;
 #endif
         /// <summary>The commitSha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commitSha"); else _explicitNullProperties?.Remove("commitSha"); } }
+        public string? CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; AdditionalData?.Remove("commitSha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commitSha"); else _explicitNullProperties?.Remove("commitSha"); } }
         private string? _explicitNullValueCommitSha = default!;
 #nullable restore
 #else
-        public string CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commitSha"); else _explicitNullProperties?.Remove("commitSha"); } }
+        public string CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; AdditionalData?.Remove("commitSha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commitSha"); else _explicitNullProperties?.Remove("commitSha"); } }
         private string _explicitNullValueCommitSha = default!;
 #endif
         /// <summary>The findings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem>? Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem>? Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; AdditionalData?.Remove("findings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem>? _explicitNullValueFindings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem> Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem> Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; AdditionalData?.Remove("findings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReviewFindingsItem> _explicitNullValueFindings = default!;
 #endif
         /// <summary>

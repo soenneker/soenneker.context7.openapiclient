@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
-            if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
-            if (parseNode.GetChildNode("pageIds") is { } nullNodePageIds && nullNodePageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageIds = null;
+            if (parseNode.GetChildNode("branch") is null) { _explicitNullValueBranch = default!; _explicitNullProperties?.Remove("branch"); }
+            else if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("gitToken") is null) { _explicitNullValueGitToken = default!; _explicitNullProperties?.Remove("gitToken"); }
+            else if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
+            if (parseNode.GetChildNode("pageIds") is null) { _explicitNullValuePageIds = default!; _explicitNullProperties?.Remove("pageIds"); }
+            else if (parseNode.GetChildNode("pageIds") is { } nullNodePageIds && nullNodePageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>A branch version to refresh in place of the default branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>Token for a private repository. Default: the account connected in the dashboard.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string? _explicitNullValueGitToken = default!;
 #nullable restore
 #else
-        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string _explicitNullValueGitToken = default!;
 #endif
         /// <summary>Confluence and Notion: the pages to index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PageIds { get => _explicitNullValuePageIds; set { _explicitNullValuePageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageIds"); else _explicitNullProperties?.Remove("pageIds"); } }
+        public List<string>? PageIds { get => _explicitNullValuePageIds; set { _explicitNullValuePageIds = value; AdditionalData?.Remove("pageIds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageIds"); else _explicitNullProperties?.Remove("pageIds"); } }
         private List<string>? _explicitNullValuePageIds = default!;
 #nullable restore
 #else
-        public List<string> PageIds { get => _explicitNullValuePageIds; set { _explicitNullValuePageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageIds"); else _explicitNullProperties?.Remove("pageIds"); } }
+        public List<string> PageIds { get => _explicitNullValuePageIds; set { _explicitNullValuePageIds = value; AdditionalData?.Remove("pageIds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageIds"); else _explicitNullProperties?.Remove("pageIds"); } }
         private List<string> _explicitNullValuePageIds = default!;
 #endif
         /// <summary>

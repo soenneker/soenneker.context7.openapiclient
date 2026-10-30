@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("llmstxtUrl") is { } nullNodeLlmstxtUrl && nullNodeLlmstxtUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmstxtUrl = null;
+            if (parseNode.GetChildNode("llmstxtUrl") is null) { _explicitNullValueLlmstxtUrl = default!; _explicitNullProperties?.Remove("llmstxtUrl"); }
+            else if (parseNode.GetChildNode("llmstxtUrl") is { } nullNodeLlmstxtUrl && nullNodeLlmstxtUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmstxtUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>URL pointing to an llms.txt, llms-full.txt, or llms-small.txt file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
+        public string? LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; AdditionalData?.Remove("llmstxtUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
         private string? _explicitNullValueLlmstxtUrl = default!;
 #nullable restore
 #else
-        public string LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
+        public string LlmstxtUrl { get => _explicitNullValueLlmstxtUrl; set { _explicitNullValueLlmstxtUrl = value; AdditionalData?.Remove("llmstxtUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxtUrl"); else _explicitNullProperties?.Remove("llmstxtUrl"); } }
         private string _explicitNullValueLlmstxtUrl = default!;
 #endif
         /// <summary>

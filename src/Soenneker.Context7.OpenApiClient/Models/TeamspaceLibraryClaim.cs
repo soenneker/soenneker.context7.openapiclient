@@ -17,79 +17,88 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("claimed") is { } nullNodeClaimed && nullNodeClaimed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Claimed = null;
-            if (parseNode.GetChildNode("fileContent") is { } nullNodeFileContent && nullNodeFileContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileContent = null;
-            if (parseNode.GetChildNode("fileName") is { } nullNodeFileName && nullNodeFileName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileName = null;
-            if (parseNode.GetChildNode("hostUnder") is { } nullNodeHostUnder && nullNodeHostUnder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostUnder = null;
-            if (parseNode.GetChildNode("libraryName") is { } nullNodeLibraryName && nullNodeLibraryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryName = null;
-            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
-            if (parseNode.GetChildNode("ownedByTeamspace") is { } nullNodeOwnedByTeamspace && nullNodeOwnedByTeamspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnedByTeamspace = null;
-            if (parseNode.GetChildNode("publicKey") is { } nullNodePublicKey && nullNodePublicKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicKey = null;
-            if (parseNode.GetChildNode("repositoryUrl") is { } nullNodeRepositoryUrl && nullNodeRepositoryUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryUrl = null;
+            if (parseNode.GetChildNode("claimed") is null) { _explicitNullValueClaimed = default!; _explicitNullProperties?.Remove("claimed"); }
+            else if (parseNode.GetChildNode("claimed") is { } nullNodeClaimed && nullNodeClaimed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Claimed = null;
+            if (parseNode.GetChildNode("fileContent") is null) { _explicitNullValueFileContent = default!; _explicitNullProperties?.Remove("fileContent"); }
+            else if (parseNode.GetChildNode("fileContent") is { } nullNodeFileContent && nullNodeFileContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileContent = null;
+            if (parseNode.GetChildNode("fileName") is null) { _explicitNullValueFileName = default!; _explicitNullProperties?.Remove("fileName"); }
+            else if (parseNode.GetChildNode("fileName") is { } nullNodeFileName && nullNodeFileName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileName = null;
+            if (parseNode.GetChildNode("hostUnder") is null) { _explicitNullValueHostUnder = default!; _explicitNullProperties?.Remove("hostUnder"); }
+            else if (parseNode.GetChildNode("hostUnder") is { } nullNodeHostUnder && nullNodeHostUnder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostUnder = null;
+            if (parseNode.GetChildNode("libraryName") is null) { _explicitNullValueLibraryName = default!; _explicitNullProperties?.Remove("libraryName"); }
+            else if (parseNode.GetChildNode("libraryName") is { } nullNodeLibraryName && nullNodeLibraryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryName = null;
+            if (parseNode.GetChildNode("method") is null) { _explicitNullValueMethod = default!; _explicitNullProperties?.Remove("method"); }
+            else if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("ownedByTeamspace") is null) { _explicitNullValueOwnedByTeamspace = default!; _explicitNullProperties?.Remove("ownedByTeamspace"); }
+            else if (parseNode.GetChildNode("ownedByTeamspace") is { } nullNodeOwnedByTeamspace && nullNodeOwnedByTeamspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnedByTeamspace = null;
+            if (parseNode.GetChildNode("publicKey") is null) { _explicitNullValuePublicKey = default!; _explicitNullProperties?.Remove("publicKey"); }
+            else if (parseNode.GetChildNode("publicKey") is { } nullNodePublicKey && nullNodePublicKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicKey = null;
+            if (parseNode.GetChildNode("repositoryUrl") is null) { _explicitNullValueRepositoryUrl = default!; _explicitNullProperties?.Remove("repositoryUrl"); }
+            else if (parseNode.GetChildNode("repositoryUrl") is { } nullNodeRepositoryUrl && nullNodeRepositoryUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Some teamspace has claimed the library.</summary>
-        public bool? Claimed { get => _explicitNullValueClaimed; set { _explicitNullValueClaimed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claimed"); else _explicitNullProperties?.Remove("claimed"); } }
+        public bool? Claimed { get => _explicitNullValueClaimed; set { _explicitNullValueClaimed = value; AdditionalData?.Remove("claimed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claimed"); else _explicitNullProperties?.Remove("claimed"); } }
         private bool? _explicitNullValueClaimed = default!;
         /// <summary>The file to publish, as text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FileContent { get => _explicitNullValueFileContent; set { _explicitNullValueFileContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileContent"); else _explicitNullProperties?.Remove("fileContent"); } }
+        public string? FileContent { get => _explicitNullValueFileContent; set { _explicitNullValueFileContent = value; AdditionalData?.Remove("fileContent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileContent"); else _explicitNullProperties?.Remove("fileContent"); } }
         private string? _explicitNullValueFileContent = default!;
 #nullable restore
 #else
-        public string FileContent { get => _explicitNullValueFileContent; set { _explicitNullValueFileContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileContent"); else _explicitNullProperties?.Remove("fileContent"); } }
+        public string FileContent { get => _explicitNullValueFileContent; set { _explicitNullValueFileContent = value; AdditionalData?.Remove("fileContent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileContent"); else _explicitNullProperties?.Remove("fileContent"); } }
         private string _explicitNullValueFileContent = default!;
 #endif
         /// <summary>The fileName property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.Context7JsonFileName? FileName { get => _explicitNullValueFileName; set { _explicitNullValueFileName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileName"); else _explicitNullProperties?.Remove("fileName"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Context7JsonFileName? FileName { get => _explicitNullValueFileName; set { _explicitNullValueFileName = value; AdditionalData?.Remove("fileName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fileName"); else _explicitNullProperties?.Remove("fileName"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Context7JsonFileName? _explicitNullValueFileName = default!;
         /// <summary>The file&apos;s URL must start with this URL (`hostedFile`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HostUnder { get => _explicitNullValueHostUnder; set { _explicitNullValueHostUnder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostUnder"); else _explicitNullProperties?.Remove("hostUnder"); } }
+        public string? HostUnder { get => _explicitNullValueHostUnder; set { _explicitNullValueHostUnder = value; AdditionalData?.Remove("hostUnder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostUnder"); else _explicitNullProperties?.Remove("hostUnder"); } }
         private string? _explicitNullValueHostUnder = default!;
 #nullable restore
 #else
-        public string HostUnder { get => _explicitNullValueHostUnder; set { _explicitNullValueHostUnder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostUnder"); else _explicitNullProperties?.Remove("hostUnder"); } }
+        public string HostUnder { get => _explicitNullValueHostUnder; set { _explicitNullValueHostUnder = value; AdditionalData?.Remove("hostUnder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostUnder"); else _explicitNullProperties?.Remove("hostUnder"); } }
         private string _explicitNullValueHostUnder = default!;
 #endif
         /// <summary>The libraryName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
+        public string? LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; AdditionalData?.Remove("libraryName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
         private string? _explicitNullValueLibraryName = default!;
 #nullable restore
 #else
-        public string LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
+        public string LibraryName { get => _explicitNullValueLibraryName; set { _explicitNullValueLibraryName = value; AdditionalData?.Remove("libraryName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryName"); else _explicitNullProperties?.Remove("libraryName"); } }
         private string _explicitNullValueLibraryName = default!;
 #endif
         /// <summary>`repository`: commit the file to the root of the repository&apos;s default branch. `hostedFile`: host it anywhere under `hostUnder` (websites, llms.txt, OpenAPI).</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; AdditionalData?.Remove("method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimMethod? _explicitNullValueMethod = default!;
         /// <summary>This teamspace has claimed it.</summary>
-        public bool? OwnedByTeamspace { get => _explicitNullValueOwnedByTeamspace; set { _explicitNullValueOwnedByTeamspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownedByTeamspace"); else _explicitNullProperties?.Remove("ownedByTeamspace"); } }
+        public bool? OwnedByTeamspace { get => _explicitNullValueOwnedByTeamspace; set { _explicitNullValueOwnedByTeamspace = value; AdditionalData?.Remove("ownedByTeamspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownedByTeamspace"); else _explicitNullProperties?.Remove("ownedByTeamspace"); } }
         private bool? _explicitNullValueOwnedByTeamspace = default!;
         /// <summary>The teamspace&apos;s public key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PublicKey { get => _explicitNullValuePublicKey; set { _explicitNullValuePublicKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicKey"); else _explicitNullProperties?.Remove("publicKey"); } }
+        public string? PublicKey { get => _explicitNullValuePublicKey; set { _explicitNullValuePublicKey = value; AdditionalData?.Remove("publicKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicKey"); else _explicitNullProperties?.Remove("publicKey"); } }
         private string? _explicitNullValuePublicKey = default!;
 #nullable restore
 #else
-        public string PublicKey { get => _explicitNullValuePublicKey; set { _explicitNullValuePublicKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicKey"); else _explicitNullProperties?.Remove("publicKey"); } }
+        public string PublicKey { get => _explicitNullValuePublicKey; set { _explicitNullValuePublicKey = value; AdditionalData?.Remove("publicKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publicKey"); else _explicitNullProperties?.Remove("publicKey"); } }
         private string _explicitNullValuePublicKey = default!;
 #endif
         /// <summary>The repository to commit to (`repository`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepositoryUrl { get => _explicitNullValueRepositoryUrl; set { _explicitNullValueRepositoryUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositoryUrl"); else _explicitNullProperties?.Remove("repositoryUrl"); } }
+        public string? RepositoryUrl { get => _explicitNullValueRepositoryUrl; set { _explicitNullValueRepositoryUrl = value; AdditionalData?.Remove("repositoryUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositoryUrl"); else _explicitNullProperties?.Remove("repositoryUrl"); } }
         private string? _explicitNullValueRepositoryUrl = default!;
 #nullable restore
 #else
-        public string RepositoryUrl { get => _explicitNullValueRepositoryUrl; set { _explicitNullValueRepositoryUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositoryUrl"); else _explicitNullProperties?.Remove("repositoryUrl"); } }
+        public string RepositoryUrl { get => _explicitNullValueRepositoryUrl; set { _explicitNullValueRepositoryUrl = value; AdditionalData?.Remove("repositoryUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositoryUrl"); else _explicitNullProperties?.Remove("repositoryUrl"); } }
         private string _explicitNullValueRepositoryUrl = default!;
 #endif
         /// <summary>
@@ -119,10 +128,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
             {
                 { "claimed", n => { Claimed = n.GetBoolValue(); } },
                 { "fileContent", n => { FileContent = n.GetStringValue(); } },
-                { "fileName", n => { FileName = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Context7JsonFileName>(); } },
+                { "fileName", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Context7JsonFileName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFileName = default; _explicitNullProperties?.Remove("fileName"); AdditionalData["fileName"] = unknown; } else { FileName = parsed; AdditionalData.Remove("fileName"); } } },
                 { "hostUnder", n => { HostUnder = n.GetStringValue(); } },
                 { "libraryName", n => { LibraryName = n.GetStringValue(); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimMethod>(); } },
+                { "method", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMethod = default; _explicitNullProperties?.Remove("method"); AdditionalData["method"] = unknown; } else { Method = parsed; AdditionalData.Remove("method"); } } },
                 { "ownedByTeamspace", n => { OwnedByTeamspace = n.GetBoolValue(); } },
                 { "publicKey", n => { PublicKey = n.GetStringValue(); } },
                 { "repositoryUrl", n => { RepositoryUrl = n.GetStringValue(); } },

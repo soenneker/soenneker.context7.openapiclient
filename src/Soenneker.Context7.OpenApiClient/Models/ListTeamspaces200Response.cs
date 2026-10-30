@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("teamspaces") is { } nullNodeTeamspaces && nullNodeTeamspaces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teamspaces = null;
+            if (parseNode.GetChildNode("teamspaces") is null) { _explicitNullValueTeamspaces = default!; _explicitNullProperties?.Remove("teamspaces"); }
+            else if (parseNode.GetChildNode("teamspaces") is { } nullNodeTeamspaces && nullNodeTeamspaces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teamspaces = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The teamspaces property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary>? Teamspaces { get => _explicitNullValueTeamspaces; set { _explicitNullValueTeamspaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspaces"); else _explicitNullProperties?.Remove("teamspaces"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary>? Teamspaces { get => _explicitNullValueTeamspaces; set { _explicitNullValueTeamspaces = value; AdditionalData?.Remove("teamspaces"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspaces"); else _explicitNullProperties?.Remove("teamspaces"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary>? _explicitNullValueTeamspaces = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary> Teamspaces { get => _explicitNullValueTeamspaces; set { _explicitNullValueTeamspaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspaces"); else _explicitNullProperties?.Remove("teamspaces"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary> Teamspaces { get => _explicitNullValueTeamspaces; set { _explicitNullValueTeamspaces = value; AdditionalData?.Remove("teamspaces"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspaces"); else _explicitNullProperties?.Remove("teamspaces"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummary> _explicitNullValueTeamspaces = default!;
 #endif
         /// <summary>

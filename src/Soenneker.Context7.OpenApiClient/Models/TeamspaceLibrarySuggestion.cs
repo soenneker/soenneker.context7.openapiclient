@@ -17,50 +17,55 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("benchmarkScore") is { } nullNodeBenchmarkScore && nullNodeBenchmarkScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkScore = null;
-            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
-            if (parseNode.GetChildNode("recommendation") is { } nullNodeRecommendation && nullNodeRecommendation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recommendation = null;
-            if (parseNode.GetChildNode("sourceFiles") is { } nullNodeSourceFiles && nullNodeSourceFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceFiles = null;
-            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("benchmarkScore") is null) { _explicitNullValueBenchmarkScore = default!; _explicitNullProperties?.Remove("benchmarkScore"); }
+            else if (parseNode.GetChildNode("benchmarkScore") is { } nullNodeBenchmarkScore && nullNodeBenchmarkScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkScore = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("recommendation") is null) { _explicitNullValueRecommendation = default!; _explicitNullProperties?.Remove("recommendation"); }
+            else if (parseNode.GetChildNode("recommendation") is { } nullNodeRecommendation && nullNodeRecommendation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recommendation = null;
+            if (parseNode.GetChildNode("sourceFiles") is null) { _explicitNullValueSourceFiles = default!; _explicitNullProperties?.Remove("sourceFiles"); }
+            else if (parseNode.GetChildNode("sourceFiles") is { } nullNodeSourceFiles && nullNodeSourceFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceFiles = null;
+            if (parseNode.GetChildNode("timestamp") is null) { _explicitNullValueTimestamp = default!; _explicitNullProperties?.Remove("timestamp"); }
+            else if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The benchmarkScore property</summary>
-        public double? BenchmarkScore { get => _explicitNullValueBenchmarkScore; set { _explicitNullValueBenchmarkScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkScore"); else _explicitNullProperties?.Remove("benchmarkScore"); } }
+        public double? BenchmarkScore { get => _explicitNullValueBenchmarkScore; set { _explicitNullValueBenchmarkScore = value; AdditionalData?.Remove("benchmarkScore"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkScore"); else _explicitNullProperties?.Remove("benchmarkScore"); } }
         private double? _explicitNullValueBenchmarkScore = default!;
         /// <summary>The question the docs answered badly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>What to add or change in the docs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Recommendation { get => _explicitNullValueRecommendation; set { _explicitNullValueRecommendation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendation"); else _explicitNullProperties?.Remove("recommendation"); } }
+        public string? Recommendation { get => _explicitNullValueRecommendation; set { _explicitNullValueRecommendation = value; AdditionalData?.Remove("recommendation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendation"); else _explicitNullProperties?.Remove("recommendation"); } }
         private string? _explicitNullValueRecommendation = default!;
 #nullable restore
 #else
-        public string Recommendation { get => _explicitNullValueRecommendation; set { _explicitNullValueRecommendation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendation"); else _explicitNullProperties?.Remove("recommendation"); } }
+        public string Recommendation { get => _explicitNullValueRecommendation; set { _explicitNullValueRecommendation = value; AdditionalData?.Remove("recommendation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendation"); else _explicitNullProperties?.Remove("recommendation"); } }
         private string _explicitNullValueRecommendation = default!;
 #endif
         /// <summary>Doc files to change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourceFiles { get => _explicitNullValueSourceFiles; set { _explicitNullValueSourceFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceFiles"); else _explicitNullProperties?.Remove("sourceFiles"); } }
+        public List<string>? SourceFiles { get => _explicitNullValueSourceFiles; set { _explicitNullValueSourceFiles = value; AdditionalData?.Remove("sourceFiles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceFiles"); else _explicitNullProperties?.Remove("sourceFiles"); } }
         private List<string>? _explicitNullValueSourceFiles = default!;
 #nullable restore
 #else
-        public List<string> SourceFiles { get => _explicitNullValueSourceFiles; set { _explicitNullValueSourceFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceFiles"); else _explicitNullProperties?.Remove("sourceFiles"); } }
+        public List<string> SourceFiles { get => _explicitNullValueSourceFiles; set { _explicitNullValueSourceFiles = value; AdditionalData?.Remove("sourceFiles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceFiles"); else _explicitNullProperties?.Remove("sourceFiles"); } }
         private List<string> _explicitNullValueSourceFiles = default!;
 #endif
         /// <summary>The timestamp property</summary>
-        public DateTimeOffset? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        public DateTimeOffset? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private DateTimeOffset? _explicitNullValueTimestamp = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySuggestion"/> and sets the default values.

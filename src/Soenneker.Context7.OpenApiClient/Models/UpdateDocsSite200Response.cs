@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("context7Notice") is { } nullNodeContext7Notice && nullNodeContext7Notice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7Notice = null;
-            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
-            if (parseNode.GetChildNode("deploymentId") is { } nullNodeDeploymentId && nullNodeDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentId = null;
+            if (parseNode.GetChildNode("context7Notice") is null) { _explicitNullValueContext7Notice = default!; _explicitNullProperties?.Remove("context7Notice"); }
+            else if (parseNode.GetChildNode("context7Notice") is { } nullNodeContext7Notice && nullNodeContext7Notice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7Notice = null;
+            if (parseNode.GetChildNode("data") is null) { _explicitNullValueData = default!; _explicitNullProperties?.Remove("data"); }
+            else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("deploymentId") is null) { _explicitNullValueDeploymentId = default!; _explicitNullProperties?.Remove("deploymentId"); }
+            else if (parseNode.GetChildNode("deploymentId") is { } nullNodeDeploymentId && nullNodeDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,25 +30,25 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Why Context7 could not index the repository, when `context7Index` was turned on but the library cannot refresh.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Context7Notice { get => _explicitNullValueContext7Notice; set { _explicitNullValueContext7Notice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Notice"); else _explicitNullProperties?.Remove("context7Notice"); } }
+        public string? Context7Notice { get => _explicitNullValueContext7Notice; set { _explicitNullValueContext7Notice = value; AdditionalData?.Remove("context7Notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Notice"); else _explicitNullProperties?.Remove("context7Notice"); } }
         private string? _explicitNullValueContext7Notice = default!;
 #nullable restore
 #else
-        public string Context7Notice { get => _explicitNullValueContext7Notice; set { _explicitNullValueContext7Notice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Notice"); else _explicitNullProperties?.Remove("context7Notice"); } }
+        public string Context7Notice { get => _explicitNullValueContext7Notice; set { _explicitNullValueContext7Notice = value; AdditionalData?.Remove("context7Notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7Notice"); else _explicitNullProperties?.Remove("context7Notice"); } }
         private string _explicitNullValueContext7Notice = default!;
 #endif
         /// <summary>A Docs7 site built from a GitHub repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7Site? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7Site? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7Site? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7Site Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7Site Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7Site _explicitNullValueData = default!;
 #endif
         /// <summary>The first build when this call published the site.</summary>
-        public Guid? DeploymentId { get => _explicitNullValueDeploymentId; set { _explicitNullValueDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentId"); else _explicitNullProperties?.Remove("deploymentId"); } }
+        public Guid? DeploymentId { get => _explicitNullValueDeploymentId; set { _explicitNullValueDeploymentId = value; AdditionalData?.Remove("deploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentId"); else _explicitNullProperties?.Remove("deploymentId"); } }
         private Guid? _explicitNullValueDeploymentId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.UpdateDocsSite200Response"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("libraryIdentifier") is { } nullNodeLibraryIdentifier && nullNodeLibraryIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryIdentifier = null;
-            if (parseNode.GetChildNode("requestType") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
+            if (parseNode.GetChildNode("libraryIdentifier") is null) { _explicitNullValueLibraryIdentifier = default!; _explicitNullProperties?.Remove("libraryIdentifier"); }
+            else if (parseNode.GetChildNode("libraryIdentifier") is { } nullNodeLibraryIdentifier && nullNodeLibraryIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryIdentifier = null;
+            if (parseNode.GetChildNode("requestType") is null) { _explicitNullValueRequestType = default!; _explicitNullProperties?.Remove("requestType"); }
+            else if (parseNode.GetChildNode("requestType") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>A library id starting with `/` (`/org/repo`, `/org`), or a root domain (`stripe.com`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        public string? LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; AdditionalData?.Remove("libraryIdentifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
         private string? _explicitNullValueLibraryIdentifier = default!;
 #nullable restore
 #else
-        public string LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        public string LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; AdditionalData?.Remove("libraryIdentifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
         private string _explicitNullValueLibraryIdentifier = default!;
 #endif
         /// <summary>`allow`/`unallow` edit the allowed list (select mode), `block`/`unblock` the blocked list and `except`/`unexcept` the exceptions list (quality mode).</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestType"); else _explicitNullProperties?.Remove("requestType"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; AdditionalData?.Remove("requestType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestType"); else _explicitNullProperties?.Remove("requestType"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? _explicitNullValueRequestType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequest"/> and sets the default values.
@@ -62,7 +64,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "libraryIdentifier", n => { LibraryIdentifier = n.GetStringValue(); } },
-                { "requestType", n => { RequestType = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType>(); } },
+                { "requestType", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRequestType = default; _explicitNullProperties?.Remove("requestType"); AdditionalData["requestType"] = unknown; } else { RequestType = parsed; AdditionalData.Remove("requestType"); } } },
             };
         }
         /// <summary>

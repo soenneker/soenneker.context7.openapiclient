@@ -18,8 +18,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowedLicenses") is { } nullNodeAllowedLicenses && nullNodeAllowedLicenses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLicenses = null;
-            if (parseNode.GetChildNode("minStars") is { } nullNodeMinStars && nullNodeMinStars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinStars = null;
+            if (parseNode.GetChildNode("allowedLicenses") is null) { _explicitNullValueAllowedLicenses = default!; _explicitNullProperties?.Remove("allowedLicenses"); }
+            else if (parseNode.GetChildNode("allowedLicenses") is { } nullNodeAllowedLicenses && nullNodeAllowedLicenses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLicenses = null;
+            if (parseNode.GetChildNode("minStars") is null) { _explicitNullValueMinStars = default!; _explicitNullProperties?.Remove("minStars"); }
+            else if (parseNode.GetChildNode("minStars") is { } nullNodeMinStars && nullNodeMinStars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinStars = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Incremental add/remove operation on a list of SPDX license identifiers. Use &apos;clear&apos; to remove all entries at once.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation? AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation? AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; AdditionalData?.Remove("allowedLicenses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation? _explicitNullValueAllowedLicenses = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; AdditionalData?.Remove("allowedLicenses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.LicenseListOperation _explicitNullValueAllowedLicenses = default!;
 #endif
         /// <summary>Minimum stars threshold (null to clear)</summary>
-        public int? MinStars { get => _explicitNullValueMinStars; set { _explicitNullValueMinStars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minStars"); else _explicitNullProperties?.Remove("minStars"); } }
+        public int? MinStars { get => _explicitNullValueMinStars; set { _explicitNullValueMinStars = value; AdditionalData?.Remove("minStars"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minStars"); else _explicitNullProperties?.Remove("minStars"); } }
         private int? _explicitNullValueMinStars = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestLibraryFiltersQualityRepoFilters"/> and sets the default values.

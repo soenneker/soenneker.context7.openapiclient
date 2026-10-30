@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
+            if (parseNode.GetChildNode("variables") is null) { _explicitNullValueVariables = default!; _explicitNullProperties?.Remove("variables"); }
+            else if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem>? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem>? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; AdditionalData?.Remove("variables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem>? _explicitNullValueVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem> Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem> Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; AdditionalData?.Remove("variables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.UpdateDocs7ExampleCheckSettingsRequestVariablesItem> _explicitNullValueVariables = default!;
 #endif
         /// <summary>

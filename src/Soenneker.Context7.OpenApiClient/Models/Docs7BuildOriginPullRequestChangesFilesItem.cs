@@ -17,43 +17,48 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("additions") is { } nullNodeAdditions && nullNodeAdditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Additions = null;
-            if (parseNode.GetChildNode("deletions") is { } nullNodeDeletions && nullNodeDeletions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deletions = null;
-            if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
-            if (parseNode.GetChildNode("previousPath") is { } nullNodePreviousPath && nullNodePreviousPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPath = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("additions") is null) { _explicitNullValueAdditions = default!; _explicitNullProperties?.Remove("additions"); }
+            else if (parseNode.GetChildNode("additions") is { } nullNodeAdditions && nullNodeAdditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Additions = null;
+            if (parseNode.GetChildNode("deletions") is null) { _explicitNullValueDeletions = default!; _explicitNullProperties?.Remove("deletions"); }
+            else if (parseNode.GetChildNode("deletions") is { } nullNodeDeletions && nullNodeDeletions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deletions = null;
+            if (parseNode.GetChildNode("path") is null) { _explicitNullValuePath = default!; _explicitNullProperties?.Remove("path"); }
+            else if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
+            if (parseNode.GetChildNode("previousPath") is null) { _explicitNullValuePreviousPath = default!; _explicitNullProperties?.Remove("previousPath"); }
+            else if (parseNode.GetChildNode("previousPath") is { } nullNodePreviousPath && nullNodePreviousPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPath = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The additions property</summary>
-        public int? Additions { get => _explicitNullValueAdditions; set { _explicitNullValueAdditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additions"); else _explicitNullProperties?.Remove("additions"); } }
+        public int? Additions { get => _explicitNullValueAdditions; set { _explicitNullValueAdditions = value; AdditionalData?.Remove("additions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additions"); else _explicitNullProperties?.Remove("additions"); } }
         private int? _explicitNullValueAdditions = default!;
         /// <summary>The deletions property</summary>
-        public int? Deletions { get => _explicitNullValueDeletions; set { _explicitNullValueDeletions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletions"); else _explicitNullProperties?.Remove("deletions"); } }
+        public int? Deletions { get => _explicitNullValueDeletions; set { _explicitNullValueDeletions = value; AdditionalData?.Remove("deletions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletions"); else _explicitNullProperties?.Remove("deletions"); } }
         private int? _explicitNullValueDeletions = default!;
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        public string? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; AdditionalData?.Remove("path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
         private string? _explicitNullValuePath = default!;
 #nullable restore
 #else
-        public string Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        public string Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; AdditionalData?.Remove("path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
         private string _explicitNullValuePath = default!;
 #endif
         /// <summary>The previousPath property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousPath { get => _explicitNullValuePreviousPath; set { _explicitNullValuePreviousPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousPath"); else _explicitNullProperties?.Remove("previousPath"); } }
+        public string? PreviousPath { get => _explicitNullValuePreviousPath; set { _explicitNullValuePreviousPath = value; AdditionalData?.Remove("previousPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousPath"); else _explicitNullProperties?.Remove("previousPath"); } }
         private string? _explicitNullValuePreviousPath = default!;
 #nullable restore
 #else
-        public string PreviousPath { get => _explicitNullValuePreviousPath; set { _explicitNullValuePreviousPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousPath"); else _explicitNullProperties?.Remove("previousPath"); } }
+        public string PreviousPath { get => _explicitNullValuePreviousPath; set { _explicitNullValuePreviousPath = value; AdditionalData?.Remove("previousPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousPath"); else _explicitNullProperties?.Remove("previousPath"); } }
         private string _explicitNullValuePreviousPath = default!;
 #endif
         /// <summary>The status property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItemStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItem"/> and sets the default values.
@@ -84,7 +89,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "deletions", n => { Deletions = n.GetIntValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "previousPath", n => { PreviousPath = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItemStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7BuildOriginPullRequestChangesFilesItemStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
         /// <summary>

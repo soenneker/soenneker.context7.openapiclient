@@ -17,9 +17,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("benefits") is { } nullNodeBenefits && nullNodeBenefits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Benefits = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("websiteUrls") is { } nullNodeWebsiteUrls && nullNodeWebsiteUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteUrls = null;
+            if (parseNode.GetChildNode("benefits") is null) { _explicitNullValueBenefits = default!; _explicitNullProperties?.Remove("benefits"); }
+            else if (parseNode.GetChildNode("benefits") is { } nullNodeBenefits && nullNodeBenefits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Benefits = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("websiteUrls") is null) { _explicitNullValueWebsiteUrls = default!; _explicitNullProperties?.Remove("websiteUrls"); }
+            else if (parseNode.GetChildNode("websiteUrls") is { } nullNodeWebsiteUrls && nullNodeWebsiteUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteUrls = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The benefits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Benefits { get => _explicitNullValueBenefits; set { _explicitNullValueBenefits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benefits"); else _explicitNullProperties?.Remove("benefits"); } }
+        public string? Benefits { get => _explicitNullValueBenefits; set { _explicitNullValueBenefits = value; AdditionalData?.Remove("benefits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benefits"); else _explicitNullProperties?.Remove("benefits"); } }
         private string? _explicitNullValueBenefits = default!;
 #nullable restore
 #else
-        public string Benefits { get => _explicitNullValueBenefits; set { _explicitNullValueBenefits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benefits"); else _explicitNullProperties?.Remove("benefits"); } }
+        public string Benefits { get => _explicitNullValueBenefits; set { _explicitNullValueBenefits = value; AdditionalData?.Remove("benefits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benefits"); else _explicitNullProperties?.Remove("benefits"); } }
         private string _explicitNullValueBenefits = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The websiteUrls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? WebsiteUrls { get => _explicitNullValueWebsiteUrls; set { _explicitNullValueWebsiteUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrls"); else _explicitNullProperties?.Remove("websiteUrls"); } }
+        public List<string>? WebsiteUrls { get => _explicitNullValueWebsiteUrls; set { _explicitNullValueWebsiteUrls = value; AdditionalData?.Remove("websiteUrls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrls"); else _explicitNullProperties?.Remove("websiteUrls"); } }
         private List<string>? _explicitNullValueWebsiteUrls = default!;
 #nullable restore
 #else
-        public List<string> WebsiteUrls { get => _explicitNullValueWebsiteUrls; set { _explicitNullValueWebsiteUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrls"); else _explicitNullProperties?.Remove("websiteUrls"); } }
+        public List<string> WebsiteUrls { get => _explicitNullValueWebsiteUrls; set { _explicitNullValueWebsiteUrls = value; AdditionalData?.Remove("websiteUrls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteUrls"); else _explicitNullProperties?.Remove("websiteUrls"); } }
         private List<string> _explicitNullValueWebsiteUrls = default!;
 #endif
         /// <summary>

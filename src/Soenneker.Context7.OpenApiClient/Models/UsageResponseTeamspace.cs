@@ -18,10 +18,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("daily") is { } nullNodeDaily && nullNodeDaily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Daily = null;
-            if (parseNode.GetChildNode("extraCostUsd") is { } nullNodeExtraCostUsd && nullNodeExtraCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraCostUsd = null;
-            if (parseNode.GetChildNode("extraRequests") is { } nullNodeExtraRequests && nullNodeExtraRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraRequests = null;
-            if (parseNode.GetChildNode("spendingLimitUsd") is { } nullNodeSpendingLimitUsd && nullNodeSpendingLimitUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendingLimitUsd = null;
+            if (parseNode.GetChildNode("daily") is null) { _explicitNullValueDaily = default!; _explicitNullProperties?.Remove("daily"); }
+            else if (parseNode.GetChildNode("daily") is { } nullNodeDaily && nullNodeDaily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Daily = null;
+            if (parseNode.GetChildNode("extraCostUsd") is null) { _explicitNullValueExtraCostUsd = default!; _explicitNullProperties?.Remove("extraCostUsd"); }
+            else if (parseNode.GetChildNode("extraCostUsd") is { } nullNodeExtraCostUsd && nullNodeExtraCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraCostUsd = null;
+            if (parseNode.GetChildNode("extraRequests") is null) { _explicitNullValueExtraRequests = default!; _explicitNullProperties?.Remove("extraRequests"); }
+            else if (parseNode.GetChildNode("extraRequests") is { } nullNodeExtraRequests && nullNodeExtraRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraRequests = null;
+            if (parseNode.GetChildNode("spendingLimitUsd") is null) { _explicitNullValueSpendingLimitUsd = default!; _explicitNullProperties?.Remove("spendingLimitUsd"); }
+            else if (parseNode.GetChildNode("spendingLimitUsd") is { } nullNodeSpendingLimitUsd && nullNodeSpendingLimitUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendingLimitUsd = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,21 +33,21 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Requests of all members per UTC day, oldest first, with the cost of that day&apos;s extra requests. Every day is present; days without requests are 0.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem>? Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem>? Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; AdditionalData?.Remove("daily"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem>? _explicitNullValueDaily = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem> Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem> Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; AdditionalData?.Remove("daily"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspaceDailyItem> _explicitNullValueDaily = default!;
 #endif
         /// <summary>Cost of `extraRequests` in US dollars, as it will appear on the invoice. Always 0 on the Free plan.</summary>
-        public double? ExtraCostUsd { get => _explicitNullValueExtraCostUsd; set { _explicitNullValueExtraCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extraCostUsd"); else _explicitNullProperties?.Remove("extraCostUsd"); } }
+        public double? ExtraCostUsd { get => _explicitNullValueExtraCostUsd; set { _explicitNullValueExtraCostUsd = value; AdditionalData?.Remove("extraCostUsd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extraCostUsd"); else _explicitNullProperties?.Remove("extraCostUsd"); } }
         private double? _explicitNullValueExtraCostUsd = default!;
         /// <summary>Requests this month beyond each member&apos;s `includedInPlan`. Always 0 on the Free plan.</summary>
-        public int? ExtraRequests { get => _explicitNullValueExtraRequests; set { _explicitNullValueExtraRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extraRequests"); else _explicitNullProperties?.Remove("extraRequests"); } }
+        public int? ExtraRequests { get => _explicitNullValueExtraRequests; set { _explicitNullValueExtraRequests = value; AdditionalData?.Remove("extraRequests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extraRequests"); else _explicitNullProperties?.Remove("extraRequests"); } }
         private int? _explicitNullValueExtraRequests = default!;
         /// <summary>Monthly limit for `extraCostUsd` in US dollars. When `extraCostUsd` reaches it, search and docs requests that would add to `extraRequests` return 402 until `usageResetsAt`; requests within the member&apos;s `includedInPlan` still work. `0` blocks all extra requests. `null` if no limit is set.</summary>
-        public double? SpendingLimitUsd { get => _explicitNullValueSpendingLimitUsd; set { _explicitNullValueSpendingLimitUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spendingLimitUsd"); else _explicitNullProperties?.Remove("spendingLimitUsd"); } }
+        public double? SpendingLimitUsd { get => _explicitNullValueSpendingLimitUsd; set { _explicitNullValueSpendingLimitUsd = value; AdditionalData?.Remove("spendingLimitUsd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spendingLimitUsd"); else _explicitNullProperties?.Remove("spendingLimitUsd"); } }
         private double? _explicitNullValueSpendingLimitUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace"/> and sets the default values.

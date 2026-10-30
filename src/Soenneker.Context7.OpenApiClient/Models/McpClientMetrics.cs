@@ -18,7 +18,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dailyData") is { } nullNodeDailyData && nullNodeDailyData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyData = null;
+            if (parseNode.GetChildNode("dailyData") is null) { _explicitNullValueDailyData = default!; _explicitNullProperties?.Remove("dailyData"); }
+            else if (parseNode.GetChildNode("dailyData") is { } nullNodeDailyData && nullNodeDailyData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyData = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Per-day MCP client unique-user breakdown, ordered from oldest to newest</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData>? DailyData { get => _explicitNullValueDailyData; set { _explicitNullValueDailyData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyData"); else _explicitNullProperties?.Remove("dailyData"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData>? DailyData { get => _explicitNullValueDailyData; set { _explicitNullValueDailyData = value; AdditionalData?.Remove("dailyData"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyData"); else _explicitNullProperties?.Remove("dailyData"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData>? _explicitNullValueDailyData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData> DailyData { get => _explicitNullValueDailyData; set { _explicitNullValueDailyData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyData"); else _explicitNullProperties?.Remove("dailyData"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData> DailyData { get => _explicitNullValueDailyData; set { _explicitNullValueDailyData = value; AdditionalData?.Remove("dailyData"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyData"); else _explicitNullProperties?.Remove("dailyData"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.McpDailyClientData> _explicitNullValueDailyData = default!;
 #endif
         /// <summary>

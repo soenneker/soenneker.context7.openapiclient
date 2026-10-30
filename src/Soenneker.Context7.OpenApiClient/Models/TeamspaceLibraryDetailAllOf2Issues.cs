@@ -18,40 +18,46 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("blocked") is { } nullNodeBlocked && nullNodeBlocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blocked = null;
-            if (parseNode.GetChildNode("disallowed") is { } nullNodeDisallowed && nullNodeDisallowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disallowed = null;
-            if (parseNode.GetChildNode("languageMismatch") is { } nullNodeLanguageMismatch && nullNodeLanguageMismatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LanguageMismatch = null;
-            if (parseNode.GetChildNode("noCode") is { } nullNodeNoCode && nullNodeNoCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoCode = null;
-            if (parseNode.GetChildNode("redirect") is { } nullNodeRedirect && nullNodeRedirect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Redirect = null;
-            if (parseNode.GetChildNode("tooLarge") is { } nullNodeTooLarge && nullNodeTooLarge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TooLarge = null;
+            if (parseNode.GetChildNode("blocked") is null) { _explicitNullValueBlocked = default!; _explicitNullProperties?.Remove("blocked"); }
+            else if (parseNode.GetChildNode("blocked") is { } nullNodeBlocked && nullNodeBlocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blocked = null;
+            if (parseNode.GetChildNode("disallowed") is null) { _explicitNullValueDisallowed = default!; _explicitNullProperties?.Remove("disallowed"); }
+            else if (parseNode.GetChildNode("disallowed") is { } nullNodeDisallowed && nullNodeDisallowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disallowed = null;
+            if (parseNode.GetChildNode("languageMismatch") is null) { _explicitNullValueLanguageMismatch = default!; _explicitNullProperties?.Remove("languageMismatch"); }
+            else if (parseNode.GetChildNode("languageMismatch") is { } nullNodeLanguageMismatch && nullNodeLanguageMismatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LanguageMismatch = null;
+            if (parseNode.GetChildNode("noCode") is null) { _explicitNullValueNoCode = default!; _explicitNullProperties?.Remove("noCode"); }
+            else if (parseNode.GetChildNode("noCode") is { } nullNodeNoCode && nullNodeNoCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoCode = null;
+            if (parseNode.GetChildNode("redirect") is null) { _explicitNullValueRedirect = default!; _explicitNullProperties?.Remove("redirect"); }
+            else if (parseNode.GetChildNode("redirect") is { } nullNodeRedirect && nullNodeRedirect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Redirect = null;
+            if (parseNode.GetChildNode("tooLarge") is null) { _explicitNullValueTooLarge = default!; _explicitNullProperties?.Remove("tooLarge"); }
+            else if (parseNode.GetChildNode("tooLarge") is { } nullNodeTooLarge && nullNodeTooLarge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TooLarge = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The blocked property</summary>
-        public bool? Blocked { get => _explicitNullValueBlocked; set { _explicitNullValueBlocked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked"); else _explicitNullProperties?.Remove("blocked"); } }
+        public bool? Blocked { get => _explicitNullValueBlocked; set { _explicitNullValueBlocked = value; AdditionalData?.Remove("blocked"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked"); else _explicitNullProperties?.Remove("blocked"); } }
         private bool? _explicitNullValueBlocked = default!;
         /// <summary>The disallowed property</summary>
-        public bool? Disallowed { get => _explicitNullValueDisallowed; set { _explicitNullValueDisallowed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallowed"); else _explicitNullProperties?.Remove("disallowed"); } }
+        public bool? Disallowed { get => _explicitNullValueDisallowed; set { _explicitNullValueDisallowed = value; AdditionalData?.Remove("disallowed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallowed"); else _explicitNullProperties?.Remove("disallowed"); } }
         private bool? _explicitNullValueDisallowed = default!;
         /// <summary>The languageMismatch property</summary>
-        public bool? LanguageMismatch { get => _explicitNullValueLanguageMismatch; set { _explicitNullValueLanguageMismatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("languageMismatch"); else _explicitNullProperties?.Remove("languageMismatch"); } }
+        public bool? LanguageMismatch { get => _explicitNullValueLanguageMismatch; set { _explicitNullValueLanguageMismatch = value; AdditionalData?.Remove("languageMismatch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("languageMismatch"); else _explicitNullProperties?.Remove("languageMismatch"); } }
         private bool? _explicitNullValueLanguageMismatch = default!;
         /// <summary>The noCode property</summary>
-        public bool? NoCode { get => _explicitNullValueNoCode; set { _explicitNullValueNoCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("noCode"); else _explicitNullProperties?.Remove("noCode"); } }
+        public bool? NoCode { get => _explicitNullValueNoCode; set { _explicitNullValueNoCode = value; AdditionalData?.Remove("noCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("noCode"); else _explicitNullProperties?.Remove("noCode"); } }
         private bool? _explicitNullValueNoCode = default!;
         /// <summary>The redirect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Redirect { get => _explicitNullValueRedirect; set { _explicitNullValueRedirect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect"); else _explicitNullProperties?.Remove("redirect"); } }
+        public string? Redirect { get => _explicitNullValueRedirect; set { _explicitNullValueRedirect = value; AdditionalData?.Remove("redirect"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect"); else _explicitNullProperties?.Remove("redirect"); } }
         private string? _explicitNullValueRedirect = default!;
 #nullable restore
 #else
-        public string Redirect { get => _explicitNullValueRedirect; set { _explicitNullValueRedirect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect"); else _explicitNullProperties?.Remove("redirect"); } }
+        public string Redirect { get => _explicitNullValueRedirect; set { _explicitNullValueRedirect = value; AdditionalData?.Remove("redirect"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect"); else _explicitNullProperties?.Remove("redirect"); } }
         private string _explicitNullValueRedirect = default!;
 #endif
         /// <summary>The tooLarge property</summary>
-        public bool? TooLarge { get => _explicitNullValueTooLarge; set { _explicitNullValueTooLarge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tooLarge"); else _explicitNullProperties?.Remove("tooLarge"); } }
+        public bool? TooLarge { get => _explicitNullValueTooLarge; set { _explicitNullValueTooLarge = value; AdditionalData?.Remove("tooLarge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tooLarge"); else _explicitNullProperties?.Remove("tooLarge"); } }
         private bool? _explicitNullValueTooLarge = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryDetailAllOf2Issues"/> and sets the default values.

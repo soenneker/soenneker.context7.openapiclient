@@ -18,11 +18,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("docsRepoUrl") is { } nullNodeDocsRepoUrl && nullNodeDocsRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsRepoUrl = null;
-            if (parseNode.GetChildNode("generateDocs") is { } nullNodeGenerateDocs && nullNodeGenerateDocs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerateDocs = null;
-            if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
-            if (parseNode.GetChildNode("private") is { } nullNodePrivate && nullNodePrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Private = null;
-            if (parseNode.GetChildNode("skipVersionFiltering") is { } nullNodeSkipVersionFiltering && nullNodeSkipVersionFiltering.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipVersionFiltering = null;
+            if (parseNode.GetChildNode("docsRepoUrl") is null) { _explicitNullValueDocsRepoUrl = default!; _explicitNullProperties?.Remove("docsRepoUrl"); }
+            else if (parseNode.GetChildNode("docsRepoUrl") is { } nullNodeDocsRepoUrl && nullNodeDocsRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocsRepoUrl = null;
+            if (parseNode.GetChildNode("generateDocs") is null) { _explicitNullValueGenerateDocs = default!; _explicitNullProperties?.Remove("generateDocs"); }
+            else if (parseNode.GetChildNode("generateDocs") is { } nullNodeGenerateDocs && nullNodeGenerateDocs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerateDocs = null;
+            if (parseNode.GetChildNode("gitToken") is null) { _explicitNullValueGitToken = default!; _explicitNullProperties?.Remove("gitToken"); }
+            else if (parseNode.GetChildNode("gitToken") is { } nullNodeGitToken && nullNodeGitToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GitToken = null;
+            if (parseNode.GetChildNode("private") is null) { _explicitNullValuePrivate = default!; _explicitNullProperties?.Remove("private"); }
+            else if (parseNode.GetChildNode("private") is { } nullNodePrivate && nullNodePrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Private = null;
+            if (parseNode.GetChildNode("skipVersionFiltering") is null) { _explicitNullValueSkipVersionFiltering = default!; _explicitNullProperties?.Remove("skipVersionFiltering"); }
+            else if (parseNode.GetChildNode("skipVersionFiltering") is { } nullNodeSkipVersionFiltering && nullNodeSkipVersionFiltering.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipVersionFiltering = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,31 +35,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The repository URL</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocsRepoUrl { get => _explicitNullValueDocsRepoUrl; set { _explicitNullValueDocsRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsRepoUrl"); else _explicitNullProperties?.Remove("docsRepoUrl"); } }
+        public string? DocsRepoUrl { get => _explicitNullValueDocsRepoUrl; set { _explicitNullValueDocsRepoUrl = value; AdditionalData?.Remove("docsRepoUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsRepoUrl"); else _explicitNullProperties?.Remove("docsRepoUrl"); } }
         private string? _explicitNullValueDocsRepoUrl = default!;
 #nullable restore
 #else
-        public string DocsRepoUrl { get => _explicitNullValueDocsRepoUrl; set { _explicitNullValueDocsRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsRepoUrl"); else _explicitNullProperties?.Remove("docsRepoUrl"); } }
+        public string DocsRepoUrl { get => _explicitNullValueDocsRepoUrl; set { _explicitNullValueDocsRepoUrl = value; AdditionalData?.Remove("docsRepoUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("docsRepoUrl"); else _explicitNullProperties?.Remove("docsRepoUrl"); } }
         private string _explicitNullValueDocsRepoUrl = default!;
 #endif
         /// <summary>Generate documentation from the repository source code. Applies to private repository submissions.</summary>
-        public bool? GenerateDocs { get => _explicitNullValueGenerateDocs; set { _explicitNullValueGenerateDocs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generateDocs"); else _explicitNullProperties?.Remove("generateDocs"); } }
+        public bool? GenerateDocs { get => _explicitNullValueGenerateDocs; set { _explicitNullValueGenerateDocs = value; AdditionalData?.Remove("generateDocs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generateDocs"); else _explicitNullProperties?.Remove("generateDocs"); } }
         private bool? _explicitNullValueGenerateDocs = default!;
         /// <summary>Personal access token for private repositories. If not provided, the token from your OAuth connection at https://context7.com/add-library is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string? GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string? _explicitNullValueGitToken = default!;
 #nullable restore
 #else
-        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
+        public string GitToken { get => _explicitNullValueGitToken; set { _explicitNullValueGitToken = value; AdditionalData?.Remove("gitToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gitToken"); else _explicitNullProperties?.Remove("gitToken"); } }
         private string _explicitNullValueGitToken = default!;
 #endif
         /// <summary>Whether the repository is private</summary>
-        public bool? Private { get => _explicitNullValuePrivate; set { _explicitNullValuePrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private"); else _explicitNullProperties?.Remove("private"); } }
+        public bool? Private { get => _explicitNullValuePrivate; set { _explicitNullValuePrivate = value; AdditionalData?.Remove("private"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private"); else _explicitNullProperties?.Remove("private"); } }
         private bool? _explicitNullValuePrivate = default!;
         /// <summary>Skip filtering out version-specific documentation pages</summary>
-        public bool? SkipVersionFiltering { get => _explicitNullValueSkipVersionFiltering; set { _explicitNullValueSkipVersionFiltering = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipVersionFiltering"); else _explicitNullProperties?.Remove("skipVersionFiltering"); } }
+        public bool? SkipVersionFiltering { get => _explicitNullValueSkipVersionFiltering; set { _explicitNullValueSkipVersionFiltering = value; AdditionalData?.Remove("skipVersionFiltering"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipVersionFiltering"); else _explicitNullProperties?.Remove("skipVersionFiltering"); } }
         private bool? _explicitNullValueSkipVersionFiltering = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddRepoRequest"/> and sets the default values.

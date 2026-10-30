@@ -2842,7 +2842,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateTeamspacePolicies200Response"
+                  "$ref": "#/components/schemas/UpdatePolicies200Response"
                 }
               }
             }

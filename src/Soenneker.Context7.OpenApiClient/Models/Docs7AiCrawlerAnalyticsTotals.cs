@@ -17,25 +17,29 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
-            if (parseNode.GetChildNode("uniqueBots") is { } nullNodeUniqueBots && nullNodeUniqueBots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueBots = null;
-            if (parseNode.GetChildNode("uniquePaths") is { } nullNodeUniquePaths && nullNodeUniquePaths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePaths = null;
-            if (parseNode.GetChildNode("verifiedRequests") is { } nullNodeVerifiedRequests && nullNodeVerifiedRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerifiedRequests = null;
+            if (parseNode.GetChildNode("totalRequests") is null) { _explicitNullValueTotalRequests = default!; _explicitNullProperties?.Remove("totalRequests"); }
+            else if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
+            if (parseNode.GetChildNode("uniqueBots") is null) { _explicitNullValueUniqueBots = default!; _explicitNullProperties?.Remove("uniqueBots"); }
+            else if (parseNode.GetChildNode("uniqueBots") is { } nullNodeUniqueBots && nullNodeUniqueBots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueBots = null;
+            if (parseNode.GetChildNode("uniquePaths") is null) { _explicitNullValueUniquePaths = default!; _explicitNullProperties?.Remove("uniquePaths"); }
+            else if (parseNode.GetChildNode("uniquePaths") is { } nullNodeUniquePaths && nullNodeUniquePaths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePaths = null;
+            if (parseNode.GetChildNode("verifiedRequests") is null) { _explicitNullValueVerifiedRequests = default!; _explicitNullProperties?.Remove("verifiedRequests"); }
+            else if (parseNode.GetChildNode("verifiedRequests") is { } nullNodeVerifiedRequests && nullNodeVerifiedRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerifiedRequests = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The totalRequests property</summary>
-        public int? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
+        public int? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; AdditionalData?.Remove("totalRequests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
         private int? _explicitNullValueTotalRequests = default!;
         /// <summary>The uniqueBots property</summary>
-        public int? UniqueBots { get => _explicitNullValueUniqueBots; set { _explicitNullValueUniqueBots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueBots"); else _explicitNullProperties?.Remove("uniqueBots"); } }
+        public int? UniqueBots { get => _explicitNullValueUniqueBots; set { _explicitNullValueUniqueBots = value; AdditionalData?.Remove("uniqueBots"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueBots"); else _explicitNullProperties?.Remove("uniqueBots"); } }
         private int? _explicitNullValueUniqueBots = default!;
         /// <summary>The uniquePaths property</summary>
-        public int? UniquePaths { get => _explicitNullValueUniquePaths; set { _explicitNullValueUniquePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniquePaths"); else _explicitNullProperties?.Remove("uniquePaths"); } }
+        public int? UniquePaths { get => _explicitNullValueUniquePaths; set { _explicitNullValueUniquePaths = value; AdditionalData?.Remove("uniquePaths"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniquePaths"); else _explicitNullProperties?.Remove("uniquePaths"); } }
         private int? _explicitNullValueUniquePaths = default!;
         /// <summary>The verifiedRequests property</summary>
-        public int? VerifiedRequests { get => _explicitNullValueVerifiedRequests; set { _explicitNullValueVerifiedRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verifiedRequests"); else _explicitNullProperties?.Remove("verifiedRequests"); } }
+        public int? VerifiedRequests { get => _explicitNullValueVerifiedRequests; set { _explicitNullValueVerifiedRequests = value; AdditionalData?.Remove("verifiedRequests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verifiedRequests"); else _explicitNullProperties?.Remove("verifiedRequests"); } }
         private int? _explicitNullValueVerifiedRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7AiCrawlerAnalyticsTotals"/> and sets the default values.

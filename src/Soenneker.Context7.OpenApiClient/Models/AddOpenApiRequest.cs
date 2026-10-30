@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("openApiUrl") is { } nullNodeOpenApiUrl && nullNodeOpenApiUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenApiUrl = null;
+            if (parseNode.GetChildNode("openApiUrl") is null) { _explicitNullValueOpenApiUrl = default!; _explicitNullProperties?.Remove("openApiUrl"); }
+            else if (parseNode.GetChildNode("openApiUrl") is { } nullNodeOpenApiUrl && nullNodeOpenApiUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenApiUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>URL pointing to an OpenAPI specification (JSON or YAML)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
+        public string? OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; AdditionalData?.Remove("openApiUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
         private string? _explicitNullValueOpenApiUrl = default!;
 #nullable restore
 #else
-        public string OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
+        public string OpenApiUrl { get => _explicitNullValueOpenApiUrl; set { _explicitNullValueOpenApiUrl = value; AdditionalData?.Remove("openApiUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openApiUrl"); else _explicitNullProperties?.Remove("openApiUrl"); } }
         private string _explicitNullValueOpenApiUrl = default!;
 #endif
         /// <summary>

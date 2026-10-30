@@ -18,12 +18,18 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("confluence") is { } nullNodeConfluence && nullNodeConfluence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confluence = null;
-            if (parseNode.GetChildNode("llmstxt") is { } nullNodeLlmstxt && nullNodeLlmstxt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Llmstxt = null;
-            if (parseNode.GetChildNode("private_sources") is { } nullNodePrivateSources && nullNodePrivateSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateSources = null;
-            if (parseNode.GetChildNode("public_repos") is { } nullNodePublicRepos && nullNodePublicRepos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicRepos = null;
-            if (parseNode.GetChildNode("uploaded_files") is { } nullNodeUploadedFiles && nullNodeUploadedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadedFiles = null;
-            if (parseNode.GetChildNode("websites") is { } nullNodeWebsites && nullNodeWebsites.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Websites = null;
+            if (parseNode.GetChildNode("confluence") is null) { _explicitNullValueConfluence = default!; _explicitNullProperties?.Remove("confluence"); }
+            else if (parseNode.GetChildNode("confluence") is { } nullNodeConfluence && nullNodeConfluence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confluence = null;
+            if (parseNode.GetChildNode("llmstxt") is null) { _explicitNullValueLlmstxt = default!; _explicitNullProperties?.Remove("llmstxt"); }
+            else if (parseNode.GetChildNode("llmstxt") is { } nullNodeLlmstxt && nullNodeLlmstxt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Llmstxt = null;
+            if (parseNode.GetChildNode("private_sources") is null) { _explicitNullValuePrivateSources = default!; _explicitNullProperties?.Remove("private_sources"); }
+            else if (parseNode.GetChildNode("private_sources") is { } nullNodePrivateSources && nullNodePrivateSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateSources = null;
+            if (parseNode.GetChildNode("public_repos") is null) { _explicitNullValuePublicRepos = default!; _explicitNullProperties?.Remove("public_repos"); }
+            else if (parseNode.GetChildNode("public_repos") is { } nullNodePublicRepos && nullNodePublicRepos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicRepos = null;
+            if (parseNode.GetChildNode("uploaded_files") is null) { _explicitNullValueUploadedFiles = default!; _explicitNullProperties?.Remove("uploaded_files"); }
+            else if (parseNode.GetChildNode("uploaded_files") is { } nullNodeUploadedFiles && nullNodeUploadedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadedFiles = null;
+            if (parseNode.GetChildNode("websites") is null) { _explicitNullValueWebsites = default!; _explicitNullProperties?.Remove("websites"); }
+            else if (parseNode.GetChildNode("websites") is { } nullNodeWebsites && nullNodeWebsites.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Websites = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Confluence { get => _explicitNullValueConfluence; set { _explicitNullValueConfluence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confluence"); else _explicitNullProperties?.Remove("confluence"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Confluence { get => _explicitNullValueConfluence; set { _explicitNullValueConfluence = value; AdditionalData?.Remove("confluence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confluence"); else _explicitNullProperties?.Remove("confluence"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueConfluence = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Confluence { get => _explicitNullValueConfluence; set { _explicitNullValueConfluence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confluence"); else _explicitNullProperties?.Remove("confluence"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Confluence { get => _explicitNullValueConfluence; set { _explicitNullValueConfluence = value; AdditionalData?.Remove("confluence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confluence"); else _explicitNullProperties?.Remove("confluence"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueConfluence = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; AdditionalData?.Remove("llmstxt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueLlmstxt = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; AdditionalData?.Remove("llmstxt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueLlmstxt = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? PrivateSources { get => _explicitNullValuePrivateSources; set { _explicitNullValuePrivateSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_sources"); else _explicitNullProperties?.Remove("private_sources"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? PrivateSources { get => _explicitNullValuePrivateSources; set { _explicitNullValuePrivateSources = value; AdditionalData?.Remove("private_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_sources"); else _explicitNullProperties?.Remove("private_sources"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValuePrivateSources = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus PrivateSources { get => _explicitNullValuePrivateSources; set { _explicitNullValuePrivateSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_sources"); else _explicitNullProperties?.Remove("private_sources"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus PrivateSources { get => _explicitNullValuePrivateSources; set { _explicitNullValuePrivateSources = value; AdditionalData?.Remove("private_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_sources"); else _explicitNullProperties?.Remove("private_sources"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValuePrivateSources = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? PublicRepos { get => _explicitNullValuePublicRepos; set { _explicitNullValuePublicRepos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("public_repos"); else _explicitNullProperties?.Remove("public_repos"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? PublicRepos { get => _explicitNullValuePublicRepos; set { _explicitNullValuePublicRepos = value; AdditionalData?.Remove("public_repos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("public_repos"); else _explicitNullProperties?.Remove("public_repos"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValuePublicRepos = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus PublicRepos { get => _explicitNullValuePublicRepos; set { _explicitNullValuePublicRepos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("public_repos"); else _explicitNullProperties?.Remove("public_repos"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus PublicRepos { get => _explicitNullValuePublicRepos; set { _explicitNullValuePublicRepos = value; AdditionalData?.Remove("public_repos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("public_repos"); else _explicitNullProperties?.Remove("public_repos"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValuePublicRepos = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? UploadedFiles { get => _explicitNullValueUploadedFiles; set { _explicitNullValueUploadedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_files"); else _explicitNullProperties?.Remove("uploaded_files"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? UploadedFiles { get => _explicitNullValueUploadedFiles; set { _explicitNullValueUploadedFiles = value; AdditionalData?.Remove("uploaded_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_files"); else _explicitNullProperties?.Remove("uploaded_files"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueUploadedFiles = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus UploadedFiles { get => _explicitNullValueUploadedFiles; set { _explicitNullValueUploadedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_files"); else _explicitNullProperties?.Remove("uploaded_files"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus UploadedFiles { get => _explicitNullValueUploadedFiles; set { _explicitNullValueUploadedFiles = value; AdditionalData?.Remove("uploaded_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_files"); else _explicitNullProperties?.Remove("uploaded_files"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueUploadedFiles = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Websites { get => _explicitNullValueWebsites; set { _explicitNullValueWebsites = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websites"); else _explicitNullProperties?.Remove("websites"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Websites { get => _explicitNullValueWebsites; set { _explicitNullValueWebsites = value; AdditionalData?.Remove("websites"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websites"); else _explicitNullProperties?.Remove("websites"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueWebsites = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Websites { get => _explicitNullValueWebsites; set { _explicitNullValueWebsites = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websites"); else _explicitNullProperties?.Remove("websites"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Websites { get => _explicitNullValueWebsites; set { _explicitNullValueWebsites = value; AdditionalData?.Remove("websites"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websites"); else _explicitNullProperties?.Remove("websites"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueWebsites = default!;
 #endif
         /// <summary>

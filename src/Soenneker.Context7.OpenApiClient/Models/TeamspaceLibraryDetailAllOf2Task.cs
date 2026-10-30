@@ -18,38 +18,42 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("lockDate") is { } nullNodeLockDate && nullNodeLockDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockDate = null;
-            if (parseNode.GetChildNode("lockState") is { } nullNodeLockState && nullNodeLockState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockState = null;
-            if (parseNode.GetChildNode("progress") is { } nullNodeProgress && nullNodeProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Progress = null;
-            if (parseNode.GetChildNode("task") is { } nullNodeTask && nullNodeTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Task = null;
+            if (parseNode.GetChildNode("lockDate") is null) { _explicitNullValueLockDate = default!; _explicitNullProperties?.Remove("lockDate"); }
+            else if (parseNode.GetChildNode("lockDate") is { } nullNodeLockDate && nullNodeLockDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockDate = null;
+            if (parseNode.GetChildNode("lockState") is null) { _explicitNullValueLockState = default!; _explicitNullProperties?.Remove("lockState"); }
+            else if (parseNode.GetChildNode("lockState") is { } nullNodeLockState && nullNodeLockState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockState = null;
+            if (parseNode.GetChildNode("progress") is null) { _explicitNullValueProgress = default!; _explicitNullProperties?.Remove("progress"); }
+            else if (parseNode.GetChildNode("progress") is { } nullNodeProgress && nullNodeProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Progress = null;
+            if (parseNode.GetChildNode("task") is null) { _explicitNullValueTask = default!; _explicitNullProperties?.Remove("task"); }
+            else if (parseNode.GetChildNode("task") is { } nullNodeTask && nullNodeTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Task = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the task started.</summary>
-        public DateTimeOffset? LockDate { get => _explicitNullValueLockDate; set { _explicitNullValueLockDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lockDate"); else _explicitNullProperties?.Remove("lockDate"); } }
+        public DateTimeOffset? LockDate { get => _explicitNullValueLockDate; set { _explicitNullValueLockDate = value; AdditionalData?.Remove("lockDate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lockDate"); else _explicitNullProperties?.Remove("lockDate"); } }
         private DateTimeOffset? _explicitNullValueLockDate = default!;
         /// <summary>The lockState property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState? LockState { get => _explicitNullValueLockState; set { _explicitNullValueLockState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lockState"); else _explicitNullProperties?.Remove("lockState"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState? LockState { get => _explicitNullValueLockState; set { _explicitNullValueLockState = value; AdditionalData?.Remove("lockState"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lockState"); else _explicitNullProperties?.Remove("lockState"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState? _explicitNullValueLockState = default!;
         /// <summary>The parser&apos;s progress line.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        public string? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
         private string? _explicitNullValueProgress = default!;
 #nullable restore
 #else
-        public string Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        public string Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
         private string _explicitNullValueProgress = default!;
 #endif
         /// <summary>The task property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask? Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask? Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask? _explicitNullValueTask = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask _explicitNullValueTask = default!;
 #endif
         /// <summary>
@@ -78,7 +82,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "lockDate", n => { LockDate = n.GetDateTimeOffsetValue(); } },
-                { "lockState", n => { LockState = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState>(); } },
+                { "lockState", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLockState = default; _explicitNullProperties?.Remove("lockState"); AdditionalData["lockState"] = unknown; } else { LockState = parsed; AdditionalData.Remove("lockState"); } } },
                 { "progress", n => { Progress = n.GetStringValue(); } },
                 { "task", n => { Task = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask>(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskTask.CreateFromDiscriminatorValue); } },
             };

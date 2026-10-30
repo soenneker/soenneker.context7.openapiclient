@@ -18,11 +18,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("countries") is { } nullNodeCountries && nullNodeCountries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Countries = null;
-            if (parseNode.GetChildNode("daily") is { } nullNodeDaily && nullNodeDaily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Daily = null;
-            if (parseNode.GetChildNode("mcpClients") is { } nullNodeMcpClients && nullNodeMcpClients.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClients = null;
-            if (parseNode.GetChildNode("topics") is { } nullNodeTopics && nullNodeTopics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Topics = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("countries") is null) { _explicitNullValueCountries = default!; _explicitNullProperties?.Remove("countries"); }
+            else if (parseNode.GetChildNode("countries") is { } nullNodeCountries && nullNodeCountries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Countries = null;
+            if (parseNode.GetChildNode("daily") is null) { _explicitNullValueDaily = default!; _explicitNullProperties?.Remove("daily"); }
+            else if (parseNode.GetChildNode("daily") is { } nullNodeDaily && nullNodeDaily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Daily = null;
+            if (parseNode.GetChildNode("mcpClients") is null) { _explicitNullValueMcpClients = default!; _explicitNullProperties?.Remove("mcpClients"); }
+            else if (parseNode.GetChildNode("mcpClients") is { } nullNodeMcpClients && nullNodeMcpClients.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClients = null;
+            if (parseNode.GetChildNode("topics") is null) { _explicitNullValueTopics = default!; _explicitNullProperties?.Remove("topics"); }
+            else if (parseNode.GetChildNode("topics") is { } nullNodeTopics && nullNodeTopics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Topics = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Lifetime country distribution (ISO-2 codes), ordered by count descending</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; AdditionalData?.Remove("countries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount>? _explicitNullValueCountries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> Countries { get => _explicitNullValueCountries; set { _explicitNullValueCountries = value; AdditionalData?.Remove("countries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("countries"); else _explicitNullProperties?.Remove("countries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.CountryCount> _explicitNullValueCountries = default!;
 #endif
         /// <summary>Per-day request counts (deltas, not cumulative), ordered from oldest to newest. Days with zero activity are omitted. Up to `days` points — fewer if the library has less history or had idle days in the window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint>? Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint>? Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; AdditionalData?.Remove("daily"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint>? _explicitNullValueDaily = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint> Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint> Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; AdditionalData?.Remove("daily"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.DailyStatsPoint> _explicitNullValueDaily = default!;
 #endif
         /// <summary>MCP client usage breakdown by day</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics? McpClients { get => _explicitNullValueMcpClients; set { _explicitNullValueMcpClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcpClients"); else _explicitNullProperties?.Remove("mcpClients"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics? McpClients { get => _explicitNullValueMcpClients; set { _explicitNullValueMcpClients = value; AdditionalData?.Remove("mcpClients"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcpClients"); else _explicitNullProperties?.Remove("mcpClients"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics? _explicitNullValueMcpClients = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics McpClients { get => _explicitNullValueMcpClients; set { _explicitNullValueMcpClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcpClients"); else _explicitNullProperties?.Remove("mcpClients"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics McpClients { get => _explicitNullValueMcpClients; set { _explicitNullValueMcpClients = value; AdditionalData?.Remove("mcpClients"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcpClients"); else _explicitNullProperties?.Remove("mcpClients"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics _explicitNullValueMcpClients = default!;
 #endif
         /// <summary>Lifetime topic distribution, ordered by count descending</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount>? Topics { get => _explicitNullValueTopics; set { _explicitNullValueTopics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topics"); else _explicitNullProperties?.Remove("topics"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount>? Topics { get => _explicitNullValueTopics; set { _explicitNullValueTopics = value; AdditionalData?.Remove("topics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topics"); else _explicitNullProperties?.Remove("topics"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount>? _explicitNullValueTopics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount> Topics { get => _explicitNullValueTopics; set { _explicitNullValueTopics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topics"); else _explicitNullProperties?.Remove("topics"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount> Topics { get => _explicitNullValueTopics; set { _explicitNullValueTopics = value; AdditionalData?.Remove("topics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topics"); else _explicitNullProperties?.Remove("topics"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TopicCount> _explicitNullValueTopics = default!;
 #endif
         /// <summary>Cumulative request counts for a library, broken down by request surface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.ProjectStats? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.ProjectStats? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.ProjectStats? _explicitNullValueTotal = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.ProjectStats Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.ProjectStats Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.ProjectStats _explicitNullValueTotal = default!;
 #endif
         /// <summary>

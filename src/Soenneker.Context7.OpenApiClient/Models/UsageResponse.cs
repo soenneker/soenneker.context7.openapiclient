@@ -17,10 +17,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("member") is { } nullNodeMember && nullNodeMember.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Member = null;
-            if (parseNode.GetChildNode("plan") is { } nullNodePlan && nullNodePlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Plan = null;
-            if (parseNode.GetChildNode("teamspace") is { } nullNodeTeamspace && nullNodeTeamspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teamspace = null;
-            if (parseNode.GetChildNode("usageResetsAt") is { } nullNodeUsageResetsAt && nullNodeUsageResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageResetsAt = null;
+            if (parseNode.GetChildNode("member") is null) { _explicitNullValueMember = default!; _explicitNullProperties?.Remove("member"); }
+            else if (parseNode.GetChildNode("member") is { } nullNodeMember && nullNodeMember.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Member = null;
+            if (parseNode.GetChildNode("plan") is null) { _explicitNullValuePlan = default!; _explicitNullProperties?.Remove("plan"); }
+            else if (parseNode.GetChildNode("plan") is { } nullNodePlan && nullNodePlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Plan = null;
+            if (parseNode.GetChildNode("teamspace") is null) { _explicitNullValueTeamspace = default!; _explicitNullProperties?.Remove("teamspace"); }
+            else if (parseNode.GetChildNode("teamspace") is { } nullNodeTeamspace && nullNodeTeamspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teamspace = null;
+            if (parseNode.GetChildNode("usageResetsAt") is null) { _explicitNullValueUsageResetsAt = default!; _explicitNullProperties?.Remove("usageResetsAt"); }
+            else if (parseNode.GetChildNode("usageResetsAt") is { } nullNodeUsageResetsAt && nullNodeUsageResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageResetsAt = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,28 +32,28 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The member who owns the API key, this month. Each member has their own included requests. On the Free plan, the member&apos;s requests stop with a 429 when `requests` reaches `includedInPlan`. On paid plans and `payg`, they continue and count as `teamspace.extraRequests`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember? Member { get => _explicitNullValueMember; set { _explicitNullValueMember = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member"); else _explicitNullProperties?.Remove("member"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember? Member { get => _explicitNullValueMember; set { _explicitNullValueMember = value; AdditionalData?.Remove("member"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member"); else _explicitNullProperties?.Remove("member"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember? _explicitNullValueMember = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember Member { get => _explicitNullValueMember; set { _explicitNullValueMember = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member"); else _explicitNullProperties?.Remove("member"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember Member { get => _explicitNullValueMember; set { _explicitNullValueMember = value; AdditionalData?.Remove("member"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member"); else _explicitNullProperties?.Remove("member"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember _explicitNullValueMember = default!;
 #endif
         /// <summary>Plan of the teamspace the API key belongs to. `payg` (pay-as-you-go) includes no requests and bills every request.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponsePlan? Plan { get => _explicitNullValuePlan; set { _explicitNullValuePlan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plan"); else _explicitNullProperties?.Remove("plan"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponsePlan? Plan { get => _explicitNullValuePlan; set { _explicitNullValuePlan = value; AdditionalData?.Remove("plan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plan"); else _explicitNullProperties?.Remove("plan"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.UsageResponsePlan? _explicitNullValuePlan = default!;
         /// <summary>All members of the teamspace together. To get the teamspace&apos;s requests for a period, add up `daily`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace? Teamspace { get => _explicitNullValueTeamspace; set { _explicitNullValueTeamspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspace"); else _explicitNullProperties?.Remove("teamspace"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace? Teamspace { get => _explicitNullValueTeamspace; set { _explicitNullValueTeamspace = value; AdditionalData?.Remove("teamspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspace"); else _explicitNullProperties?.Remove("teamspace"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace? _explicitNullValueTeamspace = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace Teamspace { get => _explicitNullValueTeamspace; set { _explicitNullValueTeamspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspace"); else _explicitNullProperties?.Remove("teamspace"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace Teamspace { get => _explicitNullValueTeamspace; set { _explicitNullValueTeamspace = value; AdditionalData?.Remove("teamspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teamspace"); else _explicitNullProperties?.Remove("teamspace"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace _explicitNullValueTeamspace = default!;
 #endif
         /// <summary>When the monthly numbers in `member` and `teamspace` start again from zero: the first day of next month, UTC. `teamspace.daily` keeps its history.</summary>
-        public DateTimeOffset? UsageResetsAt { get => _explicitNullValueUsageResetsAt; set { _explicitNullValueUsageResetsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usageResetsAt"); else _explicitNullProperties?.Remove("usageResetsAt"); } }
+        public DateTimeOffset? UsageResetsAt { get => _explicitNullValueUsageResetsAt; set { _explicitNullValueUsageResetsAt = value; AdditionalData?.Remove("usageResetsAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usageResetsAt"); else _explicitNullProperties?.Remove("usageResetsAt"); } }
         private DateTimeOffset? _explicitNullValueUsageResetsAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.UsageResponse"/> and sets the default values.
@@ -77,7 +81,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "member", n => { Member = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember>(global::Soenneker.Context7.OpenApiClient.Models.UsageResponseMember.CreateFromDiscriminatorValue); } },
-                { "plan", n => { Plan = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.UsageResponsePlan>(); } },
+                { "plan", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.UsageResponsePlan>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePlan = default; _explicitNullProperties?.Remove("plan"); AdditionalData["plan"] = unknown; } else { Plan = parsed; AdditionalData.Remove("plan"); } } },
                 { "teamspace", n => { Teamspace = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace>(global::Soenneker.Context7.OpenApiClient.Models.UsageResponseTeamspace.CreateFromDiscriminatorValue); } },
                 { "usageResetsAt", n => { UsageResetsAt = n.GetDateTimeOffsetValue(); } },
             };

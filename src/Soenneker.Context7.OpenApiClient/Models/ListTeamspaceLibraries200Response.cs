@@ -17,7 +17,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("libraries") is { } nullNodeLibraries && nullNodeLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Libraries = null;
+            if (parseNode.GetChildNode("libraries") is null) { _explicitNullValueLibraries = default!; _explicitNullProperties?.Remove("libraries"); }
+            else if (parseNode.GetChildNode("libraries") is { } nullNodeLibraries && nullNodeLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Libraries = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The libraries property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary>? Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary>? Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; AdditionalData?.Remove("libraries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary>? _explicitNullValueLibraries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary> Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary> Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; AdditionalData?.Remove("libraries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibrarySummary> _explicitNullValueLibraries = default!;
 #endif
         /// <summary>

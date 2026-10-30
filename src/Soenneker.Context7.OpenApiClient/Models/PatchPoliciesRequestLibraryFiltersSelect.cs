@@ -18,7 +18,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowedLibraries") is { } nullNodeAllowedLibraries && nullNodeAllowedLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLibraries = null;
+            if (parseNode.GetChildNode("allowedLibraries") is null) { _explicitNullValueAllowedLibraries = default!; _explicitNullProperties?.Remove("allowedLibraries"); }
+            else if (parseNode.GetChildNode("allowedLibraries") is { } nullNodeAllowedLibraries && nullNodeAllowedLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLibraries = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Incremental add/remove operation on a list of library identifiers or domains. Use &apos;clear&apos; to remove all entries at once.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.ListOperation? AllowedLibraries { get => _explicitNullValueAllowedLibraries; set { _explicitNullValueAllowedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLibraries"); else _explicitNullProperties?.Remove("allowedLibraries"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.ListOperation? AllowedLibraries { get => _explicitNullValueAllowedLibraries; set { _explicitNullValueAllowedLibraries = value; AdditionalData?.Remove("allowedLibraries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLibraries"); else _explicitNullProperties?.Remove("allowedLibraries"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.ListOperation? _explicitNullValueAllowedLibraries = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.ListOperation AllowedLibraries { get => _explicitNullValueAllowedLibraries; set { _explicitNullValueAllowedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLibraries"); else _explicitNullProperties?.Remove("allowedLibraries"); } }
+        public global::Soenneker.Context7.OpenApiClient.Models.ListOperation AllowedLibraries { get => _explicitNullValueAllowedLibraries; set { _explicitNullValueAllowedLibraries = value; AdditionalData?.Remove("allowedLibraries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLibraries"); else _explicitNullProperties?.Remove("allowedLibraries"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.ListOperation _explicitNullValueAllowedLibraries = default!;
 #endif
         /// <summary>
