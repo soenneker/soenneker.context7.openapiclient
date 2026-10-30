@@ -12,46 +12,71 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PolicyResponseLibraryFiltersQuality : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("blockedLibraries") is { } nullNodeBlockedLibraries && nullNodeBlockedLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedLibraries = null;
+            if (parseNode.GetChildNode("exceptedLibraries") is { } nullNodeExceptedLibraries && nullNodeExceptedLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExceptedLibraries = null;
+            if (parseNode.GetChildNode("maxAgeDays") is { } nullNodeMaxAgeDays && nullNodeMaxAgeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAgeDays = null;
+            if (parseNode.GetChildNode("minTrustScore") is { } nullNodeMinTrustScore && nullNodeMinTrustScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinTrustScore = null;
+            if (parseNode.GetChildNode("repoFilters") is { } nullNodeRepoFilters && nullNodeRepoFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoFilters = null;
+            if (parseNode.GetChildNode("requireVerified") is { } nullNodeRequireVerified && nullNodeRequireVerified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireVerified = null;
+            if (parseNode.GetChildNode("websiteFilters") is { } nullNodeWebsiteFilters && nullNodeWebsiteFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteFilters = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Libraries excluded from results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BlockedLibraries { get; set; }
+        public List<string>? BlockedLibraries { get => _explicitNullValueBlockedLibraries; set { _explicitNullValueBlockedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockedLibraries"); else _explicitNullProperties?.Remove("blockedLibraries"); } }
+        private List<string>? _explicitNullValueBlockedLibraries = default!;
 #nullable restore
 #else
-        public List<string> BlockedLibraries { get; set; }
+        public List<string> BlockedLibraries { get => _explicitNullValueBlockedLibraries; set { _explicitNullValueBlockedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockedLibraries"); else _explicitNullProperties?.Remove("blockedLibraries"); } }
+        private List<string> _explicitNullValueBlockedLibraries = default!;
 #endif
         /// <summary>Libraries that bypass all quality filters, blocked list, and source type restrictions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExceptedLibraries { get; set; }
+        public List<string>? ExceptedLibraries { get => _explicitNullValueExceptedLibraries; set { _explicitNullValueExceptedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exceptedLibraries"); else _explicitNullProperties?.Remove("exceptedLibraries"); } }
+        private List<string>? _explicitNullValueExceptedLibraries = default!;
 #nullable restore
 #else
-        public List<string> ExceptedLibraries { get; set; }
+        public List<string> ExceptedLibraries { get => _explicitNullValueExceptedLibraries; set { _explicitNullValueExceptedLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exceptedLibraries"); else _explicitNullProperties?.Remove("exceptedLibraries"); } }
+        private List<string> _explicitNullValueExceptedLibraries = default!;
 #endif
         /// <summary>Maximum days since last update</summary>
-        public int? MaxAgeDays { get; set; }
+        public int? MaxAgeDays { get => _explicitNullValueMaxAgeDays; set { _explicitNullValueMaxAgeDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxAgeDays"); else _explicitNullProperties?.Remove("maxAgeDays"); } }
+        private int? _explicitNullValueMaxAgeDays = default!;
         /// <summary>Minimum trust score, 0-10</summary>
-        public int? MinTrustScore { get; set; }
+        public int? MinTrustScore { get => _explicitNullValueMinTrustScore; set { _explicitNullValueMinTrustScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minTrustScore"); else _explicitNullProperties?.Remove("minTrustScore"); } }
+        private int? _explicitNullValueMinTrustScore = default!;
         /// <summary>Repo-specific quality filters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters? RepoFilters { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters? RepoFilters { get => _explicitNullValueRepoFilters; set { _explicitNullValueRepoFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoFilters"); else _explicitNullProperties?.Remove("repoFilters"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters? _explicitNullValueRepoFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters RepoFilters { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters RepoFilters { get => _explicitNullValueRepoFilters; set { _explicitNullValueRepoFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoFilters"); else _explicitNullProperties?.Remove("repoFilters"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters _explicitNullValueRepoFilters = default!;
 #endif
         /// <summary>Restrict to verified libraries only</summary>
-        public bool? RequireVerified { get; set; }
+        public bool? RequireVerified { get => _explicitNullValueRequireVerified; set { _explicitNullValueRequireVerified = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requireVerified"); else _explicitNullProperties?.Remove("requireVerified"); } }
+        private bool? _explicitNullValueRequireVerified = default!;
         /// <summary>Website-specific quality filters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters? WebsiteFilters { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters? WebsiteFilters { get => _explicitNullValueWebsiteFilters; set { _explicitNullValueWebsiteFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteFilters"); else _explicitNullProperties?.Remove("websiteFilters"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters? _explicitNullValueWebsiteFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters WebsiteFilters { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters WebsiteFilters { get => _explicitNullValueWebsiteFilters; set { _explicitNullValueWebsiteFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("websiteFilters"); else _explicitNullProperties?.Remove("websiteFilters"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters _explicitNullValueWebsiteFilters = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality"/> and sets the default values.
@@ -68,7 +93,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters>("repoFilters", RepoFilters);
             writer.WriteBoolValue("requireVerified", RequireVerified);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters>("websiteFilters", WebsiteFilters);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

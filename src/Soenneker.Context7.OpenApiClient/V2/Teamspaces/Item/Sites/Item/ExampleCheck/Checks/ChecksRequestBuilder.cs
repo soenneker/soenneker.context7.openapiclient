@@ -61,6 +61,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Example
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ListDocs7ExampleChecks200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ListDocs7ExampleChecks200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

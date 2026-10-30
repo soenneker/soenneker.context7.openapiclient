@@ -11,20 +11,34 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Docs7Conversation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("hasEarlierTurns") is { } nullNodeHasEarlierTurns && nullNodeHasEarlierTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEarlierTurns = null;
+            if (parseNode.GetChildNode("historyDays") is { } nullNodeHistoryDays && nullNodeHistoryDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistoryDays = null;
+            if (parseNode.GetChildNode("turns") is { } nullNodeTurns && nullNodeTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Turns = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The hasEarlierTurns property</summary>
-        public bool? HasEarlierTurns { get; set; }
+        public bool? HasEarlierTurns { get => _explicitNullValueHasEarlierTurns; set { _explicitNullValueHasEarlierTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasEarlierTurns"); else _explicitNullProperties?.Remove("hasEarlierTurns"); } }
+        private bool? _explicitNullValueHasEarlierTurns = default!;
         /// <summary>The historyDays property</summary>
-        public int? HistoryDays { get; set; }
+        public int? HistoryDays { get => _explicitNullValueHistoryDays; set { _explicitNullValueHistoryDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("historyDays"); else _explicitNullProperties?.Remove("historyDays"); } }
+        private int? _explicitNullValueHistoryDays = default!;
         /// <summary>The turns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem>? Turns { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem>? Turns { get => _explicitNullValueTurns; set { _explicitNullValueTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("turns"); else _explicitNullProperties?.Remove("turns"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem>? _explicitNullValueTurns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem> Turns { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem> Turns { get => _explicitNullValueTurns; set { _explicitNullValueTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("turns"); else _explicitNullProperties?.Remove("turns"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem> _explicitNullValueTurns = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7Conversation"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.Docs7Conversation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.Docs7Conversation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7Conversation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteBoolValue("hasEarlierTurns", HasEarlierTurns);
             writer.WriteIntValue("historyDays", HistoryDays);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7ConversationTurnsItem>("turns", Turns);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,15 +12,28 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PolicyResponseLibraryFiltersQualityWebsiteFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("minBacklinks") is { } nullNodeMinBacklinks && nullNodeMinBacklinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinBacklinks = null;
+            if (parseNode.GetChildNode("minOrganicTraffic") is { } nullNodeMinOrganicTraffic && nullNodeMinOrganicTraffic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinOrganicTraffic = null;
+            if (parseNode.GetChildNode("minReferringDomains") is { } nullNodeMinReferringDomains && nullNodeMinReferringDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReferringDomains = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Minimum number of backlinks required</summary>
-        public int? MinBacklinks { get; set; }
+        public int? MinBacklinks { get => _explicitNullValueMinBacklinks; set { _explicitNullValueMinBacklinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minBacklinks"); else _explicitNullProperties?.Remove("minBacklinks"); } }
+        private int? _explicitNullValueMinBacklinks = default!;
         /// <summary>Minimum monthly organic traffic required</summary>
-        public int? MinOrganicTraffic { get; set; }
+        public int? MinOrganicTraffic { get => _explicitNullValueMinOrganicTraffic; set { _explicitNullValueMinOrganicTraffic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minOrganicTraffic"); else _explicitNullProperties?.Remove("minOrganicTraffic"); } }
+        private int? _explicitNullValueMinOrganicTraffic = default!;
         /// <summary>Minimum number of referring domains required</summary>
-        public int? MinReferringDomains { get; set; }
+        public int? MinReferringDomains { get => _explicitNullValueMinReferringDomains; set { _explicitNullValueMinReferringDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minReferringDomains"); else _explicitNullProperties?.Remove("minReferringDomains"); } }
+        private int? _explicitNullValueMinReferringDomains = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityWebsiteFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteIntValue("minBacklinks", MinBacklinks);
             writer.WriteIntValue("minOrganicTraffic", MinOrganicTraffic);
             writer.WriteIntValue("minReferringDomains", MinReferringDomains);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,19 +11,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateLibraryRequestRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("libraryIdentifier") is { } nullNodeLibraryIdentifier && nullNodeLibraryIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryIdentifier = null;
+            if (parseNode.GetChildNode("requestType") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A library id starting with `/` (`/org/repo`, `/org`), or a root domain (`stripe.com`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LibraryIdentifier { get; set; }
+        public string? LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        private string? _explicitNullValueLibraryIdentifier = default!;
 #nullable restore
 #else
-        public string LibraryIdentifier { get; set; }
+        public string LibraryIdentifier { get => _explicitNullValueLibraryIdentifier; set { _explicitNullValueLibraryIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryIdentifier"); else _explicitNullProperties?.Remove("libraryIdentifier"); } }
+        private string _explicitNullValueLibraryIdentifier = default!;
 #endif
         /// <summary>`allow`/`unallow` edit the allowed list (select mode), `block`/`unblock` the blocked list and `except`/`unexcept` the exceptions list (quality mode).</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? RequestType { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestType"); else _explicitNullProperties?.Remove("requestType"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType? _explicitNullValueRequestType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequest"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("libraryIdentifier", LibraryIdentifier);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequestRequestRequestType>("requestType", RequestType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

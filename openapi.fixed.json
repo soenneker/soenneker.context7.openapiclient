@@ -238,11 +238,19 @@
             "content": {
               "text/plain": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/SearchDocumentation200PlainResponseSchema"
                 }
               },
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/SearchContextResponse"
                 }
               }
@@ -418,11 +426,19 @@
             "content": {
               "text/plain": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/FetchPage200PlainResponseSchema"
                 }
               },
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/FetchPage200Response"
                 }
               }
@@ -685,7 +701,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContextResponse"
+                  "type": "string",
+                  "format": "binary"
                 },
                 "example": {
                   "codeSnippets": [
@@ -714,18 +731,40 @@
                       "rank": 1
                     }
                   ]
+                },
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/ContextResponse"
                 }
               },
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetContext200PlainResponseSchema"
+                  "type": "string",
+                  "format": "binary"
                 },
-                "example": "### Middleware Authentication Example\n\nSource: https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx\n\nShows how to implement authentication checks in Next.js middleware\n\n\u0060\u0060\u0060typescript\nimport { NextResponse } from \u0027next/server\u0027\n...\n\u0060\u0060\u0060"
+                "example": "### Middleware Authentication Example\n\nSource: https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx\n\nShows how to implement authentication checks in Next.js middleware\n\n\u0060\u0060\u0060typescript\nimport { NextResponse } from \u0027next/server\u0027\n...\n\u0060\u0060\u0060",
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/GetContext200PlainResponseSchema"
+                }
               }
             }
           },
           "202": {
-            "$ref": "#/components/responses/AcceptedError"
+            "description": "Accepted - Library not yet finalized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "example": {
+                  "error": "library_not_finalized",
+                  "message": "Library /owner/repo is still being processed. Please try again shortly."
+                },
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "301": {
             "$ref": "#/components/responses/RedirectError"
@@ -798,6 +837,10 @@
             "content": {
               "text/plain": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AskSite200PlainResponseSchema"
                 }
               }
@@ -816,6 +859,10 @@
             "content": {
               "text/plain": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AskSite202PlainResponseSchema"
                 }
               }
@@ -7879,11 +7926,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Docs7ExploreResponse"
                 }
               },
               "text/csv": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ExploreDocsAnalytics200CsvResponseSchema"
                 }
               }
@@ -13627,9 +13682,6 @@
         "description": "Only the fields to change."
       },
       "Docs7StartDeploymentRequest": {
-        "required": [
-          "kind"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf1"
@@ -13638,12 +13690,7 @@
             "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
           }
         ],
-        "properties": {
-          "kind": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "kind",
           "mapping": {
             "Docs7StartDeploymentRequestOneOf1": "#/components/schemas/Docs7StartDeploymentRequestOneOf1",
@@ -14500,9 +14547,6 @@
         }
       },
       "AskVerification": {
-        "required": [
-          "kind"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/AskVerificationOneOf1"
@@ -14514,13 +14558,8 @@
             "$ref": "#/components/schemas/AskVerificationOneOf3"
           }
         ],
-        "properties": {
-          "kind": {
-            "type": "string"
-          }
-        },
         "description": "Where the site stands in the ownership check.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "kind",
           "mapping": {
             "AskVerificationOneOf1": "#/components/schemas/AskVerificationOneOf1",
@@ -14556,9 +14595,6 @@
         }
       },
       "AskIndexStatus": {
-        "required": [
-          "kind"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatusOneOf1"
@@ -14573,13 +14609,8 @@
             "$ref": "#/components/schemas/AskIndexStatusOneOf4"
           }
         ],
-        "properties": {
-          "kind": {
-            "type": "string"
-          }
-        },
         "description": "Indexing of the site into Context7. \u0060pending\u0060 until the site is verified and submitted; \u0060submitted\u0060 while the parser works; \u0060ready\u0060 when the library is finalized; \u0060failed\u0060 with a reason (verify again to retry).",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "kind",
           "mapping": {
             "AskIndexStatusOneOf1": "#/components/schemas/AskIndexStatusOneOf1",

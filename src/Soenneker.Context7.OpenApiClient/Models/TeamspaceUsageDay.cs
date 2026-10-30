@@ -12,25 +12,48 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceUsageDay : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("apiUsageCost") is { } nullNodeApiUsageCost && nullNodeApiUsageCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiUsageCost = null;
+            if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
+            if (parseNode.GetChildNode("fetchDocsRequests") is { } nullNodeFetchDocsRequests && nullNodeFetchDocsRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FetchDocsRequests = null;
+            if (parseNode.GetChildNode("memberCost") is { } nullNodeMemberCost && nullNodeMemberCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberCost = null;
+            if (parseNode.GetChildNode("memberCount") is { } nullNodeMemberCount && nullNodeMemberCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberCount = null;
+            if (parseNode.GetChildNode("parseTokens") is { } nullNodeParseTokens && nullNodeParseTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParseTokens = null;
+            if (parseNode.GetChildNode("parseTokensCost") is { } nullNodeParseTokensCost && nullNodeParseTokensCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParseTokensCost = null;
+            if (parseNode.GetChildNode("searchRequests") is { } nullNodeSearchRequests && nullNodeSearchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>USD, billed API requests.</summary>
-        public double? ApiUsageCost { get; set; }
+        public double? ApiUsageCost { get => _explicitNullValueApiUsageCost; set { _explicitNullValueApiUsageCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("apiUsageCost"); else _explicitNullProperties?.Remove("apiUsageCost"); } }
+        private double? _explicitNullValueApiUsageCost = default!;
         /// <summary>UTC day.</summary>
-        public Date? Date { get; set; }
+        public Date? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        private Date? _explicitNullValueDate = default!;
         /// <summary>The fetchDocsRequests property</summary>
-        public int? FetchDocsRequests { get; set; }
+        public int? FetchDocsRequests { get => _explicitNullValueFetchDocsRequests; set { _explicitNullValueFetchDocsRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fetchDocsRequests"); else _explicitNullProperties?.Remove("fetchDocsRequests"); } }
+        private int? _explicitNullValueFetchDocsRequests = default!;
         /// <summary>USD.</summary>
-        public double? MemberCost { get; set; }
+        public double? MemberCost { get => _explicitNullValueMemberCost; set { _explicitNullValueMemberCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memberCost"); else _explicitNullProperties?.Remove("memberCost"); } }
+        private double? _explicitNullValueMemberCost = default!;
         /// <summary>The memberCount property</summary>
-        public int? MemberCount { get; set; }
+        public int? MemberCount { get => _explicitNullValueMemberCount; set { _explicitNullValueMemberCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memberCount"); else _explicitNullProperties?.Remove("memberCount"); } }
+        private int? _explicitNullValueMemberCount = default!;
         /// <summary>The parseTokens property</summary>
-        public int? ParseTokens { get; set; }
+        public int? ParseTokens { get => _explicitNullValueParseTokens; set { _explicitNullValueParseTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parseTokens"); else _explicitNullProperties?.Remove("parseTokens"); } }
+        private int? _explicitNullValueParseTokens = default!;
         /// <summary>USD.</summary>
-        public double? ParseTokensCost { get; set; }
+        public double? ParseTokensCost { get => _explicitNullValueParseTokensCost; set { _explicitNullValueParseTokensCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parseTokensCost"); else _explicitNullProperties?.Remove("parseTokensCost"); } }
+        private double? _explicitNullValueParseTokensCost = default!;
         /// <summary>The searchRequests property</summary>
-        public int? SearchRequests { get; set; }
+        public int? SearchRequests { get => _explicitNullValueSearchRequests; set { _explicitNullValueSearchRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searchRequests"); else _explicitNullProperties?.Remove("searchRequests"); } }
+        private int? _explicitNullValueSearchRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay"/> and sets the default values.
         /// </summary>
@@ -46,7 +69,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +104,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteIntValue("parseTokens", ParseTokens);
             writer.WriteDoubleValue("parseTokensCost", ParseTokensCost);
             writer.WriteIntValue("searchRequests", SearchRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,35 +11,63 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceUsageResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billedRequests") is { } nullNodeBilledRequests && nullNodeBilledRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BilledRequests = null;
+            if (parseNode.GetChildNode("billingModel") is { } nullNodeBillingModel && nullNodeBillingModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingModel = null;
+            if (parseNode.GetChildNode("billsUsage") is { } nullNodeBillsUsage && nullNodeBillsUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillsUsage = null;
+            if (parseNode.GetChildNode("creditBalance") is { } nullNodeCreditBalance && nullNodeCreditBalance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditBalance = null;
+            if (parseNode.GetChildNode("dailyStats") is { } nullNodeDailyStats && nullNodeDailyStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyStats = null;
+            if (parseNode.GetChildNode("memberRate") is { } nullNodeMemberRate && nullNodeMemberRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberRate = null;
+            if (parseNode.GetChildNode("ownerPlan") is { } nullNodeOwnerPlan && nullNodeOwnerPlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerPlan = null;
+            if (parseNode.GetChildNode("personalMembershipWaived") is { } nullNodePersonalMembershipWaived && nullNodePersonalMembershipWaived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalMembershipWaived = null;
+            if (parseNode.GetChildNode("quotaLimit") is { } nullNodeQuotaLimit && nullNodeQuotaLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimit = null;
+            if (parseNode.GetChildNode("userRequests") is { } nullNodeUserRequests && nullNodeUserRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billed requests this month, pay-as-you-go only.</summary>
-        public int? BilledRequests { get; set; }
+        public int? BilledRequests { get => _explicitNullValueBilledRequests; set { _explicitNullValueBilledRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billedRequests"); else _explicitNullProperties?.Remove("billedRequests"); } }
+        private int? _explicitNullValueBilledRequests = default!;
         /// <summary>The billingModel property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseBillingModel? BillingModel { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseBillingModel? BillingModel { get => _explicitNullValueBillingModel; set { _explicitNullValueBillingModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billingModel"); else _explicitNullProperties?.Remove("billingModel"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseBillingModel? _explicitNullValueBillingModel = default!;
         /// <summary>Requests over the quota (or every request, on pay-as-you-go) are billed.</summary>
-        public bool? BillsUsage { get; set; }
+        public bool? BillsUsage { get => _explicitNullValueBillsUsage; set { _explicitNullValueBillsUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billsUsage"); else _explicitNullProperties?.Remove("billsUsage"); } }
+        private bool? _explicitNullValueBillsUsage = default!;
         /// <summary>Credit balance in USD.</summary>
-        public double? CreditBalance { get; set; }
+        public double? CreditBalance { get => _explicitNullValueCreditBalance; set { _explicitNullValueCreditBalance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creditBalance"); else _explicitNullProperties?.Remove("creditBalance"); } }
+        private double? _explicitNullValueCreditBalance = default!;
         /// <summary>Days with activity in the usage window (about 30 days), oldest first; the last entry is today (live).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay>? DailyStats { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay>? DailyStats { get => _explicitNullValueDailyStats; set { _explicitNullValueDailyStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyStats"); else _explicitNullProperties?.Remove("dailyStats"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay>? _explicitNullValueDailyStats = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay> DailyStats { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay> DailyStats { get => _explicitNullValueDailyStats; set { _explicitNullValueDailyStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dailyStats"); else _explicitNullProperties?.Remove("dailyStats"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageDay> _explicitNullValueDailyStats = default!;
 #endif
         /// <summary>USD per seat per month; null when no seat fee applies.</summary>
-        public double? MemberRate { get; set; }
+        public double? MemberRate { get => _explicitNullValueMemberRate; set { _explicitNullValueMemberRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memberRate"); else _explicitNullProperties?.Remove("memberRate"); } }
+        private double? _explicitNullValueMemberRate = default!;
         /// <summary>The ownerPlan property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseOwnerPlan? OwnerPlan { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseOwnerPlan? OwnerPlan { get => _explicitNullValueOwnerPlan; set { _explicitNullValueOwnerPlan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownerPlan"); else _explicitNullProperties?.Remove("ownerPlan"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponseOwnerPlan? _explicitNullValueOwnerPlan = default!;
         /// <summary>The personalMembershipWaived property</summary>
-        public bool? PersonalMembershipWaived { get; set; }
+        public bool? PersonalMembershipWaived { get => _explicitNullValuePersonalMembershipWaived; set { _explicitNullValuePersonalMembershipWaived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personalMembershipWaived"); else _explicitNullProperties?.Remove("personalMembershipWaived"); } }
+        private bool? _explicitNullValuePersonalMembershipWaived = default!;
         /// <summary>Monthly request quota of the teamspace (0 for pay-as-you-go).</summary>
-        public int? QuotaLimit { get; set; }
+        public int? QuotaLimit { get => _explicitNullValueQuotaLimit; set { _explicitNullValueQuotaLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quotaLimit"); else _explicitNullProperties?.Remove("quotaLimit"); } }
+        private int? _explicitNullValueQuotaLimit = default!;
         /// <summary>The caller&apos;s requests this month.</summary>
-        public int? UserRequests { get; set; }
+        public int? UserRequests { get => _explicitNullValueUserRequests; set { _explicitNullValueUserRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userRequests"); else _explicitNullProperties?.Remove("userRequests"); } }
+        private int? _explicitNullValueUserRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponse"/> and sets the default values.
         /// </summary>
@@ -55,7 +83,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceUsageResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,6 +122,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteBoolValue("personalMembershipWaived", PersonalMembershipWaived);
             writer.WriteIntValue("quotaLimit", QuotaLimit);
             writer.WriteIntValue("userRequests", UserRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AskIndexStatus : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,25 +58,36 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatus();
             if("AskIndexStatusOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AskIndexStatusOneOf1 = new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf1();
+                
             }
             else if("AskIndexStatusOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AskIndexStatusOneOf2 = new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf2();
+                
             }
             else if("AskIndexStatusOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AskIndexStatusOneOf3 = new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf3();
+                
             }
             else if("AskIndexStatusOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AskIndexStatusOneOf4 = new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("kind") != null && (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("pending".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("kind") != null && (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("submitted".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("library") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("kind") != null && (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("ready".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("library") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("kind") != null && (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("failed".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("reason") != null && parseNode.GetChildNode("library") != null))();
+            if (result.AskIndexStatusOneOf1 == null && result.AskIndexStatusOneOf2 == null && result.AskIndexStatusOneOf3 == null && result.AskIndexStatusOneOf4 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AskIndexStatusOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf1(), parseNode);
+            if (result.AskIndexStatusOneOf1 == null && result.AskIndexStatusOneOf2 == null && result.AskIndexStatusOneOf3 == null && result.AskIndexStatusOneOf4 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AskIndexStatusOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf2(), parseNode);
+            if (result.AskIndexStatusOneOf1 == null && result.AskIndexStatusOneOf2 == null && result.AskIndexStatusOneOf3 == null && result.AskIndexStatusOneOf4 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.AskIndexStatusOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf3(), parseNode);
+            if (result.AskIndexStatusOneOf1 == null && result.AskIndexStatusOneOf2 == null && result.AskIndexStatusOneOf3 == null && result.AskIndexStatusOneOf4 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.AskIndexStatusOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4(), parseNode);
+            if (result.AskIndexStatusOneOf1 == null && result.AskIndexStatusOneOf2 == null && result.AskIndexStatusOneOf3 == null && result.AskIndexStatusOneOf4 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AskIndexStatusOneOf1 == null && AskIndexStatusOneOf2 == null && AskIndexStatusOneOf3 == null && AskIndexStatusOneOf4 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AskIndexStatusOneOf1 != null && AskIndexStatusOneOf2 == null && AskIndexStatusOneOf3 == null && AskIndexStatusOneOf4 == null) { if (AskIndexStatusOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AskIndexStatusOneOf1); return; }
+            if (AskIndexStatusOneOf2 != null && AskIndexStatusOneOf1 == null && AskIndexStatusOneOf3 == null && AskIndexStatusOneOf4 == null) { if (AskIndexStatusOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AskIndexStatusOneOf2); return; }
+            if (AskIndexStatusOneOf3 != null && AskIndexStatusOneOf1 == null && AskIndexStatusOneOf2 == null && AskIndexStatusOneOf4 == null) { if (AskIndexStatusOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AskIndexStatusOneOf3); return; }
+            if (AskIndexStatusOneOf4 != null && AskIndexStatusOneOf1 == null && AskIndexStatusOneOf2 == null && AskIndexStatusOneOf3 == null) { if (AskIndexStatusOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AskIndexStatusOneOf4); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AskIndexStatusOneOf1 != null)
             {
+                if (AskIndexStatusOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf1>(null, AskIndexStatusOneOf1);
             }
             else if(AskIndexStatusOneOf2 != null)
             {
+                if (AskIndexStatusOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf2>(null, AskIndexStatusOneOf2);
             }
             else if(AskIndexStatusOneOf3 != null)
             {
+                if (AskIndexStatusOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf3>(null, AskIndexStatusOneOf3);
             }
             else if(AskIndexStatusOneOf4 != null)
             {
+                if (AskIndexStatusOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4>(null, AskIndexStatusOneOf4);
             }
         }

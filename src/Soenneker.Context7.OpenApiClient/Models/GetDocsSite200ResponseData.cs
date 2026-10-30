@@ -12,7 +12,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetDocsSite200ResponseData : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7LocalSite"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,13 +46,20 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var result = new global::Soenneker.Context7.OpenApiClient.Models.GetDocsSite200ResponseData();
             if("Docs7LocalSite".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.Docs7LocalSite = new global::Soenneker.Context7.OpenApiClient.Models.Docs7LocalSite();
+                
             }
             else if("Docs7Site".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.Docs7Site = new global::Soenneker.Context7.OpenApiClient.Models.Docs7Site();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("projectId") != null && parseNode.GetChildNode("repoUrl") != null && parseNode.GetChildNode("docsPath") != null && parseNode.GetChildNode("hosting") != null && (parseNode.GetChildNode("hosting")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag5 && ("off".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "on".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("platformHostname") != null && parseNode.GetChildNode("customDomainStatus") != null && (parseNode.GetChildNode("customDomainStatus")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag8 && ("none".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "pending_ownership".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "pending_dns".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "pending_validation".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "pending_certificate".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "pending_proxy".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "active".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal) || "failed".Equals(tag8.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("context7Index") != null && parseNode.GetChildNode("improveSchedule") != null && (parseNode.GetChildNode("improveSchedule")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag11 && ("off".Equals(tag11.GetValue(), global::System.StringComparison.Ordinal) || "daily".Equals(tag11.GetValue(), global::System.StringComparison.Ordinal) || "weekly".Equals(tag11.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("createdAt") != null && parseNode.GetChildNode("updatedAt") != null && (parseNode.GetChildNode("customDomainRouting") == null || (parseNode.GetChildNode("customDomainRouting")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag14 && ("dns".Equals(optionalTag14.GetValue(), global::System.StringComparison.Ordinal) || "proxy".Equals(optionalTag14.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("buildFixSchedule") == null || (parseNode.GetChildNode("buildFixSchedule")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag15 && ("off".Equals(optionalTag15.GetValue(), global::System.StringComparison.Ordinal) || "after_build".Equals(optionalTag15.GetValue(), global::System.StringComparison.Ordinal) || "daily".Equals(optionalTag15.GetValue(), global::System.StringComparison.Ordinal) || "weekly".Equals(optionalTag15.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("snippetSchedule") == null || (parseNode.GetChildNode("snippetSchedule")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag16 && ("off".Equals(optionalTag16.GetValue(), global::System.StringComparison.Ordinal) || "monthly".Equals(optionalTag16.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("local".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("projectId") != null && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("slug") != null && parseNode.GetChildNode("platformHostname") != null && parseNode.GetChildNode("createdAt") != null && parseNode.GetChildNode("updatedAt") != null && (parseNode.GetChildNode("hosting") == null || (parseNode.GetChildNode("hosting")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag9 && ("on".Equals(optionalTag9.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("customDomainStatus") == null || (parseNode.GetChildNode("customDomainStatus")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag10 && ("none".Equals(optionalTag10.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.Docs7LocalSite == null && result.Docs7Site == null && matchesUnionBranch0 && !matchesUnionBranch1) result.Docs7Site = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7Site(), parseNode);
+            if (result.Docs7LocalSite == null && result.Docs7Site == null && matchesUnionBranch1 && !matchesUnionBranch0) result.Docs7LocalSite = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7LocalSite(), parseNode);
+            if (result.Docs7LocalSite == null && result.Docs7Site == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,13 +83,20 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (Docs7LocalSite == null && Docs7Site == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (Docs7LocalSite != null && Docs7Site == null) { if (Docs7LocalSite is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, Docs7LocalSite); return; }
+            if (Docs7Site != null && Docs7LocalSite == null) { if (Docs7Site is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, Docs7Site); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(Docs7LocalSite != null)
             {
+                if (Docs7LocalSite is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7LocalSite>(null, Docs7LocalSite);
             }
             else if(Docs7Site != null)
             {
+                if (Docs7Site is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7Site>(null, Docs7Site);
             }
         }

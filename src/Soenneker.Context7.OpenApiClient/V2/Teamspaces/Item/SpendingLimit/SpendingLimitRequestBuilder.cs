@@ -59,6 +59,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.SpendingLimit
                 { "401", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -90,6 +92,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.SpendingLimit
                 { "401", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

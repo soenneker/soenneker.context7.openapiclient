@@ -11,24 +11,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceRulesResponseData : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("global") is { } nullNodeGlobal && nullNodeGlobal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Global = null;
+            if (parseNode.GetChildNode("libraries") is { } nullNodeLibraries && nullNodeLibraries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Libraries = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Rules for every library, keyed by rule id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty? Global { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty? Global { get => _explicitNullValueGlobal; set { _explicitNullValueGlobal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global"); else _explicitNullProperties?.Remove("global"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty? _explicitNullValueGlobal = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty Global { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty Global { get => _explicitNullValueGlobal; set { _explicitNullValueGlobal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global"); else _explicitNullProperties?.Remove("global"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty _explicitNullValueGlobal = default!;
 #endif
         /// <summary>Rules for one library, keyed by library id, then by rule id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty? Libraries { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty? Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty? _explicitNullValueLibraries = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty Libraries { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty Libraries { get => _explicitNullValueLibraries; set { _explicitNullValueLibraries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraries"); else _explicitNullProperties?.Remove("libraries"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty _explicitNullValueLibraries = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseData"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseData CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseData();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseData(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataGlobalProperty>("global", Global);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceRulesResponseDataLibrariesProperty>("libraries", Libraries);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,23 +11,44 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceLibraryBenchmarkStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("averageScore") is { } nullNodeAverageScore && nullNodeAverageScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageScore = null;
+            if (parseNode.GetChildNode("averageScoreLast10") is { } nullNodeAverageScoreLast10 && nullNodeAverageScoreLast10.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageScoreLast10 = null;
+            if (parseNode.GetChildNode("averageScoreLast100") is { } nullNodeAverageScoreLast100 && nullNodeAverageScoreLast100.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageScoreLast100 = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("latestBenchmarkDate") is { } nullNodeLatestBenchmarkDate && nullNodeLatestBenchmarkDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestBenchmarkDate = null;
+            if (parseNode.GetChildNode("maxScore") is { } nullNodeMaxScore && nullNodeMaxScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxScore = null;
+            if (parseNode.GetChildNode("minScore") is { } nullNodeMinScore && nullNodeMinScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinScore = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The averageScore property</summary>
-        public double? AverageScore { get; set; }
+        public double? AverageScore { get => _explicitNullValueAverageScore; set { _explicitNullValueAverageScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("averageScore"); else _explicitNullProperties?.Remove("averageScore"); } }
+        private double? _explicitNullValueAverageScore = default!;
         /// <summary>The averageScoreLast10 property</summary>
-        public double? AverageScoreLast10 { get; set; }
+        public double? AverageScoreLast10 { get => _explicitNullValueAverageScoreLast10; set { _explicitNullValueAverageScoreLast10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("averageScoreLast10"); else _explicitNullProperties?.Remove("averageScoreLast10"); } }
+        private double? _explicitNullValueAverageScoreLast10 = default!;
         /// <summary>The averageScoreLast100 property</summary>
-        public double? AverageScoreLast100 { get; set; }
+        public double? AverageScoreLast100 { get => _explicitNullValueAverageScoreLast100; set { _explicitNullValueAverageScoreLast100 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("averageScoreLast100"); else _explicitNullProperties?.Remove("averageScoreLast100"); } }
+        private double? _explicitNullValueAverageScoreLast100 = default!;
         /// <summary>The count property</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>The latestBenchmarkDate property</summary>
-        public DateTimeOffset? LatestBenchmarkDate { get; set; }
+        public DateTimeOffset? LatestBenchmarkDate { get => _explicitNullValueLatestBenchmarkDate; set { _explicitNullValueLatestBenchmarkDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latestBenchmarkDate"); else _explicitNullProperties?.Remove("latestBenchmarkDate"); } }
+        private DateTimeOffset? _explicitNullValueLatestBenchmarkDate = default!;
         /// <summary>The maxScore property</summary>
-        public double? MaxScore { get; set; }
+        public double? MaxScore { get => _explicitNullValueMaxScore; set { _explicitNullValueMaxScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxScore"); else _explicitNullProperties?.Remove("maxScore"); } }
+        private double? _explicitNullValueMaxScore = default!;
         /// <summary>The minScore property</summary>
-        public double? MinScore { get; set; }
+        public double? MinScore { get => _explicitNullValueMinScore; set { _explicitNullValueMinScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minScore"); else _explicitNullProperties?.Remove("minScore"); } }
+        private double? _explicitNullValueMinScore = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats"/> and sets the default values.
         /// </summary>
@@ -43,7 +64,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("latestBenchmarkDate", LatestBenchmarkDate);
             writer.WriteDoubleValue("maxScore", MaxScore);
             writer.WriteDoubleValue("minScore", MinScore);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

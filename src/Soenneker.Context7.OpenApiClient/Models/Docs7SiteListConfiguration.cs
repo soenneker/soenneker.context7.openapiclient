@@ -11,24 +11,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Docs7SiteListConfiguration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("customDomainCnameTarget") is { } nullNodeCustomDomainCnameTarget && nullNodeCustomDomainCnameTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDomainCnameTarget = null;
+            if (parseNode.GetChildNode("hostingZone") is { } nullNodeHostingZone && nullNodeHostingZone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostingZone = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CNAME target for a custom domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomDomainCnameTarget { get; set; }
+        public string? CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
+        private string? _explicitNullValueCustomDomainCnameTarget = default!;
 #nullable restore
 #else
-        public string CustomDomainCnameTarget { get; set; }
+        public string CustomDomainCnameTarget { get => _explicitNullValueCustomDomainCnameTarget; set { _explicitNullValueCustomDomainCnameTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customDomainCnameTarget"); else _explicitNullProperties?.Remove("customDomainCnameTarget"); } }
+        private string _explicitNullValueCustomDomainCnameTarget = default!;
 #endif
         /// <summary>Domain of platform hostnames.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HostingZone { get; set; }
+        public string? HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
+        private string? _explicitNullValueHostingZone = default!;
 #nullable restore
 #else
-        public string HostingZone { get; set; }
+        public string HostingZone { get => _explicitNullValueHostingZone; set { _explicitNullValueHostingZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hostingZone"); else _explicitNullProperties?.Remove("hostingZone"); } }
+        private string _explicitNullValueHostingZone = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteListConfiguration"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteListConfiguration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteListConfiguration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7SiteListConfiguration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("customDomainCnameTarget", CustomDomainCnameTarget);
             writer.WriteStringValue("hostingZone", HostingZone);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

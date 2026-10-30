@@ -12,7 +12,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetTeamspaceLibraryAnalytics200Response : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,21 +62,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var result = new global::Soenneker.Context7.OpenApiClient.Models.GetTeamspaceLibraryAnalytics200Response();
             if("McpClientMetrics".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.McpClientMetrics = new global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics();
+                
             }
             else if("TeamspaceLibraryCountriesReport".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryCountriesReport = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryCountriesReport();
+                
             }
             else if("TeamspaceLibraryTopicsReport".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryTopicsReport = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTopicsReport();
+                
             }
             else if("TeamspaceLibraryUsageReport".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryUsageReport = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryUsageReport();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("current") != null && parseNode.GetChildNode("daily") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("libraryId") != null && parseNode.GetChildNode("topics") != null && parseNode.GetChildNode("totalRequests") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("libraryId") != null && parseNode.GetChildNode("countries") != null && parseNode.GetChildNode("totalRequests") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("dailyData") != null))();
+            if (result.McpClientMetrics == null && result.TeamspaceLibraryCountriesReport == null && result.TeamspaceLibraryTopicsReport == null && result.TeamspaceLibraryUsageReport == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.TeamspaceLibraryUsageReport = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryUsageReport(), parseNode);
+            if (result.McpClientMetrics == null && result.TeamspaceLibraryCountriesReport == null && result.TeamspaceLibraryTopicsReport == null && result.TeamspaceLibraryUsageReport == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.TeamspaceLibraryTopicsReport = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTopicsReport(), parseNode);
+            if (result.McpClientMetrics == null && result.TeamspaceLibraryCountriesReport == null && result.TeamspaceLibraryTopicsReport == null && result.TeamspaceLibraryUsageReport == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.TeamspaceLibraryCountriesReport = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryCountriesReport(), parseNode);
+            if (result.McpClientMetrics == null && result.TeamspaceLibraryCountriesReport == null && result.TeamspaceLibraryTopicsReport == null && result.TeamspaceLibraryUsageReport == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.McpClientMetrics = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics(), parseNode);
+            if (result.McpClientMetrics == null && result.TeamspaceLibraryCountriesReport == null && result.TeamspaceLibraryTopicsReport == null && result.TeamspaceLibraryUsageReport == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (McpClientMetrics == null && TeamspaceLibraryCountriesReport == null && TeamspaceLibraryTopicsReport == null && TeamspaceLibraryUsageReport == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (McpClientMetrics != null && TeamspaceLibraryCountriesReport == null && TeamspaceLibraryTopicsReport == null && TeamspaceLibraryUsageReport == null) { if (McpClientMetrics is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, McpClientMetrics); return; }
+            if (TeamspaceLibraryCountriesReport != null && McpClientMetrics == null && TeamspaceLibraryTopicsReport == null && TeamspaceLibraryUsageReport == null) { if (TeamspaceLibraryCountriesReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryCountriesReport); return; }
+            if (TeamspaceLibraryTopicsReport != null && McpClientMetrics == null && TeamspaceLibraryCountriesReport == null && TeamspaceLibraryUsageReport == null) { if (TeamspaceLibraryTopicsReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryTopicsReport); return; }
+            if (TeamspaceLibraryUsageReport != null && McpClientMetrics == null && TeamspaceLibraryCountriesReport == null && TeamspaceLibraryTopicsReport == null) { if (TeamspaceLibraryUsageReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryUsageReport); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(McpClientMetrics != null)
             {
+                if (McpClientMetrics is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.McpClientMetrics>(null, McpClientMetrics);
             }
             else if(TeamspaceLibraryCountriesReport != null)
             {
+                if (TeamspaceLibraryCountriesReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryCountriesReport>(null, TeamspaceLibraryCountriesReport);
             }
             else if(TeamspaceLibraryTopicsReport != null)
             {
+                if (TeamspaceLibraryTopicsReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTopicsReport>(null, TeamspaceLibraryTopicsReport);
             }
             else if(TeamspaceLibraryUsageReport != null)
             {
+                if (TeamspaceLibraryUsageReport is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryUsageReport>(null, TeamspaceLibraryUsageReport);
             }
         }

@@ -59,6 +59,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
                 { "401", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.DisableTeamspaceInviteLink200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.DisableTeamspaceInviteLink200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -90,6 +92,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetTeamspaceInviteLink200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetTeamspaceInviteLink200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -121,6 +125,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceInviteLink200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.CreateTeamspaceInviteLink200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -152,6 +158,8 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
                 { "403", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ResetTeamspaceInviteLink200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ResetTeamspaceInviteLink200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

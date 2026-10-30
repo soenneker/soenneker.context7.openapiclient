@@ -11,27 +11,42 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AskSitesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("limitReached") is { } nullNodeLimitReached && nullNodeLimitReached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitReached = null;
+            if (parseNode.GetChildNode("siteLimit") is { } nullNodeSiteLimit && nullNodeSiteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SiteLimit = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? Data { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> Data { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody> _explicitNullValueData = default!;
 #endif
         /// <summary>Keys of the sites that used this month&apos;s requests. Their endpoint answers 429 until the next UTC month.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LimitReached { get; set; }
+        public List<string>? LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
+        private List<string>? _explicitNullValueLimitReached = default!;
 #nullable restore
 #else
-        public List<string> LimitReached { get; set; }
+        public List<string> LimitReached { get => _explicitNullValueLimitReached; set { _explicitNullValueLimitReached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitReached"); else _explicitNullProperties?.Remove("limitReached"); } }
+        private List<string> _explicitNullValueLimitReached = default!;
 #endif
         /// <summary>Most sites the plan allows; null for no limit.</summary>
-        public int? SiteLimit { get; set; }
+        public int? SiteLimit { get => _explicitNullValueSiteLimit; set { _explicitNullValueSiteLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siteLimit"); else _explicitNullProperties?.Remove("siteLimit"); } }
+        private int? _explicitNullValueSiteLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskSitesResponse"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.AskSitesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.AskSitesResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskSitesResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.AskSiteBody>("data", Data);
             writer.WriteCollectionOfPrimitiveValues<string>("limitReached", LimitReached);
             writer.WriteIntValue("siteLimit", SiteLimit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

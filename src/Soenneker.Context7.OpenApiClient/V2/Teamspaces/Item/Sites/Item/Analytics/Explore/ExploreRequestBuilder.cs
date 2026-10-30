@@ -36,7 +36,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
         /// <summary>
         /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -48,11 +48,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse?> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -65,8 +65,10 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
                 { "404", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Context7.OpenApiClient.Models.Docs7Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member.

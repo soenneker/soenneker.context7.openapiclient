@@ -11,17 +11,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Docs7AiCrawlerAnalyticsTotals : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
+            if (parseNode.GetChildNode("uniqueBots") is { } nullNodeUniqueBots && nullNodeUniqueBots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueBots = null;
+            if (parseNode.GetChildNode("uniquePaths") is { } nullNodeUniquePaths && nullNodeUniquePaths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePaths = null;
+            if (parseNode.GetChildNode("verifiedRequests") is { } nullNodeVerifiedRequests && nullNodeVerifiedRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerifiedRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The totalRequests property</summary>
-        public int? TotalRequests { get; set; }
+        public int? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
+        private int? _explicitNullValueTotalRequests = default!;
         /// <summary>The uniqueBots property</summary>
-        public int? UniqueBots { get; set; }
+        public int? UniqueBots { get => _explicitNullValueUniqueBots; set { _explicitNullValueUniqueBots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniqueBots"); else _explicitNullProperties?.Remove("uniqueBots"); } }
+        private int? _explicitNullValueUniqueBots = default!;
         /// <summary>The uniquePaths property</summary>
-        public int? UniquePaths { get; set; }
+        public int? UniquePaths { get => _explicitNullValueUniquePaths; set { _explicitNullValueUniquePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniquePaths"); else _explicitNullProperties?.Remove("uniquePaths"); } }
+        private int? _explicitNullValueUniquePaths = default!;
         /// <summary>The verifiedRequests property</summary>
-        public int? VerifiedRequests { get; set; }
+        public int? VerifiedRequests { get => _explicitNullValueVerifiedRequests; set { _explicitNullValueVerifiedRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verifiedRequests"); else _explicitNullProperties?.Remove("verifiedRequests"); } }
+        private int? _explicitNullValueVerifiedRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7AiCrawlerAnalyticsTotals"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.Docs7AiCrawlerAnalyticsTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.Docs7AiCrawlerAnalyticsTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7AiCrawlerAnalyticsTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteIntValue("uniqueBots", UniqueBots);
             writer.WriteIntValue("uniquePaths", UniquePaths);
             writer.WriteIntValue("verifiedRequests", VerifiedRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

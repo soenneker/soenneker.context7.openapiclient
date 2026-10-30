@@ -11,24 +11,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ListTeamspaceLibraryBenchmarks200Response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("benchmarks") is { } nullNodeBenchmarks && nullNodeBenchmarks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Benchmarks = null;
+            if (parseNode.GetChildNode("stats") is { } nullNodeStats && nullNodeStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stats = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The benchmarks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark>? Benchmarks { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark>? Benchmarks { get => _explicitNullValueBenchmarks; set { _explicitNullValueBenchmarks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarks"); else _explicitNullProperties?.Remove("benchmarks"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark>? _explicitNullValueBenchmarks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark> Benchmarks { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark> Benchmarks { get => _explicitNullValueBenchmarks; set { _explicitNullValueBenchmarks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarks"); else _explicitNullProperties?.Remove("benchmarks"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark> _explicitNullValueBenchmarks = default!;
 #endif
         /// <summary>The stats property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats? Stats { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats? Stats { get => _explicitNullValueStats; set { _explicitNullValueStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stats"); else _explicitNullProperties?.Remove("stats"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats? _explicitNullValueStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats Stats { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats Stats { get => _explicitNullValueStats; set { _explicitNullValueStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stats"); else _explicitNullProperties?.Remove("stats"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats _explicitNullValueStats = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmark>("benchmarks", Benchmarks);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkStats>("stats", Stats);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

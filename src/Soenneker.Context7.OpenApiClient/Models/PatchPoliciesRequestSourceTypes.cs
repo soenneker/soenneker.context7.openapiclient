@@ -12,24 +12,37 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchPoliciesRequestSourceTypes : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("disable") is { } nullNodeDisable && nullNodeDisable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disable = null;
+            if (parseNode.GetChildNode("enable") is { } nullNodeEnable && nullNodeEnable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enable = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Source types to disable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? Disable { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?>? _explicitNullValueDisable = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> Disable { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> Disable { get => _explicitNullValueDisable; set { _explicitNullValueDisable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable"); else _explicitNullProperties?.Remove("disable"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem?> _explicitNullValueDisable = default!;
 #endif
         /// <summary>Source types to enable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? Enable { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?>? _explicitNullValueEnable = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> Enable { get; set; }
+        public List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> Enable { get => _explicitNullValueEnable; set { _explicitNullValueEnable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable"); else _explicitNullProperties?.Remove("enable"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem?> _explicitNullValueEnable = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypes(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesDisableItem>("disable", Disable);
             writer.WriteCollectionOfEnumValues<global::Soenneker.Context7.OpenApiClient.Models.PatchPoliciesRequestSourceTypesEnableItem>("enable", Enable);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

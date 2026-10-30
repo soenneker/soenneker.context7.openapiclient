@@ -12,19 +12,31 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PolicyResponseLibraryFiltersQualityRepoFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowedLicenses") is { } nullNodeAllowedLicenses && nullNodeAllowedLicenses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLicenses = null;
+            if (parseNode.GetChildNode("minStars") is { } nullNodeMinStars && nullNodeMinStars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinStars = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>SPDX license identifiers (e.g. &apos;MIT&apos;, &apos;Apache-2.0&apos;) that are allowed. Empty array means no license restriction. Applies to public repos only; non-repo source types pass through.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedLicenses { get; set; }
+        public List<string>? AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
+        private List<string>? _explicitNullValueAllowedLicenses = default!;
 #nullable restore
 #else
-        public List<string> AllowedLicenses { get; set; }
+        public List<string> AllowedLicenses { get => _explicitNullValueAllowedLicenses; set { _explicitNullValueAllowedLicenses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowedLicenses"); else _explicitNullProperties?.Remove("allowedLicenses"); } }
+        private List<string> _explicitNullValueAllowedLicenses = default!;
 #endif
         /// <summary>Minimum GitHub stars required</summary>
-        public int? MinStars { get; set; }
+        public int? MinStars { get => _explicitNullValueMinStars; set { _explicitNullValueMinStars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minStars"); else _explicitNullProperties?.Remove("minStars"); } }
+        private int? _explicitNullValueMinStars = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters"/> and sets the default values.
         /// </summary>
@@ -40,7 +52,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQualityRepoFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,6 +75,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowedLicenses", AllowedLicenses);
             writer.WriteIntValue("minStars", MinStars);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

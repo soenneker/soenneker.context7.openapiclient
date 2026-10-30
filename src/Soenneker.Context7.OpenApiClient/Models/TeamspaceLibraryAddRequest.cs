@@ -12,7 +12,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TeamspaceLibraryAddRequest : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfluenceSource"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,29 +78,44 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var result = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequest();
             if("TeamspaceLibraryConfluenceSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryConfluenceSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfluenceSource();
+                
             }
             else if("TeamspaceLibraryLlmsTxtSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryLlmsTxtSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryLlmsTxtSource();
+                
             }
             else if("TeamspaceLibraryNotionSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryNotionSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryNotionSource();
+                
             }
             else if("TeamspaceLibraryOpenApiSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryOpenApiSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryOpenApiSource();
+                
             }
             else if("TeamspaceLibraryRepoSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryRepoSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRepoSource();
+                
             }
             else if("TeamspaceLibraryWebsiteSource".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TeamspaceLibraryWebsiteSource = new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryWebsiteSource();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("github".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "gitlab".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "bitbucket".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "git".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("docsRepoUrl") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("website".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("websiteUrl") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("llmstxt".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("llmstxtUrl") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openapi".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("openApiUrl") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("confluence".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cloudId") != null && parseNode.GetChildNode("siteUrl") != null && parseNode.GetChildNode("spaceKey") != null && parseNode.GetChildNode("spaceName") != null && parseNode.GetChildNode("title") != null && parseNode.GetChildNode("description") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("notion".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("workspaceId") != null && parseNode.GetChildNode("workspaceName") != null && parseNode.GetChildNode("pageIds") != null && parseNode.GetChildNode("title") != null && parseNode.GetChildNode("description") != null))();
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.TeamspaceLibraryRepoSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRepoSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.TeamspaceLibraryWebsiteSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryWebsiteSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.TeamspaceLibraryLlmsTxtSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryLlmsTxtSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5) result.TeamspaceLibraryOpenApiSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryOpenApiSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5) result.TeamspaceLibraryConfluenceSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfluenceSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.TeamspaceLibraryNotionSource = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryNotionSource(), parseNode);
+            if (result.TeamspaceLibraryConfluenceSource == null && result.TeamspaceLibraryLlmsTxtSource == null && result.TeamspaceLibraryNotionSource == null && result.TeamspaceLibraryOpenApiSource == null && result.TeamspaceLibraryRepoSource == null && result.TeamspaceLibraryWebsiteSource == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -135,29 +155,44 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryRepoSource == null && TeamspaceLibraryWebsiteSource == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (TeamspaceLibraryConfluenceSource != null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryRepoSource == null && TeamspaceLibraryWebsiteSource == null) { if (TeamspaceLibraryConfluenceSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryConfluenceSource); return; }
+            if (TeamspaceLibraryLlmsTxtSource != null && TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryRepoSource == null && TeamspaceLibraryWebsiteSource == null) { if (TeamspaceLibraryLlmsTxtSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryLlmsTxtSource); return; }
+            if (TeamspaceLibraryNotionSource != null && TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryRepoSource == null && TeamspaceLibraryWebsiteSource == null) { if (TeamspaceLibraryNotionSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryNotionSource); return; }
+            if (TeamspaceLibraryOpenApiSource != null && TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryRepoSource == null && TeamspaceLibraryWebsiteSource == null) { if (TeamspaceLibraryOpenApiSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryOpenApiSource); return; }
+            if (TeamspaceLibraryRepoSource != null && TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryWebsiteSource == null) { if (TeamspaceLibraryRepoSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryRepoSource); return; }
+            if (TeamspaceLibraryWebsiteSource != null && TeamspaceLibraryConfluenceSource == null && TeamspaceLibraryLlmsTxtSource == null && TeamspaceLibraryNotionSource == null && TeamspaceLibraryOpenApiSource == null && TeamspaceLibraryRepoSource == null) { if (TeamspaceLibraryWebsiteSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TeamspaceLibraryWebsiteSource); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(TeamspaceLibraryConfluenceSource != null)
             {
+                if (TeamspaceLibraryConfluenceSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfluenceSource>(null, TeamspaceLibraryConfluenceSource);
             }
             else if(TeamspaceLibraryLlmsTxtSource != null)
             {
+                if (TeamspaceLibraryLlmsTxtSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryLlmsTxtSource>(null, TeamspaceLibraryLlmsTxtSource);
             }
             else if(TeamspaceLibraryNotionSource != null)
             {
+                if (TeamspaceLibraryNotionSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryNotionSource>(null, TeamspaceLibraryNotionSource);
             }
             else if(TeamspaceLibraryOpenApiSource != null)
             {
+                if (TeamspaceLibraryOpenApiSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryOpenApiSource>(null, TeamspaceLibraryOpenApiSource);
             }
             else if(TeamspaceLibraryRepoSource != null)
             {
+                if (TeamspaceLibraryRepoSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryRepoSource>(null, TeamspaceLibraryRepoSource);
             }
             else if(TeamspaceLibraryWebsiteSource != null)
             {
+                if (TeamspaceLibraryWebsiteSource is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryWebsiteSource>(null, TeamspaceLibraryWebsiteSource);
             }
         }

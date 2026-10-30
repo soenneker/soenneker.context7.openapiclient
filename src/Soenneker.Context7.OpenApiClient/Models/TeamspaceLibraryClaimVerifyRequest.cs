@@ -11,18 +11,30 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceLibraryClaimVerifyRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("configSource") is { } nullNodeConfigSource && nullNodeConfigSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSource = null;
+            if (parseNode.GetChildNode("context7JsonUrl") is { } nullNodeContext7JsonUrl && nullNodeContext7JsonUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context7JsonUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Repositories: where the parser reads settings from after the claim. Default `dashboard`.</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? ConfigSource { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? ConfigSource { get => _explicitNullValueConfigSource; set { _explicitNullValueConfigSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSource"); else _explicitNullProperties?.Remove("configSource"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource? _explicitNullValueConfigSource = default!;
         /// <summary>URL of the published file. Required for `hostedFile`, and for a repository on a host other than GitHub, GitLab or Bitbucket (the raw file URL).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Context7JsonUrl { get; set; }
+        public string? Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
+        private string? _explicitNullValueContext7JsonUrl = default!;
 #nullable restore
 #else
-        public string Context7JsonUrl { get; set; }
+        public string Context7JsonUrl { get => _explicitNullValueContext7JsonUrl; set { _explicitNullValueContext7JsonUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context7JsonUrl"); else _explicitNullProperties?.Remove("context7JsonUrl"); } }
+        private string _explicitNullValueContext7JsonUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequest"/> and sets the default values.
@@ -39,7 +51,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryClaimVerifyRequestConfigSource>("configSource", ConfigSource);
             writer.WriteStringValue("context7JsonUrl", Context7JsonUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

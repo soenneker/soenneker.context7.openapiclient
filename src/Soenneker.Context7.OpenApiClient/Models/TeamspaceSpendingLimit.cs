@@ -11,17 +11,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamspaceSpendingLimit : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("alreadyOver") is { } nullNodeAlreadyOver && nullNodeAlreadyOver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyOver = null;
+            if (parseNode.GetChildNode("canEdit") is { } nullNodeCanEdit && nullNodeCanEdit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEdit = null;
+            if (parseNode.GetChildNode("currentSpendCents") is { } nullNodeCurrentSpendCents && nullNodeCurrentSpendCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentSpendCents = null;
+            if (parseNode.GetChildNode("limitCents") is { } nullNodeLimitCents && nullNodeLimitCents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitCents = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>PUT only. This month&apos;s spend already reaches the new limit.</summary>
-        public bool? AlreadyOver { get; set; }
+        public bool? AlreadyOver { get => _explicitNullValueAlreadyOver; set { _explicitNullValueAlreadyOver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alreadyOver"); else _explicitNullProperties?.Remove("alreadyOver"); } }
+        private bool? _explicitNullValueAlreadyOver = default!;
         /// <summary>GET only. The caller is an owner or admin.</summary>
-        public bool? CanEdit { get; set; }
+        public bool? CanEdit { get => _explicitNullValueCanEdit; set { _explicitNullValueCanEdit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canEdit"); else _explicitNullProperties?.Remove("canEdit"); } }
+        private bool? _explicitNullValueCanEdit = default!;
         /// <summary>Billed API usage this month, in cents.</summary>
-        public int? CurrentSpendCents { get; set; }
+        public int? CurrentSpendCents { get => _explicitNullValueCurrentSpendCents; set { _explicitNullValueCurrentSpendCents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currentSpendCents"); else _explicitNullProperties?.Remove("currentSpendCents"); } }
+        private int? _explicitNullValueCurrentSpendCents = default!;
         /// <summary>Monthly cap on billed API usage in cents; null is no cap.</summary>
-        public int? LimitCents { get; set; }
+        public int? LimitCents { get => _explicitNullValueLimitCents; set { _explicitNullValueLimitCents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limitCents"); else _explicitNullProperties?.Remove("limitCents"); } }
+        private int? _explicitNullValueLimitCents = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSpendingLimit(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteBoolValue("canEdit", CanEdit);
             writer.WriteIntValue("currentSpendCents", CurrentSpendCents);
             writer.WriteIntValue("limitCents", LimitCents);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,106 +12,156 @@ namespace Soenneker.Context7.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TeamspaceLibraryConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseUrl") is { } nullNodeBaseUrl && nullNodeBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUrl = null;
+            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("configSource") is { } nullNodeConfigSource && nullNodeConfigSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSource = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("disallow") is { } nullNodeDisallow && nullNodeDisallow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disallow = null;
+            if (parseNode.GetChildNode("excludeFiles") is { } nullNodeExcludeFiles && nullNodeExcludeFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeFiles = null;
+            if (parseNode.GetChildNode("excludeFolders") is { } nullNodeExcludeFolders && nullNodeExcludeFolders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeFolders = null;
+            if (parseNode.GetChildNode("excludeUrls") is { } nullNodeExcludeUrls && nullNodeExcludeUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeUrls = null;
+            if (parseNode.GetChildNode("folders") is { } nullNodeFolders && nullNodeFolders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Folders = null;
+            if (parseNode.GetChildNode("generateDocs") is { } nullNodeGenerateDocs && nullNodeGenerateDocs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerateDocs = null;
+            if (parseNode.GetChildNode("includeExtensions") is { } nullNodeIncludeExtensions && nullNodeIncludeExtensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeExtensions = null;
+            if (parseNode.GetChildNode("projectTitle") is { } nullNodeProjectTitle && nullNodeProjectTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectTitle = null;
+            if (parseNode.GetChildNode("rules") is { } nullNodeRules && nullNodeRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rules = null;
+            if (parseNode.GetChildNode("skipClaudeVersionExclusion") is { } nullNodeSkipClaudeVersionExclusion && nullNodeSkipClaudeVersionExclusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipClaudeVersionExclusion = null;
+            if (parseNode.GetChildNode("useQueryParams") is { } nullNodeUseQueryParams && nullNodeUseQueryParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseQueryParams = null;
+            if (parseNode.GetChildNode("webUrl") is { } nullNodeWebUrl && nullNodeWebUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseUrl { get; set; }
+        public string? BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseUrl"); else _explicitNullProperties?.Remove("baseUrl"); } }
+        private string? _explicitNullValueBaseUrl = default!;
 #nullable restore
 #else
-        public string BaseUrl { get; set; }
+        public string BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseUrl"); else _explicitNullProperties?.Remove("baseUrl"); } }
+        private string _explicitNullValueBaseUrl = default!;
 #endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get; set; }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get; set; }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>The configSource property</summary>
-        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfigConfigSource? ConfigSource { get; set; }
+        public global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfigConfigSource? ConfigSource { get => _explicitNullValueConfigSource; set { _explicitNullValueConfigSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSource"); else _explicitNullProperties?.Remove("configSource"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfigConfigSource? _explicitNullValueConfigSource = default!;
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The disallow property</summary>
-        public bool? Disallow { get; set; }
+        public bool? Disallow { get => _explicitNullValueDisallow; set { _explicitNullValueDisallow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallow"); else _explicitNullProperties?.Remove("disallow"); } }
+        private bool? _explicitNullValueDisallow = default!;
         /// <summary>The excludeFiles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeFiles { get; set; }
+        public List<string>? ExcludeFiles { get => _explicitNullValueExcludeFiles; set { _explicitNullValueExcludeFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeFiles"); else _explicitNullProperties?.Remove("excludeFiles"); } }
+        private List<string>? _explicitNullValueExcludeFiles = default!;
 #nullable restore
 #else
-        public List<string> ExcludeFiles { get; set; }
+        public List<string> ExcludeFiles { get => _explicitNullValueExcludeFiles; set { _explicitNullValueExcludeFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeFiles"); else _explicitNullProperties?.Remove("excludeFiles"); } }
+        private List<string> _explicitNullValueExcludeFiles = default!;
 #endif
         /// <summary>The excludeFolders property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeFolders { get; set; }
+        public List<string>? ExcludeFolders { get => _explicitNullValueExcludeFolders; set { _explicitNullValueExcludeFolders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeFolders"); else _explicitNullProperties?.Remove("excludeFolders"); } }
+        private List<string>? _explicitNullValueExcludeFolders = default!;
 #nullable restore
 #else
-        public List<string> ExcludeFolders { get; set; }
+        public List<string> ExcludeFolders { get => _explicitNullValueExcludeFolders; set { _explicitNullValueExcludeFolders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeFolders"); else _explicitNullProperties?.Remove("excludeFolders"); } }
+        private List<string> _explicitNullValueExcludeFolders = default!;
 #endif
         /// <summary>The excludeUrls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeUrls { get; set; }
+        public List<string>? ExcludeUrls { get => _explicitNullValueExcludeUrls; set { _explicitNullValueExcludeUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeUrls"); else _explicitNullProperties?.Remove("excludeUrls"); } }
+        private List<string>? _explicitNullValueExcludeUrls = default!;
 #nullable restore
 #else
-        public List<string> ExcludeUrls { get; set; }
+        public List<string> ExcludeUrls { get => _explicitNullValueExcludeUrls; set { _explicitNullValueExcludeUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeUrls"); else _explicitNullProperties?.Remove("excludeUrls"); } }
+        private List<string> _explicitNullValueExcludeUrls = default!;
 #endif
         /// <summary>The folders property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Folders { get; set; }
+        public List<string>? Folders { get => _explicitNullValueFolders; set { _explicitNullValueFolders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folders"); else _explicitNullProperties?.Remove("folders"); } }
+        private List<string>? _explicitNullValueFolders = default!;
 #nullable restore
 #else
-        public List<string> Folders { get; set; }
+        public List<string> Folders { get => _explicitNullValueFolders; set { _explicitNullValueFolders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folders"); else _explicitNullProperties?.Remove("folders"); } }
+        private List<string> _explicitNullValueFolders = default!;
 #endif
         /// <summary>Null for public repositories.</summary>
-        public bool? GenerateDocs { get; set; }
+        public bool? GenerateDocs { get => _explicitNullValueGenerateDocs; set { _explicitNullValueGenerateDocs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generateDocs"); else _explicitNullProperties?.Remove("generateDocs"); } }
+        private bool? _explicitNullValueGenerateDocs = default!;
         /// <summary>The includeExtensions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IncludeExtensions { get; set; }
+        public List<string>? IncludeExtensions { get => _explicitNullValueIncludeExtensions; set { _explicitNullValueIncludeExtensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeExtensions"); else _explicitNullProperties?.Remove("includeExtensions"); } }
+        private List<string>? _explicitNullValueIncludeExtensions = default!;
 #nullable restore
 #else
-        public List<string> IncludeExtensions { get; set; }
+        public List<string> IncludeExtensions { get => _explicitNullValueIncludeExtensions; set { _explicitNullValueIncludeExtensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeExtensions"); else _explicitNullProperties?.Remove("includeExtensions"); } }
+        private List<string> _explicitNullValueIncludeExtensions = default!;
 #endif
         /// <summary>The projectTitle property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectTitle { get; set; }
+        public string? ProjectTitle { get => _explicitNullValueProjectTitle; set { _explicitNullValueProjectTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectTitle"); else _explicitNullProperties?.Remove("projectTitle"); } }
+        private string? _explicitNullValueProjectTitle = default!;
 #nullable restore
 #else
-        public string ProjectTitle { get; set; }
+        public string ProjectTitle { get => _explicitNullValueProjectTitle; set { _explicitNullValueProjectTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectTitle"); else _explicitNullProperties?.Remove("projectTitle"); } }
+        private string _explicitNullValueProjectTitle = default!;
 #endif
         /// <summary>The rules property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Rules { get; set; }
+        public List<string>? Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
+        private List<string>? _explicitNullValueRules = default!;
 #nullable restore
 #else
-        public List<string> Rules { get; set; }
+        public List<string> Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
+        private List<string> _explicitNullValueRules = default!;
 #endif
         /// <summary>The skipClaudeVersionExclusion property</summary>
-        public bool? SkipClaudeVersionExclusion { get; set; }
+        public bool? SkipClaudeVersionExclusion { get => _explicitNullValueSkipClaudeVersionExclusion; set { _explicitNullValueSkipClaudeVersionExclusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipClaudeVersionExclusion"); else _explicitNullProperties?.Remove("skipClaudeVersionExclusion"); } }
+        private bool? _explicitNullValueSkipClaudeVersionExclusion = default!;
         /// <summary>The useQueryParams property</summary>
-        public bool? UseQueryParams { get; set; }
+        public bool? UseQueryParams { get => _explicitNullValueUseQueryParams; set { _explicitNullValueUseQueryParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("useQueryParams"); else _explicitNullProperties?.Remove("useQueryParams"); } }
+        private bool? _explicitNullValueUseQueryParams = default!;
         /// <summary>The webUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebUrl { get; set; }
+        public string? WebUrl { get => _explicitNullValueWebUrl; set { _explicitNullValueWebUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webUrl"); else _explicitNullProperties?.Remove("webUrl"); } }
+        private string? _explicitNullValueWebUrl = default!;
 #nullable restore
 #else
-        public string WebUrl { get; set; }
+        public string WebUrl { get => _explicitNullValueWebUrl; set { _explicitNullValueWebUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webUrl"); else _explicitNullProperties?.Remove("webUrl"); } }
+        private string _explicitNullValueWebUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfig"/> and sets the default values.
@@ -128,7 +178,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public static global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -179,6 +229,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteBoolValue("skipClaudeVersionExclusion", SkipClaudeVersionExclusion);
             writer.WriteBoolValue("useQueryParams", UseQueryParams);
             writer.WriteStringValue("webUrl", WebUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
