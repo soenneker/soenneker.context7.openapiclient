@@ -236,22 +236,16 @@
               }
             },
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/SearchDocumentation200PlainResponseSchema"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/SearchContextResponse"
+                }
+              }
+            },
+            "x-client-original-non-json-content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchDocumentation200PlainResponseSchema"
                 }
               }
             }
@@ -424,22 +418,16 @@
               }
             },
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/FetchPage200PlainResponseSchema"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/FetchPage200Response"
+                }
+              }
+            },
+            "x-client-original-non-json-content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FetchPage200PlainResponseSchema"
                 }
               }
             }
@@ -701,8 +689,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/GetContextSuccessResponse"
                 },
                 "example": {
                   "codeSnippets": [
@@ -735,16 +722,14 @@
                 "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ContextResponse"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/plain": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "example": "### Middleware Authentication Example\n\nSource: https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx\n\nShows how to implement authentication checks in Next.js middleware\n\n\u0060\u0060\u0060typescript\nimport { NextResponse } from \u0027next/server\u0027\n...\n\u0060\u0060\u0060",
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/GetContext200PlainResponseSchema"
-                }
+                },
+                "example": "### Middleware Authentication Example\n\nSource: https://github.com/vercel/next.js/blob/canary/docs/middleware.mdx\n\nShows how to implement authentication checks in Next.js middleware\n\n\u0060\u0060\u0060typescript\nimport { NextResponse } from \u0027next/server\u0027\n...\n\u0060\u0060\u0060"
               }
             }
           },
@@ -753,8 +738,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/GetContextSuccessResponse"
                 },
                 "example": {
                   "error": "library_not_finalized",
@@ -2959,6 +2943,17 @@
           },
           "500": {
             "$ref": "#/components/responses/InternalServerError"
+          },
+          "200": {
+            "description": "Request created (or the existing one)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateLibraryRequest201Response"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -4642,6 +4637,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The new site",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDocsSite201Response"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -5482,6 +5488,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The queued build",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StartDocsDeployment202Response"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -7926,19 +7943,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Docs7ExploreResponse"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/csv": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ExploreDocsAnalytics200CsvResponseSchema"
                 }
               }
@@ -8266,6 +8277,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The new site",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAskSite201Response"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -21812,6 +21834,16 @@
             }
           ]
         }
+      },
+      "GetContextSuccessResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ContextResponse"
+          },
+          {
+            "$ref": "#/components/schemas/Error"
+          }
+        ]
       }
     },
     "responses": {

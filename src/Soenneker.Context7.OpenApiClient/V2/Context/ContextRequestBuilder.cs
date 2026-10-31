@@ -36,7 +36,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// <summary>
         /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library&apos;s current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetContextSuccessResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
@@ -49,11 +49,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder.ContextRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.GetContextSuccessResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder.ContextRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder.ContextRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.GetContextSuccessResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Context.ContextRequestBuilder.ContextRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -70,7 +70,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetContextSuccessResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetContextSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library&apos;s current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.
