@@ -80,7 +80,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Versions.Item.WithVersionItemRequestBuilder.WithVersionItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://context7.com/api", "/v2/teamspaces/{teamspaceId}/libraries/{owner}/{repo}/versions/{version}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

@@ -80,7 +80,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRu
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.AgentRuns.AgentRunsRequestBuilder.AgentRunsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://context7.com/api", "/v2/teamspaces/{teamspaceId}/sites/{siteId}/agent-runs", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

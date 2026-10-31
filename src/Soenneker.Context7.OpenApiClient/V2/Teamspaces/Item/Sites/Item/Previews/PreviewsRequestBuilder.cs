@@ -80,7 +80,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Preview
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Previews.PreviewsRequestBuilder.PreviewsRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://context7.com/api", "/v2/teamspaces/{teamspaceId}/sites/{siteId}/previews", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

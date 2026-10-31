@@ -88,7 +88,7 @@ namespace Soenneker.Context7.OpenApiClient.V3.Fetch
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V3.Fetch.FetchRequestBuilder.FetchRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://context7.com/api", "/v3/fetch", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/plain;q=0.9");
             return requestInfo;
