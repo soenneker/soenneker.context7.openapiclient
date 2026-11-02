@@ -52,9 +52,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "failed" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationAskVerificationOneOf3(),
-                "pending" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationAskVerificationOneOf1(),
-                "verified" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationAskVerificationOneOf2(),
+                "failed" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf3Variant(),
+                "pending" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf1Variant(),
+                "verified" => new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf2Variant(),
                 _ => new global::Soenneker.Context7.OpenApiClient.Models.AskVerification(),
             };
         }

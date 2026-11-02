@@ -52,10 +52,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "failed" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf4(),
-                "pending" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf1(),
-                "ready" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf3(),
-                "submitted" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf2(),
+                "failed" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Variant(),
+                "pending" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf1Variant(),
+                "ready" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf3Variant(),
+                "submitted" => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf2Variant(),
                 _ => new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatus(),
             };
         }

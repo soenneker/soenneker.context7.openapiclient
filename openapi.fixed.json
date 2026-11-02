@@ -7682,7 +7682,7 @@
           "Docs7 Analytics"
         ],
         "summary": "Get page feedback analytics",
-        "description": "Page ratings (helpful or not) from readers and agents, per page, with comments. Works for GitHub and CLI sites. Any member.",
+        "description": "Page ratings (helpful or not) from readers and agents: totals, pages and every rating with its comment. Works for GitHub and CLI sites. Any member.",
         "operationId": "GetDocsFeedbackAnalytics",
         "parameters": [
           {
@@ -13475,8 +13475,8 @@
         "discriminator": {
           "propertyName": "kind",
           "mapping": {
-            "production": "#/components/schemas/Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf1",
-            "preview": "#/components/schemas/Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf2"
+            "production": "#/components/schemas/Docs7StartDeploymentRequestOneOf1Variant",
+            "preview": "#/components/schemas/Docs7StartDeploymentRequestOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -14234,7 +14234,7 @@
           "hasPreviews",
           "totals",
           "pages",
-          "comments"
+          "ratings"
         ],
         "type": "object",
         "properties": {
@@ -14261,11 +14261,12 @@
               "$ref": "#/components/schemas/Docs7FeedbackAnalyticsPagesItem"
             }
           },
-          "comments": {
+          "ratings": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Docs7FeedbackAnalyticsCommentsItem"
-            }
+              "$ref": "#/components/schemas/Docs7FeedbackAnalyticsRatingsItem"
+            },
+            "description": "Each rater\u0027s latest rating of a page, newest first, at most 1,000."
           }
         }
       },
@@ -14374,9 +14375,9 @@
         "discriminator": {
           "propertyName": "kind",
           "mapping": {
-            "pending": "#/components/schemas/AskVerificationAskVerificationOneOf1",
-            "verified": "#/components/schemas/AskVerificationAskVerificationOneOf2",
-            "failed": "#/components/schemas/AskVerificationAskVerificationOneOf3"
+            "pending": "#/components/schemas/AskVerificationOneOf1Variant",
+            "verified": "#/components/schemas/AskVerificationOneOf2Variant",
+            "failed": "#/components/schemas/AskVerificationOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -14459,10 +14460,10 @@
         "discriminator": {
           "propertyName": "kind",
           "mapping": {
-            "pending": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf1",
-            "submitted": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf2",
-            "ready": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf3",
-            "failed": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf4"
+            "pending": "#/components/schemas/AskIndexStatusOneOf1Variant",
+            "submitted": "#/components/schemas/AskIndexStatusOneOf2Variant",
+            "ready": "#/components/schemas/AskIndexStatusOneOf3Variant",
+            "failed": "#/components/schemas/AskIndexStatusOneOf4Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -15958,9 +15959,13 @@
           }
         }
       },
-      "Docs7FeedbackAnalyticsCommentsItem": {
+      "Docs7FeedbackAnalyticsRatingsItem": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Anonymous rater key."
+          },
           "path": {
             "type": "string"
           },
@@ -15971,7 +15976,12 @@
             "type": "boolean"
           },
           "comment": {
-            "type": "string"
+            "type": "string",
+            "description": "Empty when the rater left none. Agents must send one."
+          },
+          "at": {
+            "type": "string",
+            "description": "UTC time of the rating, \u0060YYYY-MM-DD HH:MM:SS.mmm\u0060."
           }
         }
       },
@@ -21512,7 +21522,7 @@
           }
         ]
       },
-      "Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf1": {
+      "Docs7StartDeploymentRequestOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Docs7StartDeploymentRequest"
@@ -21531,7 +21541,7 @@
           }
         ]
       },
-      "Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf2": {
+      "Docs7StartDeploymentRequestOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Docs7StartDeploymentRequest"
@@ -21556,7 +21566,7 @@
           }
         ]
       },
-      "AskVerificationAskVerificationOneOf1": {
+      "AskVerificationOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskVerification"
@@ -21574,7 +21584,7 @@
           }
         ]
       },
-      "AskVerificationAskVerificationOneOf2": {
+      "AskVerificationOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskVerification"
@@ -21597,7 +21607,7 @@
           }
         ]
       },
-      "AskVerificationAskVerificationOneOf3": {
+      "AskVerificationOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskVerification"
@@ -21625,7 +21635,7 @@
           }
         ]
       },
-      "AskIndexStatusAskIndexStatusOneOf1": {
+      "AskIndexStatusOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatus"
@@ -21643,7 +21653,7 @@
           }
         ]
       },
-      "AskIndexStatusAskIndexStatusOneOf2": {
+      "AskIndexStatusOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatus"
@@ -21665,7 +21675,7 @@
           }
         ]
       },
-      "AskIndexStatusAskIndexStatusOneOf3": {
+      "AskIndexStatusOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatus"
@@ -21687,7 +21697,7 @@
           }
         ]
       },
-      "AskIndexStatusAskIndexStatusOneOf4": {
+      "AskIndexStatusOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AskIndexStatus"

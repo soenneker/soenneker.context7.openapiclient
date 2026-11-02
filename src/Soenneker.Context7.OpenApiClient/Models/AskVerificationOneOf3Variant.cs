@@ -9,7 +9,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AskIndexStatusAskIndexStatusOneOf4 : global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatus, IParsable
+    public partial class AskVerificationOneOf3Variant : global::Soenneker.Context7.OpenApiClient.Models.AskVerification, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -18,23 +18,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("library") is null) { _explicitNullValueLibrary = default!; _explicitNullProperties?.Remove("library"); }
-            else if (parseNode.GetChildNode("library") is { } nullNodeLibrary && nullNodeLibrary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Library = null;
+            if (parseNode.GetChildNode("checkedAt") is null) { _explicitNullValueCheckedAt = default!; _explicitNullProperties?.Remove("checkedAt"); }
+            else if (parseNode.GetChildNode("checkedAt") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
             if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
             else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
         }
 
-        /// <summary>The library property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library? Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
-        private global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library? _explicitNullValueLibrary = default!;
-#nullable restore
-#else
-        public global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
-        private global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library _explicitNullValueLibrary = default!;
-#endif
-        /// <summary>The reason property</summary>
+        /// <summary>The checkedAt property</summary>
+        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checkedAt"); else _explicitNullProperties?.Remove("checkedAt"); } }
+        private DateTimeOffset? _explicitNullValueCheckedAt = default!;
+        /// <summary>What to fix, in words for the site owner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
@@ -47,12 +40,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf4"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf3Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf4 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf3Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusAskIndexStatusOneOf4(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.AskVerificationOneOf3Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,7 +55,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "library", n => { Library = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library>(global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library.CreateFromDiscriminatorValue); } },
+                { "checkedAt", n => { CheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
             };
         }
@@ -74,7 +67,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.AskIndexStatusOneOf4Library>("library", Library);
+            writer.WriteDateTimeOffsetValue("checkedAt", CheckedAt);
             writer.WriteStringValue("reason", Reason);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

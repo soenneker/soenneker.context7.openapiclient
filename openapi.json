@@ -8511,7 +8511,7 @@
           "Docs7 Analytics"
         ],
         "summary": "Get page feedback analytics",
-        "description": "Page ratings (helpful or not) from readers and agents, per page, with comments. Works for GitHub and CLI sites. Any member.",
+        "description": "Page ratings (helpful or not) from readers and agents: totals, pages and every rating with its comment. Works for GitHub and CLI sites. Any member.",
         "operationId": "getDocsFeedbackAnalytics",
         "parameters": [
           {
@@ -17203,7 +17203,7 @@
           "hasPreviews",
           "totals",
           "pages",
-          "comments"
+          "ratings"
         ],
         "properties": {
           "days": {
@@ -17266,11 +17266,16 @@
               }
             }
           },
-          "comments": {
+          "ratings": {
             "type": "array",
+            "description": "Each rater's latest rating of a page, newest first, at most 1,000.",
             "items": {
               "type": "object",
               "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Anonymous rater key."
+                },
                 "path": {
                   "type": "string"
                 },
@@ -17281,7 +17286,12 @@
                   "type": "boolean"
                 },
                 "comment": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Empty when the rater left none. Agents must send one."
+                },
+                "at": {
+                  "type": "string",
+                  "description": "UTC time of the rating, `YYYY-MM-DD HH:MM:SS.mmm`."
                 }
               }
             }

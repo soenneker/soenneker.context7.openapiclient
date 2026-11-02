@@ -51,8 +51,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "preview" => new global::Soenneker.Context7.OpenApiClient.Models.Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf2(),
-                "production" => new global::Soenneker.Context7.OpenApiClient.Models.Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf1(),
+                "preview" => new global::Soenneker.Context7.OpenApiClient.Models.Docs7StartDeploymentRequestOneOf2Variant(),
+                "production" => new global::Soenneker.Context7.OpenApiClient.Models.Docs7StartDeploymentRequestOneOf1Variant(),
                 _ => new global::Soenneker.Context7.OpenApiClient.Models.Docs7StartDeploymentRequest(),
             };
         }

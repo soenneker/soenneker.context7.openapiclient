@@ -17,8 +17,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("comments") is null) { _explicitNullValueComments = default!; _explicitNullProperties?.Remove("comments"); }
-            else if (parseNode.GetChildNode("comments") is { } nullNodeComments && nullNodeComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comments = null;
             if (parseNode.GetChildNode("days") is null) { _explicitNullValueDays = default!; _explicitNullProperties?.Remove("days"); }
             else if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
             if (parseNode.GetChildNode("hasPreviews") is null) { _explicitNullValueHasPreviews = default!; _explicitNullProperties?.Remove("hasPreviews"); }
@@ -27,22 +25,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
             else if (parseNode.GetChildNode("hosts") is { } nullNodeHosts && nullNodeHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hosts = null;
             if (parseNode.GetChildNode("pages") is null) { _explicitNullValuePages = default!; _explicitNullProperties?.Remove("pages"); }
             else if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
+            if (parseNode.GetChildNode("ratings") is null) { _explicitNullValueRatings = default!; _explicitNullProperties?.Remove("ratings"); }
+            else if (parseNode.GetChildNode("ratings") is { } nullNodeRatings && nullNodeRatings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ratings = null;
             if (parseNode.GetChildNode("totals") is null) { _explicitNullValueTotals = default!; _explicitNullProperties?.Remove("totals"); }
             else if (parseNode.GetChildNode("totals") is { } nullNodeTotals && nullNodeTotals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Totals = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The comments property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem>? Comments { get => _explicitNullValueComments; set { _explicitNullValueComments = value; AdditionalData?.Remove("comments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comments"); else _explicitNullProperties?.Remove("comments"); } }
-        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem>? _explicitNullValueComments = default!;
-#nullable restore
-#else
-        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem> Comments { get => _explicitNullValueComments; set { _explicitNullValueComments = value; AdditionalData?.Remove("comments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comments"); else _explicitNullProperties?.Remove("comments"); } }
-        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem> _explicitNullValueComments = default!;
-#endif
         /// <summary>The days property</summary>
         public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; AdditionalData?.Remove("days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
         private int? _explicitNullValueDays = default!;
@@ -68,6 +58,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsPagesItem> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; AdditionalData?.Remove("pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
         private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsPagesItem> _explicitNullValuePages = default!;
+#endif
+        /// <summary>Each rater&apos;s latest rating of a page, newest first, at most 1,000.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem>? Ratings { get => _explicitNullValueRatings; set { _explicitNullValueRatings = value; AdditionalData?.Remove("ratings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratings"); else _explicitNullProperties?.Remove("ratings"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem>? _explicitNullValueRatings = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem> Ratings { get => _explicitNullValueRatings; set { _explicitNullValueRatings = value; AdditionalData?.Remove("ratings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratings"); else _explicitNullProperties?.Remove("ratings"); } }
+        private List<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem> _explicitNullValueRatings = default!;
 #endif
         /// <summary>The totals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,11 +104,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "comments", n => { Comments = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem>(global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "days", n => { Days = n.GetIntValue(); } },
                 { "hasPreviews", n => { HasPreviews = n.GetBoolValue(); } },
                 { "hosts", n => { Hosts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pages", n => { Pages = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsPagesItem>(global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsPagesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ratings", n => { Ratings = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem>(global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "totals", n => { Totals = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsTotals>(global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsTotals.CreateFromDiscriminatorValue); } },
             };
         }
@@ -119,11 +119,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem>("comments", Comments);
             writer.WriteIntValue("days", Days);
             writer.WriteBoolValue("hasPreviews", HasPreviews);
             writer.WriteCollectionOfPrimitiveValues<string>("hosts", Hosts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsPagesItem>("pages", Pages);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem>("ratings", Ratings);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsTotals>("totals", Totals);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

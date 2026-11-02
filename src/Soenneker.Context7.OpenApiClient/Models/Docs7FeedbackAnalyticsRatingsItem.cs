@@ -9,7 +9,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Docs7FeedbackAnalyticsCommentsItem : IAdditionalDataHolder, IParsable
+    public partial class Docs7FeedbackAnalyticsRatingsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -19,10 +19,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("agent") is null) { _explicitNullValueAgent = default!; _explicitNullProperties?.Remove("agent"); }
             else if (parseNode.GetChildNode("agent") is { } nullNodeAgent && nullNodeAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agent = null;
+            if (parseNode.GetChildNode("at") is null) { _explicitNullValueAt = default!; _explicitNullProperties?.Remove("at"); }
+            else if (parseNode.GetChildNode("at") is { } nullNodeAt && nullNodeAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) At = null;
             if (parseNode.GetChildNode("comment") is null) { _explicitNullValueComment = default!; _explicitNullProperties?.Remove("comment"); }
             else if (parseNode.GetChildNode("comment") is { } nullNodeComment && nullNodeComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comment = null;
             if (parseNode.GetChildNode("helpful") is null) { _explicitNullValueHelpful = default!; _explicitNullProperties?.Remove("helpful"); }
             else if (parseNode.GetChildNode("helpful") is { } nullNodeHelpful && nullNodeHelpful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Helpful = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("path") is null) { _explicitNullValuePath = default!; _explicitNullProperties?.Remove("path"); }
             else if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
         }
@@ -32,7 +36,17 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The agent property</summary>
         public bool? Agent { get => _explicitNullValueAgent; set { _explicitNullValueAgent = value; AdditionalData?.Remove("agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent"); else _explicitNullProperties?.Remove("agent"); } }
         private bool? _explicitNullValueAgent = default!;
-        /// <summary>The comment property</summary>
+        /// <summary>UTC time of the rating, `YYYY-MM-DD HH:MM:SS.mmm`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? At { get => _explicitNullValueAt; set { _explicitNullValueAt = value; AdditionalData?.Remove("at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("at"); else _explicitNullProperties?.Remove("at"); } }
+        private string? _explicitNullValueAt = default!;
+#nullable restore
+#else
+        public string At { get => _explicitNullValueAt; set { _explicitNullValueAt = value; AdditionalData?.Remove("at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("at"); else _explicitNullProperties?.Remove("at"); } }
+        private string _explicitNullValueAt = default!;
+#endif
+        /// <summary>Empty when the rater left none. Agents must send one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; AdditionalData?.Remove("comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
@@ -45,6 +59,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The helpful property</summary>
         public bool? Helpful { get => _explicitNullValueHelpful; set { _explicitNullValueHelpful = value; AdditionalData?.Remove("helpful"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("helpful"); else _explicitNullProperties?.Remove("helpful"); } }
         private bool? _explicitNullValueHelpful = default!;
+        /// <summary>Anonymous rater key.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
+#nullable restore
+#else
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
+#endif
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,21 +80,21 @@ namespace Soenneker.Context7.OpenApiClient.Models
         private string _explicitNullValuePath = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem"/> and sets the default values.
         /// </summary>
-        public Docs7FeedbackAnalyticsCommentsItem()
+        public Docs7FeedbackAnalyticsRatingsItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsCommentsItem(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Context7.OpenApiClient.Models.Docs7FeedbackAnalyticsRatingsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,8 +105,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent", n => { Agent = n.GetBoolValue(); } },
+                { "at", n => { At = n.GetStringValue(); } },
                 { "comment", n => { Comment = n.GetStringValue(); } },
                 { "helpful", n => { Helpful = n.GetBoolValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
             };
         }
@@ -94,8 +120,10 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("agent", Agent);
+            writer.WriteStringValue("at", At);
             writer.WriteStringValue("comment", Comment);
             writer.WriteBoolValue("helpful", Helpful);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("path", Path);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
