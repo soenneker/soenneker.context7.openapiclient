@@ -12383,7 +12383,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. The management API (`/v2/teamspaces/*`) needs a key created with **Management access** ticked; other keys get 403 `management_access_required`."
+        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (`/v2/teamspaces/*`). To make changes there, the key must be created with **Write access** ticked; other keys get 403 `write_access_required` on writes."
       }
     },
     "parameters": {
@@ -18477,19 +18477,19 @@
     },
     {
       "name": "Teamspaces",
-      "description": "Teamspaces the caller is a member of. The management API (`/v2/teamspaces/*`) accepts a Context7 API key created with management access (other keys get 403 `management_access_required`), which reaches only its own teamspace, or an OAuth token issued for the Context7 Admin MCP server (`https://admin.mcp.context7.com/mcp`), which reaches every teamspace of the user. A browser session is not accepted."
+      "description": "Teamspaces the caller is a member of. The management API (`/v2/teamspaces/*`) accepts a Context7 API key, which reaches only its own teamspace and can make changes only when it was created with write access (other keys can only read and get 403 `write_access_required` on writes), or an OAuth token issued for the Context7 Admin MCP server (`https://admin.mcp.context7.com/mcp`), which reaches every teamspace of the user. A browser session is not accepted."
     },
     {
       "name": "Teamspace Admin",
-      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Needs an API key created with **Management access** ticked (other keys get 403 `management_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in. Reading the invite link counts as a change."
     },
     {
       "name": "Teamspace Libraries",
-      "description": "A teamspace's libraries: its private sources and the libraries it has claimed. Add, refresh, configure, version, claim and remove them, and read their parse state and usage. A library id `/owner/repo` is two path segments. Needs an API key created with **Management access** ticked (other keys get 403 `management_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "A teamspace's libraries: its private sources and the libraries it has claimed. Add, refresh, configure, version, claim and remove them, and read their parse state and usage. A library id `/owner/repo` is two path segments. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Docs7 Sites",
-      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the `docs7 deploy` CLI have `source: \"local\"`; operations marked GitHub-only answer 404 for them. Needs an API key created with **Management access** ticked (other keys get 403 `management_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the `docs7 deploy` CLI have `source: \"local\"`; operations marked GitHub-only answer 404 for them. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Docs7 Analytics",
@@ -18497,7 +18497,7 @@
     },
     {
       "name": "Ask Sites",
-      "description": "Manage a teamspace's Context7 Ask sites: add, verify, remove, and read their analytics and question log. Needs an API key created with **Management access** ticked (other keys get 403 `management_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "Manage a teamspace's Context7 Ask sites: add, verify, remove, and read their analytics and question log. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     }
   ]
 }

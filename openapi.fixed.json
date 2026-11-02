@@ -316,7 +316,7 @@
             "schema": {
               "maxLength": 2048,
               "type": "string",
-              "format": "uri"
+              "x-client-original-format": "uri"
             },
             "example": "https://www.w3.org/TR/css-grid-2/"
           },
@@ -857,7 +857,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AskSite400PlainResponseSchema"
+                  "$ref": "#/components/schemas/AskSite400PlainResponseSchemaError"
                 }
               }
             }
@@ -867,7 +867,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AskSite404PlainResponseSchema"
+                  "$ref": "#/components/schemas/AskSite404PlainResponseSchemaError"
                 }
               }
             }
@@ -885,7 +885,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AskSite429PlainResponseSchema"
+                  "$ref": "#/components/schemas/AskSite429PlainResponseSchemaError"
                 }
               }
             }
@@ -895,7 +895,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AskSite500PlainResponseSchema"
+                  "$ref": "#/components/schemas/AskSite500PlainResponseSchemaError"
                 }
               }
             }
@@ -905,7 +905,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AskSite503PlainResponseSchema"
+                  "$ref": "#/components/schemas/AskSite503PlainResponseSchemaError"
                 }
               }
             }
@@ -11454,60 +11454,6 @@
         },
         "description": "Search results response"
       },
-      "CodeSnippet": {
-        "required": [
-          "codeTitle",
-          "codeDescription",
-          "codeLanguage",
-          "codeTokens",
-          "codeId",
-          "pageTitle",
-          "codeList"
-        ],
-        "type": "object",
-        "properties": {
-          "codeTitle": {
-            "type": "string",
-            "description": "Title of the code snippet"
-          },
-          "codeDescription": {
-            "type": "string",
-            "description": "Description of what the code does"
-          },
-          "codeLanguage": {
-            "type": "string",
-            "description": "Primary programming language"
-          },
-          "codeTokens": {
-            "type": "integer",
-            "description": "Token count for the snippet"
-          },
-          "codeId": {
-            "type": "string",
-            "description": "URL to source location"
-          },
-          "pageTitle": {
-            "type": "string",
-            "description": "Title of the documentation page"
-          },
-          "codeList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CodeExample"
-            },
-            "description": "Code examples in different languages"
-          },
-          "isDynamic": {
-            "type": "boolean",
-            "description": "Whether this snippet was recovered from the dynamic source-code index instead of the primary docs index"
-          },
-          "sourceFile": {
-            "type": "string",
-            "description": "Repo-relative source file path for dynamic snippets"
-          }
-        },
-        "description": "A code snippet from library documentation"
-      },
       "CodeExample": {
         "required": [
           "language",
@@ -11525,32 +11471,6 @@
           }
         },
         "description": "A single code example"
-      },
-      "InfoSnippet": {
-        "required": [
-          "content",
-          "contentTokens"
-        ],
-        "type": "object",
-        "properties": {
-          "pageId": {
-            "type": "string",
-            "description": "URL to source page"
-          },
-          "breadcrumb": {
-            "type": "string",
-            "description": "Navigation breadcrumb path"
-          },
-          "content": {
-            "type": "string",
-            "description": "The documentation content"
-          },
-          "contentTokens": {
-            "type": "integer",
-            "description": "Token count for the content"
-          }
-        },
-        "description": "A documentation snippet"
       },
       "ContextCodeSnippet": {
         "required": [
@@ -12010,7 +11930,7 @@
           "docsRepoUrl": {
             "type": "string",
             "description": "The repository URL",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "gitToken": {
             "type": "string",
@@ -12365,7 +12285,7 @@
           },
           "docsUrl": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -12649,33 +12569,6 @@
         },
         "description": "A tag or branch parsed as a version of its own. The default branch is the library itself, not a version."
       },
-      "TeamspaceLibraryTask": {
-        "required": [
-          "lockState",
-          "lockDate",
-          "task"
-        ],
-        "type": "object",
-        "properties": {
-          "lockState": {
-            "$ref": "#/components/schemas/TeamspaceLibraryTaskLockState"
-          },
-          "lockDate": {
-            "type": "string",
-            "description": "When the task started.",
-            "format": "date-time"
-          },
-          "progress": {
-            "type": "string",
-            "description": "The parser\u0027s progress line.",
-            "example": "Processing 45/120 files, 3/8 chunks"
-          },
-          "task": {
-            "$ref": "#/components/schemas/TeamspaceLibraryTaskTask"
-          }
-        },
-        "description": "The active parse task, as the public task list shows it."
-      },
       "TeamspaceLibraryDetail": {
         "required": [
           "id",
@@ -12760,200 +12653,68 @@
           }
         }
       },
-      "TeamspaceLibraryRepoSource": {
-        "required": [
-          "source",
-          "docsRepoUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/TeamspaceLibraryRepoSourceSource"
-          },
-          "docsRepoUrl": {
-            "type": "string",
-            "description": "Repository URL.",
-            "format": "uri",
-            "example": "https://github.com/acme/docs"
-          },
-          "private": {
-            "type": "boolean",
-            "description": "Add as a private source of this teamspace. Needs the owner or admin role and a paid plan. The token comes from \u0060gitToken\u0060, or from the GitHub, GitLab or Bitbucket account connected in the dashboard. \u0060git\u0060 needs \u0060gitToken\u0060."
-          },
-          "gitToken": {
-            "type": "string",
-            "description": "Personal access token for a private repository."
-          },
-          "skipVersionFiltering": {
-            "type": "boolean",
-            "description": "Keep pages that look version-specific (private repositories)."
-          },
-          "generateDocs": {
-            "type": "boolean",
-            "description": "Generate documentation from the source code (private repositories)."
-          }
-        }
-      },
-      "TeamspaceLibraryWebsiteSource": {
-        "required": [
-          "source",
-          "websiteUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/WebsiteSource"
-          },
-          "websiteUrl": {
-            "type": "string",
-            "description": "Documentation website to crawl.",
-            "format": "uri",
-            "example": "https://docs.example.com"
-          },
-          "websiteBaseUrl": {
-            "type": "string",
-            "description": "Only crawl pages under this URL.",
-            "format": "uri"
-          }
-        }
-      },
-      "TeamspaceLibraryLlmsTxtSource": {
-        "required": [
-          "source",
-          "llmstxtUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/LlmstxtSource"
-          },
-          "llmstxtUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://docs.example.com/llms.txt"
-          }
-        }
-      },
-      "TeamspaceLibraryOpenApiSource": {
-        "required": [
-          "source",
-          "openApiUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/OpenApiSource"
-          },
-          "openApiUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://api.example.com/openapi.json"
-          }
-        }
-      },
-      "TeamspaceLibraryConfluenceSource": {
-        "required": [
-          "source",
-          "cloudId",
-          "siteUrl",
-          "spaceKey",
-          "spaceName",
-          "title",
-          "description"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/ConfluenceSource"
-          },
-          "cloudId": {
-            "type": "string"
-          },
-          "siteUrl": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://acme.atlassian.net"
-          },
-          "spaceKey": {
-            "type": "string"
-          },
-          "spaceName": {
-            "type": "string"
-          },
-          "pageIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Only these pages. Omit for the whole space."
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        },
-        "description": "A Confluence space, added as a private source. Needs the owner or admin role and a Confluence account connected in the dashboard."
-      },
-      "TeamspaceLibraryNotionSource": {
-        "required": [
-          "source",
-          "workspaceId",
-          "workspaceName",
-          "pageIds",
-          "title",
-          "description"
-        ],
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/NotionSource"
-          },
-          "workspaceId": {
-            "type": "string"
-          },
-          "workspaceName": {
-            "type": "string"
-          },
-          "pageIds": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        },
-        "description": "Notion pages, added as a private source. Needs the owner or admin role and a Notion account connected in the dashboard."
-      },
       "TeamspaceLibraryAddRequest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryRepoSource"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryWebsiteSource"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryLlmsTxtSource"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryOpenApiSource"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryConfluenceSource"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspaceLibraryNotionSource"
+        "description": "The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.",
+        "discriminator": {
+          "propertyName": "source",
+          "mapping": {
+            "github": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource",
+            "gitlab": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource",
+            "bitbucket": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource",
+            "git": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource",
+            "website": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryWebsiteSource",
+            "llmstxt": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryLlmsTxtSource",
+            "openapi": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryOpenApiSource",
+            "confluence": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryConfluenceSource",
+            "notion": "#/components/schemas/TeamspaceLibraryAddRequestTeamspaceLibraryNotionSource"
           }
-        ],
-        "description": "The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard."
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryRepoSource"
+            },
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryWebsiteSource"
+            },
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryLlmsTxtSource"
+            },
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryOpenApiSource"
+            },
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryConfluenceSource"
+            },
+            {
+              "$ref": "#/components/schemas/TeamspaceLibraryNotionSource"
+            }
+          ],
+          "description": "The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.",
+          "discriminator": {
+            "propertyName": "source",
+            "mapping": {
+              "github": "#/components/schemas/TeamspaceLibraryRepoSource",
+              "gitlab": "#/components/schemas/TeamspaceLibraryRepoSource",
+              "bitbucket": "#/components/schemas/TeamspaceLibraryRepoSource",
+              "git": "#/components/schemas/TeamspaceLibraryRepoSource",
+              "website": "#/components/schemas/TeamspaceLibraryWebsiteSource",
+              "llmstxt": "#/components/schemas/TeamspaceLibraryLlmsTxtSource",
+              "openapi": "#/components/schemas/TeamspaceLibraryOpenApiSource",
+              "confluence": "#/components/schemas/TeamspaceLibraryConfluenceSource",
+              "notion": "#/components/schemas/TeamspaceLibraryNotionSource"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source"
+        ]
       },
       "TeamspaceLibraryConfigUpdate": {
         "type": "object",
@@ -13198,7 +12959,7 @@
           "context7JsonUrl": {
             "type": "string",
             "description": "URL of the published file. Required for \u0060hostedFile\u0060, and for a repository on a host other than GitHub, GitLab or Bitbucket (the raw file URL).",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "configSource": {
             "$ref": "#/components/schemas/TeamspaceLibraryClaimVerifyRequestConfigSource"
@@ -13385,7 +13146,7 @@
           },
           "repoUrl": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "repositoryId": {
             "type": "string",
@@ -13414,8 +13175,8 @@
           "analyticsUrl": {
             "type": "string",
             "description": "External docs URL for browser analytics of a site that Docs7 does not host.",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           },
           "workerName": {
             "type": "string"
@@ -13604,8 +13365,8 @@
         "properties": {
           "repoUrl": {
             "type": "string",
-            "format": "uri",
-            "example": "https://github.com/acme/docs"
+            "example": "https://github.com/acme/docs",
+            "x-client-original-format": "uri"
           },
           "branch": {
             "maxLength": 255,
@@ -13659,8 +13420,8 @@
           },
           "analyticsUrl": {
             "type": "string",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           },
           "customDomain": {
             "type": "string",
@@ -13704,21 +13465,53 @@
         "description": "Only the fields to change."
       },
       "Docs7StartDeploymentRequest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
-          }
-        ],
         "x-client-original-discriminator": {
           "propertyName": "kind",
           "mapping": {
             "Docs7StartDeploymentRequestOneOf1": "#/components/schemas/Docs7StartDeploymentRequestOneOf1",
             "Docs7StartDeploymentRequestOneOf2": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
           }
-        }
+        },
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "production": "#/components/schemas/Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf1",
+            "preview": "#/components/schemas/Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf2"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf1"
+            },
+            {
+              "$ref": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
+            }
+          ],
+          "x-client-original-discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "Docs7StartDeploymentRequestOneOf1": "#/components/schemas/Docs7StartDeploymentRequestOneOf1",
+              "Docs7StartDeploymentRequestOneOf2": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
+            }
+          },
+          "discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "production": "#/components/schemas/Docs7StartDeploymentRequestOneOf1",
+              "preview": "#/components/schemas/Docs7StartDeploymentRequestOneOf2"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind"
+        ]
       },
       "Docs7Deployment": {
         "required": [
@@ -13913,8 +13706,8 @@
           },
           "publicUrl": {
             "type": "string",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           },
           "customDomainRouting": {
             "$ref": "#/components/schemas/Docs7DeploymentTargetCustomDomainRouting"
@@ -14207,8 +14000,8 @@
           },
           "docsUrl": {
             "type": "string",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           },
           "votes": {
             "minimum": 0,
@@ -14569,17 +14362,6 @@
         }
       },
       "AskVerification": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/AskVerificationOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/AskVerificationOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/AskVerificationOneOf3"
-          }
-        ],
         "description": "Where the site stands in the ownership check.",
         "x-client-original-discriminator": {
           "propertyName": "kind",
@@ -14588,7 +14370,54 @@
             "AskVerificationOneOf2": "#/components/schemas/AskVerificationOneOf2",
             "AskVerificationOneOf3": "#/components/schemas/AskVerificationOneOf3"
           }
-        }
+        },
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "pending": "#/components/schemas/AskVerificationAskVerificationOneOf1",
+            "verified": "#/components/schemas/AskVerificationAskVerificationOneOf2",
+            "failed": "#/components/schemas/AskVerificationAskVerificationOneOf3"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AskVerificationOneOf1"
+            },
+            {
+              "$ref": "#/components/schemas/AskVerificationOneOf2"
+            },
+            {
+              "$ref": "#/components/schemas/AskVerificationOneOf3"
+            }
+          ],
+          "description": "Where the site stands in the ownership check.",
+          "x-client-original-discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "AskVerificationOneOf1": "#/components/schemas/AskVerificationOneOf1",
+              "AskVerificationOneOf2": "#/components/schemas/AskVerificationOneOf2",
+              "AskVerificationOneOf3": "#/components/schemas/AskVerificationOneOf3"
+            }
+          },
+          "discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "pending": "#/components/schemas/AskVerificationOneOf1",
+              "verified": "#/components/schemas/AskVerificationOneOf2",
+              "failed": "#/components/schemas/AskVerificationOneOf3"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind"
+        ]
       },
       "AskLibrary": {
         "required": [
@@ -14617,20 +14446,6 @@
         }
       },
       "AskIndexStatus": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/AskIndexStatusOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/AskIndexStatusOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/AskIndexStatusOneOf3"
-          },
-          {
-            "$ref": "#/components/schemas/AskIndexStatusOneOf4"
-          }
-        ],
         "description": "Indexing of the site into Context7. \u0060pending\u0060 until the site is verified and submitted; \u0060submitted\u0060 while the parser works; \u0060ready\u0060 when the library is finalized; \u0060failed\u0060 with a reason (verify again to retry).",
         "x-client-original-discriminator": {
           "propertyName": "kind",
@@ -14640,7 +14455,60 @@
             "AskIndexStatusOneOf3": "#/components/schemas/AskIndexStatusOneOf3",
             "AskIndexStatusOneOf4": "#/components/schemas/AskIndexStatusOneOf4"
           }
-        }
+        },
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "pending": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf1",
+            "submitted": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf2",
+            "ready": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf3",
+            "failed": "#/components/schemas/AskIndexStatusAskIndexStatusOneOf4"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AskIndexStatusOneOf1"
+            },
+            {
+              "$ref": "#/components/schemas/AskIndexStatusOneOf2"
+            },
+            {
+              "$ref": "#/components/schemas/AskIndexStatusOneOf3"
+            },
+            {
+              "$ref": "#/components/schemas/AskIndexStatusOneOf4"
+            }
+          ],
+          "description": "Indexing of the site into Context7. \u0060pending\u0060 until the site is verified and submitted; \u0060submitted\u0060 while the parser works; \u0060ready\u0060 when the library is finalized; \u0060failed\u0060 with a reason (verify again to retry).",
+          "x-client-original-discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "AskIndexStatusOneOf1": "#/components/schemas/AskIndexStatusOneOf1",
+              "AskIndexStatusOneOf2": "#/components/schemas/AskIndexStatusOneOf2",
+              "AskIndexStatusOneOf3": "#/components/schemas/AskIndexStatusOneOf3",
+              "AskIndexStatusOneOf4": "#/components/schemas/AskIndexStatusOneOf4"
+            }
+          },
+          "discriminator": {
+            "propertyName": "kind",
+            "mapping": {
+              "pending": "#/components/schemas/AskIndexStatusOneOf1",
+              "submitted": "#/components/schemas/AskIndexStatusOneOf2",
+              "ready": "#/components/schemas/AskIndexStatusOneOf3",
+              "failed": "#/components/schemas/AskIndexStatusOneOf4"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind"
+        ]
       },
       "AskSiteBody": {
         "required": [
@@ -14995,106 +14863,6 @@
           }
         }
       },
-      "ContextCodeSnippetAllOf2": {
-        "required": [
-          "rank"
-        ],
-        "type": "object",
-        "properties": {
-          "rank": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model\u0027s relevance order when it ranked them).",
-            "example": 1
-          }
-        }
-      },
-      "ContextInfoSnippetAllOf2": {
-        "required": [
-          "rank"
-        ],
-        "type": "object",
-        "properties": {
-          "rank": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model\u0027s relevance order when it ranked them).",
-            "example": 1
-          }
-        }
-      },
-      "SearchCodeSnippetAllOf2": {
-        "required": [
-          "libraryId",
-          "rank"
-        ],
-        "type": "object",
-        "properties": {
-          "libraryId": {
-            "type": "string",
-            "description": "Context7 library ID that produced this snippet"
-          },
-          "rank": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
-            "example": 1
-          }
-        }
-      },
-      "SearchInfoSnippetAllOf2": {
-        "required": [
-          "libraryId",
-          "rank"
-        ],
-        "type": "object",
-        "properties": {
-          "libraryId": {
-            "type": "string",
-            "description": "Context7 library ID that produced this snippet"
-          },
-          "rank": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
-            "example": 1
-          }
-        }
-      },
-      "SearchContextResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "codeSnippets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SearchCodeSnippet"
-            },
-            "description": "Relevant code snippets with their selected library"
-          },
-          "infoSnippets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SearchInfoSnippet"
-            },
-            "description": "Relevant documentation snippets with their selected library"
-          },
-          "rules": {
-            "$ref": "#/components/schemas/SearchContextResponseAllOf2Rules"
-          },
-          "version": {
-            "$ref": "#/components/schemas/SearchContextResponseAllOf2Version"
-          }
-        }
-      },
-      "RedirectErrorResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "redirectUrl": {
-            "type": "string",
-            "description": "New location of the library"
-          }
-        }
-      },
       "TeamspaceRuleResponseData": {
         "required": [
           "text",
@@ -15120,53 +14888,12 @@
           },
           "docsUrl": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "id": {
             "type": "string",
             "description": "Returned on create only.",
             "format": "uuid"
-          }
-        }
-      },
-      "TeamspacePolicyDryRunResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "dryRun": {
-            "$ref": "#/components/schemas/TeamspacePolicyDryRunResponseDryRun"
-          },
-          "currentAccessibleLibraryCount": {
-            "type": "integer",
-            "description": "Libraries the saved policies allow now."
-          }
-        }
-      },
-      "TeamspaceLibraryDetailAllOf2": {
-        "required": [
-          "versions",
-          "task"
-        ],
-        "type": "object",
-        "properties": {
-          "lastRunDate": {
-            "type": "string",
-            "description": "When the last parse ran, successful or not.",
-            "format": "date-time"
-          },
-          "issues": {
-            "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Issues"
-          },
-          "versions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TeamspaceLibraryVersion"
-            }
-          },
-          "task": {
-            "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Task"
-          },
-          "config": {
-            "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Config"
           }
         }
       },
@@ -15197,154 +14924,6 @@
           }
         },
         "description": "Cumulative request counts."
-      },
-      "Docs7StartDeploymentRequestOneOf1": {
-        "required": [
-          "kind"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/ProductionKind"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Docs7StartDeploymentRequestOneOf2": {
-        "required": [
-          "kind",
-          "branch"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/PreviewKind"
-          },
-          "branch": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AskVerificationOneOf1": {
-        "required": [
-          "kind"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/PendingKind"
-          }
-        }
-      },
-      "AskVerificationOneOf2": {
-        "required": [
-          "kind",
-          "verifiedAt"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/VerifiedKind"
-          },
-          "verifiedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "AskVerificationOneOf3": {
-        "required": [
-          "kind",
-          "reason",
-          "checkedAt"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/FailedKind"
-          },
-          "reason": {
-            "type": "string",
-            "description": "What to fix, in words for the site owner."
-          },
-          "checkedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "AskIndexStatusOneOf1": {
-        "required": [
-          "kind"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/PendingKind"
-          }
-        }
-      },
-      "AskIndexStatusOneOf2": {
-        "required": [
-          "kind",
-          "library"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/SubmittedKind"
-          },
-          "library": {
-            "$ref": "#/components/schemas/AskLibrary"
-          }
-        }
-      },
-      "AskIndexStatusOneOf3": {
-        "required": [
-          "kind",
-          "library"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/ReadyKind"
-          },
-          "library": {
-            "$ref": "#/components/schemas/AskLibrary"
-          }
-        }
-      },
-      "AskIndexStatusOneOf4": {
-        "required": [
-          "kind",
-          "reason",
-          "library"
-        ],
-        "type": "object",
-        "properties": {
-          "kind": {
-            "$ref": "#/components/schemas/FailedKind"
-          },
-          "reason": {
-            "type": "string"
-          },
-          "library": {
-            "$ref": "#/components/schemas/AskIndexStatusOneOf4Library"
-          }
-        }
-      },
-      "TeamspaceRuleResponseDataAllOf2": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Returned on create only.",
-            "format": "uuid"
-          }
-        }
       },
       "TeamspaceLibraryDetailAllOf2Task": {
         "required": [
@@ -15569,13 +15148,6 @@
           "status": "unverified"
         }
       },
-      "McpDailyClientDataUniqueUsersByClient": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "integer"
-        },
-        "description": "Unique user count per MCP client identifier (e.g., \u0060cursor\u0060, \u0060claude-code\u0060, \u0060codex\u0060)"
-      },
       "PolicyResponseSourceTypes": {
         "required": [
           "public_repos",
@@ -15779,10 +15351,6 @@
           }
         }
       },
-      "Docs7ErrorDetails": {
-        "type": "object",
-        "description": "Validation details on \u0060invalid_payload\u0060."
-      },
       "Docs7SiteCodeWatch": {
         "required": [
           "enabled",
@@ -15834,7 +15402,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "format": "uri"
+              "x-client-original-format": "uri"
             },
             "description": "GitHub repository URLs. Each new one is checked against the site\u0027s GitHub App installation and the caller\u0027s GitHub access."
           }
@@ -15962,7 +15530,7 @@
           },
           "avatarUrl": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         },
         "nullable": true
@@ -16004,7 +15572,7 @@
         "properties": {
           "url": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "state": {
             "$ref": "#/components/schemas/Docs7AgentRunPullRequestState"
@@ -16023,8 +15591,8 @@
           },
           "commentUrl": {
             "type": "string",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           },
           "commitSha": {
             "type": "string",
@@ -16459,10 +16027,6 @@
         },
         "description": "\u0060from\u0060 to \u0060to\u0060 is at most 90 days."
       },
-      "Docs7ExploreResponseRowsItem": {
-        "type": "object",
-        "description": "One record, or one group with its count when \u0060groupBy\u0060 is set."
-      },
       "Docs7ExploreResponseSeriesItem": {
         "type": "object",
         "properties": {
@@ -16649,50 +16213,6 @@
           }
         }
       },
-      "SearchContextResponseAllOf2Rules": {
-        "type": "object",
-        "properties": {
-          "global": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Global team rules that apply to every returned library"
-          },
-          "libraries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SearchContextResponseAllOf2RulesLibrariesItem"
-            },
-            "description": "Rules scoped to a specific returned library"
-          }
-        },
-        "description": "Optional global rules and library-scoped guidelines"
-      },
-      "SearchContextResponseAllOf2Version": {
-        "required": [
-          "status",
-          "libraries"
-        ],
-        "type": "object",
-        "properties": {
-          "requested": {
-            "type": "string",
-            "description": "The version parameter, when given.",
-            "example": "15"
-          },
-          "status": {
-            "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionStatus"
-          },
-          "libraries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionLibrariesItem"
-            }
-          }
-        },
-        "description": "Present when a version was requested by the version parameter or a version-like library tag. Says what each returned library served."
-      },
       "TeamspaceLibraryDetailAllOf2Issues": {
         "type": "object",
         "properties": {
@@ -16858,20 +16378,6 @@
         },
         "description": "Update select-mode settings."
       },
-      "TeamspaceRulesResponseDataGlobal": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/TeamspaceRule"
-        },
-        "description": "Rules for every library, keyed by rule id."
-      },
-      "TeamspaceRulesResponseDataLibraries": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/TeamspaceRulesResponseDataLibrariesAdditionalPropertiesProperty"
-        },
-        "description": "Rules for one library, keyed by library id, then by rule id."
-      },
       "Docs7SiteCodeWatchRepositoriesItem": {
         "required": [
           "repositoryId",
@@ -16884,7 +16390,7 @@
           },
           "repoUrl": {
             "type": "string",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -16983,13 +16489,6 @@
             "description": "String, integer or boolean, by field."
           }
         }
-      },
-      "AskAnalyticsSeriesItemClients": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "integer"
-        },
-        "description": "Requests per client."
       },
       "SearchContextResponseAllOf2RulesLibrariesItem": {
         "required": [
@@ -17133,12 +16632,6 @@
         },
         "description": "Update website-specific quality filters."
       },
-      "TeamspaceRulesResponseDataLibrariesAdditionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/TeamspaceRule"
-        }
-      },
       "Docs7BuildOriginPullRequestChangesFilesItem": {
         "required": [
           "path",
@@ -17168,12 +16661,6 @@
           }
         }
       },
-      "SearchDocumentation200PlainResponse": {
-        "type": "string"
-      },
-      "FetchPage200PlainResponse": {
-        "type": "string"
-      },
       "FetchPage200Response": {
         "oneOf": [
           {
@@ -17183,30 +16670,6 @@
             "$ref": "#/components/schemas/FetchPageResponse"
           }
         ]
-      },
-      "GetContext200PlainResponse": {
-        "type": "string"
-      },
-      "AskSite200PlainResponse": {
-        "type": "string"
-      },
-      "AskSite202PlainResponse": {
-        "type": "string"
-      },
-      "AskSite400PlainResponse": {
-        "type": "string"
-      },
-      "AskSite404PlainResponse": {
-        "type": "string"
-      },
-      "AskSite429PlainResponse": {
-        "type": "string"
-      },
-      "AskSite500PlainResponse": {
-        "type": "string"
-      },
-      "AskSite503PlainResponse": {
-        "type": "string"
       },
       "RefreshLibraryRequest": {
         "required": [
@@ -17258,7 +16721,7 @@
           "docsRepoUrl": {
             "type": "string",
             "description": "The Git repository URL",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "gitToken": {
             "type": "string",
@@ -17287,7 +16750,7 @@
           "openApiUrl": {
             "type": "string",
             "description": "URL pointing to an OpenAPI specification (JSON or YAML)",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -17407,7 +16870,7 @@
           "llmstxtUrl": {
             "type": "string",
             "description": "URL pointing to an llms.txt, llms-full.txt, or llms-small.txt file",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -17420,12 +16883,12 @@
           "websiteUrl": {
             "type": "string",
             "description": "The website URL to process",
-            "format": "uri"
+            "x-client-original-format": "uri"
           },
           "websiteBaseUrl": {
             "type": "string",
             "description": "Base URL to limit crawling scope. Only pages starting with this URL will be indexed.",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -17525,7 +16988,7 @@
         "properties": {
           "email": {
             "type": "string",
-            "format": "email"
+            "x-client-original-format": "email"
           },
           "role": {
             "$ref": "#/components/schemas/InviteTeamspaceMemberRequestRole"
@@ -17623,7 +17086,7 @@
           "docsUrl": {
             "type": "string",
             "description": "http(s) link shown with the library.",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -17669,16 +17132,6 @@
             "description": "Preview the change and its library count without saving."
           }
         }
-      },
-      "UpdateTeamspacePolicies200Response": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/PolicyResponse"
-          },
-          {
-            "$ref": "#/components/schemas/TeamspacePolicyDryRunResponse"
-          }
-        ]
       },
       "CreateLibraryRequestRequest": {
         "required": [
@@ -17905,8 +17358,8 @@
           "docsUrl": {
             "type": "string",
             "description": "An https link to the docs of the shipped feature. Kept only on a shipped request.",
-            "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "x-client-original-format": "uri"
           }
         },
         "additionalProperties": false
@@ -17934,9 +17387,6 @@
             "$ref": "#/components/schemas/DeleteDocsFeatureRequest200ResponseData"
           }
         }
-      },
-      "ExploreDocsAnalytics200CsvResponse": {
-        "type": "string"
       },
       "GetDocsConversationRequest": {
         "required": [
@@ -18092,21 +17542,6 @@
           }
         }
       },
-      "ListDocs7ExampleChecks200Response": {
-        "type": "object"
-      },
-      "GetTeamspaceInviteLink200Response": {
-        "type": "object"
-      },
-      "CreateTeamspaceInviteLink200Response": {
-        "type": "object"
-      },
-      "ResetTeamspaceInviteLink200Response": {
-        "type": "object"
-      },
-      "DisableTeamspaceInviteLink200Response": {
-        "type": "object"
-      },
       "SetTeamspaceLibraryVisibilityRequest": {
         "required": [
           "makePublic"
@@ -18117,9 +17552,6 @@
             "type": "boolean"
           }
         }
-      },
-      "SetTeamspaceLibraryVisibility200Response": {
-        "type": "object"
       },
       "SetTeamspaceLibraryRedirectRequest": {
         "required": [
@@ -18132,15 +17564,6 @@
             "description": "Target library id, such as \u0060/owner/repo\u0060."
           }
         }
-      },
-      "SetTeamspaceLibraryRedirect200Response": {
-        "type": "object"
-      },
-      "RemoveTeamspaceLibraryRedirect200Response": {
-        "type": "object"
-      },
-      "GetTeamspaceLibraryWidget200Response": {
-        "type": "object"
       },
       "UpdateTeamspaceLibraryWidgetRequest": {
         "type": "object",
@@ -18156,12 +17579,6 @@
             }
           }
         }
-      },
-      "UpdateTeamspaceLibraryWidget200Response": {
-        "type": "object"
-      },
-      "CheckTeamspaceLibraryVerification200Response": {
-        "type": "object"
       },
       "ApplyTeamspaceLibraryVerificationRequest": {
         "required": [
@@ -18182,16 +17599,10 @@
             "type": "array",
             "items": {
               "type": "string",
-              "format": "uri"
+              "x-client-original-format": "uri"
             }
           }
         }
-      },
-      "ApplyTeamspaceLibraryVerification200Response": {
-        "type": "object"
-      },
-      "BlockTeamspaceLibrary200Response": {
-        "type": "object"
       },
       "TransferTeamspaceLibraryRequest": {
         "required": [
@@ -18204,28 +17615,6 @@
             "format": "uuid"
           }
         }
-      },
-      "TransferTeamspaceLibrary200Response": {
-        "type": "object"
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
-      },
-      "SearchDocumentation200PlainResponseSchema": {
-        "type": "string"
-      },
-      "FetchPage200PlainResponseSchema": {
-        "type": "string"
-      },
-      "GetContext200PlainResponseSchema": {
-        "type": "string"
-      },
-      "AskSite200PlainResponseSchema": {
-        "type": "string"
-      },
-      "AskSite202PlainResponseSchema": {
-        "type": "string"
       },
       "AskSite400PlainResponseSchema": {
         "type": "string"
@@ -18534,9 +17923,6 @@
           }
         }
       },
-      "ExploreDocsAnalytics200CsvResponseSchema": {
-        "type": "string"
-      },
       "GetDocsConversation200Response": {
         "required": [
           "data"
@@ -18807,12 +18193,6 @@
           "type": "integer"
         },
         "description": "Requests per client."
-      },
-      "TeamspaceRulesResponseDataLibrariesAdditionalPropertiesProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/TeamspaceRule"
-        }
       },
       "RemoveTeamspaceMember200ResponseData": {
         "type": "object",
@@ -20687,28 +20067,34 @@
         }
       },
       "PolicyResponseLibraryFiltersMode": {
-        "enum": [
-          "quality",
-          "select",
-          null
-        ],
-        "type": "string",
         "description": "Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "PolicyResponseLibraryFiltersMode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "quality",
-              "name": "Quality"
-            },
-            {
-              "value": "select",
-              "name": "Select"
+        "anyOf": [
+          {
+            "enum": [
+              "quality",
+              "select"
+            ],
+            "type": "string",
+            "description": "Filter mode: \u0027quality\u0027 for threshold-based filtering, \u0027select\u0027 for manual library selection",
+            "x-ms-enum": {
+              "name": "PolicyResponseLibraryFiltersMode",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "quality",
+                  "name": "Quality"
+                },
+                {
+                  "value": "select",
+                  "name": "Select"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "$ref": "#/components/schemas/OpenApiNullValue"
+          }
+        ]
       },
       "PatchPoliciesRequestSourceTypesEnableItem": {
         "enum": [
@@ -20793,28 +20179,34 @@
         }
       },
       "PatchPoliciesRequestLibraryFiltersMode": {
-        "enum": [
-          "quality",
-          "select",
-          null
-        ],
-        "type": "string",
         "description": "Filter mode (null to clear)",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "PatchPoliciesRequestLibraryFiltersMode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "quality",
-              "name": "Quality"
-            },
-            {
-              "value": "select",
-              "name": "Select"
+        "anyOf": [
+          {
+            "enum": [
+              "quality",
+              "select"
+            ],
+            "type": "string",
+            "description": "Filter mode (null to clear)",
+            "x-ms-enum": {
+              "name": "PatchPoliciesRequestLibraryFiltersMode",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "quality",
+                  "name": "Quality"
+                },
+                {
+                  "value": "select",
+                  "name": "Select"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "$ref": "#/components/schemas/OpenApiNullValue"
+          }
+        ]
       },
       "PendingInvitationType": {
         "enum": [
@@ -21159,28 +20551,6 @@
             {
               "value": "failed",
               "name": "Failed"
-            }
-          ]
-        }
-      },
-      "SearchContextResponseAllOf2VersionStatus": {
-        "enum": [
-          "verified",
-          "unverified"
-        ],
-        "type": "string",
-        "description": "Worst outcome across the returned libraries.",
-        "x-ms-enum": {
-          "name": "SearchContextResponseAllOf2VersionStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "verified",
-              "name": "Verified"
-            },
-            {
-              "value": "unverified",
-              "name": "Unverified"
             }
           ]
         }
@@ -21835,6 +21205,89 @@
           ]
         }
       },
+      "AskSite400PlainResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "text/plain",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AskSite400PlainResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AskSite400PlainResponseSchema"
+        }
+      },
+      "AskSite404PlainResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "text/plain",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AskSite404PlainResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AskSite404PlainResponseSchema"
+        }
+      },
+      "AskSite429PlainResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "text/plain",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AskSite429PlainResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AskSite429PlainResponseSchema"
+        }
+      },
+      "AskSite500PlainResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "text/plain",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AskSite500PlainResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AskSite500PlainResponseSchema"
+        }
+      },
+      "AskSite503PlainResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "text/plain",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AskSite503PlainResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AskSite503PlainResponseSchema"
+        }
+      },
+      "OpenApiNullValue": {
+        "type": "object",
+        "nullable": true,
+        "not": {
+          "type": "object"
+        },
+        "x-client-untyped-value": true
+      },
       "GetContextSuccessResponse": {
         "anyOf": [
           {
@@ -21842,6 +21295,421 @@
           },
           {
             "$ref": "#/components/schemas/Error"
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "docsRepoUrl"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/TeamspaceLibraryRepoSourceSource"
+              },
+              "docsRepoUrl": {
+                "type": "string",
+                "description": "Repository URL.",
+                "example": "https://github.com/acme/docs",
+                "x-client-original-format": "uri"
+              },
+              "private": {
+                "type": "boolean",
+                "description": "Add as a private source of this teamspace. Needs the owner or admin role and a paid plan. The token comes from \u0060gitToken\u0060, or from the GitHub, GitLab or Bitbucket account connected in the dashboard. \u0060git\u0060 needs \u0060gitToken\u0060."
+              },
+              "gitToken": {
+                "type": "string",
+                "description": "Personal access token for a private repository."
+              },
+              "skipVersionFiltering": {
+                "type": "boolean",
+                "description": "Keep pages that look version-specific (private repositories)."
+              },
+              "generateDocs": {
+                "type": "boolean",
+                "description": "Generate documentation from the source code (private repositories)."
+              }
+            }
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryWebsiteSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "websiteUrl"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/WebsiteSource"
+              },
+              "websiteUrl": {
+                "type": "string",
+                "description": "Documentation website to crawl.",
+                "example": "https://docs.example.com",
+                "x-client-original-format": "uri"
+              },
+              "websiteBaseUrl": {
+                "type": "string",
+                "description": "Only crawl pages under this URL.",
+                "x-client-original-format": "uri"
+              }
+            }
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryLlmsTxtSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "llmstxtUrl"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/LlmstxtSource"
+              },
+              "llmstxtUrl": {
+                "type": "string",
+                "example": "https://docs.example.com/llms.txt",
+                "x-client-original-format": "uri"
+              }
+            }
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryOpenApiSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "openApiUrl"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/OpenApiSource"
+              },
+              "openApiUrl": {
+                "type": "string",
+                "example": "https://api.example.com/openapi.json",
+                "x-client-original-format": "uri"
+              }
+            }
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryConfluenceSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "cloudId",
+              "siteUrl",
+              "spaceKey",
+              "spaceName",
+              "title",
+              "description"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/ConfluenceSource"
+              },
+              "cloudId": {
+                "type": "string"
+              },
+              "siteUrl": {
+                "type": "string",
+                "example": "https://acme.atlassian.net",
+                "x-client-original-format": "uri"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "spaceName": {
+                "type": "string"
+              },
+              "pageIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Only these pages. Omit for the whole space."
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "description": "A Confluence space, added as a private source. Needs the owner or admin role and a Confluence account connected in the dashboard."
+          }
+        ]
+      },
+      "TeamspaceLibraryAddRequestTeamspaceLibraryNotionSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryAddRequest"
+          },
+          {
+            "required": [
+              "source",
+              "workspaceId",
+              "workspaceName",
+              "pageIds",
+              "title",
+              "description"
+            ],
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/NotionSource"
+              },
+              "workspaceId": {
+                "type": "string"
+              },
+              "workspaceName": {
+                "type": "string"
+              },
+              "pageIds": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "description": "Notion pages, added as a private source. Needs the owner or admin role and a Notion account connected in the dashboard."
+          }
+        ]
+      },
+      "Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Docs7StartDeploymentRequest"
+          },
+          {
+            "required": [
+              "kind"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/ProductionKind"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "Docs7StartDeploymentRequestDocs7StartDeploymentRequestOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Docs7StartDeploymentRequest"
+          },
+          {
+            "required": [
+              "kind",
+              "branch"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/PreviewKind"
+              },
+              "branch": {
+                "maxLength": 255,
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "AskVerificationAskVerificationOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskVerification"
+          },
+          {
+            "required": [
+              "kind"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/PendingKind"
+              }
+            }
+          }
+        ]
+      },
+      "AskVerificationAskVerificationOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskVerification"
+          },
+          {
+            "required": [
+              "kind",
+              "verifiedAt"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/VerifiedKind"
+              },
+              "verifiedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "AskVerificationAskVerificationOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskVerification"
+          },
+          {
+            "required": [
+              "kind",
+              "reason",
+              "checkedAt"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/FailedKind"
+              },
+              "reason": {
+                "type": "string",
+                "description": "What to fix, in words for the site owner."
+              },
+              "checkedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "AskIndexStatusAskIndexStatusOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskIndexStatus"
+          },
+          {
+            "required": [
+              "kind"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/PendingKind"
+              }
+            }
+          }
+        ]
+      },
+      "AskIndexStatusAskIndexStatusOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskIndexStatus"
+          },
+          {
+            "required": [
+              "kind",
+              "library"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/SubmittedKind"
+              },
+              "library": {
+                "$ref": "#/components/schemas/AskLibrary"
+              }
+            }
+          }
+        ]
+      },
+      "AskIndexStatusAskIndexStatusOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskIndexStatus"
+          },
+          {
+            "required": [
+              "kind",
+              "library"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/ReadyKind"
+              },
+              "library": {
+                "$ref": "#/components/schemas/AskLibrary"
+              }
+            }
+          }
+        ]
+      },
+      "AskIndexStatusAskIndexStatusOneOf4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AskIndexStatus"
+          },
+          {
+            "required": [
+              "kind",
+              "reason",
+              "library"
+            ],
+            "type": "object",
+            "properties": {
+              "kind": {
+                "$ref": "#/components/schemas/FailedKind"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "library": {
+                "$ref": "#/components/schemas/AskIndexStatusOneOf4Library"
+              }
+            }
           }
         ]
       }
@@ -22275,7 +22143,7 @@
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. The management API (\u0060/v2/teamspaces/*\u0060) needs a key created with **Management access** ticked; other keys get 403 \u0060management_access_required\u0060.",
+        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (\u0060/v2/teamspaces/*\u0060). To make changes there, the key must be created with **Write access** ticked; other keys get 403 \u0060write_access_required\u0060 on writes.",
         "scheme": "bearer"
       }
     }
@@ -22315,19 +22183,19 @@
     },
     {
       "name": "Teamspaces",
-      "description": "Teamspaces the caller is a member of. The management API (\u0060/v2/teamspaces/*\u0060) accepts a Context7 API key created with management access (other keys get 403 \u0060management_access_required\u0060), which reaches only its own teamspace, or an OAuth token issued for the Context7 Admin MCP server (\u0060https://admin.mcp.context7.com/mcp\u0060), which reaches every teamspace of the user. A browser session is not accepted."
+      "description": "Teamspaces the caller is a member of. The management API (\u0060/v2/teamspaces/*\u0060) accepts a Context7 API key, which reaches only its own teamspace and can make changes only when it was created with write access (other keys can only read and get 403 \u0060write_access_required\u0060 on writes), or an OAuth token issued for the Context7 Admin MCP server (\u0060https://admin.mcp.context7.com/mcp\u0060), which reaches every teamspace of the user. A browser session is not accepted."
     },
     {
       "name": "Teamspace Admin",
-      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Needs an API key created with **Management access** ticked (other keys get 403 \u0060management_access_required\u0060), or the Context7 Admin MCP sign-in."
+      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 \u0060write_access_required\u0060), or the Context7 Admin MCP sign-in. Reading the invite link counts as a change."
     },
     {
       "name": "Teamspace Libraries",
-      "description": "A teamspace\u0027s libraries: its private sources and the libraries it has claimed. Add, refresh, configure, version, claim and remove them, and read their parse state and usage. A library id \u0060/owner/repo\u0060 is two path segments. Needs an API key created with **Management access** ticked (other keys get 403 \u0060management_access_required\u0060), or the Context7 Admin MCP sign-in."
+      "description": "A teamspace\u0027s libraries: its private sources and the libraries it has claimed. Add, refresh, configure, version, claim and remove them, and read their parse state and usage. A library id \u0060/owner/repo\u0060 is two path segments. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 \u0060write_access_required\u0060), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Docs7 Sites",
-      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the \u0060docs7 deploy\u0060 CLI have \u0060source: \u0022local\u0022\u0060; operations marked GitHub-only answer 404 for them. Needs an API key created with **Management access** ticked (other keys get 403 \u0060management_access_required\u0060), or the Context7 Admin MCP sign-in."
+      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the \u0060docs7 deploy\u0060 CLI have \u0060source: \u0022local\u0022\u0060; operations marked GitHub-only answer 404 for them. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 \u0060write_access_required\u0060), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Docs7 Analytics",
@@ -22335,7 +22203,798 @@
     },
     {
       "name": "Ask Sites",
-      "description": "Manage a teamspace\u0027s Context7 Ask sites: add, verify, remove, and read their analytics and question log. Needs an API key created with **Management access** ticked (other keys get 403 \u0060management_access_required\u0060), or the Context7 Admin MCP sign-in."
+      "description": "Manage a teamspace\u0027s Context7 Ask sites: add, verify, remove, and read their analytics and question log. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 \u0060write_access_required\u0060), or the Context7 Admin MCP sign-in."
     }
-  ]
+  ],
+  "x-client-unused-schemas": {
+    "CodeSnippet": {
+      "required": [
+        "codeTitle",
+        "codeDescription",
+        "codeLanguage",
+        "codeTokens",
+        "codeId",
+        "pageTitle",
+        "codeList"
+      ],
+      "type": "object",
+      "properties": {
+        "codeTitle": {
+          "type": "string",
+          "description": "Title of the code snippet"
+        },
+        "codeDescription": {
+          "type": "string",
+          "description": "Description of what the code does"
+        },
+        "codeLanguage": {
+          "type": "string",
+          "description": "Primary programming language"
+        },
+        "codeTokens": {
+          "type": "integer",
+          "description": "Token count for the snippet"
+        },
+        "codeId": {
+          "type": "string",
+          "description": "URL to source location"
+        },
+        "pageTitle": {
+          "type": "string",
+          "description": "Title of the documentation page"
+        },
+        "codeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CodeExample"
+          },
+          "description": "Code examples in different languages"
+        },
+        "isDynamic": {
+          "type": "boolean",
+          "description": "Whether this snippet was recovered from the dynamic source-code index instead of the primary docs index"
+        },
+        "sourceFile": {
+          "type": "string",
+          "description": "Repo-relative source file path for dynamic snippets"
+        }
+      },
+      "description": "A code snippet from library documentation"
+    },
+    "InfoSnippet": {
+      "required": [
+        "content",
+        "contentTokens"
+      ],
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "URL to source page"
+        },
+        "breadcrumb": {
+          "type": "string",
+          "description": "Navigation breadcrumb path"
+        },
+        "content": {
+          "type": "string",
+          "description": "The documentation content"
+        },
+        "contentTokens": {
+          "type": "integer",
+          "description": "Token count for the content"
+        }
+      },
+      "description": "A documentation snippet"
+    },
+    "TeamspaceLibraryTask": {
+      "required": [
+        "lockState",
+        "lockDate",
+        "task"
+      ],
+      "type": "object",
+      "properties": {
+        "lockState": {
+          "$ref": "#/components/schemas/TeamspaceLibraryTaskLockState"
+        },
+        "lockDate": {
+          "type": "string",
+          "description": "When the task started.",
+          "format": "date-time"
+        },
+        "progress": {
+          "type": "string",
+          "description": "The parser\u0027s progress line.",
+          "example": "Processing 45/120 files, 3/8 chunks"
+        },
+        "task": {
+          "$ref": "#/components/schemas/TeamspaceLibraryTaskTask"
+        }
+      },
+      "description": "The active parse task, as the public task list shows it."
+    },
+    "TeamspaceLibraryRepoSource": {
+      "required": [
+        "source",
+        "docsRepoUrl"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/TeamspaceLibraryRepoSourceSource"
+        },
+        "docsRepoUrl": {
+          "type": "string",
+          "description": "Repository URL.",
+          "example": "https://github.com/acme/docs",
+          "x-client-original-format": "uri"
+        },
+        "private": {
+          "type": "boolean",
+          "description": "Add as a private source of this teamspace. Needs the owner or admin role and a paid plan. The token comes from \u0060gitToken\u0060, or from the GitHub, GitLab or Bitbucket account connected in the dashboard. \u0060git\u0060 needs \u0060gitToken\u0060."
+        },
+        "gitToken": {
+          "type": "string",
+          "description": "Personal access token for a private repository."
+        },
+        "skipVersionFiltering": {
+          "type": "boolean",
+          "description": "Keep pages that look version-specific (private repositories)."
+        },
+        "generateDocs": {
+          "type": "boolean",
+          "description": "Generate documentation from the source code (private repositories)."
+        }
+      }
+    },
+    "TeamspaceLibraryWebsiteSource": {
+      "required": [
+        "source",
+        "websiteUrl"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/WebsiteSource"
+        },
+        "websiteUrl": {
+          "type": "string",
+          "description": "Documentation website to crawl.",
+          "example": "https://docs.example.com",
+          "x-client-original-format": "uri"
+        },
+        "websiteBaseUrl": {
+          "type": "string",
+          "description": "Only crawl pages under this URL.",
+          "x-client-original-format": "uri"
+        }
+      }
+    },
+    "TeamspaceLibraryLlmsTxtSource": {
+      "required": [
+        "source",
+        "llmstxtUrl"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/LlmstxtSource"
+        },
+        "llmstxtUrl": {
+          "type": "string",
+          "example": "https://docs.example.com/llms.txt",
+          "x-client-original-format": "uri"
+        }
+      }
+    },
+    "TeamspaceLibraryOpenApiSource": {
+      "required": [
+        "source",
+        "openApiUrl"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/OpenApiSource"
+        },
+        "openApiUrl": {
+          "type": "string",
+          "example": "https://api.example.com/openapi.json",
+          "x-client-original-format": "uri"
+        }
+      }
+    },
+    "TeamspaceLibraryConfluenceSource": {
+      "required": [
+        "source",
+        "cloudId",
+        "siteUrl",
+        "spaceKey",
+        "spaceName",
+        "title",
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/ConfluenceSource"
+        },
+        "cloudId": {
+          "type": "string"
+        },
+        "siteUrl": {
+          "type": "string",
+          "example": "https://acme.atlassian.net",
+          "x-client-original-format": "uri"
+        },
+        "spaceKey": {
+          "type": "string"
+        },
+        "spaceName": {
+          "type": "string"
+        },
+        "pageIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only these pages. Omit for the whole space."
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "description": "A Confluence space, added as a private source. Needs the owner or admin role and a Confluence account connected in the dashboard."
+    },
+    "TeamspaceLibraryNotionSource": {
+      "required": [
+        "source",
+        "workspaceId",
+        "workspaceName",
+        "pageIds",
+        "title",
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/components/schemas/NotionSource"
+        },
+        "workspaceId": {
+          "type": "string"
+        },
+        "workspaceName": {
+          "type": "string"
+        },
+        "pageIds": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "description": "Notion pages, added as a private source. Needs the owner or admin role and a Notion account connected in the dashboard."
+    },
+    "ContextCodeSnippetAllOf2": {
+      "required": [
+        "rank"
+      ],
+      "type": "object",
+      "properties": {
+        "rank": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model\u0027s relevance order when it ranked them).",
+          "example": 1
+        }
+      }
+    },
+    "ContextInfoSnippetAllOf2": {
+      "required": [
+        "rank"
+      ],
+      "type": "object",
+      "properties": {
+        "rank": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "1-based position in the text response, shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the snippets in the order the text response gives them (the selection model\u0027s relevance order when it ranked them).",
+          "example": 1
+        }
+      }
+    },
+    "SearchCodeSnippetAllOf2": {
+      "required": [
+        "libraryId",
+        "rank"
+      ],
+      "type": "object",
+      "properties": {
+        "libraryId": {
+          "type": "string",
+          "description": "Context7 library ID that produced this snippet"
+        },
+        "rank": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+          "example": 1
+        }
+      }
+    },
+    "SearchInfoSnippetAllOf2": {
+      "required": [
+        "libraryId",
+        "rank"
+      ],
+      "type": "object",
+      "properties": {
+        "libraryId": {
+          "type": "string",
+          "description": "Context7 library ID that produced this snippet"
+        },
+        "rank": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "1-based position in the reranked order shared by codeSnippets and infoSnippets. Sort both lists together by rank to read the evidence in the order the text response gives it.",
+          "example": 1
+        }
+      }
+    },
+    "SearchContextResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "codeSnippets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SearchCodeSnippet"
+          },
+          "description": "Relevant code snippets with their selected library"
+        },
+        "infoSnippets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SearchInfoSnippet"
+          },
+          "description": "Relevant documentation snippets with their selected library"
+        },
+        "rules": {
+          "$ref": "#/components/schemas/SearchContextResponseAllOf2Rules"
+        },
+        "version": {
+          "$ref": "#/components/schemas/SearchContextResponseAllOf2Version"
+        }
+      }
+    },
+    "RedirectErrorResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "redirectUrl": {
+          "type": "string",
+          "description": "New location of the library"
+        }
+      }
+    },
+    "TeamspacePolicyDryRunResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "$ref": "#/components/schemas/TeamspacePolicyDryRunResponseDryRun"
+        },
+        "currentAccessibleLibraryCount": {
+          "type": "integer",
+          "description": "Libraries the saved policies allow now."
+        }
+      }
+    },
+    "TeamspaceLibraryDetailAllOf2": {
+      "required": [
+        "versions",
+        "task"
+      ],
+      "type": "object",
+      "properties": {
+        "lastRunDate": {
+          "type": "string",
+          "description": "When the last parse ran, successful or not.",
+          "format": "date-time"
+        },
+        "issues": {
+          "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Issues"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TeamspaceLibraryVersion"
+          }
+        },
+        "task": {
+          "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Task"
+        },
+        "config": {
+          "$ref": "#/components/schemas/TeamspaceLibraryDetailAllOf2Config"
+        }
+      }
+    },
+    "Docs7StartDeploymentRequestOneOf1": {
+      "required": [
+        "kind"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/ProductionKind"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Docs7StartDeploymentRequestOneOf2": {
+      "required": [
+        "kind",
+        "branch"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/PreviewKind"
+        },
+        "branch": {
+          "maxLength": 255,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AskVerificationOneOf1": {
+      "required": [
+        "kind"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/PendingKind"
+        }
+      }
+    },
+    "AskVerificationOneOf2": {
+      "required": [
+        "kind",
+        "verifiedAt"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/VerifiedKind"
+        },
+        "verifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AskVerificationOneOf3": {
+      "required": [
+        "kind",
+        "reason",
+        "checkedAt"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/FailedKind"
+        },
+        "reason": {
+          "type": "string",
+          "description": "What to fix, in words for the site owner."
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AskIndexStatusOneOf1": {
+      "required": [
+        "kind"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/PendingKind"
+        }
+      }
+    },
+    "AskIndexStatusOneOf2": {
+      "required": [
+        "kind",
+        "library"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/SubmittedKind"
+        },
+        "library": {
+          "$ref": "#/components/schemas/AskLibrary"
+        }
+      }
+    },
+    "AskIndexStatusOneOf3": {
+      "required": [
+        "kind",
+        "library"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/ReadyKind"
+        },
+        "library": {
+          "$ref": "#/components/schemas/AskLibrary"
+        }
+      }
+    },
+    "AskIndexStatusOneOf4": {
+      "required": [
+        "kind",
+        "reason",
+        "library"
+      ],
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/components/schemas/FailedKind"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "library": {
+          "$ref": "#/components/schemas/AskIndexStatusOneOf4Library"
+        }
+      }
+    },
+    "TeamspaceRuleResponseDataAllOf2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Returned on create only.",
+          "format": "uuid"
+        }
+      }
+    },
+    "McpDailyClientDataUniqueUsersByClient": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "Unique user count per MCP client identifier (e.g., \u0060cursor\u0060, \u0060claude-code\u0060, \u0060codex\u0060)"
+    },
+    "Docs7ErrorDetails": {
+      "type": "object",
+      "description": "Validation details on \u0060invalid_payload\u0060."
+    },
+    "Docs7ExploreResponseRowsItem": {
+      "type": "object",
+      "description": "One record, or one group with its count when \u0060groupBy\u0060 is set."
+    },
+    "SearchContextResponseAllOf2Rules": {
+      "type": "object",
+      "properties": {
+        "global": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Global team rules that apply to every returned library"
+        },
+        "libraries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2RulesLibrariesItem"
+          },
+          "description": "Rules scoped to a specific returned library"
+        }
+      },
+      "description": "Optional global rules and library-scoped guidelines"
+    },
+    "SearchContextResponseAllOf2Version": {
+      "required": [
+        "status",
+        "libraries"
+      ],
+      "type": "object",
+      "properties": {
+        "requested": {
+          "type": "string",
+          "description": "The version parameter, when given.",
+          "example": "15"
+        },
+        "status": {
+          "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionStatus"
+        },
+        "libraries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SearchContextResponseAllOf2VersionLibrariesItem"
+          }
+        }
+      },
+      "description": "Present when a version was requested by the version parameter or a version-like library tag. Says what each returned library served."
+    },
+    "TeamspaceRulesResponseDataGlobal": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/TeamspaceRule"
+      },
+      "description": "Rules for every library, keyed by rule id."
+    },
+    "TeamspaceRulesResponseDataLibraries": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/TeamspaceRulesResponseDataLibrariesAdditionalPropertiesProperty"
+      },
+      "description": "Rules for one library, keyed by library id, then by rule id."
+    },
+    "AskAnalyticsSeriesItemClients": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "Requests per client."
+    },
+    "TeamspaceRulesResponseDataLibrariesAdditionalProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/TeamspaceRule"
+      }
+    },
+    "SearchDocumentation200PlainResponse": {
+      "type": "string"
+    },
+    "FetchPage200PlainResponse": {
+      "type": "string"
+    },
+    "GetContext200PlainResponse": {
+      "type": "string"
+    },
+    "AskSite200PlainResponse": {
+      "type": "string"
+    },
+    "AskSite202PlainResponse": {
+      "type": "string"
+    },
+    "AskSite400PlainResponse": {
+      "type": "string"
+    },
+    "AskSite404PlainResponse": {
+      "type": "string"
+    },
+    "AskSite429PlainResponse": {
+      "type": "string"
+    },
+    "AskSite500PlainResponse": {
+      "type": "string"
+    },
+    "AskSite503PlainResponse": {
+      "type": "string"
+    },
+    "UpdateTeamspacePolicies200Response": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/PolicyResponse"
+        },
+        {
+          "$ref": "#/components/schemas/TeamspacePolicyDryRunResponse"
+        }
+      ]
+    },
+    "ExploreDocsAnalytics200CsvResponse": {
+      "type": "string"
+    },
+    "ListDocs7ExampleChecks200Response": {
+      "type": "object"
+    },
+    "GetTeamspaceInviteLink200Response": {
+      "type": "object"
+    },
+    "CreateTeamspaceInviteLink200Response": {
+      "type": "object"
+    },
+    "ResetTeamspaceInviteLink200Response": {
+      "type": "object"
+    },
+    "DisableTeamspaceInviteLink200Response": {
+      "type": "object"
+    },
+    "SetTeamspaceLibraryVisibility200Response": {
+      "type": "object"
+    },
+    "SetTeamspaceLibraryRedirect200Response": {
+      "type": "object"
+    },
+    "RemoveTeamspaceLibraryRedirect200Response": {
+      "type": "object"
+    },
+    "GetTeamspaceLibraryWidget200Response": {
+      "type": "object"
+    },
+    "UpdateTeamspaceLibraryWidget200Response": {
+      "type": "object"
+    },
+    "CheckTeamspaceLibraryVerification200Response": {
+      "type": "object"
+    },
+    "ApplyTeamspaceLibraryVerification200Response": {
+      "type": "object"
+    },
+    "BlockTeamspaceLibrary200Response": {
+      "type": "object"
+    },
+    "TransferTeamspaceLibrary200Response": {
+      "type": "object"
+    },
+    "ExamplePayload": {
+      "type": "object",
+      "description": "Placeholder schema for path example refs"
+    },
+    "SearchDocumentation200PlainResponseSchema": {
+      "type": "string"
+    },
+    "FetchPage200PlainResponseSchema": {
+      "type": "string"
+    },
+    "GetContext200PlainResponseSchema": {
+      "type": "string"
+    },
+    "AskSite200PlainResponseSchema": {
+      "type": "string"
+    },
+    "AskSite202PlainResponseSchema": {
+      "type": "string"
+    },
+    "ExploreDocsAnalytics200CsvResponseSchema": {
+      "type": "string"
+    },
+    "TeamspaceRulesResponseDataLibrariesAdditionalPropertiesProperty": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/TeamspaceRule"
+      }
+    },
+    "SearchContextResponseAllOf2VersionStatus": {
+      "enum": [
+        "verified",
+        "unverified"
+      ],
+      "type": "string",
+      "description": "Worst outcome across the returned libraries.",
+      "x-ms-enum": {
+        "name": "SearchContextResponseAllOf2VersionStatus",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "verified",
+            "name": "Verified"
+          },
+          {
+            "value": "unverified",
+            "name": "Unverified"
+          }
+        ]
+      }
+    }
+  }
 }

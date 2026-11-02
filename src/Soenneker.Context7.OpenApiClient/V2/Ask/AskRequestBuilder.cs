@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Context7.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -38,6 +39,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Ask
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.AskSite400PlainResponseSchemaError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.AskSite404PlainResponseSchemaError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.AskSite429PlainResponseSchemaError">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.AskSite500PlainResponseSchemaError">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.AskSite503PlainResponseSchemaError">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.Context7.OpenApiClient.V2.Ask.AskRequestBuilder.AskRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -48,7 +54,17 @@ namespace Soenneker.Context7.OpenApiClient.V2.Ask
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Context7.OpenApiClient.Models.AskSite400PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Context7.OpenApiClient.Models.AskSite404PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Context7.OpenApiClient.Models.AskSite429PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Context7.OpenApiClient.Models.AskSite500PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Context7.OpenApiClient.Models.AskSite503PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Answer a question from the pages of one website registered with Context7 Ask. AI agents find this endpoint in the hidden note, llms.txt section or Link header the site publishes. No API key is needed. Without `query`, the endpoint returns a short description of itself.

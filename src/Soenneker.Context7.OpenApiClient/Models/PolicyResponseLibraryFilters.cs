@@ -29,8 +29,15 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter mode: &apos;quality&apos; for threshold-based filtering, &apos;select&apos; for manual library selection</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode? _explicitNullValueMode = default!;
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode _explicitNullValueMode = default!;
+#endif
         /// <summary>Quality-mode settings (active when mode is &apos;quality&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +83,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMode = default; _explicitNullProperties?.Remove("mode"); AdditionalData["mode"] = unknown; } else { Mode = parsed; AdditionalData.Remove("mode"); } } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode>(global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode.CreateFromDiscriminatorValue); } },
                 { "quality", n => { Quality = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality>(global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality.CreateFromDiscriminatorValue); } },
                 { "select", n => { Select = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersSelect>(global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersSelect.CreateFromDiscriminatorValue); } },
             };
@@ -88,7 +95,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode>("mode", Mode);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersMode>("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersQuality>("quality", Quality);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.PolicyResponseLibraryFiltersSelect>("select", Select);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
