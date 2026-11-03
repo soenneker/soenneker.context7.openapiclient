@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Deploym
         {
         }
         /// <summary>
-        /// The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: &quot;local&quot;`) answers 404.
+        /// The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: &quot;local&quot;`) answers 404. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetDocsDeploymentOrigin200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Deploym
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetDocsDeploymentOrigin200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetDocsDeploymentOrigin200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: &quot;local&quot;`) answers 404.
+        /// The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: &quot;local&quot;`) answers 404. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -47,7 +47,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.LibraryRequests
         {
         }
         /// <summary>
-        /// Pending requests from members to change the library filters, newest first. Any member can call it.
+        /// Pending requests from members to change the library filters, newest first. Any member can call it. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ListLibraryRequests200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -111,7 +111,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.LibraryRequests
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequest201Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.CreateLibraryRequest201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Pending requests from members to change the library filters, newest first. Any member can call it.
+        /// Pending requests from members to change the library filters, newest first. Any member can call it. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

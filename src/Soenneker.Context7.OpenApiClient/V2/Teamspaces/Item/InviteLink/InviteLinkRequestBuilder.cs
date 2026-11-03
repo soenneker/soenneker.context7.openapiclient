@@ -65,7 +65,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.DisableTeamspaceInviteLink200ResponseSchema>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.DisableTeamspaceInviteLink200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Whether the teamspace has an active invite link, with its URL and expiry.
+        /// Whether the teamspace has an active invite link, with its URL and expiry. The link lets anyone join, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetTeamspaceInviteLink200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -183,7 +183,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink
             return requestInfo;
         }
         /// <summary>
-        /// Whether the teamspace has an active invite link, with its URL and expiry.
+        /// Whether the teamspace has an active invite link, with its URL and expiry. The link lets anyone join, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

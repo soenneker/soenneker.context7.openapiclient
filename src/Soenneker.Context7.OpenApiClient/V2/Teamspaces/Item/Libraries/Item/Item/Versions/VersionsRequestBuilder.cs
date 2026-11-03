@@ -47,7 +47,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         {
         }
         /// <summary>
-        /// Parse a tag or branch of the repository as a version of its own. The call returns once the parse has started; poll the library details.
+        /// Parse a tag or branch of a repository, or a docs URL of a website, as a version of its own. Any public library takes versions; the teamspace does not need to own it. The call returns once the parse has started; poll the library details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibraryVersion200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -86,7 +86,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibraryVersion200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibraryVersion200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Parse a tag or branch of the repository as a version of its own. The call returns once the parse has started; poll the library details.
+        /// Parse a tag or branch of a repository, or a docs URL of a website, as a version of its own. Any public library takes versions; the teamspace does not need to own it. The call returns once the parse has started; poll the library details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

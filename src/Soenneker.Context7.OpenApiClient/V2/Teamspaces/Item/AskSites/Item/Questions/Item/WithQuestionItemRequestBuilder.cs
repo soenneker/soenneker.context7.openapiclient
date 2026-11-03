@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Ques
         {
         }
         /// <summary>
-        /// The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error.
+        /// The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AskAnswerResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Ques
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.AskAnswerResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.AskAnswerResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error.
+        /// The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

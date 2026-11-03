@@ -2415,7 +2415,8 @@
       ],
       "get": {
         "summary": "List members and invitations",
-        "description": "Members of the teamspace and its pending invitations. Any member can call it.",
+        "description": "Members of the teamspace and its pending invitations. Any member can call it. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "listTeamspaceMembers",
         "tags": [
           "Teamspace Admin"
@@ -3228,7 +3229,8 @@
       ],
       "get": {
         "summary": "List library requests",
-        "description": "Pending requests from members to change the library filters, newest first. Any member can call it.",
+        "description": "Pending requests from members to change the library filters, newest first. Any member can call it. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "listLibraryRequests",
         "tags": [
           "Teamspace Admin"
@@ -4318,7 +4320,7 @@
           "Teamspace Libraries"
         ],
         "summary": "Add a version",
-        "description": "Parse a tag or branch of the repository as a version of its own. The call returns once the parse has started; poll the library details.",
+        "description": "Parse a tag or branch of a repository, or a docs URL of a website, as a version of its own. Any public library takes versions; the teamspace does not need to own it. The call returns once the parse has started; poll the library details.",
         "operationId": "addTeamspaceLibraryVersion",
         "security": [
           {
@@ -4337,7 +4339,7 @@
                 "properties": {
                   "version": {
                     "type": "string",
-                    "description": "Tag or branch name.",
+                    "description": "Tag or branch name of a repository, or the docs URL of the version of a website (for example `https://docs.gitlab.com/18.4/`).",
                     "example": "v14.0.0"
                   },
                   "isBranch": {
@@ -4402,7 +4404,7 @@
             }
           },
           "404": {
-            "description": "The teamspace has no library with this id (neither claimed nor one of its private sources)",
+            "description": "The teamspace has no library with this id (not public, not claimed and not one of its private sources)",
             "content": {
               "application/json": {
                 "schema": {
@@ -6662,7 +6664,8 @@
           "Docs7 Sites"
         ],
         "summary": "Get a build origin",
-        "description": "The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: \"local\"`) answers 404.",
+        "description": "The GitHub account that caused a webhook build and, for a pull request preview, its number and changed files. 404 when the build has no origin (for example a build started from the dashboard). Any member. Only for GitHub sites: a CLI site (`source: \"local\"`) answers 404. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getDocsDeploymentOrigin",
         "parameters": [
           {
@@ -7242,7 +7245,8 @@
           "Docs7 Sites"
         ],
         "summary": "List feature requests",
-        "description": "What agents and readers asked the product for, most votes first. Works for GitHub and CLI sites. Any member.",
+        "description": "What agents and readers asked the product for, most votes first. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "listDocsFeatureRequests",
         "parameters": [
           {
@@ -8335,7 +8339,8 @@
           "Docs7 Analytics"
         ],
         "summary": "Get search and question analytics",
-        "description": "What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member.",
+        "description": "What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getDocsQueryAnalytics",
         "parameters": [
           {
@@ -8511,7 +8516,8 @@
           "Docs7 Analytics"
         ],
         "summary": "Get page feedback analytics",
-        "description": "Page ratings (helpful or not) from readers and agents: totals, pages and every rating with its comment. Works for GitHub and CLI sites. Any member.",
+        "description": "Page ratings (helpful or not) from readers and agents: totals, pages and every rating with its comment. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getDocsFeedbackAnalytics",
         "parameters": [
           {
@@ -8675,7 +8681,8 @@
           "Docs7 Analytics"
         ],
         "summary": "Explore analytics records",
-        "description": "Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan's history (7 days on Free, 90 on Pro). Any member.",
+        "description": "Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan's history (7 days on Free, 90 on Pro). Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "exploreDocsAnalytics",
         "parameters": [
           {
@@ -8822,7 +8829,8 @@
           "Docs7 Analytics"
         ],
         "summary": "Get an assistant conversation",
-        "description": "The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member.",
+        "description": "The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getDocsConversation",
         "parameters": [
           {
@@ -9487,7 +9495,8 @@
           "Ask Sites"
         ],
         "summary": "Get Ask site analytics",
-        "description": "Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions.",
+        "description": "Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getAskSiteAnalytics",
         "parameters": [
           {
@@ -9608,7 +9617,8 @@
           "Ask Sites"
         ],
         "summary": "List Ask site questions",
-        "description": "One page of the site's question log, newest first, 25 rows per page. Every filter is optional; an empty value means no filter.",
+        "description": "One page of the site's question log, newest first, 25 rows per page. Every filter is optional; an empty value means no filter. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "listAskSiteQuestions",
         "parameters": [
           {
@@ -9763,7 +9773,8 @@
           "Ask Sites"
         ],
         "summary": "Get the answer to an Ask question",
-        "description": "The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error.",
+        "description": "The text one logged question was answered with. A question that was not answered, is not known to this site, or whose answer has expired returns `answer: null`, not an error. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getAskSiteQuestion",
         "parameters": [
           {
@@ -11052,7 +11063,8 @@
           "Teamspace Admin"
         ],
         "summary": "Get the invite link",
-        "description": "Whether the teamspace has an active invite link, with its URL and expiry.",
+        "description": "Whether the teamspace has an active invite link, with its URL and expiry. The link lets anyone join, so an API key needs **Write access** (other keys get 403 `write_access_required`).",
+        "x-context7-personal-data": true,
         "operationId": "getTeamspaceInviteLink",
         "security": [
           {
@@ -12383,7 +12395,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (`/v2/teamspaces/*`). To make changes there, the key must be created with **Write access** ticked; other keys get 403 `write_access_required` on writes."
+        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (`/v2/teamspaces/*`), except personal data: member and invitation emails, library requesters, visitor questions, Docs7 reader searches, conversations, feedback and feature requests, and the GitHub account behind a build. To read those or make changes there, the key must be created with **Write access** ticked; other keys get 403 `write_access_required`."
       }
     },
     "parameters": {
@@ -18487,11 +18499,11 @@
     },
     {
       "name": "Teamspaces",
-      "description": "Teamspaces the caller is a member of. The management API (`/v2/teamspaces/*`) accepts a Context7 API key, which reaches only its own teamspace and can make changes only when it was created with write access (other keys can only read and get 403 `write_access_required` on writes), or an OAuth token issued for the Context7 Admin MCP server (`https://admin.mcp.context7.com/mcp`), which reaches every teamspace of the user. A browser session is not accepted."
+      "description": "Teamspaces the caller is a member of. The management API (`/v2/teamspaces/*`) accepts a Context7 API key, which reaches only its own teamspace and can make changes or read personal data only when it was created with write access (other keys can only read and get 403 `write_access_required` on writes and on personal data), or an OAuth token issued for the Context7 Admin MCP server (`https://admin.mcp.context7.com/mcp`), which reaches every teamspace of the user. A browser session is not accepted."
     },
     {
       "name": "Teamspace Admin",
-      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in. Reading the invite link counts as a change."
+      "description": "Members, invitations, rules, library policies and requests, usage and the spending limit of a teamspace. Every API key can read rules, policies, usage and the spending limit. Changes, and reading members, invitations, the invite link and library requests (they name people), need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Teamspace Libraries",
@@ -18499,15 +18511,15 @@
     },
     {
       "name": "Docs7 Sites",
-      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the `docs7 deploy` CLI have `source: \"local\"`; operations marked GitHub-only answer 404 for them. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "Docs7 documentation sites of a teamspace: settings, custom domains, deployments, previews and the Docs7 agents. Any member can read; owners and admins can change; developers can add a site, publish one added for the agents only, and rebuild. Sites deployed with the `docs7 deploy` CLI have `source: \"local\"`; operations marked GitHub-only answer 404 for them. Every API key can read, except feature requests and the GitHub account behind a build (personal data). Changes, and those reads, need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Docs7 Analytics",
-      "description": "Traffic of one Docs7 site: visitors, AI crawlers, searches, assistant questions and page feedback. Docs7 Free reads the last 7 days, Docs7 Pro the last 90."
+      "description": "Traffic of one Docs7 site: visitors, AI crawlers, searches, assistant questions and page feedback. Docs7 Free reads the last 7 days, Docs7 Pro the last 90. Every API key can read the visitor, crawler and path reports. Searches, questions, conversations, feedback and the raw records (`explore`) are personal data and need an API key created with **Write access** ticked, or the Context7 Admin MCP sign-in."
     },
     {
       "name": "Ask Sites",
-      "description": "Manage a teamspace's Context7 Ask sites: add, verify, remove, and read their analytics and question log. Every API key can read. Changes need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
+      "description": "Manage a teamspace's Context7 Ask sites: add, verify, remove, and read their analytics and question log. Every API key can read the sites. Changes, and reading the analytics and question log (visitor questions), need an API key created with **Write access** ticked (other keys get 403 `write_access_required`), or the Context7 Admin MCP sign-in."
     }
   ]
 }

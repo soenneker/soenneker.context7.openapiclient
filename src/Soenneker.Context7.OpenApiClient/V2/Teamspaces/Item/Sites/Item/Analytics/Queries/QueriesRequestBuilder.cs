@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
         {
         }
         /// <summary>
-        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member.
+        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetDocsQueryAnalytics200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -69,7 +69,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetDocsQueryAnalytics200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetDocsQueryAnalytics200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member.
+        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -97,7 +97,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
             return new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analytics.Queries.QueriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member.
+        /// What readers search for, what agents ask the docs, and the assistant questions grouped by topic. Works for GitHub and CLI sites. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class QueriesRequestBuilderGetQueryParameters 

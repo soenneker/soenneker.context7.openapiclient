@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
         {
         }
         /// <summary>
-        /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member.
+        /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.Docs7ExploreResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member.
+        /// Query the raw records of one dataset (`searches`, `questions`, `ai-requests`, `page-views`) in a time range, with filters and an optional group, 20 rows per page. Send `Accept: text/csv` to download up to 10,000 rows as CSV. The range must be inside the plan&apos;s history (7 days on Free, 90 on Pro). Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
         {
         }
         /// <summary>
-        /// The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member.
+        /// The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetDocsConversation200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Sites.Item.Analyti
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetDocsConversation200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetDocsConversation200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member.
+        /// The turns of one recorded assistant conversation. The id comes from a `questions` record of explore. Any member. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

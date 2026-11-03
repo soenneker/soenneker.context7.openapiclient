@@ -28,7 +28,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>`version` is a branch.</summary>
         public bool? IsBranch { get => _explicitNullValueIsBranch; set { _explicitNullValueIsBranch = value; AdditionalData?.Remove("isBranch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isBranch"); else _explicitNullProperties?.Remove("isBranch"); } }
         private bool? _explicitNullValueIsBranch = default!;
-        /// <summary>Tag or branch name.</summary>
+        /// <summary>Tag or branch name of a repository, or the docs URL of the version of a website (for example `https://docs.gitlab.com/18.4/`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }

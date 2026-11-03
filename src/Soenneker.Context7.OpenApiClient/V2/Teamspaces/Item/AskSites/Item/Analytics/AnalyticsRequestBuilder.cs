@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Anal
         {
         }
         /// <summary>
-        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions.
+        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.GetAskSiteAnalytics200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Anal
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.GetAskSiteAnalytics200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.GetAskSiteAnalytics200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions.
+        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -95,7 +95,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Anal
             return new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.Item.Analytics.AnalyticsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions.
+        /// Requests over time by client, the clients that asked, the questions with no answer (gaps), the top questions and the most recent questions. Returns personal data, so an API key needs **Write access** (other keys get 403 `write_access_required`).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AnalyticsRequestBuilderGetQueryParameters 
