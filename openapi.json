@@ -15680,6 +15680,11 @@
               "proxy"
             ],
             "description": "Required with `customDomain`. Owner or admin."
+          },
+          "setupId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]{8,32}$",
+            "description": "The setup ID from the Docs7 Add page's agent prompt. The Add page uses it to follow this site and its first build."
           }
         },
         "additionalProperties": false

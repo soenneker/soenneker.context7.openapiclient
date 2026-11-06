@@ -13415,6 +13415,11 @@
           },
           "customDomainRouting": {
             "$ref": "#/components/schemas/Docs7CreateSiteRequestCustomDomainRouting"
+          },
+          "setupId": {
+            "pattern": "^[a-z0-9]{8,32}$",
+            "type": "string",
+            "description": "The setup ID from the Docs7 Add page\u0027s agent prompt. The Add page uses it to follow this site and its first build."
           }
         },
         "additionalProperties": false

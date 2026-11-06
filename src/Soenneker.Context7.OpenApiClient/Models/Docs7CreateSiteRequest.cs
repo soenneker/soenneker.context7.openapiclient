@@ -33,6 +33,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
             else if (parseNode.GetChildNode("hosting") is { } nullNodeHosting && nullNodeHosting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hosting = null;
             if (parseNode.GetChildNode("repoUrl") is null) { _explicitNullValueRepoUrl = default!; _explicitNullProperties?.Remove("repoUrl"); }
             else if (parseNode.GetChildNode("repoUrl") is { } nullNodeRepoUrl && nullNodeRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoUrl = null;
+            if (parseNode.GetChildNode("setupId") is null) { _explicitNullValueSetupId = default!; _explicitNullProperties?.Remove("setupId"); }
+            else if (parseNode.GetChildNode("setupId") is { } nullNodeSetupId && nullNodeSetupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetupId = null;
             if (parseNode.GetChildNode("slug") is null) { _explicitNullValueSlug = default!; _explicitNullProperties?.Remove("slug"); }
             else if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
         }
@@ -96,6 +98,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public string RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repoUrl"); else _explicitNullProperties?.Remove("repoUrl"); } }
         private string _explicitNullValueRepoUrl = default!;
 #endif
+        /// <summary>The setup ID from the Docs7 Add page&apos;s agent prompt. The Add page uses it to follow this site and its first build.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SetupId { get => _explicitNullValueSetupId; set { _explicitNullValueSetupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setupId"); else _explicitNullProperties?.Remove("setupId"); } }
+        private string? _explicitNullValueSetupId = default!;
+#nullable restore
+#else
+        public string SetupId { get => _explicitNullValueSetupId; set { _explicitNullValueSetupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setupId"); else _explicitNullProperties?.Remove("setupId"); } }
+        private string _explicitNullValueSetupId = default!;
+#endif
         /// <summary>First label of the platform hostname. Default: `owner-repo`. Owner or admin.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -132,6 +144,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "docsPath", n => { DocsPath = n.GetStringValue(); } },
                 { "hosting", n => { Hosting = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestHosting>(); } },
                 { "repoUrl", n => { RepoUrl = n.GetStringValue(); } },
+                { "setupId", n => { SetupId = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
             };
         }
@@ -150,6 +163,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteStringValue("docsPath", DocsPath);
             writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7CreateSiteRequestHosting>("hosting", Hosting);
             writer.WriteStringValue("repoUrl", RepoUrl);
+            writer.WriteStringValue("setupId", SetupId);
             writer.WriteStringValue("slug", Slug);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
