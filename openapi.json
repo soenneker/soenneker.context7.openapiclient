@@ -16463,6 +16463,7 @@
           "trigger",
           "input",
           "pullRequest",
+          "llmProvider",
           "createdAt",
           "completedAt"
         ],
@@ -16679,7 +16680,13 @@
                 "type": "number"
               },
               "tokenUsd": {
-                "type": "number"
+                "type": "number",
+                "description": "Model cost in USD reported by the agent runner. It may not match the provider bill."
+              },
+              "estimatedTokenUsd": {
+                "type": "number",
+                "nullable": true,
+                "description": "The run's tokens at its provider's list price, for providers the agent runner cannot price (AI Gateway). Null when tokenUsd is the provider's charge."
               },
               "computeUsd": {
                 "type": "number",
@@ -16690,6 +16697,14 @@
               }
             },
             "nullable": true
+          },
+          "llmProvider": {
+            "type": "string",
+            "enum": [
+              "openrouter",
+              "ai-gateway"
+            ],
+            "description": "Where the run's model calls went."
           },
           "summary": {
             "type": "string",

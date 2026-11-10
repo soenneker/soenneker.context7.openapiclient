@@ -23,6 +23,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
             else if (parseNode.GetChildNode("computeUsd") is { } nullNodeComputeUsd && nullNodeComputeUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeUsd = null;
             if (parseNode.GetChildNode("durationMs") is null) { _explicitNullValueDurationMs = default!; _explicitNullProperties?.Remove("durationMs"); }
             else if (parseNode.GetChildNode("durationMs") is { } nullNodeDurationMs && nullNodeDurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationMs = null;
+            if (parseNode.GetChildNode("estimatedTokenUsd") is null) { _explicitNullValueEstimatedTokenUsd = default!; _explicitNullProperties?.Remove("estimatedTokenUsd"); }
+            else if (parseNode.GetChildNode("estimatedTokenUsd") is { } nullNodeEstimatedTokenUsd && nullNodeEstimatedTokenUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedTokenUsd = null;
             if (parseNode.GetChildNode("inputTokens") is null) { _explicitNullValueInputTokens = default!; _explicitNullProperties?.Remove("inputTokens"); }
             else if (parseNode.GetChildNode("inputTokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
             if (parseNode.GetChildNode("outputTokens") is null) { _explicitNullValueOutputTokens = default!; _explicitNullProperties?.Remove("outputTokens"); }
@@ -42,13 +44,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The durationMs property</summary>
         public double? DurationMs { get => _explicitNullValueDurationMs; set { _explicitNullValueDurationMs = value; AdditionalData?.Remove("durationMs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("durationMs"); else _explicitNullProperties?.Remove("durationMs"); } }
         private double? _explicitNullValueDurationMs = default!;
+        /// <summary>The run&apos;s tokens at its provider&apos;s list price, for providers the agent runner cannot price (AI Gateway). Null when tokenUsd is the provider&apos;s charge.</summary>
+        public double? EstimatedTokenUsd { get => _explicitNullValueEstimatedTokenUsd; set { _explicitNullValueEstimatedTokenUsd = value; AdditionalData?.Remove("estimatedTokenUsd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimatedTokenUsd"); else _explicitNullProperties?.Remove("estimatedTokenUsd"); } }
+        private double? _explicitNullValueEstimatedTokenUsd = default!;
         /// <summary>The inputTokens property</summary>
         public double? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; AdditionalData?.Remove("inputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputTokens"); else _explicitNullProperties?.Remove("inputTokens"); } }
         private double? _explicitNullValueInputTokens = default!;
         /// <summary>The outputTokens property</summary>
         public double? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; AdditionalData?.Remove("outputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputTokens"); else _explicitNullProperties?.Remove("outputTokens"); } }
         private double? _explicitNullValueOutputTokens = default!;
-        /// <summary>The tokenUsd property</summary>
+        /// <summary>Model cost in USD reported by the agent runner. It may not match the provider bill.</summary>
         public double? TokenUsd { get => _explicitNullValueTokenUsd; set { _explicitNullValueTokenUsd = value; AdditionalData?.Remove("tokenUsd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenUsd"); else _explicitNullProperties?.Remove("tokenUsd"); } }
         private double? _explicitNullValueTokenUsd = default!;
         /// <summary>
@@ -81,6 +86,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "cachedInputTokens", n => { CachedInputTokens = n.GetDoubleValue(); } },
                 { "computeUsd", n => { ComputeUsd = n.GetDoubleValue(); } },
                 { "durationMs", n => { DurationMs = n.GetDoubleValue(); } },
+                { "estimatedTokenUsd", n => { EstimatedTokenUsd = n.GetDoubleValue(); } },
                 { "inputTokens", n => { InputTokens = n.GetDoubleValue(); } },
                 { "outputTokens", n => { OutputTokens = n.GetDoubleValue(); } },
                 { "tokenUsd", n => { TokenUsd = n.GetDoubleValue(); } },
@@ -96,6 +102,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteDoubleValue("cachedInputTokens", CachedInputTokens);
             writer.WriteDoubleValue("computeUsd", ComputeUsd);
             writer.WriteDoubleValue("durationMs", DurationMs);
+            writer.WriteDoubleValue("estimatedTokenUsd", EstimatedTokenUsd);
             writer.WriteDoubleValue("inputTokens", InputTokens);
             writer.WriteDoubleValue("outputTokens", OutputTokens);
             writer.WriteDoubleValue("tokenUsd", TokenUsd);

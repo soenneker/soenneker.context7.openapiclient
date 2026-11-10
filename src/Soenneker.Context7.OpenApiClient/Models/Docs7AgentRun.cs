@@ -35,6 +35,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("input") is null) { _explicitNullValueInput = default!; _explicitNullProperties?.Remove("input"); }
             else if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
+            if (parseNode.GetChildNode("llmProvider") is null) { _explicitNullValueLlmProvider = default!; _explicitNullProperties?.Remove("llmProvider"); }
+            else if (parseNode.GetChildNode("llmProvider") is { } nullNodeLlmProvider && nullNodeLlmProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmProvider = null;
             if (parseNode.GetChildNode("number") is null) { _explicitNullValueNumber = default!; _explicitNullProperties?.Remove("number"); }
             else if (parseNode.GetChildNode("number") is { } nullNodeNumber && nullNodeNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Number = null;
             if (parseNode.GetChildNode("pullRequest") is null) { _explicitNullValuePullRequest = default!; _explicitNullProperties?.Remove("pullRequest"); }
@@ -126,6 +128,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
         public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; AdditionalData?.Remove("input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput _explicitNullValueInput = default!;
 #endif
+        /// <summary>Where the run&apos;s model calls went.</summary>
+        public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunLlmProvider? LlmProvider { get => _explicitNullValueLlmProvider; set { _explicitNullValueLlmProvider = value; AdditionalData?.Remove("llmProvider"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmProvider"); else _explicitNullProperties?.Remove("llmProvider"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunLlmProvider? _explicitNullValueLlmProvider = default!;
         /// <summary>The number property</summary>
         public int? Number { get => _explicitNullValueNumber; set { _explicitNullValueNumber = value; AdditionalData?.Remove("number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number"); else _explicitNullProperties?.Remove("number"); } }
         private int? _explicitNullValueNumber = default!;
@@ -222,6 +227,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput.CreateFromDiscriminatorValue); } },
+                { "llmProvider", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunLlmProvider>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLlmProvider = default; _explicitNullProperties?.Remove("llmProvider"); AdditionalData["llmProvider"] = unknown; } else { LlmProvider = parsed; AdditionalData.Remove("llmProvider"); } } },
                 { "number", n => { Number = n.GetIntValue(); } },
                 { "pullRequest", n => { PullRequest = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest.CreateFromDiscriminatorValue); } },
                 { "review", n => { Review = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview>(global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview.CreateFromDiscriminatorValue); } },
@@ -249,6 +255,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput>("input", Input);
+            writer.WriteEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunLlmProvider>("llmProvider", LlmProvider);
             writer.WriteIntValue("number", Number);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunPullRequest>("pullRequest", PullRequest);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunReview>("review", Review);

@@ -13900,6 +13900,7 @@
           "trigger",
           "input",
           "pullRequest",
+          "llmProvider",
           "createdAt",
           "completedAt"
         ],
@@ -13950,6 +13951,9 @@
           },
           "cost": {
             "$ref": "#/components/schemas/Docs7AgentRunCost"
+          },
+          "llmProvider": {
+            "$ref": "#/components/schemas/Docs7AgentRunLlmProvider"
           },
           "summary": {
             "type": "string",
@@ -15657,7 +15661,13 @@
             "type": "number"
           },
           "tokenUsd": {
-            "type": "number"
+            "type": "number",
+            "description": "Model cost in USD reported by the agent runner. It may not match the provider bill."
+          },
+          "estimatedTokenUsd": {
+            "type": "number",
+            "description": "The run\u0027s tokens at its provider\u0027s list price, for providers the agent runner cannot price (AI Gateway). Null when tokenUsd is the provider\u0027s charge.",
+            "nullable": true
           },
           "computeUsd": {
             "type": "number",
@@ -19906,6 +19916,28 @@
             {
               "value": "pull_request",
               "name": "PullRequest"
+            }
+          ]
+        }
+      },
+      "Docs7AgentRunLlmProvider": {
+        "enum": [
+          "openrouter",
+          "ai-gateway"
+        ],
+        "type": "string",
+        "description": "Where the run\u0027s model calls went.",
+        "x-ms-enum": {
+          "name": "Docs7AgentRunLlmProvider",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "openrouter",
+              "name": "Openrouter"
+            },
+            {
+              "value": "ai-gateway",
+              "name": "AiGateway"
             }
           ]
         }
