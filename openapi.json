@@ -138,7 +138,7 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version preference. `latest` (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor) or else current documentation is returned, and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). A prerelease tag serves only a request for that prerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
+            "description": "Optional version preference. `latest` (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, the smallest indexed stable release above the request in its major (v2.3.1 for 2.0.0; all of 0.x is one major), for an old major newer than all its indexed releases that major's newest one, or else current documentation is returned, and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). A prerelease tag serves only a request for that prerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
             "required": false,
             "schema": {
               "type": "string",
@@ -4320,7 +4320,7 @@
           "Teamspace Libraries"
         ],
         "summary": "Add a version",
-        "description": "Parse a tag or branch of a repository, or a docs URL of a website, as a version of its own. Any public library takes versions; the teamspace does not need to own it. The call returns once the parse has started; poll the library details.",
+        "description": "Parse a tag or branch of a repository, or a docs URL of a website, as a version of its own. Context7 adds the versions of the most popular public libraries itself, and one of them answers 403 `versions_added_by_context7`. The call returns once the parse has started; poll the library details.",
         "operationId": "addTeamspaceLibraryVersion",
         "security": [
           {
