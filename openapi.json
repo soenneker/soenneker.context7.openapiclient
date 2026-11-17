@@ -3719,7 +3719,7 @@
           "Teamspace Libraries"
         ],
         "summary": "Add a library",
-        "description": "Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state.",
+        "description": "Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library's `libraryName` and `alreadyAvailable: true`.",
         "operationId": "addTeamspaceLibrary",
         "parameters": [
           {
@@ -3774,7 +3774,30 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/AddLibrarySuccess"
+            "description": "Library submitted for processing, or already on Context7 as a public library (`alreadyAvailable: true`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    { "$ref": "#/components/schemas/AddLibraryResponse" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "alreadyAvailable": {
+                          "type": "boolean",
+                          "description": "True when the source is already a public library on Context7. Nothing was submitted; read `libraryName`."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "libraryName": "/docker/docs",
+                  "alreadyAvailable": true,
+                  "message": "Context7 already has this source as the public library /docker/docs. It is ready to read with get_library; there is nothing to add."
+                }
+              }
+            }
           },
           "400": {
             "description": "Invalid body, or an unsupported `source`",

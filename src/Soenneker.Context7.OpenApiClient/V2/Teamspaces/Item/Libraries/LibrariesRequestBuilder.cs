@@ -78,9 +78,9 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraries200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraries200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state.
+        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response"/></returns>
         /// <param name="body">The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -94,11 +94,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
         /// <exception cref="global::Soenneker.Context7.OpenApiClient.Models.Error">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse?> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response?> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response> PostAsync(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -116,7 +116,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.AddLibraryResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The teamspace&apos;s private sources and the libraries it has claimed, each with its parse state. Use the library details for versions and the progress of a running parse.
@@ -138,7 +138,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
             return requestInfo;
         }
         /// <summary>
-        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state.
+        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.</param>

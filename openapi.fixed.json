@@ -3315,7 +3315,7 @@
           "Teamspace Libraries"
         ],
         "summary": "Add a library",
-        "description": "Submit a source for parsing; \u0060source\u0060 selects its kind. Any member can add a public source; it does not join the teamspace. A private source (\u0060private: true\u0060, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state.",
+        "description": "Submit a source for parsing; \u0060source\u0060 selects its kind. Any member can add a public source; it does not join the teamspace. A private source (\u0060private: true\u0060, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library\u0027s \u0060libraryName\u0060 and \u0060alreadyAvailable: true\u0060.",
         "operationId": "AddTeamspaceLibrary",
         "parameters": [
           {
@@ -3365,7 +3365,19 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/AddLibrarySuccess"
+            "description": "Library submitted for processing, or already on Context7 as a public library (\u0060alreadyAvailable: true\u0060)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddTeamspaceLibrary200Response"
+                },
+                "example": {
+                  "libraryName": "/docker/docs",
+                  "alreadyAvailable": true,
+                  "message": "Context7 already has this source as the public library /docker/docs. It is ready to read with get_library; there is nothing to add."
+                }
+              }
+            }
           },
           "400": {
             "description": "Invalid body, or an unsupported \u0060source\u0060",
@@ -17206,6 +17218,31 @@
             "type": "integer",
             "description": "Cents; null removes the limit.",
             "nullable": true
+          }
+        }
+      },
+      "AddTeamspaceLibrary200Response": {
+        "required": [
+          "libraryName",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "libraryName": {
+            "type": "string",
+            "description": "The library identifier assigned \u2014 the URL path of the library on context7.com. \u0060/owner/repo\u0060 for GitHub repositories, or \u0060/\u003Csource\u003E/\u003Cid\u003E\u0060 for other sources (e.g., \u0060/vercel/next.js\u0060, \u0060/websites/uploadcare_com\u0060). See [Library ID format](/api-guide#library-id-format)."
+          },
+          "version": {
+            "type": "string",
+            "description": "Only for websites: the version the URL was added as, when it is a version of an existing library. Request it as \u0060\u003ClibraryName\u003E/\u003Cversion\u003E\u0060."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable success message"
+          },
+          "alreadyAvailable": {
+            "type": "boolean",
+            "description": "True when the source is already a public library on Context7. Nothing was submitted; read \u0060libraryName\u0060."
           }
         }
       },
