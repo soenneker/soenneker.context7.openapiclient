@@ -111,7 +111,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "contentCheck", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.FetchPageResponseContentCheck>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueContentCheck = default; _explicitNullProperties?.Remove("contentCheck"); AdditionalData["contentCheck"] = unknown; } else { ContentCheck = parsed; AdditionalData.Remove("contentCheck"); } } },

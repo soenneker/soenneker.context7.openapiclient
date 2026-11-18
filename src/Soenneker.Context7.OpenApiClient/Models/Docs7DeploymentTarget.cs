@@ -103,7 +103,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "customDomainRouting", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.Docs7DeploymentTargetCustomDomainRouting>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCustomDomainRouting = default; _explicitNullProperties?.Remove("customDomainRouting"); AdditionalData["customDomainRouting"] = unknown; } else { CustomDomainRouting = parsed; AdditionalData.Remove("customDomainRouting"); } } },

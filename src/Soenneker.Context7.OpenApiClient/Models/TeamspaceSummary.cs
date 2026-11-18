@@ -96,7 +96,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "billingModel", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingModel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBillingModel = default; _explicitNullProperties?.Remove("billingModel"); AdditionalData["billingModel"] = unknown; } else { BillingModel = parsed; AdditionalData.Remove("billingModel"); } } },
                 { "billingSource", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceSummaryBillingSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBillingSource = default; _explicitNullProperties?.Remove("billingSource"); AdditionalData["billingSource"] = unknown; } else { BillingSource = parsed; AdditionalData.Remove("billingSource"); } } },

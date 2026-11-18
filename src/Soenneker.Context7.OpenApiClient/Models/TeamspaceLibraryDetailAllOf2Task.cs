@@ -79,7 +79,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "lockDate", n => { LockDate = n.GetDateTimeOffsetValue(); } },
                 { "lockState", n => { var parsed = n.GetEnumValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryTaskLockState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLockState = default; _explicitNullProperties?.Remove("lockState"); AdditionalData["lockState"] = unknown; } else { LockState = parsed; AdditionalData.Remove("lockState"); } } },

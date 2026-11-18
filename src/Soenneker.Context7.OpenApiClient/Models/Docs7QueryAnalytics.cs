@@ -132,7 +132,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "agentQuestions", n => { AgentQuestions = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem>(global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsAgentQuestionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "categories", n => { Categories = n.GetCollectionOfObjectValues<global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem>(global::Soenneker.Context7.OpenApiClient.Models.Docs7QueryAnalyticsCategoriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
