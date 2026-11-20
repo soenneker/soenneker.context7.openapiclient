@@ -22,7 +22,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*}", pathParameters)
+        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*,version*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*}", rawUrl)
+        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/context?libraryId={libraryId}&query={query}{&fast*,language*,type*,version*}", rawUrl)
         {
         }
         /// <summary>
@@ -142,6 +142,16 @@ namespace Soenneker.Context7.OpenApiClient.V2.Context
             /// <summary>Response format type</summary>
             [QueryParameter("type")]
             public global::Soenneker.Context7.OpenApiClient.Models.TypeParam? Type { get; set; }
+            /// <summary>Optional version of the library the caller&apos;s project uses, such as `15.4.3`. It wins over a version in `libraryId`. A value copied from a package file (`^15.4.3`, `~1.2`, `15.x`) keeps its first version. `latest` (any case) is the same as no version; any other value with no version (`any`) is a 400 `validation_error` with the message `Invalid version`, as on `/v3/search`. A version with indexed documentation is served as is. Otherwise the smallest indexed version above it in its major serves it (versions are tagged at the newest release of a group of releases whose docs barely differ, so that version covers the releases below it); for an old major newer than all its indexed versions, that major&apos;s newest version; else the current documentation. The response then names the version served (a Version note in text, the version field in JSON).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("version")]
+            public string? Version { get; set; }
+#nullable restore
+#else
+            [QueryParameter("version")]
+            public string Version { get; set; }
+#endif
         }
     }
 }

@@ -135,9 +135,9 @@
           {
             "name": "version",
             "in": "query",
-            "description": "Optional version preference. \u0060latest\u0060 (any case) is the same as no version. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, the smallest indexed stable release above the request in its major (v2.3.1 for 2.0.0; all of 0.x is one major), for an old major newer than all its indexed releases that major\u0027s newest one, or else current documentation is returned, and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). A prerelease tag serves only a request for that prerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
+            "description": "Optional version preference. \u0060latest\u0060 (any case) is the same as no version. A value copied from a package file (\u0060^15.4.3\u0060, \u0060~1.2\u0060, \u006015.x\u0060) keeps its first version; a value with no version (\u0060any\u0060) is a 400 \u0060Invalid version\u0060. Without a library value, the version applies when the question names one product; when it names several, the version is ignored. With one library, verified matching documentation is preferred; if unavailable, the smallest indexed stable release above the request in its major (v2.3.1 for 2.0.0; all of 0.x is one major), for an old major newer than all its indexed releases that major\u0027s newest one, or else current documentation is returned, and the response says so (X-Context7-Search-Status: partial with reason versionUnverified, X-Context7-Search-Version, and the version field of JSON responses). A prerelease tag serves only a request for that prerelease. With multiple libraries, the version is a preference and each returned library reports what it served. A version-like tag on a library value (/vercel/next.js@15) is the same request scoped to that library. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered.",
             "schema": {
-              "pattern": "^([Ll][Aa][Tt][Ee][Ss][Tt]|[Vv]?[0-9]\u002B([._][0-9]\u002B){0,2}([-\u002B][a-zA-Z0-9.-]\u002B)?)$",
+              "pattern": "^([Ll][Aa][Tt][Ee][Ss][Tt]|(.*[^A-Za-z0-9._])?[Vv]?[0-9].*)$",
               "type": "string"
             },
             "example": "15.2"
@@ -681,6 +681,9 @@
           },
           {
             "$ref": "#/components/parameters/LanguageParam"
+          },
+          {
+            "$ref": "#/components/parameters/ContextVersionParam"
           }
         ],
         "responses": {
@@ -10380,7 +10383,7 @@
             }
           },
           "403": {
-            "description": "Not allowed for this caller or plan",
+            "description": "Not allowed for this caller or plan, or blocked by a teamspace publication policy",
             "content": {
               "application/json": {
                 "schema": {
@@ -22222,6 +22225,16 @@
           "type": "string"
         },
         "example": "Python"
+      },
+      "ContextVersionParam": {
+        "name": "version",
+        "in": "query",
+        "description": "Optional version of the library the caller\u0027s project uses, such as \u006015.4.3\u0060. It wins over a version in \u0060libraryId\u0060. A value copied from a package file (\u0060^15.4.3\u0060, \u0060~1.2\u0060, \u006015.x\u0060) keeps its first version. \u0060latest\u0060 (any case) is the same as no version; any other value with no version (\u0060any\u0060) is a 400 \u0060validation_error\u0060 with the message \u0060Invalid version\u0060, as on \u0060/v3/search\u0060. A version with indexed documentation is served as is. Otherwise the smallest indexed version above it in its major serves it (versions are tagged at the newest release of a group of releases whose docs barely differ, so that version covers the releases below it); for an old major newer than all its indexed versions, that major\u0027s newest version; else the current documentation. The response then names the version served (a Version note in text, the version field in JSON).",
+        "schema": {
+          "pattern": "^([Ll][Aa][Tt][Ee][Ss][Tt]|(.*[^A-Za-z0-9._])?[Vv]?[0-9].*)$",
+          "type": "string"
+        },
+        "example": "15.4.3"
       },
       "DaysParam": {
         "name": "days",
