@@ -590,7 +590,7 @@
     "/v2/context": {
       "get": {
         "summary": "Get documentation context",
-        "description": "Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library's current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`.",
+        "description": "Retrieve intelligent, LLM-reranked documentation context for natural language queries. Returns the most relevant code snippets and documentation for your specific question. The text response lists them in relevance order across code and documentation; in JSON, `rank` gives that order. A version in the library ID that is not indexed is not an error: a ready tag that matches the requested numbers is served (`15` serves v15.1.8); otherwise the newest stable release of the requested line when it is newer than the request (v2.3.1 for 2.0.0; below 1.0, the same minor), or else the library's current documentation. A prerelease tag serves only a request for that prerelease. The text response then starts with a version note when the served documentation is not the requested version, and the JSON response carries a `version` object. A version that is not indexed for a public GitHub library is queued for indexing in the background, so a later request for it can be answered. A branch or channel name that is not indexed (`/owner/repo/canary`), or a version with nothing ready to serve, still returns 404 `version_not_found`. When the requested library has moved to another library ID, the response serves the new library (up to three moves, keeping the requested version): the text output starts with a one-line note that names the old and new IDs, and the JSON output's `libraryId` is the new ID.",
         "operationId": "getContext",
         "tags": [
           "Context"
@@ -624,6 +624,7 @@
                   "$ref": "#/components/schemas/ContextResponse"
                 },
                 "example": {
+                  "libraryId": "/vercel/next.js",
                   "codeSnippets": [
                     {
                       "codeTitle": "Middleware Authentication Example",
@@ -2307,6 +2308,112 @@
         ]
       }
     },
+    "/v2/add/google-drive": {
+      "post": {
+        "summary": "Add Google Drive files and folders",
+        "description": "Submit Google Docs, Google Slides files and folders for documentation processing. Folders and Shared Drives are read recursively on every parse and refresh. Requires a connected Google account and a teamspace. Errors: 401 `google_not_connected` (no connection, or Google revoked it), 403 `google_admin_blocked` (a Google Workspace admin blocked the app).",
+        "operationId": "addGoogleDrive",
+        "tags": [
+          "Add Library"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Give at least one ID in total in `fileIds`, `folderIds` or `driveIds`, and at most 500.",
+                "required": [
+                  "title",
+                  "description"
+                ],
+                "properties": {
+                  "fileIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[\\w-]+$"
+                    },
+                    "description": "Google Drive file IDs of Google Docs or Google Slides files."
+                  },
+                  "folderIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[\\w-]+$"
+                    },
+                    "description": "Google Drive folder IDs. Every Doc and Slides file inside, also in subfolders, is indexed."
+                  },
+                  "driveIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[\\w-]+$"
+                    },
+                    "description": "Shared Drive IDs. Every Doc and Slides file in the drive is indexed."
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Title for the library"
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Description of the library"
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "Optional. Requests with an API key or token use its teamspace; a different value returns 403 `teamspace_mismatch`."
+                  }
+                }
+              },
+              "example": {
+                "fileIds": [
+                  "1AbCdEfGhIjKlMnOpQrStUvWxYz"
+                ],
+                "folderIds": [
+                  "1ZyXwVuTsRqPoNmLkJiHgFeDcBa"
+                ],
+                "title": "Product Specs",
+                "description": "Product requirement documents and roadmap slides"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddLibrarySuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "$ref": "#/components/responses/DuplicateError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeoutError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/v2/teamspaces": {
       "get": {
         "summary": "List teamspaces",
@@ -2929,7 +3036,8 @@
                       "docx",
                       "file",
                       "confluence",
-                      "notion"
+                      "notion",
+                      "google-drive"
                     ],
                     "description": "Display hint for the library."
                   },
@@ -3722,7 +3830,7 @@
           "Teamspace Libraries"
         ],
         "summary": "Add a library",
-        "description": "Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library's `libraryName` and `alreadyAvailable: true`.",
+        "description": "Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion, Google Drive) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library's `libraryName` and `alreadyAvailable: true`.",
         "operationId": "addTeamspaceLibrary",
         "parameters": [
           {
@@ -3811,7 +3919,7 @@
                 },
                 "example": {
                   "error": "unsupported_source",
-                  "message": "source must be one of: github, gitlab, bitbucket, git, website, llmstxt, openapi, confluence, notion. Upload files in the Context7 dashboard."
+                  "message": "source must be one of: github, gitlab, bitbucket, git, website, llmstxt, openapi, confluence, notion, google-drive. Upload files in the Context7 dashboard."
                 }
               }
             }
@@ -12421,7 +12529,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (`/v2/teamspaces/*`), except personal data: member and invitation emails, library requesters, visitor questions, Docs7 reader searches, conversations, feedback and feature requests, and the GitHub account behind a build. To read those or make changes there, the key must be created with **Write access** ticked; other keys get 403 `write_access_required`."
+        "description": "Get your API key at [context7.com/dashboard](https://context7.com/dashboard). Treat your API key like a password and store it securely. Every key can read the management API (`/v2/teamspaces/*`), except personal data: member and invitation emails, library requesters, visitor questions, Docs7 reader searches, conversations, feedback and feature requests, and the GitHub account behind a build. To read those or make changes there, the key must be created with **Write access** ticked; other keys get 403 `write_access_required`. A teamspace can limit API keys to owners and admins, or turn them off for OAuth only; a key that its teamspace's policy refuses gets 403 `api_key_admins_only` or `api_keys_disabled`."
       }
     },
     "parameters": {
@@ -13111,6 +13219,11 @@
         "type": "object",
         "description": "Documentation context response",
         "properties": {
+          "libraryId": {
+            "type": "string",
+            "description": "ID of the library that served the response, with the requested version tag. It differs from the requested ID when the library has moved; a served version that differs from the requested one is reported in `version`.",
+            "example": "/vercel/next.js"
+          },
           "codeSnippets": {
             "type": "array",
             "description": "Relevant code snippets",
@@ -13490,6 +13603,12 @@
               "confluence": {
                 "$ref": "#/components/schemas/SourceTypeStatus"
               },
+              "notion": {
+                "$ref": "#/components/schemas/SourceTypeStatus"
+              },
+              "google_drive": {
+                "$ref": "#/components/schemas/SourceTypeStatus"
+              },
               "uploaded_files": {
                 "$ref": "#/components/schemas/SourceTypeStatus"
               },
@@ -13823,6 +13942,8 @@
                     "public_repos",
                     "private_sources",
                     "confluence",
+                    "notion",
+                    "google_drive",
                     "uploaded_files",
                     "websites",
                     "llmstxt"
@@ -13838,6 +13959,8 @@
                     "public_repos",
                     "private_sources",
                     "confluence",
+                    "notion",
+                    "google_drive",
                     "uploaded_files",
                     "websites",
                     "llmstxt"
@@ -14172,7 +14295,8 @@
               "docx",
               "file",
               "confluence",
-              "notion"
+              "notion",
+              "google-drive"
             ]
           },
           "docsUrl": {
@@ -14441,7 +14565,8 @@
               "docx",
               "file",
               "confluence",
-              "notion"
+              "notion",
+              "google-drive"
             ],
             "description": "Source type."
           },
@@ -14847,6 +14972,55 @@
           }
         }
       },
+      "TeamspaceLibraryGoogleDriveSource": {
+        "type": "object",
+        "description": "Google Docs, Google Slides files and folders, added as a private source. Needs the owner or admin role and a Google account connected in the dashboard. Give at least one ID in total in `fileIds`, `folderIds` or `driveIds`, and at most 500.",
+        "required": [
+          "source",
+          "title",
+          "description"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "google-drive"
+            ]
+          },
+          "fileIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "description": "Google Drive file IDs of Google Docs or Google Slides files."
+          },
+          "folderIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "description": "Google Drive folder IDs. Every Doc and Slides file inside, also in subfolders, is indexed."
+          },
+          "driveIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "description": "Shared Drive IDs. Every Doc and Slides file in the drive is indexed."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
       "TeamspaceLibraryAddRequest": {
         "description": "The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.",
         "oneOf": [
@@ -14867,6 +15041,9 @@
           },
           {
             "$ref": "#/components/schemas/TeamspaceLibraryNotionSource"
+          },
+          {
+            "$ref": "#/components/schemas/TeamspaceLibraryGoogleDriveSource"
           }
         ]
       },
@@ -18254,6 +18431,13 @@
                   "message": "Only team owners and admins can add private repositories"
                 }
               },
+              "apiKeysDisabled": {
+                "summary": "The teamspace allows OAuth only",
+                "value": {
+                  "error": "api_keys_disabled",
+                  "message": "This teamspace does not allow API keys. Connect with OAuth instead: run `npx ctx7@latest setup --mcp --oauth`, or see https://context7.com/docs/howto/oauth"
+                }
+              },
               "planRequired": {
                 "summary": "Plan upgrade required",
                 "value": {
@@ -18369,7 +18553,7 @@
         }
       },
       "RedirectError": {
-        "description": "Moved Permanently - Library has been redirected",
+        "description": "Moved Permanently - The library moves more than three times or in a loop, so no documentation is served. `redirectUrl` is the next library ID in the chain.",
         "content": {
           "application/json": {
             "schema": {

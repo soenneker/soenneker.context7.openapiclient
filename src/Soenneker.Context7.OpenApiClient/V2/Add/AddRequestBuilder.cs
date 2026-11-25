@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.V2.Add.Confluence;
 using Soenneker.Context7.OpenApiClient.V2.Add.DocxUpload;
 using Soenneker.Context7.OpenApiClient.V2.Add.FileUpload;
+using Soenneker.Context7.OpenApiClient.V2.Add.GoogleDrive;
 using Soenneker.Context7.OpenApiClient.V2.Add.Llmstxt;
 using Soenneker.Context7.OpenApiClient.V2.Add.Notion;
 using Soenneker.Context7.OpenApiClient.V2.Add.Openapi;
@@ -38,6 +39,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Add
         public global::Soenneker.Context7.OpenApiClient.V2.Add.FileUpload.FileUploadRequestBuilder FileUpload
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Add.FileUpload.FileUploadRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The googleDrive property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Add.GoogleDrive.GoogleDriveRequestBuilder GoogleDrive
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Add.GoogleDrive.GoogleDriveRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The llmstxt property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Add.Llmstxt.LlmstxtRequestBuilder Llmstxt

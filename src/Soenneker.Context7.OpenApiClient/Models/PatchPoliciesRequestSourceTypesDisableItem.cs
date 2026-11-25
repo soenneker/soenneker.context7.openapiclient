@@ -20,6 +20,14 @@ namespace Soenneker.Context7.OpenApiClient.Models
         #pragma warning disable CS1591
         Confluence,
         #pragma warning restore CS1591
+        [EnumMember(Value = "notion")]
+        #pragma warning disable CS1591
+        Notion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "google_drive")]
+        #pragma warning disable CS1591
+        GoogleDrive,
+        #pragma warning restore CS1591
         [EnumMember(Value = "uploaded_files")]
         #pragma warning disable CS1591
         UploadedFiles,

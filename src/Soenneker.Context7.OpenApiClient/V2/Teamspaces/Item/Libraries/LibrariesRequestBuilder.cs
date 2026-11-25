@@ -78,7 +78,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraries200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraries200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
+        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion, Google Drive) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.AddTeamspaceLibrary200Response"/></returns>
         /// <param name="body">The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.</param>
@@ -138,7 +138,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries
             return requestInfo;
         }
         /// <summary>
-        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
+        /// Submit a source for parsing; `source` selects its kind. Any member can add a public source; it does not join the teamspace. A private source (`private: true`, Confluence, Notion, Google Drive) joins this teamspace and needs the owner or admin role. The call returns once the parse has started (up to about 30 seconds); poll the library details for its state. A source Context7 already has as a public library is not added again: the call answers 200 with that library&apos;s `libraryName` and `alreadyAvailable: true`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The library source. File uploads (PDF, DOCX, files, OpenAPI files) are not available here; upload them in the dashboard.</param>

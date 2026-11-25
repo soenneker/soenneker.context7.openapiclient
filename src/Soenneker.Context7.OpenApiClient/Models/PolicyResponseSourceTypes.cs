@@ -20,8 +20,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("confluence") is null) { _explicitNullValueConfluence = default!; _explicitNullProperties?.Remove("confluence"); }
             else if (parseNode.GetChildNode("confluence") is { } nullNodeConfluence && nullNodeConfluence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confluence = null;
+            if (parseNode.GetChildNode("google_drive") is null) { _explicitNullValueGoogleDrive = default!; _explicitNullProperties?.Remove("google_drive"); }
+            else if (parseNode.GetChildNode("google_drive") is { } nullNodeGoogleDrive && nullNodeGoogleDrive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleDrive = null;
             if (parseNode.GetChildNode("llmstxt") is null) { _explicitNullValueLlmstxt = default!; _explicitNullProperties?.Remove("llmstxt"); }
             else if (parseNode.GetChildNode("llmstxt") is { } nullNodeLlmstxt && nullNodeLlmstxt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Llmstxt = null;
+            if (parseNode.GetChildNode("notion") is null) { _explicitNullValueNotion = default!; _explicitNullProperties?.Remove("notion"); }
+            else if (parseNode.GetChildNode("notion") is { } nullNodeNotion && nullNodeNotion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notion = null;
             if (parseNode.GetChildNode("private_sources") is null) { _explicitNullValuePrivateSources = default!; _explicitNullProperties?.Remove("private_sources"); }
             else if (parseNode.GetChildNode("private_sources") is { } nullNodePrivateSources && nullNodePrivateSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateSources = null;
             if (parseNode.GetChildNode("public_repos") is null) { _explicitNullValuePublicRepos = default!; _explicitNullProperties?.Remove("public_repos"); }
@@ -47,12 +51,32 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? GoogleDrive { get => _explicitNullValueGoogleDrive; set { _explicitNullValueGoogleDrive = value; AdditionalData?.Remove("google_drive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_drive"); else _explicitNullProperties?.Remove("google_drive"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueGoogleDrive = default!;
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus GoogleDrive { get => _explicitNullValueGoogleDrive; set { _explicitNullValueGoogleDrive = value; AdditionalData?.Remove("google_drive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_drive"); else _explicitNullProperties?.Remove("google_drive"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueGoogleDrive = default!;
+#endif
+        /// <summary>Whether a source type is enabled or disabled</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; AdditionalData?.Remove("llmstxt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueLlmstxt = default!;
 #nullable restore
 #else
         public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Llmstxt { get => _explicitNullValueLlmstxt; set { _explicitNullValueLlmstxt = value; AdditionalData?.Remove("llmstxt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llmstxt"); else _explicitNullProperties?.Remove("llmstxt"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueLlmstxt = default!;
+#endif
+        /// <summary>Whether a source type is enabled or disabled</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? Notion { get => _explicitNullValueNotion; set { _explicitNullValueNotion = value; AdditionalData?.Remove("notion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notion"); else _explicitNullProperties?.Remove("notion"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus? _explicitNullValueNotion = default!;
+#nullable restore
+#else
+        public global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus Notion { get => _explicitNullValueNotion; set { _explicitNullValueNotion = value; AdditionalData?.Remove("notion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notion"); else _explicitNullProperties?.Remove("notion"); } }
+        private global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus _explicitNullValueNotion = default!;
 #endif
         /// <summary>Whether a source type is enabled or disabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,10 +141,12 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(6)
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "confluence", n => { Confluence = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
+                { "google_drive", n => { GoogleDrive = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
                 { "llmstxt", n => { Llmstxt = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
+                { "notion", n => { Notion = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
                 { "private_sources", n => { PrivateSources = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
                 { "public_repos", n => { PublicRepos = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
                 { "uploaded_files", n => { UploadedFiles = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>(global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus.CreateFromDiscriminatorValue); } },
@@ -135,7 +161,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("confluence", Confluence);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("google_drive", GoogleDrive);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("llmstxt", Llmstxt);
+            writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("notion", Notion);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("private_sources", PrivateSources);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("public_repos", PublicRepos);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SourceTypeStatus>("uploaded_files", UploadedFiles);

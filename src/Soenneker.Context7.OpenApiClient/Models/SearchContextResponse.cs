@@ -21,6 +21,8 @@ namespace Soenneker.Context7.OpenApiClient.Models
             else if (parseNode.GetChildNode("codeSnippets") is { } nullNodeCodeSnippets && nullNodeCodeSnippets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeSnippets = null;
             if (parseNode.GetChildNode("infoSnippets") is null) { _explicitNullValueInfoSnippets = default!; _explicitNullProperties?.Remove("infoSnippets"); }
             else if (parseNode.GetChildNode("infoSnippets") is { } nullNodeInfoSnippets && nullNodeInfoSnippets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InfoSnippets = null;
+            if (parseNode.GetChildNode("libraryId") is null) { _explicitNullValueLibraryId = default!; _explicitNullProperties?.Remove("libraryId"); }
+            else if (parseNode.GetChildNode("libraryId") is { } nullNodeLibraryId && nullNodeLibraryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryId = null;
             if (parseNode.GetChildNode("rules") is null) { _explicitNullValueRules = default!; _explicitNullProperties?.Remove("rules"); }
             else if (parseNode.GetChildNode("rules") is { } nullNodeRules && nullNodeRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rules = null;
             if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
@@ -48,6 +50,16 @@ namespace Soenneker.Context7.OpenApiClient.Models
 #else
         public global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseInfoSnippets InfoSnippets { get => _explicitNullValueInfoSnippets; set { _explicitNullValueInfoSnippets = value; AdditionalData?.Remove("infoSnippets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("infoSnippets"); else _explicitNullProperties?.Remove("infoSnippets"); } }
         private global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseInfoSnippets _explicitNullValueInfoSnippets = default!;
+#endif
+        /// <summary>ID of the library that served the response, with the requested version tag. It differs from the requested ID when the library has moved; a served version that differs from the requested one is reported in `version`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        private string? _explicitNullValueLibraryId = default!;
+#nullable restore
+#else
+        public string LibraryId { get => _explicitNullValueLibraryId; set { _explicitNullValueLibraryId = value; AdditionalData?.Remove("libraryId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libraryId"); else _explicitNullProperties?.Remove("libraryId"); } }
+        private string _explicitNullValueLibraryId = default!;
 #endif
         /// <summary>The rules property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,10 +104,11 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(4)
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "codeSnippets", n => { CodeSnippets = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseCodeSnippets>(global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseCodeSnippets.CreateFromDiscriminatorValue); } },
                 { "infoSnippets", n => { InfoSnippets = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseInfoSnippets>(global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseInfoSnippets.CreateFromDiscriminatorValue); } },
+                { "libraryId", n => { LibraryId = n.GetStringValue(); } },
                 { "rules", n => { Rules = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseRules>(global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseRules.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseVersion>(global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseVersion.CreateFromDiscriminatorValue); } },
             };
@@ -109,6 +122,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseCodeSnippets>("codeSnippets", CodeSnippets);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseInfoSnippets>("infoSnippets", InfoSnippets);
+            writer.WriteStringValue("libraryId", LibraryId);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseRules>("rules", Rules);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.SearchContextResponseVersion>("version", Version);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

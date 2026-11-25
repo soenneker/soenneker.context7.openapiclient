@@ -57,6 +57,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
                 "git" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource(),
                 "github" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource(),
                 "gitlab" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryRepoSource(),
+                "google-drive" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryGoogleDriveSource(),
                 "llmstxt" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryLlmsTxtSource(),
                 "notion" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryNotionSource(),
                 "openapi" => new global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryAddRequestTeamspaceLibraryOpenApiSource(),
