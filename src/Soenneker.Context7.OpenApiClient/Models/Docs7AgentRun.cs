@@ -118,7 +118,7 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private Guid? _explicitNullValueId = default!;
-        /// <summary>What the run worked on. The other fields depend on `kind`.</summary>
+        /// <summary>What the run worked on. The other fields depend on `kind`. A `suggestions` run lists its suggestions without the Context7 users&apos; queries they came from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Context7.OpenApiClient.Models.Docs7AgentRunInput? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; AdditionalData?.Remove("input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }

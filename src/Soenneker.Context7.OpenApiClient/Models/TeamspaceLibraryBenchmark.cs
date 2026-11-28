@@ -19,10 +19,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("benchmarkDate") is null) { _explicitNullValueBenchmarkDate = default!; _explicitNullProperties?.Remove("benchmarkDate"); }
             else if (parseNode.GetChildNode("benchmarkDate") is { } nullNodeBenchmarkDate && nullNodeBenchmarkDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkDate = null;
-            if (parseNode.GetChildNode("explanation") is null) { _explicitNullValueExplanation = default!; _explicitNullProperties?.Remove("explanation"); }
-            else if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
-            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
-            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
             if (parseNode.GetChildNode("score") is null) { _explicitNullValueScore = default!; _explicitNullProperties?.Remove("score"); }
             else if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
             if (parseNode.GetChildNode("subscores") is null) { _explicitNullValueSubscores = default!; _explicitNullProperties?.Remove("subscores"); }
@@ -34,26 +30,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The benchmarkDate property</summary>
         public DateTimeOffset? BenchmarkDate { get => _explicitNullValueBenchmarkDate; set { _explicitNullValueBenchmarkDate = value; AdditionalData?.Remove("benchmarkDate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkDate"); else _explicitNullProperties?.Remove("benchmarkDate"); } }
         private DateTimeOffset? _explicitNullValueBenchmarkDate = default!;
-        /// <summary>Why the grader gave this score.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
-        private string? _explicitNullValueExplanation = default!;
-#nullable restore
-#else
-        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
-        private string _explicitNullValueExplanation = default!;
-#endif
-        /// <summary>The question that was asked.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
-        private string? _explicitNullValueQuery = default!;
-#nullable restore
-#else
-        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
-        private string _explicitNullValueQuery = default!;
-#endif
         /// <summary>0 to 100.</summary>
         public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; AdditionalData?.Remove("score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
         private double? _explicitNullValueScore = default!;
@@ -90,11 +66,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(5)
+            return new Dictionary<string, Action<IParseNode>>
             {
                 { "benchmarkDate", n => { BenchmarkDate = n.GetDateTimeOffsetValue(); } },
-                { "explanation", n => { Explanation = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetStringValue(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "subscores", n => { Subscores = n.GetObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores>(global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores.CreateFromDiscriminatorValue); } },
             };
@@ -107,8 +81,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("benchmarkDate", BenchmarkDate);
-            writer.WriteStringValue("explanation", Explanation);
-            writer.WriteStringValue("query", Query);
             writer.WriteDoubleValue("score", Score);
             writer.WriteObjectValue<global::Soenneker.Context7.OpenApiClient.Models.TeamspaceLibraryBenchmarkSubscores>("subscores", Subscores);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

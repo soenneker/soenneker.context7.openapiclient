@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         {
         }
         /// <summary>
-        /// Questions the library&apos;s docs answered badly in Context7&apos;s benchmark, newest first, with what to add and the doc files to change. Only the teamspace that owns the library can read them.
+        /// Gaps Context7&apos;s benchmark found in the library&apos;s docs, newest first, with what to add and the doc files to change. The questions behind them are Context7 users&apos; queries and are not returned. Only the teamspace that owns the library can read them.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibrarySuggestions200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibrarySuggestions200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibrarySuggestions200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Questions the library&apos;s docs answered badly in Context7&apos;s benchmark, newest first, with what to add and the doc files to change. Only the teamspace that owns the library can read them.
+        /// Gaps Context7&apos;s benchmark found in the library&apos;s docs, newest first, with what to add and the doc files to change. The questions behind them are Context7 users&apos; queries and are not returned. Only the teamspace that owns the library can read them.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

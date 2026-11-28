@@ -34,7 +34,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         {
         }
         /// <summary>
-        /// The library&apos;s benchmark score and its latest graded questions, newest first (up to 100): real questions asked about the library, each with the score Context7&apos;s grader gave the answer from its docs and the grader&apos;s explanation. Low scores show what the docs miss. Only the teamspace that owns the library can read them.
+        /// The library&apos;s benchmark score and its latest graded answers, newest first (up to 100): the score and sub-scores Context7&apos;s grader gave each answer from its docs. The questions are Context7 users&apos; queries and are not returned; suggestions name the gaps to fix. Only the teamspace that owns the library can read them.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response>(requestInfo, global::Soenneker.Context7.OpenApiClient.Models.ListTeamspaceLibraryBenchmarks200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The library&apos;s benchmark score and its latest graded questions, newest first (up to 100): real questions asked about the library, each with the score Context7&apos;s grader gave the answer from its docs and the grader&apos;s explanation. Low scores show what the docs miss. Only the teamspace that owns the library can read them.
+        /// The library&apos;s benchmark score and its latest graded answers, newest first (up to 100): the score and sub-scores Context7&apos;s grader gave each answer from its docs. The questions are Context7 users&apos; queries and are not returned; suggestions name the gaps to fix. Only the teamspace that owns the library can read them.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

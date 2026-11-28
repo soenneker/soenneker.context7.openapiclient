@@ -19,8 +19,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("benchmarkScore") is null) { _explicitNullValueBenchmarkScore = default!; _explicitNullProperties?.Remove("benchmarkScore"); }
             else if (parseNode.GetChildNode("benchmarkScore") is { } nullNodeBenchmarkScore && nullNodeBenchmarkScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkScore = null;
-            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
-            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
             if (parseNode.GetChildNode("recommendation") is null) { _explicitNullValueRecommendation = default!; _explicitNullProperties?.Remove("recommendation"); }
             else if (parseNode.GetChildNode("recommendation") is { } nullNodeRecommendation && nullNodeRecommendation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recommendation = null;
             if (parseNode.GetChildNode("sourceFiles") is null) { _explicitNullValueSourceFiles = default!; _explicitNullProperties?.Remove("sourceFiles"); }
@@ -34,16 +32,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <summary>The benchmarkScore property</summary>
         public double? BenchmarkScore { get => _explicitNullValueBenchmarkScore; set { _explicitNullValueBenchmarkScore = value; AdditionalData?.Remove("benchmarkScore"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmarkScore"); else _explicitNullProperties?.Remove("benchmarkScore"); } }
         private double? _explicitNullValueBenchmarkScore = default!;
-        /// <summary>The question the docs answered badly.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
-        private string? _explicitNullValueQuery = default!;
-#nullable restore
-#else
-        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
-        private string _explicitNullValueQuery = default!;
-#endif
         /// <summary>What to add or change in the docs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,10 +78,9 @@ namespace Soenneker.Context7.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(5)
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "benchmarkScore", n => { BenchmarkScore = n.GetDoubleValue(); } },
-                { "query", n => { Query = n.GetStringValue(); } },
                 { "recommendation", n => { Recommendation = n.GetStringValue(); } },
                 { "sourceFiles", n => { SourceFiles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
@@ -107,7 +94,6 @@ namespace Soenneker.Context7.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("benchmarkScore", BenchmarkScore);
-            writer.WriteStringValue("query", Query);
             writer.WriteStringValue("recommendation", Recommendation);
             writer.WriteCollectionOfPrimitiveValues<string>("sourceFiles", SourceFiles);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);

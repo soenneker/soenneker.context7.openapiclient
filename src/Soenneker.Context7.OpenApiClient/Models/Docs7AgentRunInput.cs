@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Context7.OpenApiClient.Models
 {
     /// <summary>
-    /// What the run worked on. The other fields depend on `kind`.
+    /// What the run worked on. The other fields depend on `kind`. A `suggestions` run lists its suggestions without the Context7 users&apos; queries they came from.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Docs7AgentRunInput : IAdditionalDataHolder, IParsable

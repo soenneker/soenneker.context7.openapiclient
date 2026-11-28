@@ -3753,6 +3753,355 @@
         }
       }
     },
+    "/v2/teamspaces/{teamspaceId}/gitops": {
+      "parameters": [
+        {
+          "name": "teamspaceId",
+          "in": "path",
+          "required": true,
+          "description": "Teamspace id (from `GET /v2/teamspaces`).",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get GitOps settings and sync history",
+        "description": "The teamspace's GitOps manifest sync (Pro and Enterprise, the plan or a trial): the settings, the plan's limits and the newest syncs. Any member can call it.",
+        "operationId": "getGitOps",
+        "tags": [
+          "Teamspace Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "GitOps settings and history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GitOpsView"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Save GitOps settings",
+        "description": "Sets the manifest repository (github.com, with the Context7 GitHub App installed and readable by the caller), branch, file path and prune. Owners and admins of a Pro or Enterprise teamspace; other plans get 403 `plan_required`. The save that turns GitOps on answers 409 `confirmation_required` with the terms (`enable`: the plan's limits, the parse token price and typical costs) until it is sent again with their `confirmation`. Every sync runs as the user who saved the settings last. A new repository, branch or path makes the next sync a first sync, which needs a confirmed preview. Turning GitOps off with every other field unchanged is always allowed, on any plan and without GitHub access; a save with `enabled: false` that also changes other fields runs the same checks and saves every field, or is refused and saves nothing.",
+        "operationId": "updateGitOps",
+        "tags": [
+          "Teamspace Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GitOpsSettingsInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Settings saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "config"
+                  ],
+                  "properties": {
+                    "config": {
+                      "$ref": "#/components/schemas/GitOpsConfig"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "description": "`plan_required`: GitOps is available on the Pro and Enterprise plans; or the caller may not change it.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "`confirmation_required` (with the `enable` terms to confirm), `github_app_not_installed` or `github_access_required`: the caller's GitHub account and the Context7 GitHub App must both reach the manifest repository.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enable": {
+                          "$ref": "#/components/schemas/GitOpsEnableTerms"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/teamspaces/{teamspaceId}/gitops/preview": {
+      "parameters": [
+        {
+          "name": "teamspaceId",
+          "in": "path",
+          "required": true,
+          "description": "Teamspace id (from `GET /v2/teamspaces`).",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Preview a GitOps sync",
+        "description": "Reads the manifest and answers what a sync would add, re-parse, leave, skip and remove under the plan's limits, with an estimate of the parse tokens it starts and of the monthly upper bound of the automatic refresh modes the manifest sets, without changing anything. The `confirmation` it returns is sent to `POST .../gitops/sync` for the first sync and for any sync that removes libraries. Owners and admins of a Pro or Enterprise teamspace.",
+        "operationId": "previewGitOpsSync",
+        "tags": [
+          "Teamspace Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "What a sync would do now",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "preview"
+                  ],
+                  "properties": {
+                    "preview": {
+                      "$ref": "#/components/schemas/GitOpsPreview"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "description": "`plan_required`: GitOps is available on the Pro and Enterprise plans; or the caller may not change it.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`gitops_not_configured`: no GitOps settings saved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "`invalid_manifest`: the manifest cannot be read or is invalid; the message says why.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "description": "`github_unavailable`: GitHub did not answer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/teamspaces/{teamspaceId}/gitops/sync": {
+      "parameters": [
+        {
+          "name": "teamspaceId",
+          "in": "path",
+          "required": true,
+          "description": "Teamspace id (from `GET /v2/teamspaces`).",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "post": {
+        "summary": "Run a GitOps sync",
+        "description": "Queues a sync of the teamspace's manifest now, for example from CI after a change to a manifest that GitHub cannot push to Context7. Answers 202; the result appears in the sync history (`GET .../gitops`). Each sync starts at most the plan's parses (Pro 5, Enterprise 20); the rest wait for the next one. The first sync and a sync that would remove libraries need the `confirmation` of a preview of the same manifest. Other syncs, including pushes, the daily sync and CI syncs that start parses, need none: turning GitOps on accepted them. Owners and admins of a Pro or Enterprise teamspace, with a write-access key.",
+        "operationId": "syncGitOps",
+        "tags": [
+          "Teamspace Admin"
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confirmation": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "description": "The `confirmation` of `GET .../gitops/preview`."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Sync queued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "queued"
+                  ],
+                  "properties": {
+                    "queued": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "description": "`plan_required`: GitOps is available on the Pro and Enterprise plans; or the caller may not change it.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "`confirmation_required` (with the `preview` to confirm and its estimate), `gitops_disabled` or `sync_running`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "preview": {
+                          "$ref": "#/components/schemas/GitOpsPreview"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "`invalid_manifest`: the manifest cannot be read or is invalid; the message says why.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/v2/teamspaces/{teamspaceId}/libraries": {
       "get": {
         "tags": [
@@ -4411,6 +4760,237 @@
           },
           "429": {
             "$ref": "#/components/responses/RateLimitError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v2/teamspaces/{teamspaceId}/libraries/{owner}/{repo}/automatic-refresh": {
+      "parameters": [
+        {
+          "name": "teamspaceId",
+          "in": "path",
+          "required": true,
+          "description": "Teamspace id.",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "owner",
+          "in": "path",
+          "required": true,
+          "description": "First segment of the library id `/owner/repo`. Case-insensitive.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repo",
+          "in": "path",
+          "required": true,
+          "description": "Second segment of the library id `/owner/repo`. Case-insensitive.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "Teamspace Libraries"
+        ],
+        "summary": "Get automatic refresh",
+        "description": "The teamspace's automatic refresh mode of one of its private libraries, the library's automatic refresh state, and what a refresh of it may cost (`estimate`). Any member may read it.",
+        "operationId": "getTeamspaceLibraryAutomaticRefresh",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The mode, the run state and the cost estimate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "automaticRefresh"
+                  ],
+                  "properties": {
+                    "automaticRefresh": {
+                      "$ref": "#/components/schemas/TeamspaceLibraryAutomaticRefresh"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The library is not one of the teamspace's private sources (`not_private_library`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "not_private_library",
+                  "message": "Automatic refresh is for the teamspace's private libraries."
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "description": "The caller cannot access the teamspace (`forbidden`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "forbidden",
+                  "message": "You do not have access to this teamspace."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The teamspace has no library with this id (neither claimed nor one of its private sources)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "library_not_found",
+                  "message": "This teamspace has no library with this id."
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Teamspace Libraries"
+        ],
+        "summary": "Set automatic refresh",
+        "description": "Sets the teamspace's automatic refresh mode of one of its private libraries (Pro and Enterprise, including an active Enterprise trial; the library need not be claimed). On Pro at most 10 private libraries of a teamspace may have a mode other than `off`. `off` is always allowed, so a teamspace that dropped to Free can still turn it off. Each automatic refresh bills its parse tokens to the teamspace at $5 per 1M tokens, and runs only when the tracked branch has new documentation changes. Saving a mode again resumes a paused library.",
+        "operationId": "updateTeamspaceLibraryAutomaticRefresh",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamspaceLibraryAutomaticRefreshUpdate"
+              },
+              "example": {
+                "mode": "push"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The saved mode and the run state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "automaticRefresh"
+                  ],
+                  "properties": {
+                    "automaticRefresh": {
+                      "$ref": "#/components/schemas/TeamspaceLibraryAutomaticRefresh"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An invalid mode (`validation_error`), a library that is not one of the teamspace's private sources (`not_private_library`), or a repository that is not on github.com (`automatic_refresh_unsupported`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "automatic_refresh_unsupported",
+                  "message": "Automatic refresh supports private repositories on github.com only."
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "description": "The caller cannot access the teamspace or its role is too low (`forbidden`), the API key cannot write (`write_access_required`), a mode was turned on in a teamspace whose plan has no automatic refresh: Free or a personal project (`plan_required`), or an 11th library was turned on in a Pro teamspace (`automatic_refresh_limit_reached`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "planRequired": {
+                    "value": {
+                      "error": "plan_required",
+                      "message": "Automatic refresh is available on the Pro and Enterprise plans."
+                    }
+                  },
+                  "limitReached": {
+                    "value": {
+                      "error": "automatic_refresh_limit_reached",
+                      "message": "Your plan allows automatic refresh for 10 private libraries per teamspace. Turn it off for another library, or upgrade to Enterprise."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The teamspace has no library with this id (neither claimed nor one of its private sources)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "library_not_found",
+                  "message": "This teamspace has no library with this id."
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The Context7 GitHub App is not installed on the repository (`github_app_not_installed`), or the caller's GitHub account cannot reach it through that installation (`github_access_required`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "github_access_required",
+                  "message": "Give your GitHub account and the Context7 GitHub App access to this repository, then try again."
+                }
+              }
+            }
           },
           "500": {
             "$ref": "#/components/responses/InternalServerError"
@@ -10045,7 +10625,7 @@
           "Teamspace Libraries"
         ],
         "summary": "List library suggestions",
-        "description": "Questions the library's docs answered badly in Context7's benchmark, newest first, with what to add and the doc files to change. Only the teamspace that owns the library can read them.",
+        "description": "Gaps Context7's benchmark found in the library's docs, newest first, with what to add and the doc files to change. The questions behind them are Context7 users' queries and are not returned. Only the teamspace that owns the library can read them.",
         "operationId": "listTeamspaceLibrarySuggestions",
         "security": [
           {
@@ -10125,7 +10705,7 @@
           "Teamspace Libraries"
         ],
         "summary": "List library benchmarks",
-        "description": "The library's benchmark score and its latest graded questions, newest first (up to 100): real questions asked about the library, each with the score Context7's grader gave the answer from its docs and the grader's explanation. Low scores show what the docs miss. Only the teamspace that owns the library can read them.",
+        "description": "The library's benchmark score and its latest graded answers, newest first (up to 100): the score and sub-scores Context7's grader gave each answer from its docs. The questions are Context7 users' queries and are not returned; suggestions name the gaps to fix. Only the teamspace that owns the library can read them.",
         "operationId": "listTeamspaceLibraryBenchmarks",
         "security": [
           {
@@ -14511,6 +15091,582 @@
           }
         }
       },
+      "GitOpsConfig": {
+        "type": "object",
+        "required": [
+          "enabled",
+          "repoUrl",
+          "branch",
+          "filePath",
+          "prune",
+          "configuredBy",
+          "lastSyncedAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Sync on push and once a day."
+          },
+          "repoUrl": {
+            "type": "string",
+            "example": "https://github.com/acme/context7-config"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Empty: the repository's default branch."
+          },
+          "filePath": {
+            "type": "string",
+            "example": "repos.yaml"
+          },
+          "prune": {
+            "type": "boolean",
+            "description": "Remove the private libraries GitOps added once the manifest no longer lists them. Libraries added in the dashboard or the API are never removed."
+          },
+          "configuredBy": {
+            "type": "string",
+            "description": "Clerk user id of the owner or admin every sync runs as."
+          },
+          "lastSyncedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "GitOpsSettingsInput": {
+        "type": "object",
+        "required": [
+          "enabled",
+          "repoUrl",
+          "filePath",
+          "prune"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "repoUrl": {
+            "type": "string",
+            "description": "https://github.com/owner/repo"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Empty or absent: the default branch.",
+            "default": ""
+          },
+          "filePath": {
+            "type": "string",
+            "default": "repos.yaml"
+          },
+          "prune": {
+            "type": "boolean"
+          },
+          "confirmation": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "The `confirmation` of the `enable` terms; needed by the save that turns GitOps on."
+          }
+        }
+      },
+      "GitOpsRun": {
+        "type": "object",
+        "required": [
+          "id",
+          "at",
+          "trigger",
+          "ok",
+          "entries",
+          "created",
+          "updated",
+          "unchanged",
+          "pruned",
+          "skipped",
+          "failed",
+          "removalsHeld",
+          "deferred",
+          "results"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trigger": {
+            "type": "string",
+            "enum": [
+              "push",
+              "schedule",
+              "manual",
+              "api"
+            ]
+          },
+          "ok": {
+            "type": "boolean",
+            "description": "False when the sync stopped before any entry (see `error`)."
+          },
+          "commitSha": {
+            "type": "string",
+            "description": "The manifest branch's head commit."
+          },
+          "entries": {
+            "type": "integer"
+          },
+          "created": {
+            "type": "integer"
+          },
+          "updated": {
+            "type": "integer"
+          },
+          "tracked": {
+            "type": "integer",
+            "description": "Libraries added outside GitOps that it tracks from now on. Absent in runs stored before it existed."
+          },
+          "unchanged": {
+            "type": "integer"
+          },
+          "pruned": {
+            "type": "integer"
+          },
+          "skipped": {
+            "type": "integer",
+            "description": "Every other outcome but `untracked`: unsupported, deferred, busy and kept entries, held removals, and final skips."
+          },
+          "failed": {
+            "type": "integer"
+          },
+          "removalsHeld": {
+            "type": "integer",
+            "description": "Removals waiting for a confirmed sync."
+          },
+          "deferred": {
+            "type": "integer",
+            "description": "Entries over the parse limit of one sync."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "libraryName",
+                "repoUrl",
+                "outcome",
+                "message"
+              ],
+              "properties": {
+                "libraryName": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "repoUrl": {
+                  "type": "string"
+                },
+                "outcome": {
+                  "type": "string",
+                  "description": "The same words as the preview's `outcome`, plus `added_outside` (added outside GitOps during the sync; the next sync tracks it), `skipped` and `failed`. Runs stored before `tracked` existed use only `created`, `updated`, `unchanged`, `pruned`, `skipped` and `failed`.",
+                  "enum": [
+                    "created",
+                    "updated",
+                    "tracked",
+                    "untracked",
+                    "unchanged",
+                    "deferred",
+                    "busy",
+                    "unsupported",
+                    "kept",
+                    "pruned",
+                    "added_outside",
+                    "skipped",
+                    "failed"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "error": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "GitOpsView": {
+        "type": "object",
+        "required": [
+          "planAllowed",
+          "tier",
+          "limits",
+          "config",
+          "running",
+          "runs"
+        ],
+        "properties": {
+          "planAllowed": {
+            "type": "boolean",
+            "description": "The teamspace is on Pro or Enterprise (the plan or an active trial)."
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "pro",
+              "enterprise"
+            ],
+            "nullable": true,
+            "description": "The plan's GitOps tier; null when GitOps is not available."
+          },
+          "limits": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GitOpsLimits"
+              }
+            ],
+            "nullable": true
+          },
+          "config": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GitOpsConfig"
+              }
+            ],
+            "nullable": true
+          },
+          "running": {
+            "type": "boolean"
+          },
+          "runs": {
+            "type": "array",
+            "description": "Newest first, at most 20.",
+            "items": {
+              "$ref": "#/components/schemas/GitOpsRun"
+            }
+          }
+        }
+      },
+      "GitOpsPreview": {
+        "type": "object",
+        "required": [
+          "commitSha",
+          "entries",
+          "counts",
+          "items",
+          "confirmationRequired",
+          "confirmation",
+          "estimate"
+        ],
+        "properties": {
+          "commitSha": {
+            "type": "string"
+          },
+          "entries": {
+            "type": "integer"
+          },
+          "counts": {
+            "type": "object",
+            "description": "Items per `outcome`.",
+            "properties": {
+              "created": {
+                "type": "integer"
+              },
+              "updated": {
+                "type": "integer"
+              },
+              "tracked": {
+                "type": "integer"
+              },
+              "untracked": {
+                "type": "integer"
+              },
+              "unchanged": {
+                "type": "integer"
+              },
+              "deferred": {
+                "type": "integer"
+              },
+              "busy": {
+                "type": "integer"
+              },
+              "unsupported": {
+                "type": "integer"
+              },
+              "kept": {
+                "type": "integer"
+              },
+              "pruned": {
+                "type": "integer"
+              }
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "outcome",
+                "libraryName",
+                "repoUrl"
+              ],
+              "properties": {
+                "outcome": {
+                  "type": "string",
+                  "description": "What the sync would do, in the words of the sync history: `created` (add), `updated` (re-parse, or only set the automatic refresh mode), `tracked` (added outside GitOps, tracked from now on), `untracked`, `unchanged`, `deferred` (over the parse limit, next sync), `busy` (a parse runs, next sync), `unsupported`, `kept` (prune is off) and `pruned` (removed).",
+                  "enum": [
+                    "created",
+                    "updated",
+                    "tracked",
+                    "untracked",
+                    "unchanged",
+                    "deferred",
+                    "busy",
+                    "unsupported",
+                    "kept",
+                    "pruned"
+                  ]
+                },
+                "libraryName": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "repoUrl": {
+                  "type": "string"
+                },
+                "refresh": {
+                  "type": "object",
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "enum": [
+                        "off",
+                        "weekly",
+                        "daily",
+                        "hourly",
+                        "push"
+                      ]
+                    },
+                    "to": {
+                      "type": "string",
+                      "enum": [
+                        "off",
+                        "weekly",
+                        "daily",
+                        "hourly",
+                        "push"
+                      ]
+                    }
+                  }
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "Why, when the outcome has a reason; the same message the sync history records."
+                },
+                "warnings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Fields the cloud reads but does not apply, and an automatic refresh the plan's library cap keeps off."
+                },
+                "estimate": {
+                  "$ref": "#/components/schemas/GitOpsItemEstimate"
+                }
+              }
+            }
+          },
+          "confirmationRequired": {
+            "type": "boolean",
+            "description": "The first sync, or a sync that removes libraries."
+          },
+          "confirmation": {
+            "type": "string"
+          },
+          "estimate": {
+            "$ref": "#/components/schemas/GitOpsSyncEstimate"
+          }
+        }
+      },
+      "GitOpsLimits": {
+        "type": "object",
+        "required": [
+          "tier",
+          "maxEntries",
+          "maxParsesPerSync",
+          "maxParsesPerDay",
+          "maxRefreshLibraries"
+        ],
+        "properties": {
+          "tier": {
+            "type": "string",
+            "enum": [
+              "pro",
+              "enterprise"
+            ]
+          },
+          "maxEntries": {
+            "type": "integer",
+            "description": "Entries one manifest may list (Pro 20, Enterprise 100); a longer manifest is refused."
+          },
+          "maxParsesPerSync": {
+            "type": "integer",
+            "description": "Parses one sync may start (Pro 5, Enterprise 20); the rest wait for the next sync."
+          },
+          "maxParsesPerDay": {
+            "type": "integer",
+            "description": "Parses and refreshes the teamspace's syncs may start in a UTC day (Pro 20, Enterprise 100); the rest wait for the next day."
+          },
+          "maxRefreshLibraries": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Private libraries with automatic refresh on per teamspace (Pro 10); null is no cap. A manifest `refresh` over it stays off and is reported for its entry."
+          }
+        }
+      },
+      "GitOpsSyncEstimate": {
+        "type": "object",
+        "description": "Estimates: a new library uses a typical first parse (692,000 tokens), a re-parse the library's automatic refresh estimate (the median of at least 3 recorded runs, else 183,000 tokens). The real cost depends on the docs.",
+        "required": [
+          "parses",
+          "newLibraries",
+          "reparses",
+          "deferred",
+          "maxParsesPerSync",
+          "totalTokens",
+          "totalUsd",
+          "usdPerMillionTokens",
+          "refreshLibraries",
+          "refreshUpperMonthlyUsd"
+        ],
+        "properties": {
+          "parses": {
+            "type": "integer",
+            "description": "Parses the sync starts (new libraries and re-parses), after the per-sync cap."
+          },
+          "newLibraries": {
+            "type": "integer"
+          },
+          "reparses": {
+            "type": "integer"
+          },
+          "deferred": {
+            "type": "integer",
+            "description": "Entries over the per-sync cap; the next sync takes them."
+          },
+          "maxParsesPerSync": {
+            "type": "integer"
+          },
+          "totalTokens": {
+            "type": "integer",
+            "description": "Estimated parse tokens of this sync's parses."
+          },
+          "totalUsd": {
+            "type": "number"
+          },
+          "usdPerMillionTokens": {
+            "type": "number"
+          },
+          "refreshLibraries": {
+            "type": "integer",
+            "description": "Entries whose `refresh` turns or keeps automatic refresh on."
+          },
+          "refreshUpperMonthlyUsd": {
+            "type": "number",
+            "description": "The sum of their modes' monthly upper bounds (see `AutomaticRefreshEstimate`)."
+          }
+        }
+      },
+      "GitOpsItemEstimate": {
+        "type": "object",
+        "properties": {
+          "parse": {
+            "type": "object",
+            "required": [
+              "kind",
+              "tokens",
+              "usd"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "first_parse",
+                  "refresh"
+                ]
+              },
+              "tokens": {
+                "type": "integer"
+              },
+              "usd": {
+                "type": "number"
+              }
+            }
+          },
+          "refresh": {
+            "type": "object",
+            "required": [
+              "mode",
+              "upperMonthlyUsd"
+            ],
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "weekly",
+                  "daily",
+                  "hourly",
+                  "push"
+                ]
+              },
+              "upperMonthlyUsd": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "GitOpsEnableTerms": {
+        "type": "object",
+        "required": [
+          "limits",
+          "prune",
+          "usdPerMillionTokens",
+          "firstParseTokens",
+          "reparseTokens",
+          "confirmation"
+        ],
+        "properties": {
+          "limits": {
+            "$ref": "#/components/schemas/GitOpsLimits"
+          },
+          "prune": {
+            "type": "boolean"
+          },
+          "usdPerMillionTokens": {
+            "type": "number"
+          },
+          "firstParseTokens": {
+            "type": "integer",
+            "description": "Estimated tokens of a new library's first parse."
+          },
+          "reparseTokens": {
+            "type": "integer",
+            "description": "Estimated tokens of a re-parse."
+          },
+          "confirmation": {
+            "type": "string",
+            "description": "Send it in the next `PUT` to turn GitOps on."
+          }
+        }
+      },
       "TeamspaceSpendingLimit": {
         "type": "object",
         "properties": {
@@ -15046,6 +16202,219 @@
             "$ref": "#/components/schemas/TeamspaceLibraryGoogleDriveSource"
           }
         ]
+      },
+      "TeamspaceLibraryAutomaticRefresh": {
+        "type": "object",
+        "description": "The teamspace's automatic refresh of one of its private libraries. Pro and Enterprise teamspaces (Enterprise: the plan or an active Enterprise trial); on Free every mode acts as `off`. Private github.com repositories only. The run state is the library's, shared by every teamspace that has it; a library several teamspaces track runs under the most permissive tier among the teamspaces whose setting is on for the trigger.",
+        "required": [
+          "mode",
+          "supported",
+          "planAllowed",
+          "tier",
+          "overPlanLimit",
+          "lastRunAt",
+          "lastOutcome",
+          "failures",
+          "pausedReason",
+          "nextAllowedAt",
+          "estimate"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "off",
+              "weekly",
+              "daily",
+              "hourly",
+              "push"
+            ],
+            "description": "`push`: after a push to the branch the library tracks, a few minutes later so a burst makes one refresh. `weekly`, `daily`, `hourly`: on that schedule, when the branch has a new commit."
+          },
+          "supported": {
+            "type": "boolean",
+            "description": "The library is a private github.com repository."
+          },
+          "planAllowed": {
+            "type": "boolean",
+            "description": "The teamspace's plan has automatic refresh: Pro, or Enterprise (the plan or an active Enterprise trial)."
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "pro",
+              "enterprise"
+            ],
+            "nullable": true,
+            "description": "The teamspace's automatic refresh limits. `enterprise`: at least 30 minutes between automatic starts, 48 starts per library and UTC day, no library cap. `pro`: at least 3 hours, 6 a day, at most 10 libraries with a mode other than `off`. Null on Free."
+          },
+          "overPlanLimit": {
+            "type": "boolean",
+            "description": "The mode is on, but the teamspace has more libraries on than its plan allows (a teamspace that moved from Enterprise to Pro keeps every mode) and this one is past the cap, so it does not run. The cap keeps the libraries turned on first. Turn others off or upgrade to Enterprise."
+          },
+          "lastRunAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "When the last automatic refresh started."
+          },
+          "lastOutcome": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "succeeded",
+              "failed"
+            ],
+            "nullable": true,
+            "description": "The end of the last automatic refresh; `queued` while it runs."
+          },
+          "failures": {
+            "type": "integer",
+            "description": "Failed automatic refreshes in a row. The next waits 15 minutes, 1 hour, then 6 hours; the fourth failure pauses automatic refresh."
+          },
+          "pausedReason": {
+            "type": "string",
+            "enum": [
+              "repeated_failures",
+              "no_access"
+            ],
+            "nullable": true,
+            "description": "Automatic refresh is paused. Save the mode again to resume it."
+          },
+          "nextAllowedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The earliest next automatic start under this teamspace's tier: 30 minutes (Enterprise) or 3 hours (Pro) after the last one, and after a failure's wait. A push before it waits for it."
+          },
+          "estimate": {
+            "$ref": "#/components/schemas/AutomaticRefreshEstimate"
+          }
+        }
+      },
+      "AutomaticRefreshEstimate": {
+        "type": "object",
+        "description": "What automatic refresh of this library may cost. Parse tokens of private libraries are billed to the teamspace. A refresh runs, and is billed, only when the tracked branch has new documentation changes (an unchanged commit is skipped with no tokens), so the monthly figures are upper bounds, usually far above the real cost.",
+        "required": [
+          "typicalTokens",
+          "typicalUsd",
+          "basis",
+          "recordedRuns",
+          "usdPerMillionTokens",
+          "modes"
+        ],
+        "properties": {
+          "typicalTokens": {
+            "type": "integer",
+            "description": "Parse tokens of a typical refresh of this library."
+          },
+          "typicalUsd": {
+            "type": "number",
+            "description": "The typical refresh's cost in US dollars."
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "history",
+              "recent_runs",
+              "similar_libraries"
+            ],
+            "description": "`history`: the median of the library's recorded parses (at least 3 of its newest 10). `recent_runs`: the library's newest recorded parse, when 1 or 2 are recorded (a first parse reads every page, so refreshes usually cost less). `similar_libraries`: a typical refresh of other private libraries (183,000 tokens), when none is recorded."
+          },
+          "recordedRuns": {
+            "type": "integer",
+            "description": "How many of the library's parses were recorded (the newest 10 are kept for 90 days)."
+          },
+          "usdPerMillionTokens": {
+            "type": "number",
+            "description": "The parse token price in US dollars per 1M tokens."
+          },
+          "modes": {
+            "type": "object",
+            "description": "The upper bound of each mode on the teamspace's tier (Pro's limits on Free).",
+            "required": [
+              "weekly",
+              "daily",
+              "hourly",
+              "push"
+            ],
+            "properties": {
+              "weekly": {
+                "$ref": "#/components/schemas/AutomaticRefreshModeEstimate"
+              },
+              "daily": {
+                "$ref": "#/components/schemas/AutomaticRefreshModeEstimate"
+              },
+              "hourly": {
+                "$ref": "#/components/schemas/AutomaticRefreshModeEstimate"
+              },
+              "push": {
+                "$ref": "#/components/schemas/AutomaticRefreshModeEstimate"
+              }
+            }
+          }
+        },
+        "example": {
+          "typicalTokens": 183000,
+          "typicalUsd": 0.92,
+          "basis": "similar_libraries",
+          "recordedRuns": 0,
+          "usdPerMillionTokens": 5,
+          "modes": {
+            "weekly": {
+              "maxRunsPerMonth": 4.3,
+              "upperMonthlyUsd": 3.93
+            },
+            "daily": {
+              "maxRunsPerMonth": 30,
+              "upperMonthlyUsd": 27.45
+            },
+            "hourly": {
+              "maxRunsPerMonth": 180,
+              "upperMonthlyUsd": 164.7
+            },
+            "push": {
+              "maxRunsPerMonth": 180,
+              "upperMonthlyUsd": 164.7
+            }
+          }
+        }
+      },
+      "AutomaticRefreshModeEstimate": {
+        "type": "object",
+        "required": [
+          "maxRunsPerMonth",
+          "upperMonthlyUsd"
+        ],
+        "properties": {
+          "maxRunsPerMonth": {
+            "type": "number",
+            "description": "The most automatic refreshes the mode can start in a month on the teamspace's tier: weekly 4.3, daily 30, hourly 720 on Enterprise and 180 on Pro, push 1,440 on Enterprise and 180 on Pro."
+          },
+          "upperMonthlyUsd": {
+            "type": "number",
+            "description": "`maxRunsPerMonth` refreshes at the typical cost, in US dollars."
+          }
+        }
+      },
+      "TeamspaceLibraryAutomaticRefreshUpdate": {
+        "type": "object",
+        "description": "Sets the teamspace's automatic refresh mode of one of its private libraries. Owners and admins of a Pro or Enterprise teamspace; on Pro at most 10 libraries may be on. Turning it on also needs the caller's GitHub account and the Context7 GitHub App installation to reach the repository. Saving a mode again resumes a paused library.",
+        "required": [
+          "mode"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "off",
+              "weekly",
+              "daily",
+              "hourly",
+              "push"
+            ]
+          }
+        }
       },
       "TeamspaceLibraryConfigUpdate": {
         "type": "object",
@@ -16744,7 +18113,7 @@
                 ]
               }
             },
-            "description": "What the run worked on. The other fields depend on `kind`."
+            "description": "What the run worked on. The other fields depend on `kind`. A `suggestions` run lists its suggestions without the Context7 users' queries they came from."
           },
           "pullRequest": {
             "type": "object",
@@ -18264,7 +19633,6 @@
         "type": "object",
         "required": [
           "recommendation",
-          "query",
           "benchmarkScore",
           "sourceFiles",
           "timestamp"
@@ -18273,10 +19641,6 @@
           "recommendation": {
             "type": "string",
             "description": "What to add or change in the docs."
-          },
-          "query": {
-            "type": "string",
-            "description": "The question the docs answered badly."
           },
           "benchmarkScore": {
             "type": "number"
@@ -18334,8 +19698,7 @@
         "type": "object",
         "required": [
           "benchmarkDate",
-          "score",
-          "query"
+          "score"
         ],
         "properties": {
           "benchmarkDate": {
@@ -18345,14 +19708,6 @@
           "score": {
             "type": "number",
             "description": "0 to 100."
-          },
-          "query": {
-            "type": "string",
-            "description": "The question that was asked."
-          },
-          "explanation": {
-            "type": "string",
-            "description": "Why the grader gave this score."
           },
           "subscores": {
             "type": "object",

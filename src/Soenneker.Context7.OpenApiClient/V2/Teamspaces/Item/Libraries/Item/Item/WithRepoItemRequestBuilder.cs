@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.Models;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Analytics;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.AutomaticRefresh;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Benchmarks;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Block;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Claim;
@@ -33,6 +34,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Ite
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Analytics.AnalyticsRequestBuilder Analytics
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Analytics.AnalyticsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The automaticRefresh property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.AutomaticRefresh.AutomaticRefreshRequestBuilder AutomaticRefresh
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.AutomaticRefresh.AutomaticRefreshRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The benchmarks property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries.Item.Item.Benchmarks.BenchmarksRequestBuilder Benchmarks

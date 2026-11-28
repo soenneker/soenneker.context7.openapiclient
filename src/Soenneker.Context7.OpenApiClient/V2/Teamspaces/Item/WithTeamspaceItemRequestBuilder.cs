@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Context7.OpenApiClient.Models;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites;
+using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Gitops;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Invitations;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.InviteLink;
 using Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Libraries;
@@ -32,6 +33,11 @@ namespace Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.AskSitesRequestBuilder AskSites
         {
             get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.AskSites.AskSitesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The gitops property</summary>
+        public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Gitops.GitopsRequestBuilder Gitops
+        {
+            get => new global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Gitops.GitopsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The invitations property</summary>
         public global::Soenneker.Context7.OpenApiClient.V2.Teamspaces.Item.Invitations.InvitationsRequestBuilder Invitations
